@@ -286,3 +286,4 @@ current_semester
 **/*.pdf_tex
 **/master.pdf
 **/master.tex
+.vscode/extensions.json

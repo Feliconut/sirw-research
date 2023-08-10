@@ -1,0 +1,18 @@
+{
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.experimental.useVersion2": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.wordWrap": "on",
+    "workbench.colorCustomizations": {
+        "diffEditor.insertedTextBackground": "#00ff007c", // previous
+        "diffEditor.removedTextBackground": "#ff00007c", // previous
+        // Background color for lines that got inserted/removed. 
+        // The color must not be opaque so as not to hide underlying decorations.
+        // "diffEditor.insertedLineBackground": "#00ff007c", // rest are new
+        // "diffEditor.removedLineBackground": "#ff00007c",
+        // "diffEditorGutter.insertedLineBackground": "#223368ff",
+        // "diffEditorGutter.removedLineBackground": "#72336aff",
+        // "diffEditorOverview.insertedForeground": "#02b40b",
+        // "diffEditorOverview.removedForeground": "#a10000"
+    }
+}
