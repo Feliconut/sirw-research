@@ -14,5 +14,6 @@
         // "diffEditorGutter.removedLineBackground": "#72336aff",
         // "diffEditorOverview.insertedForeground": "#02b40b",
         // "diffEditorOverview.removedForeground": "#a10000"
-    }
+    },
+    "editor.wordWrap": "on"
 }
