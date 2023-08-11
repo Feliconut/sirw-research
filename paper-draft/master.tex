@@ -487,10 +487,181 @@ is contained in $A_{n,K} \cup B_{n,M} \cup  B'_{n,M},$ for any $K>0$, and $M$ wi
 \eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 
 \subsection{Approximation of Local Drifts by Conditional Means}
-In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. \textcolor{red}{\TBD. Its proof is composed of by an argument for equation (16) in Xiaoyu's \cite{L23}, and an argument similar to that on page 20 of \cite{KP16}.}
+In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. \textcolor{red}{\TBD. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}.}
+
+By symmetry we only present the proof for $x >  0$. \TBD. We are currently only considering sites right to $x$, i.e. $y \ge x$. Let $m > 0$.
+We work on the event $\left\{ X_n = x, n = \lambda_{x, m} \right\} $. Consider some $K>0$ and define the good event
+
+\begin{align}
+	G_K^{(x,m)} :=  \qquad
+		\label{eqn:good-event-1}
+		& \left\{ M^{(x,m)}< K \sqrt{n}\right\} \cup  \\ 
+		\label{eqn:good-event-2}
+		& \bigcap_{y \ge x} \left\{\mathcal{E}_y^{(x,m)} < K \sqrt{ n} \right\}  \cup \\
+		\label{eqn:good-event-3}
+		& \bigcap_{y \ge x} \bigcap_{i < K \sqrt{n} } \left\{\left| \tau_i^{\mathcal{B}} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cup \\
+		\label{eqn:good-event-4}
+		& \bigcap_{y \ge x} \bigcap_{i < K \sqrt{n} } \left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| < \log^2 n \right\}  \\
+		&=: A_K^{(x,m)} \cup B_{K}^{(x,m)} 
+		\cup C_{K}^{(x,m)}
+		\cup D_{K}^{(x,m)} 
+.\end{align}
+
+From process-level tightness we know that probability of \eqref{eqn:good-event-1} goes to $1$ as $K \to \infty $. By taking $K$ large we can also establish the likelihood of \eqref{eqn:good-event-2}, easily verifiable by the following lemma:
+
+\begin{lemma}
+	For arbitrary $x, m, n>0$, we have
+	\[
+		\lim_{K \to \infty} 
+		P\left( \bigcap_{y \ge x} \left\{\mathcal{E}_y^{(x,m)} < K \sqrt{ n} \right\} \right) = 1
+	.\] 
+\end{lemma}
+\begin{proof}
+	We prove the probability of the complement goes to $0$. If there exists some $y \ge x$ such that $\mathcal{E}_y^{(x,m)} \ge  K \sqrt{n} $, then there must exist $z>x$ such that $\mathcal{E}_{z+1}^{(x,m)} \ge \mathcal{E}_{z}^{(x,m)} + K \sqrt{n} / y $.
+
+	From the process-level tightness, for any $\varepsilon>0$ there exists $M_\varepsilon$ such that $P\left( M^{(x,m)} - I^{(x,m)} < \sqrt{n}  \right) \ge 1 - \varepsilon$. On this event, we would have $\mathcal{E}_{z+1}^{(x,m)} \ge \mathcal{E}_{z}^{(x,m)} + K$. The probability that this happens goes to $0$ as we make $K$ large.
+\end{proof}
+
+To establish the likelihood of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4}, note that the inner intersection gives events i.i.d. over $y$, so it suffices to control the complement of one of them.
+
+\begin{align*}
+	P\left(\left( C_{K}^{(x,m)}\right)^c |A_{K}^{(x,m)}, B_K^{(x,m)}\right) 
+	&\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } P\left( |\tau_i^{\mathcal{B}} - 2i| \ge \sqrt{i} \log^2 n \right) \\
+	&\le CK \sqrt{n} \sum_{i < K \sqrt{ n} } \exp\left( - c \frac{i \log^4 n}{\sqrt{i}  \log^2 n \vee i} \right)  \\
+	&\le CK \sqrt{n}  \sum_{i < K \sqrt{ n} }  
+	\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  + 
+	\exp\left( - c \log^4 n \right) \right)
+.\end{align*}
+Where in the third line we used Lemma~\ref{lm: concentration inequality}. For fixed $K$, the last line goes to $0$ as $n \to \infty $. For \eqref{eqn:good-event-4}, we make a similar argument and note that, since the probability that the next ball drawn is blue is bounded below by some constant $q > 0$, $\tau_{i+1}^{\mathcal{B}} - \tau_{i}^{\mathcal{B}}$ is stochastically dominated by some geometric random variable $\text{Geo}(q)$. Hence
+
+\[
+	P\left(\left( D_{K}^{(x,m)}\right)^c |A_{K}^{(x,m)}, B_K^{(x,m)}\right) 
+	\le C K^2 n \exp\left( - c \log^2 n \right) 
+.\] 
+
+From the arguments above we have concluded that $P\left( G_K^{(x,m)} \right)  \to 1$ for all $x$, all large $K$ and all large $m$ depending on $K$.
+
+On the good event $G_{K}^{(x,m)}$ we can have a deterministic bound for $|\Delta_y^{(x,m)}|$, which puts admissible conditions to the martingale in \eqref{eq: control of martingale difference for local drift}.
+
+\begin{lemma}\label{lm:lipchitz-bound-on-good-event}
+	When $p \in (0,\frac{1}{2}]$, on $G_{K}^{(x,m)}$, we have for all  $y \ge x$,
+	\[
+		\left| \Delta_y^{(x,m)} \right| \le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n
+	.\] 
+	When $p = \frac{1}{2}$, we have the bound
+\[
+		\left| \Delta_y^{(x,m)} \right| \le C_K \log^5 n
+	.\]
+	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to multiplicative constant.
+\end{lemma}
+
+Having this lemma, we can apply Azuma's inequality to the sum in \eqref{eq: control of martingale difference for local drift}. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
+
+\begin{align}
+	P\left( \left| \sum_{y\ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)})  \right| > \varepsilon \sqrt{n}  \right) \notag
+	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) + P(G^c) \notag \\
+	&= \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) +P(G^c) \label{eqn:azuma-drift-martingale}
+.\end{align}
+In the case $p = \frac{1}{2}$ the bound becomes
+\begin{align}
+	P\left( \left| \sum_{y \ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|  > \varepsilon \sqrt{n}  \right) \notag
+	&\le  \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) +P(G^c) 
+.\end{align}
+In both cases, we have the right hand side go to $0$ as $n \to  \infty $. As a final step, we need to strengthen the statement to a probabilistic bound for $\sup_{k < nt} \left| \sum_{y \ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|$. \TBD: Apply a union bound over all possible $(x,m)$ pairs. This will give the wanted result since both the exponential term and $P((G_K^{(x,m)})^c)$ still goes to zero after multiplication by $n$.
+
+\begin{proof}[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
+	\begin{equation*}
+	\left| \Delta_y^{(x,m)} \right| 
+	= 
+	\left| 	\sum_{i = 0}^{\mathcal{E}_y^{(x,m)}} 
+	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+	\alpha(\mathcal{B}_l, \mathcal{R}_l)
+	\right| 
+	\le 
+	\sum_{i = 0}^{K \sqrt{n} } 
+	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+	\left|
+	\alpha(\mathcal{B}_l, \mathcal{R}_l)
+	\right| 
+	.
+\end{equation*}
+
+\begin{align*}
+	&\sum_{i = 0}^{K \sqrt{n} } 
+	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+	|\alpha(\mathcal{B}_l, \mathcal{R}_l)|
+	:=
+	\sum_{i = 0}^{K \sqrt{n} } 
+	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+	\left|\frac{-w(2 \mathcal{B}_l + 1) + w(2 \mathcal{R}_l)}{w(2\mathcal{B}_l + 1) + w(2 \mathcal{R}_l)}\right|\\
+	&\le C_w \sum_i \sum_l \left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w(2 \mathcal{B}_l + 1)} \right|  \\
+	&= C_w \sum_i \sum_l \left| \frac{1}{w(2 l - 2 i)} - \frac{1}{w(2i + 1)} \right|  \\
+	&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left| \frac{1}{w(2j)} - \frac{1}{w(2i + 1)} \right|  \\
+	&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|  \\
+	&\le C_w \sum_i \log^2 n \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right| \\
+	&\le C_{w, p} \sum_i \log^2 n \left( 
+		(4 \sqrt{ i } \log^2 n) (2 i - 2 \sqrt{ i } \log^2 n)^{- p - 1} + (2 i)^{- p - 1} + O(i^{- \kappa - 1})
+	\right)  \\
+	&\le C_{w, p} \sum_i \log^2 n \left( i ^{-p - \frac{1}{2}} \log^2 n +  i^{- \kappa - 1} \right)  \\
+	&= C_{w, p} \sum_i i^{- p - \frac{1}{2}} \log^4 n + i^{- \kappa - 1 } \log^2 n \\
+	&\stackrel{(p<\frac{1}{2})}{\le } C_{w, p} \left( (K \sqrt{ n} )^{-p+ \frac{1}{2}} \log^4 n + (K \sqrt{ n} )^{- \kappa } \log^2 n \right)  \\
+	&= C_{w, p, K} n^{-\frac{1}{2}p + \frac{1}{4}  }  \log^4 n \qquad \text{assuming $\kappa$ small}
+.\end{align*} 
+
+\end{proof}
+
+
 
 \subsection{Control of martingale Terms } 
-In this subsection, we prove Proposition \ref{lm: control of martingale}.\textcolor{red}{\TBD. Its proof is a similar to the proof of Proposition \ref{lm: approx local drift by conditional means}. An argument on page 15 of Xiaoyu's \cite{L23} should work.}
+In this subsection, we prove Proposition \ref{lm: control of martingale}. It is already remarked earlier that we only need to obtain the control
+
+\[
+	 \lim_{n \to \infty } \frac{1}{n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 = 0
+.\] 
+
+\textcolor{red}{\TBD. Its proof is a similar to the proof of Proposition \ref{lm: approx local drift by conditional means}}.
+
+We can rewrite the sum into a sum of local drifts, and isolate the first $M$ visits:
+
+\begin{align}
+	&\sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2\\
+	&= \sum_{x \in \left[ I_n^X, S_n^X \right]} \sum_{i = 0}^{L_x(n) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  \\
+	&\le  \sum_{x \in \left[ I_n^X, S_n^X \right]} \sum_{i = 0}^{L_x(n) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_x(i) > M \right) + 
+	\sum_{i = 0}^{n - 1} \mathbf{1}\left( L_{X_i}(i) \le  M \right) 
+	\label{eqn:lem-martingale-1}
+.\end{align}
+
+We now restrict ourselves to the good event $G$ stated in \eqref{eqn:good-event-1}-\eqref{eqn:good-event-2}. Under $G$,
+the inner sum in the first term is further controlled by
+\begin{align*}
+	&\sum_{i =0}^{ L_x(n) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_{x}(i) > M \right) \\
+	&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_n} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
+	\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w\left( 2 \mathcal{B}_l + 1 \right) } \right|^2 \\
+	&\le C_{w, p} \sum_i i^{- 2 p - 1} \log^3 n \\
+	&\le C_{w, p} \left[ M^{- 2 p} - \mathcal{B}_n^{- 2 p} \right] \log^3 n  \\
+	&< C_{w, p} M^{-2 p} \log^3 n
+	.
+\end{align*}
+
+Note that this bound is uniform in $x$. We remark that cases $(x=0)$ and $(x < 0)$ have the exactly same bounds. 
+
+Now apply the bound $\sum_{i = 0}^{n-1} \mathbf{1}\left( L_{X_i}(i) \le M \right) \mathbf{1}(X_i = x) \le  M$ to the second term in \eqref{eqn:lem-martingale-1}, we have
+
+\begin{multline}
+	\sum_{x \in \left[ I_n^X, S_n^X \right]} \sum_{i = 0}^{L_x(n) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \\
+	< \sum_{x \in \left[ I_n^X, S_n^X \right]} (C_{w, p} M^{-2p} \log^3 n +M )
+\end{multline}
+
+Using process-level tightness, the summation only add a term of order $\sqrt{n}$, on a good event. Since we have a factor of $\frac{1}{n}$, and $M$ independent of $n$, we have the right hand side $\to 0$. More precisely,
+
+\begin{align*}
+	 &P\left( \left| \frac{1}{n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2  \right|  > \varepsilon \right)\\
+	 &\le P\left( \left| \sum_{x \in \left[ I_n^X, S_n^X \right]} (C_{w, p} M^{-2p} \log^3 n +M ) \right| > \varepsilon  n \right) + P(G^c) \\
+	 &\le 2 P\left( S_n^X \ge n^{3 / 4} \right) + P\left(  \left| \sum_{|x| \le n^{3 / 4}} (C_{w, p} M^{-2p} \log^3 n +M ) \right| > \varepsilon  n  \right) +P(G^c)  \\
+	 &\le 2 P\left( S_n^X \ge n^{3 / 4} \right) + P\left(  C_{w, p, M} \,\, n^{3 / 4} \log^3 n > \varepsilon  n  \right) + P(G^c)
+.\end{align*}
+The second term vanishes trivially; the first term vanishes by process-level tightness of $S_n^X / \sqrt{n} $. The last term goes to zero as shown in the previous section.
+
 
 \begin{thebibliography}{99}\addcontentsline{toc}{chapter}{Bibliography} 
  \bibitem[KMP22]{KMP22} Kosygina,~E., Mountford,~T., Peterson,~J.: Convergence and Non-Convergence of Scaled Self-Interacting Random Walks to Brownian Motion Perturbed at Extrema. \textit{arXiv:2208.02589,} 2022.

@@ -1,3 +1,9 @@
+## 2023.08.11
+1. Transferred proof of prop. 2.1 and 2.4 to this draft.
+2. Added detailed justification of good event $G_K$.
+
+Further revision is needed.
+
 ## 2023.08.09
 (edited by Zhe. All changes afterwards are indicated on commit message)
 Description of changes: 
