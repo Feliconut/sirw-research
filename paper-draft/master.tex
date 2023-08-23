@@ -508,15 +508,17 @@ is contained in $A_{n,K} \cup B_{n,M} \cup  B'_{n,M},$ for any $K>0$, and $M$ wi
 \subsection{Approximation of Local Drifts by Conditional Means}
 In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. \textcolor{red}{\TBD. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}.}
 
-By symmetry we only present the proof for $x >  0$. \TBD. We are currently only considering sites right to $x$, i.e. $y \ge x$. Let $m > 0$.
-We work on the event $\left\{ X_n = x, n = \lambda_{x, m} \right\} $. Consider some $K>0$ and define the good event
+By construction, the inner sum in \eqref{eq: control of martingale difference for local drift} is a martingale depending on the pair  $(x,m)$. To control the sum, we restrict on a good event where this martingale has bounded increments. 
+
+Consider some site $x \neq 0$ and let $m > 0$. Let $n = \lambda_{x, m}$, so $X_n = x$. By symmetry we assume without loss of generality that $x >  0$. \TBD. (We are currently only considering sites right to $x$, i.e. $y \ge x$.) 
+For every integer $K>0$ and define the good event
 
 \begin{align}
-	G_K^{(x,m)} :=  \qquad
+	G_{n,K}^{(x,m)} :=  \qquad
 		\label{eqn:good-event-1}
 		& \left\{ M^{(x,m)}< K \sqrt{n}\right\} \cap  \\ 
 		\label{eqn:good-event-2}
-		& \bigcap_{y = x}^{K \sqrt{n}}  \left\{\mathcal{E}_y^{(x,m)} < K \sqrt{ n} \right\}  \cap \\
+		& \bigcap_{y = x}^{K \sqrt{n}}  \left\{\color{red}\mathcal{E}_y^{(x,m)} < K^2 \sqrt{ n} \right\}  \cap \\
 		\label{eqn:good-event-3}
 		& \bigcap_{y = x}^{K \sqrt{n}} \bigcap_{0<i<K\sqrt{n}} \left\{\left| \tau_i^{\mathcal{B}} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
 		\label{eqn:good-event-4}
@@ -525,71 +527,87 @@ We work on the event $\left\{ X_n = x, n = \lambda_{x, m} \right\} $. Consider s
 		\cap C_{K}^{(x,m)}
 		\cap D_{K}^{(x,m)} 
 .\end{align}
+and we define
+\[
+	G_{n, K} := \bigcap_{|x|, |m| \le K \sqrt{n} } G_{n,K}^{(x,m)} 
+.\] 
 
-From process-level tightness we know that probability of \eqref{eqn:good-event-1} goes to $1$ as $K \to \infty $. By taking $K$ large we can also establish the likelihood of \eqref{eqn:good-event-2}, easily verifiable by the following lemma:
+We later verify that $\lim _{K\to \infty } \limsup_{n \to \infty } G_{K} = 0$.
 
-\begin{lemma}
-	For arbitrary $x, m, n>0$, we have
+\TBD {\color{red} Big problem here. Definition of $G$ need to be fixed, and carefully redo the proof that $G$ vanishes.}
+
+On the good event $G_{n,K}$ we can have a deterministic bound for $|\Delta_y^{(x,m)} - \rho_y^{(x,m)}|$ uniform in $y$, which makes the martingale in \eqref{eq: control of martingale difference for local drift} admissible.
+
+\begin{lemma}\label{lm:lipchitz-bound-on-good-event}
+	On $G_{K}^{(x,m)}$, when $p \in (0,\frac{1}{2})$, for all  $y \ge x$, we have
+	\[
+		\left| \Delta_y^{(x,m)} \right| \le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n
+	.\] 
+	When $p = \frac{1}{2}$, for all $y \ge x$, we have
+\[
+		\left| \Delta_y^{(x,m)} \right| \le C_K \log^5 n
+	.\]
+	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
+\end{lemma}
+
+Having this lemma, we can apply Azuma's inequality to the sum in \eqref{eq: control of martingale difference for local drift} on $G_K^{(x,m)}$. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
+
+\begin{align}
+	P\left( \left| \sum_{y\ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)})  \right| > \varepsilon \sqrt{n}  \right) \notag
+	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) + \left( 1 - P\left( G_K^{(x,m)} \right)  \right) \notag \\
+	&= \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) +\left( 1 - P\left( G_K^{(x,m)} \right)  \right)   \label{eqn:azuma-drift-martingale}
+.\end{align}
+In the case $p = \frac{1}{2}$ the bound becomes
+\begin{align}
+	P\left( \left| \sum_{y \ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|  > \varepsilon \sqrt{n}  \right) \notag
+	&\le  \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) +\left( 1 - P\left( G_K^{(x,m)} \right)  \right) 
+.\end{align}
+In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity. To bound $\sup_{k < nt} \left| \sum_{y \ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|$, we note that for every $k < nt$ there exists $(x,m)$ such that $x = X_k$ and $m = L_x(k)$. Thus, this amounts to bounding the supremum of $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $ over all $(x,m)$ pairs. 
+
+\TBD. Do the union bound.
+
+
+\begin{proof}
+	{\color{red} Proof that the event $G_K$ is good, need to be overhauled.}
+	We want to verify that for each  $(x,m)$,
+	\[
+		\lim_{K\to \infty } \limsup_{n \to \infty } G_{n, K}^{(x,m)} = 1
+	,\] 
+	and moreover, this convergence is uniform in $(x,m)$, so that
+	\[
+		\lim_{K\to \infty } \limsup_{n \to \infty } G_{n, K} = 1
+	.\] 
+
+	From process-level tightness we know that probability of $A_K^{(x,m)}$ approaches $1$ as $K $ goes to $ \infty $. Now we control $B_K^{(x,m)}$ conditioned on $A_K^{(x,m)}$. We would like to show that
 	\[
 		\lim_{K \to \infty} 
-		P\left( \bigcap_{y \ge x} \left\{\mathcal{E}_y^{(x,m)} < K \sqrt{ n} \right\} \right) = 1
+		P\left( \bigcap_{y = x}^{K \sqrt{n} } \left\{\mathcal{E}_y^{(x,m)} < K^2 \sqrt{ n} \right\} | A_K^{(x,m)}\right) = 1
 	.\] 
-\end{lemma}
-\begin{proof}
-	We prove the probability of the complement goes to $0$. If there exists some $y \ge x$ such that $\mathcal{E}_y^{(x,m)} \ge  K \sqrt{n} $, then there must exist $z>x$ such that $\mathcal{E}_{z+1}^{(x,m)} \ge \mathcal{E}_{z}^{(x,m)} + K \sqrt{n} / y $.
+%Now assume that there exists $y$,  $x\le y\le K \sqrt{n} $, such that $\mathcal{E}_y^{(x,m)} \ge K^2 \sqrt{n} $. On $A_K^{(x,m)}$ we have $\mathcal{E}_{K \sqrt{n} }^{(x,m)} = 0$, so pigeonhole principle implies that there exists $z$, $x\le z\le K \sqrt{n} $, such that $\mathcal{E}_z^{(x,m)} - \mathcal{E}_{z+1}^{(x,m)}\ge K$. DOES NOT WORK
 
-	From the process-level tightness, for any $\varepsilon>0$ there exists $M_\varepsilon$ such that $P\left( M^{(x,m)} - I^{(x,m)} < \sqrt{n}  \right) \ge 1 - \varepsilon$. On this event, we would have $\mathcal{E}_{z+1}^{(x,m)} \ge \mathcal{E}_{z}^{(x,m)} + K$. The probability that this happens goes to $0$ as we make $K$ large.
-\end{proof}
 
-To establish the likelihood of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4}, note that the inner intersection gives events i.i.d. over $y$, so it suffices to control the complement of one of them.
 
+To establish the likelihood of $C_K^{(x,m)}$ and $D_K^{(x,m)}$, note that the inner intersections over $i$ give rise to events that are i.i.d. over $y$. 
 \begin{align*}
-	P\left(\left( C_{K}^{(x,m)}\right)^c |A_{K}^{(x,m)}, B_K^{(x,m)}\right) 
+	P\left(\left( C_{K}^{(x,m)}\right)^c\right) 
 	&\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } P\left( |\tau_i^{\mathcal{B}} - 2i| \ge \sqrt{i} \log^2 n \right) \\
 	&\le CK \sqrt{n} \sum_{i < K \sqrt{ n} } \exp\left( - c \frac{i \log^4 n}{\sqrt{i}  \log^2 n \vee i} \right)  \\
 	&\le CK \sqrt{n}  \sum_{i < K \sqrt{ n} }  
 	\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  + 
 	\exp\left( - c \log^4 n \right) \right)
 .\end{align*}
-Where in the third line we used Lemma~\ref{lm: concentration inequality}. For fixed $K$, the last line goes to $0$ as $n \to \infty $. For \eqref{eqn:good-event-4}, we make a similar argument and note that, since the probability that the next ball drawn is blue is bounded below by some constant $q > 0$, $\tau_{i+1}^{\mathcal{B}} - \tau_{i}^{\mathcal{B}}$ is stochastically dominated by some geometric random variable $\text{Geo}(q)$. Hence
+Where in the second line we used Lemma~\ref{lm: concentration inequality} and took supremum over $y$. For fixed $K$, the last line goes to $0$ as $n$ goes to infinity. For \eqref{eqn:good-event-4}, we make a similar argument and note that, since the probability that the next ball drawn is blue is bounded below by some constant $q > 0$, $\tau_{i+1}^{\mathcal{B}} - \tau_{i}^{\mathcal{B}}$ is stochastically dominated by some geometric random variable $\text{Geo}(q)$. Hence
 
 \[
-	P\left(\left( D_{K}^{(x,m)}\right)^c |A_{K}^{(x,m)}, B_K^{(x,m)}\right) 
+	P\left(\left( D_{K}^{(x,m)}\right)^c\right) 
 	\le C K^2 n \exp\left( - c \log^2 n \right) 
 .\] 
 
-From the arguments above we have concluded that $P\left( G_K^{(x,m)} \right)  \to 1$ for all $x$, all large $K$ and all large $m$ depending on $K$.
-
-On the good event $G_{K}^{(x,m)}$ we can have a deterministic bound for $|\Delta_y^{(x,m)}|$, which puts admissible conditions to the martingale in \eqref{eq: control of martingale difference for local drift}.
-
-\begin{lemma}\label{lm:lipchitz-bound-on-good-event}
-	When $p \in (0,\frac{1}{2}]$, on $G_{K}^{(x,m)}$, we have for all  $y \ge x$,
-	\[
-		\left| \Delta_y^{(x,m)} \right| \le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n
-	.\] 
-	When $p = \frac{1}{2}$, we have the bound
-\[
-		\left| \Delta_y^{(x,m)} \right| \le C_K \log^5 n
-	.\]
-	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to multiplicative constant.
-\end{lemma}
-
-Having this lemma, we can apply Azuma's inequality to the sum in \eqref{eq: control of martingale difference for local drift}. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
-
-\begin{align}
-	P\left( \left| \sum_{y\ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)})  \right| > \varepsilon \sqrt{n}  \right) \notag
-	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) + P(G^c) \notag \\
-	&= \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) +P(G^c) \label{eqn:azuma-drift-martingale}
-.\end{align}
-In the case $p = \frac{1}{2}$ the bound becomes
-\begin{align}
-	P\left( \left| \sum_{y \ge X_n} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|  > \varepsilon \sqrt{n}  \right) \notag
-	&\le  \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) +P(G^c) 
-.\end{align}
-In both cases, we have the right hand side go to $0$ as $n \to  \infty $. As a final step, we need to strengthen the statement to a probabilistic bound for $\sup_{k < nt} \left| \sum_{y \ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|$. \TBD: Apply a union bound over all possible $(x,m)$ pairs. This will give the wanted result since both the exponential term and $P((G_K^{(x,m)})^c)$ still goes to zero after multiplication by $n$.
+\end{proof}
 
 \begin{proof}[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
-	\begin{equation*}
+	For notational simplicity, write $\alpha(i,j) := \left|\frac{-w(2 i + 1) + w(2 j)}{w(2i + 1) + w(2 j}\right|$. Then
+\begin{equation*}
 	\left| \Delta_y^{(x,m)} \right| 
 	= 
 	\left| 	\sum_{i = 0}^{\mathcal{E}_y^{(x,m)}} 
@@ -602,17 +620,12 @@ In both cases, we have the right hand side go to $0$ as $n \to  \infty $. As a f
 	\left|
 	\alpha(\mathcal{B}_l, \mathcal{R}_l)
 	\right| 
-	.
 \end{equation*}
-
+and
 \begin{align*}
 	&\sum_{i = 0}^{K \sqrt{n} } 
 	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
-	|\alpha(\mathcal{B}_l, \mathcal{R}_l)|
-	:=
-	\sum_{i = 0}^{K \sqrt{n} } 
-	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
-	\left|\frac{-w(2 \mathcal{B}_l + 1) + w(2 \mathcal{R}_l)}{w(2\mathcal{B}_l + 1) + w(2 \mathcal{R}_l)}\right|\\
+	|\alpha(\mathcal{B}_l, \mathcal{R}_l)|\\
 	&\le C_w \sum_i \sum_l \left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w(2 \mathcal{B}_l + 1)} \right|  \\
 	&= C_w \sum_i \sum_l \left| \frac{1}{w(2 l - 2 i)} - \frac{1}{w(2i + 1)} \right|  \\
 	&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left| \frac{1}{w(2j)} - \frac{1}{w(2i + 1)} \right|  \\
@@ -657,6 +670,7 @@ the inner sum in the first term is further controlled by
 	&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_n} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
 	\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w\left( 2 \mathcal{B}_l + 1 \right) } \right|^2 \\
 	&\le C_{w, p} \sum_i i^{- 2 p - 1} \log^3 n \\
+	\intertext{\TBD need to fix the number of logs.}
 	&\le C_{w, p} \left[ M^{- 2 p} - \mathcal{B}_n^{- 2 p} \right] \log^3 n  \\
 	&< C_{w, p} M^{-2 p} \log^3 n
 	.
