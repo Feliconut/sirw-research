@@ -4,18 +4,18 @@
 % % your document, to wit:
 % %
 % % first draft, 2023_08_03
-% % Modified  2023_08_09
-% % Lastest Edition, 2023_08_09
+% % Modified  2023_08_23
+% % Lastest Edition, 2023_08_23
 % % Description of changes: 
-% % 1) major changes are in the first two subsections of section three. I added some introduction of two auxiliary processes. Changes in these two subsections are not highlighted in blue.
-% % 2) the diffusion approximation of BLP is added into section 3.3. The proofs of results in section 3.3 are not given at the moment. 
-% % 3) minor changes in the main result and proof of proposition 2.3 were made.
+% % 1) minor changes are made for undirected edge: (a,b)-->  {a,b} . They are in page 1
+% % 2) Notations for edge local times now has +, - to indicate directions:  \mathcal{E}^{j}_x -> \mathcal{E}^{j}_{x,+},  \mathcal{D}^{j}_x --> \mathcal{E}^{j}_{x,-}
+% % 3) minor changes to the section 2: the change of the section name, the description of approximations of Gamma_n^+; 
+% % the approximations of $\Delta_{y}^{(x,m)}$ by $sign(y)\cdot \gamma$  and equation (2.7) is updated also. The statements of propsitions 2.3 and 2.4 are kept the same. 
 % % 
 % % 
 % % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % Title and author(s)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Title and author(s)
@@ -27,7 +27,7 @@
 	\and
 	Zhe Wang}
 
-\date{Aug 9th, 2023}
+\date{Aug 23rd, 2023}
 
 
 % This is the definition of the type of document
@@ -46,6 +46,7 @@
 \usepackage{tikz}
 \usepackage[inline]{enumitem}
 \usepackage{hyperref}
+\usepackage{mathrsfs}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -74,12 +75,12 @@
 	\maketitle
 	
 	\begin{abstract}
-		This document is an outline of the article for the Scaling limit of SIRW. We generalize the functional CLT in \cite{KMP22} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
+		This document is an outline of the article for the Scaling limit of SIRW. We complete the functional CLT in \cite{KMP22} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
 		\TBD
 	\end{abstract}
 	
 	\section{Introduction}
-	The current project is a generalization of the result in \cite{KMP22}. 
+	The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
 	\TBD 
 	
 	
@@ -94,8 +95,8 @@
 	\begin{equation}\label{dynamic}
 		\mathbb{P}\left( X_{n+1} =  X_n +1 | X_0,X_1,\dots,X_n   \right) =  \frac{  w(r(X_i,i) )}{ w(l(X_i,i))  + w(r(X_i,i))   },
 	\end{equation}
-	where $l(x,i)$ and $r(x,i)$ are the local times by time $i$ for the undirected edges $(x,x-1)$ and $(x,x+1)$
-	$$ l(x,i) = \sum_{j=0}^{i-1} \mathbb{1}_{ \{  (X_j, X_{j+1}) =  (x,x-1) \} }, \mbox{ and }  r(x,i) = \sum_{j=0}^{i-1} \mathbb{1}_{ \{  (X_j, X_{j+1}) =  (x,x+1) \} }.        $$
+	where $l(x,i)$ and $r(x,i)$ are the local times by time $i$ for the undirected edges $\{x,x-1\}$ and $\{x,x+1\}$
+	$$ l(x,i) = \sum_{j=0}^{i-1} \mathbb{1}_{ \{  \{X_j, X_{j+1}\} =  \{x,x-1\} \} }, \mbox{ and }  r(x,i) = \sum_{j=0}^{i-1} \mathbb{1}_{ \{  \{X_j, X_{j+1}\} =  \{x,x+1\} \} }.        $$
 	
 	In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$. \TBD (Add backgrounds on the model assumptions, especially why we use deterministic monotone function $w$, and why this is called asymptotically free case. )
 	
@@ -122,7 +123,7 @@
 		\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 		$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
 	\end{theorem}
-	The proof of Theorem \ref{thm: main} follows a strategy similar to that Theorem 1.2 \cite{KMP22}, which relies on martingale methods, analysis of branching-like processes, and generalized Ray-Knight Theorems. This approach is classical in random walk in random environments \TBD, and it has also been used previously in other self-interacting random walk in dimension one, such as \TBD. The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times $\mathcal{E}_y$, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when  $\mathcal{E}_y$ is large. \TBD These good events are closely related to the generalized P\'{o}lya  urn processes associated to sites, and we estimtate their probabilities by studying branching-like processes, which are derived from the original SIRW $(X_n)_{n\geq 0}$ via the generalized Ray-Knight Theorem. At this point, we also point out that the approximation of accumulated local drifts $\Delta_y^{(x,m)}$ is different from those in \cite{KMP22} since in the case when $p\in(\frac{1}{2},1]$, the conditional mean $\rho_{y}^{(x,m)}$ converges absolutely, which does not hold in the case when $p\leq \frac{1}{2}$. We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
+	The proof of Theorem \ref{thm: main} follows a strategy similar to that Theorem 1.2 \cite{KMP22}, which relies on martingale methods, analysis of branching-like processes, and generalized Ray-Knight Theorems. This approach is classical in random walk in random environments \TBD, and it has also been used previously in other self-interacting random walk in dimension one, such as \TBD. The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when certain edge local time is large. \TBD These good events are closely related to the generalized P\'{o}lya  urn processes associated to sites, and we estimtate their probabilities by studying branching-like processes, which are derived from the original SIRW $(X_n)_{n\geq 0}$ via the generalized Ray-Knight Theorem. At this point, we also point out that the approximation of accumulated local drifts $\Delta_y^{(x,m)}$ is different from those in \cite{KMP22} since in the case when $p\in(\frac{1}{2},1]$, the conditional mean $\rho_{y}^{(x,m)}$ converges absolutely, which does not hold in the case when $p\leq \frac{1}{2}$. We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
 	
 	\subsection{Organization of Paper}
 	In section \ref{sec: proof of main}, we prove Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_n)$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
@@ -135,7 +136,7 @@
 		\item the local time of site $x$ by time $j$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\} }$;
 		
 		\item the local time of directed bond $(x,x+1)$ by time $j$,
-		$ \mathcal{E}^j_x = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1 \} } $; the local time of directed bond $(x,x+1)$ by time $j$ is $ D^j_x = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $
+		$ \mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1 \} } $; the local time of directed bond $(x,x-1)$ by time $j$ is $ \mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $
 		
 		
 		\item the $m$-th visit time to site $x$, $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m\}$;
@@ -145,15 +146,15 @@
 		\item the accumulated local drifts at site $x$ by time $k$, $$\delta_{x,m}:= \sum_{i=0}^\infty E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=x, L(x,i)\leq m\}};$$
 		and the accumulated local drifts at site $x$ by time $\lambda_{x,m}$, 
 		\begin{equation}\label{eq: accumulated local drift}
-			\Delta_y^{x,m}:= \sum_{i=0}^{\lambda_{x,m}} E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=y\}}.
+			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}} E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=y\}}.
 		\end{equation}
 	\end{enumerate}
 	
-	\section{Proof of Theorem \ref{thm: main}}\label{sec: proof of main}
+	\section{Outline for the Proof of Theorem \ref{thm: main}}\label{sec: proof of main}
 	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. We will divide the proof in four main steps. We first decompose the random walk into
-	$X_n = M_n+ \Gamma_n, $ where
+	$$X_n = M_n+ \Gamma_n, $$ where
 	$$ 
-	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X \right]
+	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X \right].
 	$$ 
 	
 	\textbf{Step 1: Control of martingale term.}
@@ -176,7 +177,7 @@
 			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(M_k + I_k \right)   } > \epsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{proposition}
-	To prove Proposition \ref{lm: control of acc drift}, we assume that $X_n=x \geq 0$, and $L(x,n)=m$. We decompose the accumulated drift as $\Gamma_n = 	\Gamma_n^+ +	\Gamma_n^0 + \Gamma_n^-$ 
+	To prove Proposition \ref{lm: control of acc drift}, we assume that $X_n=x $, and $L(x,n)=m$. We decompose the accumulated drift as $\Gamma_n = 	\Gamma_n^+ +	\Gamma_n^0 + \Gamma_n^-$ 
 	\begin{align}
 		\Gamma_n^+ &= \sum_{y > X_n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)\\
 		\Gamma_n^0 &= \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y) \\
@@ -187,15 +188,15 @@
 	In view of \eqref{eq: accumulated local drift}, $\Gamma_n^+$ is the sum 
 	$$
 	\Gamma_n^+ = \sum_{y>x} \Delta_y^{(x,m)}.
-	$$ which has $(M_n - X_n)$ terms. If we can further approximate terms $\Delta_y^{(x,m)}$ by $\gamma$ without generating a total error of size $\epsilon \sqrt{n}$, $\Gamma_n^+$ is approximately 
+	$$ which has $(M_n - X_n)$ terms. If we can further approximate terms $\Delta_y^{(x,m)}$ by $\gamma\cdot sgn(y)$ without generating a total error of size $\epsilon \sqrt{n}$, $\Gamma_n^+$ is approximately 
 	$$   
-	\gamma (M_n - X_n).
+	\gamma \cdot (M_n - \abs{X_n}).
 	$$
-	More precisely,for any $t>0$ and any $\epsilon >0$
+	More precisely, for any $t>0$ and any $\epsilon >0$
 	\begin{equation}\label{eq: control of acc drift + }
-		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \left(M_k - X_k \right)   }\cdot \mathbb{1}_{\{X_k\geq 0 \}} > \epsilon \sqrt{n}  \right) =0. 
+		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \left(M_k - \abs{X_k} \right)   } > \epsilon \sqrt{n}  \right) =0. 
 	\end{equation}
-	To this end, we consider the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$, where $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{n}_y : y \geq x \right)$, and further approximate $\Delta_y^{(x,m)}$ by its conditional mean with respect to $\mathcal{G}_{y-1}^{(x,m)}$,
+	To this end, we consider the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$, where $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{n}_{y,+} : y \geq x \right)$, and further approximate $\Delta_y^{(x,m)}$ by its conditional mean with respect to $\mathcal{G}_{y-1}^{(x,m)}$,
 	\begin{equation}\label{eq: conditional mean}
 		\rho_{y}^{(x,m)}= \mathbb{E}\left[\Delta_y^{(x,m)} | \mathcal{G}_{y-1}^{(x,m)}\right].
 	\end{equation}
@@ -231,7 +232,7 @@
 	$$
 	then the sequence 
 	$$
-	(\mathcal{B}_k,\mathcal{R}_k )_k:=\left(\mathcal{E}^{\lambda_{y,k}}_y, \mathcal{D}^{\lambda_{y,k}}_y\right)_{k\geq 0}  
+	(\mathcal{B}_k,\mathcal{R}_k )_k:=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0}  
 	$$ is a Markov process with an initial value $(0,0)$. We call this Markov process $(\mathcal{B}_k,\mathcal{R}_k )_k$ a generalized P\'{o}lya urn process associated to site $y$. Due to the initial value of the underlying random walk $X_0=0$, the local times of "undirected edges" $\{x,x+1\}$ and $\{x,x-1\}$, 
 	$$l(x,i)+r(x-1,i), \quad  r(x,i)+l(x+1,i)  $$ are different at the first visit time $\lambda_{y,0}$ for values $y>0$, $y<0$ or $y=0$. Therefore, we get three types of transition probabilities
 	for the generalized P\'{o}lya urn process depending on $y>0$, $y<0$ or $y=0$:
@@ -257,21 +258,21 @@
 		$$
 		\Delta_{y}^{(x,m)} = \mathbb{E}\left[ \mathcal{D}_k \right].
 		$$ 
-		Similarly, from \eqref{eq: conditional mean} when $y> x >0$, on the event that $ \mathcal{E}^{(x,m)}_{y-1} = L $, we can rewrite the (random) quantity $ \rho_{y}^{(x,m)} $ as
+		Similarly, from \eqref{eq: conditional mean} when $y> x >0$, on the event that $ \mathcal{E}^{(x,m)}_{y-1,+} = L $, we can rewrite the (random) quantity $ \rho_{y}^{(x,m)} $ as
 		\begin{equation}\label{eq: conditional mean in GPU represenetation}
-			\rho_{y}^{(x,m)} = \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)}\right] = \mathbb{E}\left[ \mathcal{D}_{\tau^B_L}  \right]\mathbb{1}_{\{  \mathcal{E}^{(x,m)}_{y-1} = L \}},
-		\end{equation} which is $\mathcal{G}_{y-1}^{(x,m)}$- measurable since $\mathcal{E}^{(x,m)}_{y-1} $ is $\mathcal{G}_{y-1}^{(x,m)}$- measurable. Expressions like \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To estimate events like $ L(y,\lambda_{x,m}) = k$ and $\mathcal{E}^{(x,m)}_{y-1} = L $, the branching-like processes play a key role. 
+			\rho_{y}^{(x,m)} = \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)}\right] = \mathbb{E}\left[ \mathcal{D}_{\tau^B_L}  \right]\mathbb{1}_{\{  \mathcal{E}^{(x,m)}_{y-1,+} = L \}},
+		\end{equation} which is $\mathcal{G}_{y-1}^{(x,m)}$- measurable since $\mathcal{E}^{(x,m)}_{y-1,+} $ is $\mathcal{G}_{y-1}^{(x,m)}$- measurable. Expressions like \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To estimate events like $ L(y,\lambda_{x,m}) = k$ and $\mathcal{E}^{(x,m)}_{y-1,+} = L $, the branching-like processes play a key role. 
 		
 		
 		\subsection{Branching-Like Processes}
-		Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process derived from $X_n$ associated to a single site $y$ in $\mathbb{Z}$, the branching-like processes is a Markov process spatially, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time. More precisely, for an SIRW $(X_n)_{n\geq 0}$ with weight $w(.)$, at any fixed time $n \geq 0$, assuming that $X_n = x \geq 0 $, the local times $\tilde{\zeta}= (\mathcal{E}^{n}_{x+k} )_{k\geq 0}$, and ${\zeta}= (\mathcal{D}^{n}_{x-k} )_{k\leq 0}$ are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}. The transition probabilities can be derived from a correspondence from one dimensional random walk and a branching process. Formally, we can project a random walk on $\mathbb{Z}$ (up to any finite time) on a tree by viewing each $X_n= k$ as an agent of the $k$-th generation. Each right move from $X_n=k$ to $X_{n+1}=k+1$ gives a birth to a descendant in the $k+1$-th generation, and each left move traces the ancestor of $X_n=k$ in the $k-1$-th generation. It is possible that an agent $A$ corresponding to $X_n=k$ in the $k$-th generation has more than one $n$ with $X_n=k$, and it is visited exactly $L+1$ times if it has exactly $L$ descendants in the $k+1$-th generation and $X_T $ is not in the sub-tree with the root $A$. 
-		Then, since $X_0=0$ and $X_n =x \geq 0$, the difference $\mathcal{E}^n_y -\mathcal{D}^n_{y+1} $ depends on the relative position of $y$ with respect to $x$ and $0$ 
+		Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process derived from $X_n$ associated to a single site $y$ in $\mathbb{Z}$, the branching-like processes is a Markov process spatially, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time. More precisely, for an SIRW $(X_n)_{n\geq 0}$ with weight $w(.)$, at any fixed time $n \geq 0$, assuming that $X_n = x \geq 0 $, the local times $\tilde{\zeta}= \left(\mathcal{E}^{n}_{x+k,+} \right)_{k\geq 0}$, and ${\zeta}= \left(\mathcal{E}^{n}_{x-k,-} \right)_{k\leq 0}$ are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}. The transition probabilities can be derived from a correspondence from one dimensional random walk and a branching process. Formally, we can project a random walk on $\mathbb{Z}$ (up to any finite time) on a tree by viewing each $X_n= k$ as an agent of the $k$-th generation. Each right move from $X_n=k$ to $X_{n+1}=k+1$ gives a birth to a descendant in the $k+1$-th generation, and each left move traces the ancestor of $X_n=k$ in the $k-1$-th generation. It is possible that an agent $A$ corresponding to $X_n=k$ in the $k$-th generation has more than one $n$ with $X_n=k$, and it is visited exactly $L+1$ times if it has exactly $L$ descendants in the $k+1$-th generation and $X_T $ is not in the sub-tree with the root $A$. 
+		Then, since $X_0=0$ and $X_n =x \geq 0$, the difference $\mathcal{E}^n_{y,+} -\mathcal{E}^n_{y+1,-} $ depends on the relative position of $y$ with respect to $x$ and $0$ 
 		\begin{equation}\label{eq: edge values}
-			\mathcal{E}^n_y =\begin{cases}
-				\mathcal{D}^n_{y+1} &\mbox{, for all $y\geq x$}\\
-				\mathcal{D}^n_{y+1} +1 &,\mbox{ for all $0 \leq y\leq x$}
+			\mathcal{E}^n_{y,+} =\begin{cases}
+				\mathcal{E}^n_{y+1,-} &\mbox{, for all $y\geq x$}\\
+				\mathcal{E}^n_{y+1,-} +1 &,\mbox{ for all $0 \leq y\leq x$}
 				\\
-				\mathcal{D}^n_{y+1} &,\mbox{ for all $ y< 0 $}
+				\mathcal{E}^n_{y+1,-} &,\mbox{ for all $ y< 0 $}
 			\end{cases}
 		\end{equation}
 		The transition probabilities for $\bar{\zeta}$ is more direct because upcrossings in $X_n$ corresponds to giving births to new descendants in the branching process, while $\zeta$ is slightly more complicated and $\zeta$ has a transition probabilities depending on values of $y,0,x$: 
@@ -310,7 +311,7 @@
 		The construction of branching-like processes enables us to consider a generic time $k\leq nt$ and study the local times at a time $k$ from the Markov processes $\zeta$ and $\bar{\zeta}$. An advantage is that a typical event (\TBD{see equations to be defined in section \ref{sec: approximations}}) on a collection of spatial points will be also a typical event on a 'typical' single site. Then expressions like \eqref{eq: conditional mean in GPU represenetation} reduces the problem to a problem involving generalized P\'{o}lya urn process associated to a single site. The difficulty is then transferred to constructing typical events that can be estimated. For example, Lemma \ref{lm: number of rarely visit sites} below describes a typical event, and it reduces the proof of proposition \ref{lm: approximation of means of local drift} to \eqref{eq: convergence of conditional expectation} below. In the following subsection, we recall some properties of generalized P\'{o}lya urn process and branching-like processes.
 		
 		\subsection{Preliminary Results}
-		To facilitate our arguments in section \ref{sec: approximations}, we list three \textcolor{red}{(or four)} results from \cite{KMP22,T96}, whose proofs \textcolor{red}{we omit at this moment.}
+		To facilitate our arguments in section \ref{sec: approximations}, we list four results from \cite{KMP22,T96}, whose proofs \textcolor{red}{we omit at this moment.}
 		
 		The first result is a concentration inequality for $\mathcal{D}_i$ in a generalized P\'{o}lya urn process. This lemma is a major tool in estimating the probabilities of good events.
 		\begin{lemma}(Lemma 4.1 \cite{KMP22})\label{lm: concentration inequality}
@@ -350,7 +351,7 @@
 			$$
 			
 		\end{lemma}	
-		Lemma \ref{lm: number of rarely visit sites} is a technical result, and its proof involves the analysis of BLPs and the concentration inequality in Lemma \ref{lm: concentration inequality} for the generalized P\'{o}lya urn process. The statement of Lemma \ref{lm: number of rarely visit sites} remains in force if we replace the range $[I_{k-1}, M_{k-1}]$ by $[X_k,M_k]$ (or $[I_{k-1},X_k]$ respectively), and replace the local times $L(x,k-1)$ by the numbers of up-crossings $\mathcal{E}^{k}_x$ (or $D^{k}_x$ respectively). In fact, these two extended results are partial steps in the proof of Lemma 2.2 in \cite{KMP22}.   
+		Lemma \ref{lm: number of rarely visit sites} is a technical result, and its proof involves the analysis of BLPs and the concentration inequality in Lemma \ref{lm: concentration inequality} for the generalized P\'{o}lya urn process. The statement of Lemma \ref{lm: number of rarely visit sites} remains in force if we replace the range $[I_{k-1}, M_{k-1}]$ by $[X_k,M_k]$ (or $[I_{k-1},X_k]$ respectively), and replace the local times $L(x,k-1)$ by the numbers of up-crossings $\mathcal{E}^{k}_{x,+}$ (or $\mathcal{E}^{k}_{x,-}$ respectively). In fact, these two extended results are partial steps in the proof of Lemma 2.2 in \cite{KMP22}.   
 		
 		
 		\section{Approximations of Local Drifts}\label{sec: approximations}
@@ -445,7 +446,7 @@
 		$$\rho^{(x,m)}_y := \mathbb{E}\left[  \Delta^{(x,m)}_y   \left\vert  \sigma\left( D^{(x,m)}_z:  y<z\leq  x  \right. \right) \right].   $$ In terms of the generalized P\'{o}lya urn process associated to the site $y$,
 		\begin{equation} \label{eq: extended definition}
 			\rho^{(x,m)}_y = \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right], 
-		\end{equation} where $L = D^{(x,m)}_{y+1} = \mathcal{E}^{(x,m)}_{y}.$ With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
+		\end{equation} where $L = \mathcal{E}^{(x,m)}_{y+1,-} = \mathcal{E}^{(x,m)}_{y,+}.$ With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
 		\begin{equation}\label{eq: mean of discrepancies for left sites}
 			\lim_{L\to \infty} \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right] =  sgn(y) \cdot \gamma = \lim_{L\to \infty} \mathbb{E}\left[\mathcal{D}_{\tau_L^B}\right].
 		\end{equation}
@@ -469,20 +470,20 @@
 	
 	Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider three types of events, 
 	$$A_{n,K}:=\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}$$
-	$$B_{n,M}:= \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1} \leq M  \}} >n^b  \right\},  $$
+	$$B_{n,M}:= \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\},  $$
 	and 
 	$$B'_{n,M}:=  \left\{  \sup_{k\leq n t} \sum_{ y\in [I_{k-1}, X_{k-1})}  \mathbb{1}_{\{ \mathcal{D}^{k-1}_{y+1} \leq M  \}} >n^b  \right\}.$$
 Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}, B'_{n,M}$ are increasing in $M$. We claim that for $n$ large, the event 
 $$
 F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
 
-	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
+	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
 	\begin{align*}
 	 \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \leq &  
-	 C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1} \leq M \} } \right\}
+	 C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
 	 \notag
 	 \\
-	 +& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1} \geq M \} } \right\},
+	 +& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
 \end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
 \begin{equation}\label{eq: an upper bound on good set}
 	C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
@@ -518,7 +519,7 @@ For every integer $K>0$ and define the good event
 		\label{eqn:good-event-1}
 		& \left\{ M^{(x,m)}< K \sqrt{n}\right\} \cap  \\ 
 		\label{eqn:good-event-2}
-		& \bigcap_{y = x}^{K \sqrt{n}}  \left\{\color{red}\mathcal{E}_y^{(x,m)} < K^2 \sqrt{ n} \right\}  \cap \\
+		& \bigcap_{y = x}^{K \sqrt{n}}  \left\{\color{red}\mathcal{E}_{y,+}^{(x,m)} < K^2 \sqrt{ n} \right\}  \cap \\
 		\label{eqn:good-event-3}
 		& \bigcap_{y = x}^{K \sqrt{n}} \bigcap_{0<i<K\sqrt{n}} \left\{\left| \tau_i^{\mathcal{B}} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
 		\label{eqn:good-event-4}
@@ -581,7 +582,7 @@ In both cases, the right hand side vanish when we first take $n $ to infinity, a
 	From process-level tightness we know that probability of $A_K^{(x,m)}$ approaches $1$ as $K $ goes to $ \infty $. Now we control $B_K^{(x,m)}$ conditioned on $A_K^{(x,m)}$. We would like to show that
 	\[
 		\lim_{K \to \infty} 
-		P\left( \bigcap_{y = x}^{K \sqrt{n} } \left\{\mathcal{E}_y^{(x,m)} < K^2 \sqrt{ n} \right\} | A_K^{(x,m)}\right) = 1
+		P\left( \bigcap_{y = x}^{K \sqrt{n} } \left\{\mathcal{E}_{y,+}^{(x,m)} < K^2 \sqrt{ n} \right\} | A_K^{(x,m)}\right) = 1
 	.\] 
 %Now assume that there exists $y$,  $x\le y\le K \sqrt{n} $, such that $\mathcal{E}_y^{(x,m)} \ge K^2 \sqrt{n} $. On $A_K^{(x,m)}$ we have $\mathcal{E}_{K \sqrt{n} }^{(x,m)} = 0$, so pigeonhole principle implies that there exists $z$, $x\le z\le K \sqrt{n} $, such that $\mathcal{E}_z^{(x,m)} - \mathcal{E}_{z+1}^{(x,m)}\ge K$. DOES NOT WORK
 
@@ -610,7 +611,7 @@ Where in the second line we used Lemma~\ref{lm: concentration inequality} and to
 \begin{equation*}
 	\left| \Delta_y^{(x,m)} \right| 
 	= 
-	\left| 	\sum_{i = 0}^{\mathcal{E}_y^{(x,m)}} 
+	\left| 	\sum_{i = 0}^{\mathcal{E}_{y,+}^{(x,m)}} 
 	\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
 	\alpha(\mathcal{B}_l, \mathcal{R}_l)
 	\right| 
