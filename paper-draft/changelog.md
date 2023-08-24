@@ -1,3 +1,9 @@
+## 2023.08.23
+Xiaoyu Liu
+1. Overhauled proof of Prop. 2.4, especially the definition of good event, in a manner more consistent with [Kosygina and Peterson, 2016, "Periodic"]. Specifically, a global good event is defined instead of good events specific to an excursion time (x,m).
+2. Made various revisions to the writing and wording of Prop. 2.4. It can now be treated as a standalone working proof and we can start to consider how to present it better in paper.
+3. One hole to be filled: the uniform control of local times is a nontrivial lemma that needs to be proved. Not previous proven for SIRW, but has counterpart (**Lemma 3.4**, [Kosygina and Peterson, 2016, "Periodic"]).
+
 ## 2023.08.11
 1. Transferred proof of prop. 2.1 and 2.4 to this draft.
 2. Added detailed justification of good event $G_K$.
