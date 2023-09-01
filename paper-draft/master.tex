@@ -49,6 +49,9 @@
 \usepackage[inline]{enumitem}
 \usepackage{hyperref}
 \usepackage{mathrsfs}
+\usepackage[backend=biber,style=draft,sorting=none]{biblatex}
+
+\addbibresource{zotero.bib}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -780,14 +783,5 @@ Using process-level tightness, the summation only add a term of order $\sqrt{N}$
 The second term vanishes trivially; the first term vanishes by process-level tightness of $S_N^X / \sqrt{N} $. The last term goes to zero as shown in the previous section.
 \end{proof}
 
-\begin{thebibliography}{99}\addcontentsline{toc}{chapter}{Bibliography} 
- \bibitem[KMP22]{KMP22} Kosygina,~E., Mountford,~T., Peterson,~J.: Convergence and Non-Convergence of Scaled Self-Interacting Random Walks to Brownian Motion Perturbed at Extrema. \textit{arXiv:2208.02589,} 2022.
- 
- \bibitem[KP16]{KP16} Kosygina,~E., Peterson,~J.: Functional limit laws for recurrent excited random walks with
- periodic cookie stacks. \textit{Electron. J. Probab.} \textbf{21} 2016.
-
-\bibitem[L23]{L23} Liu,~X.: Research in Random Walk. \textit{Personal communication,} 2023.
-
-\bibitem[T96]{T96} T\'{o}th,~B.: Generalized Ray-Knight theory and limit theorems for self-interacting random walks on $\mathbb{Z}^1$ \textit{Ann. Probab.} \textbf{24} 1324--1367. 1996
-\end{thebibliography}
+\printbibliography
 \end{document}
