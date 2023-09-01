@@ -183,15 +183,9 @@
 	\end{proposition}
 	To prove Proposition \ref{lm: control of acc drift}, we assume that $X_k=x $, and $L(x,k)=m$. We decompose the accumulated drift as $\Gamma_k = 	\Gamma_k^+ +	\Gamma_k^0 + \Gamma_k^-$ 
 	\begin{align}
-<<<<<<< HEAD
 		\Gamma_k^+ &= \sum_{y > X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)\\
 		\Gamma_k^0 &= \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = X_k) \\
 		\Gamma_k^- &= \sum_{y < X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
-=======
-		\Gamma_k^+ &= \sum_{y > X_n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)\\
-		\Gamma_k^0 &= \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = X_n) \\
-		\Gamma_k^- &= \sum_{y < X_n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
->>>>>>> bc5cc02f5b4161653a800ceefa80ee8bff44eae5
 		.\end{align} 
 	The contribution from $\Gamma_n^0$ is negligible (\TBD). We only need to consider the term $\Gamma_n^+$ while the contribution from $\Gamma_k^-$ \textcolor{red}{almost follows a symmetric argument}. (\TBD) 
 	
