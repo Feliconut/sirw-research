@@ -29,7 +29,7 @@
 	\and
 	Zhe Wang}
 
-\date{Aug 25rd, 2023}
+\date{Aug 31st, 2023}
 
 
 % This is the definition of the type of document
@@ -68,7 +68,7 @@
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 \newcommand\TBD{\textcolor{red}{TBD.}}
 \newcommand{\edt}[1]{\textcolor{red}{#1}} %edit time 08/25/2023
-
+\newcommand{\comment}[1]{\textcolor{blue}{#1}}
 
 
 
@@ -80,6 +80,15 @@
 		This document is an outline of the article for the Scaling limit of SIRW. We complete the functional CLT in \cite{KMP22} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
 		\TBD
 	\end{abstract}
+	
+	\underline{\textsf{Information about the draft:}}
+	\begin{itemize}
+		\item 
+	\textsf{\color{red} Red text, include \TBD marks, are pending works and existing problems.}
+		\item 
+			\textsf{\color{blue} Blue texts are comments or tentative ideas that can be discussed.}
+	\end{itemize}
+
 	
 	\section{Introduction}
 	The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
@@ -227,58 +236,85 @@
 	
 	\textbf{Step 4: Convergence to BMPE.} \TBD The proof follows word by word.
 	
-	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
+\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
+
 	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes, and recall some of their properties needed in the proofs of Propositions \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
-	\subsection{Generalized P\'{o}lya  Urn}
-	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the event times that $X_n$ \edt{visit site $y$ for the $k+1$-th time,}
-	$$
-	 \lambda_{y,0} =\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,k+1} = \inf\{ t> \lambda_{k}: X_t = y \},
-	$$ 
-	which is consistent with the notation in point 3 of subsection 1.4. 
-	Then the sequence 
-	$$
-	(\mathcal{B}_{k,y},\mathcal{R}_{k,y} )_k:=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} =  \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0}
-	$$ is a Markov process with an initial value $(0,0)$. We call this Markov process $(\mathcal{B}_{k,y},\mathcal{R}_{k,y} )_{k\geq 0}$ a generalized P\'{o}lya urn process associated to site $y$. Due to the initial value of the underlying random walk $X_0=0$, the local times of "undirected edges" $\{y,y-1\}$ and $\{y,y+1\}$ 
-	$$\left(l(y,i),  r(y,i)\right) =  \begin{cases}	
+
+\subsection{Generalized P\'{o}lya  Urn}
+
+	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,i})_{i\geq 0}$ be the stopping times when $X_n$ \edt{visits site $y$ for the $\left( i+1 \right) $-th time:}
+	\[
+	 \lambda_{y,0} :=\inf\{ k\geq 0: X_k = y \} , \quad \lambda_{y,i+1} := \inf\{ k> \lambda_{y, i}: X_k = y \}.
+	\] 
+	
+	\edt{which is consistent with the notation in point 3 of subsection 1.4. }
+	We define the \textit{generalized P\'olya urn process} at site $y$ to be the tuples 
+	\[
+	\left(\mathcal{B}^{(y)}_{i},\mathcal{R}^{(y)}_{i} \right)_{i\ge 0}
+	:=\left(\mathcal{E}^{\lambda_{y,i}}_{y,-}, \mathcal{E}^{\lambda_{y,i}}_{y,+}\right)_{i\geq 0} 
+	\equiv  \left(\mathcal{E}^{(y,i)}_{y,-}, \mathcal{E}^{(y,i)}_{y,+}\right)_{i\geq 0}
+	\] 
+	which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{y,i},\mathcal{R}_{y,i} \right)$ can be thought of as the state a (generalized) P\'lya's urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
+
+	The undirected edge local times of $\{y,y-1\}$ and $\{y,y+1\}$ at stopping times $\lambda_{y, i}$, denoted $l^-(y,i)$ and $l^+(y,i)$, are always related to the urn processes by
+	\begin{align*}
+		l^-(y,i) &= l^-(y,0) + 2 \mathcal{B}_{y,i} \\
+		l^+(y,i) &= l^+(y,0) + 2 \mathcal{R}_{y, i}
+	.\end{align*}
+
+	The initial values of $l^-$ and $l^+$ correspond to undirected edge local times before the first excursion from $y $:
+	\[
+		\left(l^-(y,0),l^+(y,0)\right) =  \begin{cases}	
 		(1, 0) &,  \text{ if }  y>0 \\
 		(0, 1) &,  \text{ if }  y<0 \\  
 		(0, 0) &,  \text{ if }  y=0 \\ 
-	\end{cases}$$ 
-	are different at the first visit time $\lambda_{y,0}$ for values $y>0$, $y<0$ or $y=0$. Therefore, we get three types of transition probabilities
-	for the generalized P\'{o}lya urn process depending on $y>0$, $y<0$ or $y=0$:
+	\end{cases}
+\] 
+	Let $b(y,i)$ and $r(y,i)$ denote the weight of corresponding edges:
+	\begin{align*}
+		b(y,i) &:= w(l^-(y,i)) \\
+		r(y,i) &:= w(l^+(y,i))
+	.\end{align*}
+	Now the transition probabilities
+	for the generalized P\'{o}lya urn process at a fixed site $y$ are given by
 	\begin{align*}\label{eq: transition prob for GPU}
-		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{b(i)}{b(i)+r(j)}, \mbox{ and}  \\
-		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{r(j)}{b(i)+r(j)},
-	\end{align*} where the generalized weights $(b(k),r(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
-	\begin{equation}\label{eq: generalized weights}
-		(b(k), r(k)) = \begin{cases}
-			(w(2k+1), w(2k)) &,  \text{ if }  y>0 \\
-			(w(2k), w(2k+1)) &,  \text{ if }  y<0 \\  
-			(w(2k), w(2k)) &,  \text{ if }  y=0 \\ 
-		\end{cases}.
-	\end{equation}
-	For simplicity of notation, we drop the subscript $y$ when the context is clear.
-	For a generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_{k\geq 0}$ associated to the site $y$, it is convenient to consider the event times of left/right jumps $\tau^B_k$ and $ \tau^R_k $,	
-	\edt{$$ \tau^B_k = \inf\{ j\geq 0: \mathcal{B}_{j} =k   \}  \mbox{, and } \tau^R_k = \inf\{ j\geq 0: \mathcal{R}_{j} =k   \} ,
+		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i}+1,\mathcal{R}_{i}\right) \right)     &= \frac{b(i)}{b(i)+r(i)}, \mbox{ and}  \\
+		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i},\mathcal{R}_{i}+1\right) \right)     &= \frac{r(i)}{b(i)+r(i)},
+	\end{align*} 
+
+
+	where we drop the subscript $y$ for simplicity of notation. We will continue to do so when we talk about a fixed site of $y$ and when there's no confusion.
+
+	For a generalized P\'{o}lya urn process $(\mathcal{B}_i,\mathcal{R}_i )_{i\geq 0}$ associated to the site $y$, it is convenient to consider the event times of left/right jumps $\tau^\mathcal{B}_k$ and $ \tau^\mathcal{R}_k $,	
+	\edt{$$ \tau^\mathcal{B}_k = \inf\{ i\geq 0: \mathcal{B}_{i} =k   \}  \mbox{, and } \tau^\mathcal{R}_k = \inf\{ i\geq 0: \mathcal{R}_{i} =k   \} ,
 	$$}
-	and the signed difference $\mathcal{D}_{k} $ for any $k\geq 0$
+	\comment{Would be simpler to define $\tau^\cdot_k$ for general process?}
+	and the signed difference $\mathcal{D}_{i} $ for any $i\geq 0$
 	\begin{equation}\label{eq:signed difference}
-		\mathcal{D}_k  =\mathcal{R}_k -\mathcal{B}_k.  
+		\mathcal{D}_i  =\mathcal{R}_i -\mathcal{B}_i.  
 	\end{equation}
-	Also, for every integer $k\geq 0$, we denote by $\mathcal{F}^{\mathcal{B},\mathcal{R}}_k$ (or $\mathcal{F}^{\mathcal{B},\mathcal{R}}_{k,y}$) the sigma algebra generated by  $$\mathcal{F}^{\mathcal{B},\mathcal{R}}_k = \sigma\left((\mathcal{B}_j,\mathcal{R}_j ): j\leq k \right).$$  
+	Also, for every integer $i\geq 0$, we denote by $\mathcal{F}^{\mathcal{B},\mathcal{R}}_i$ (or $\mathcal{F}^{\mathcal{B},\mathcal{R}}_{i,y}$) the sigma algebra generated by  
+	\[
+	\mathcal{F}^{\mathcal{B},\mathcal{R}}_i = \sigma\left(\left(\mathcal{B}_j,\mathcal{R}_j \right): j\leq i \right)
+	.\]  
 	
-	\TBD With the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ associated to the site $y$, we can study $\Delta_{y}^{(x,m)}$ and its approximation $\rho_{y}^{(x,m)}$ defined in \eqref{eq: accumulated local drift} and \eqref{eq: conditional mean}. For $y>x $, at time $\lambda_{x,m}$, the local time at site $y$ is $L(y,\lambda_{x,m})$, and the last jump from site $y$ is a left jump. Then for any integers $k\geq 1$ and $k' \geq 0$, the event 
-		$$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k, \mathcal{E}^{(x,m)}_{y,+} = k'\right\} = \left\{\mathcal{E}^{(x,m)}_{y,-} =k,  L(y,\lambda_{x,m}) = k+k' \right\} = \{ \tau^B_{k,y} = k+k' \},$$ on which the (random) quantity $\Delta_{y}^{(x,m)}$ equals
-		$$
-		\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^B_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right].  
-		$$ 
+	\TBD With the generalized P\'{o}lya urn process $(\mathcal{B}_i,\mathcal{R}_i )_{i\ge 0}$ associated to the site $y$, we can study $\Delta_{y}^{(x,m)}$ and its approximation $\rho_{y}^{(x,m)}$ defined in \eqref{eq: accumulated local drift} and \eqref{eq: conditional mean}. For $y>x $, at time $\lambda_{x,m}$, the local time at site $y$ is $L(y,\lambda_{x,m})$, and the last jump from site $y$ is a left jump. Then for any integers $k\geq 1$ and $k' \geq 0$, the event 
+
+		$$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k, \mathcal{E}^{(x,m)}_{y,+} = k'\right\} = \left\{\mathcal{E}^{(x,m)}_{y,-} =k,  L(y,\lambda_{x,m}) = k+k' \right\} = \{ \tau^\mathcal{B}_{k,y} = k+k' \},$$ on which the (random) quantity $\Delta_{y}^{(x,m)}$ equals
+
+		\comment{How about writing $\tau^{\mathcal{B}, y}_k$ in place of $\tau^{\mathcal{B}}_{k, y}$?}
+		 
+		\[
+		\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^B_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right]
+		.\] 
+
 		Summing over the terms between two consecutive stopping times $\tau^{B}_{l,y} $ and $\tau^{B}_{l+1,y} $, for any $0\leq l \leq k -1$,  we get a sum depending only on $\tau^{B}_{l,y} $, $\tau^{B}_{l+1,y} $, and 
 		\begin{align} \label{eq: conditional increment}
 		 	\sum_{j=\tau^{B}_{l,y}}^{\tau^B_{l+1,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} - \mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] =&
 		 	 \sum_{j=0}^{\tau^B_{l+1,y}-\tau^{B}_{l,y}-1} \frac{ r(\tau^{B}_{l,y}-l + j) - b(l)  }{ r(\tau^{B}_{l,y}-l + j) + b(l)  } 
 		 	 =:  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ),
 		\end{align}   
-		where $(b(k),r(k))_{k\geq 0}$ are the general weights associated to $y$ from \eqref{eq: generalized weights}.
+		where $(b(k),r(k))_{k\geq 0}$ are the general weights associated to $y$ from \edt{\eqref{eq: generalized weights}}.
 		Therefore,  $\Delta_{y}^{(x,m)}$ is a sum of $\mathcal{E}^{(x,m)}_{y-1,+} $ increments which depend only on $ \left(\tau^{B}_{l+1,y} - \tau^{B}_{l+1,y}: 0\leq l\leq   \mathcal{E}^{(x,m)}_{y-1,+}-1 \right) $
 				\begin{equation} \label{eq: cummulated drift at a site}
 					\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y-1,+} -1  } D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ).
