@@ -265,7 +265,7 @@
 	   :=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} 
 	   \equiv  \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0},
 	   \]
-	   which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{y,i},\mathcal{R}_{y,i} \right)$ is the state a (generalized) P\'lya's urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
+	   which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{y,i},\mathcal{R}_{y,i} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
 	 
 	   Due to the initial value of the underlying random walk $X_0=0$, the local times of "undirected edges" $\{y,y-1\}$ and $\{y,y+1\}$ at time $\lambda_{y,0}$ is 
 	$$\left(l(y,\lambda_{y,0}),  r(y,\lambda_{y,0})\right) =  \begin{cases}	
@@ -276,9 +276,10 @@
 	for values $y>0$, $y<0$ or $y=0$. Therefore, we get three types of transition probabilities
 	for the generalized P\'{o}lya urn process depending on $y>0$, $y<0$ or $y=0$:
 	\begin{align*}\label{eq: transition prob for GPU}
-		\mathbb{P} \left((\left(\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y}right)=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{b(i)}{b(i)+r(j)}, \mbox{ and}  \\
+		\mathbb{P} \left(\left(\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y} \right)=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{b(i)}{b(i)+r(j)}, \mbox{ and}  \\
 		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{r(j)}{b(i)+r(j)},
-	\end{align*} where the generalized weights $(b(k),r(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
+	\end{align*} 
+	where the generalized weights $(b(k),r(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
 	\begin{equation}\label{eq: generalized weights}
 		(b(k), r(k)) = \begin{cases}
 			(w(2k+1), w(2k)) &,  \text{ if }  y>0 \\
@@ -313,21 +314,23 @@
 		  \sum_{j=0}^{\tau^B_{l+1,y}-\tau^{B}_{l,y}-1} \frac{ r(\tau^{B}_{l,y}-l + j) - b(l)  }{ r(\tau^{B}_{l,y}-l + j) + b(l)  } 
 		  =:  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ),
 	\end{align}   
-	where $(b(k),r(k))_{k\geq 0}$ are the general weights associated to $y$ from \eqref{eq: generalized weights}.
+	where $(b(i),r(i))_{i\geq 0}$ are the general weights associated to $y$ from \eqref{eq: generalized weights}.
 	Therefore,  $\Delta_{y}^{(x,m)}$ is a sum of $\mathcal{E}^{(x,m)}_{y-1,+} $ increments which (jointly) depend only on $ \left(\tau^{B}_{l+1,y}: 0\leq l\leq   \mathcal{E}^{(x,m)}_{y-1,+}-1 \right) $
 			\begin{equation} \label{eq: cummulated drift at a site}
 				\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y-1,+} -1  } D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ).
 			\end{equation}			
-	From \eqref{eq: conditional increment}, $\abs{  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} )} \leq  \tau^{B}_{l+1,y}-\tau^{B}_{l,y}$ is stochastically dominated by a geometric random variable with mean independent of $l$. 
-	The process $(\tau^B_{k,y})_{k\geq 0}$ is markov, and from the following subsection, $ (\mathcal{E}^{(x,m)}_{x+k})_{k\geq 0} $ is also markov \TBD. Then, on the event that $ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} = k \right\} = \left\{ \mathcal{E}^{(x,m)}_{y,-} = k  \right\}$, $ \rho_{y}^{(x,m)} $ equals
-	\begin{align}\label{eq: conditional mean in GPU represenetation}
-		\rho_{y}^{(x,m)} = \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)} \right] 
-		=& \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right] 
-		\notag \\
-		=&	\mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
-		= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right],
-	\end{align} 
-	where we use \eqref{eq: conditional increment} for the second and third equality. Expressions like \eqref{eq: cummulated drift at a site} and \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To analyze events like $ L(y,\lambda_{x,m}) = k+k'$ and $\mathcal{E}^{(x,m)}_{y-1,+} = k $, the branching-like processes play a key role.
+	From \eqref{eq: conditional increment}, $\abs{  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} )} \leq  \tau^{B}_{l+1,y}-\tau^{B}_{l,y}$ is stochastically dominated by a geometric random variable with a mean independent of $l$. 
+	Since the process $(\tau^B_{l,y})_{l\geq 0}$ is markov, and  $ (\mathcal{E}^{(x,m)}_{y})_{ y \geq x} $ is also markov from the following subsection \TBD, we get that, on the event that $ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} = k \right\} = \left\{ \mathcal{E}^{(x,m)}_{y,-} = k  \right\}$, $ \rho_{y}^{(x,m)} $ equals
+	$$
+		 \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)} \right] 
+		= \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]. 
+	$$
+	As $\left(\tau^B_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $,  $\left(D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} )\right)_{l\geq 0}$ is also independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $. Then, from \eqref{eq: conditional increment} again, on the event $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k  \right \}$
+	\begin{equation} \label{eq: conditional mean in GPU represenetation}
+		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
+		= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right].
+	\end{equation} 
+	 Expressions like \eqref{eq: cummulated drift at a site} and \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To analyze events like $ L(y,\lambda_{x,m}) = k+k'$ and $\mathcal{E}^{(x,m)}_{y-1,+} = k $, the branching-like processes play a key role.
 		
 		
 		\subsection{Branching-Like Processes}
@@ -444,6 +447,9 @@
 			\lim_{M\to\infty} E[\mathcal{D}_{\tau_M^B}] = \gamma. 
 			$$
 		\end{lemma} 
+		\begin{remark}
+			This lemma is an extension of Lemma~2.4 of \cite{KMP22} which only deals with the $p \in (\frac{1}{2}, 1]$ case. In their case, the local drift absolutely converges, which allows for a simpler argument. However, in the $p \in (0,\frac{1}{2}]$ case the local drift tends to infinity, which demands a more sophisticated argument.
+		\end{remark}
 		\begin{proof} 
 			We start from \eqref{eq: gamma} and identity \eqref{eq: Toth's Identity 1}. For any $m \geq 10$,
 			\begin{align}
@@ -515,7 +521,10 @@
 		$$\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] = 0.$$
 		
 		\TBD \textcolor{red}{We will need to define $\rho$ for negative sites.} We extend the definition of $\rho^{(x,m)}_y$ for sites $y< x$ by symmetry, 
-		$$\rho^{(x,m)}_y := \mathbb{E}\left[  \Delta^{(x,m)}_y   \left\vert  \sigma\left( D^{(x,m)}_z:  y<z\leq  x  \right. \right) \right].   $$ In terms of the generalized P\'{o}lya urn process associated to the site $y$,
+		\[
+			\rho^{(x,m)}_y := \mathbb{E}\left[  \Delta^{(x,m)}_y   \left\vert  \sigma\left( \mathcal{E}^{(x,m)}_{z, -}:  y<z\leq  x  \right. \right) \right].   
+		\] 
+		In terms of the generalized P\'{o}lya urn process associated to the site $y$,
 		\begin{equation} \label{eq: extended definition}
 			\rho^{(x,m)}_y = \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right], 
 		\end{equation} where $L = \mathcal{E}^{(x,m)}_{y+1,-} = \mathcal{E}^{(x,m)}_{y,+}.$ With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
@@ -544,7 +553,7 @@
 	$$A_{n,K}:=\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}$$
 	$$B_{n,M}:= \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\},  $$
 	and 
-	$$B'_{n,M}:=  \left\{  \sup_{k\leq n t} \sum_{ y\in [I_{k-1}, X_{k-1})}  \mathbb{1}_{\{ \mathcal{D}^{k-1}_{y+1} \leq M  \}} >n^b  \right\}.$$
+	$$B'_{n,M}:=  \left\{  \sup_{k\leq n t} \sum_{ y\in [I_{k-1}, X_{k-1})}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y+1,-} \leq M  \}} >n^b  \right\}.$$
 Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}, B'_{n,M}$ are increasing in $M$. We claim that for $n$ large, the event 
 $$
 F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
