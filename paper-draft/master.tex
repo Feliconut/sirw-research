@@ -71,7 +71,7 @@
 %% Local macros
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 \newcommand\TBD{\textcolor{red}{TBD.}}
-\newcommand{\edt}[1]{\textcolor{red}{#1}} %edit time 08/25/2023
+\newcommand{\edt}[1]{\textcolor{red}{#1}} %edit time 08/31/2023
 \newcommand{\comment}[1]{\textcolor{blue}{#1}}
 
 
@@ -192,7 +192,7 @@
 	\end{proposition}
 	The proof of Proposition \ref{lm: control of martingale} is in section \ref{sec: approximations}.
 	
-	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_{k}$ by a fixed linear combination of the distances between $X_k$ and its running maximum $M_k$ and minimum $I_k$:
+	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_k$ by a fixed linear combination of the distances between $X_k$ and its running maximum $S_k$ and minimum $I_k$:
 	\begin{proposition}\label{lm: control of acc drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
 		\begin{equation}\label{eq: control of acc drift}
@@ -250,30 +250,13 @@
 	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes, and recall some of their properties needed in the proofs of Propositions \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
 
 \subsection{Generalized P\'{o}lya  Urn}
-
-	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,i})_{i\geq 0}$ be the stopping times when $X_n$ \edt{visits site $y$ for the $\left( i+1 \right) $-th time:}
-	\[
-	 \lambda_{y,0} :=\inf\{ k\geq 0: X_k = y \} , \quad \lambda_{y,i+1} := \inf\{ k> \lambda_{y, i}: X_k = y \}.
-	\] 
-	
-	\edt{which is consistent with the notation in point 3 of subsection 1.4. }
-	We define the \textit{generalized P\'olya urn process} at site $y$ to be the tuples 
-	\[
-	\left(\mathcal{B}^{(y)}_{i},\mathcal{R}^{(y)}_{i} \right)_{i\ge 0}
-	:=\left(\mathcal{E}^{\lambda_{y,i}}_{y,-}, \mathcal{E}^{\lambda_{y,i}}_{y,+}\right)_{i\geq 0} 
-	\equiv  \left(\mathcal{E}^{(y,i)}_{y,-}, \mathcal{E}^{(y,i)}_{y,+}\right)_{i\geq 0}
-	\] 
-	which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{y,i},\mathcal{R}_{y,i} \right)$ can be thought of as the state a (generalized) P\'lya's urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
-
-	The undirected edge local times of $\{y,y-1\}$ and $\{y,y+1\}$ at stopping times $\lambda_{y, i}$, denoted $l^-(y,i)$ and $l^+(y,i)$, are always related to the urn processes by
-	\begin{align*}
-		l^-(y,i) &= l^-(y,0) + 2 \mathcal{B}_{y,i} \\
-		l^+(y,i) &= l^+(y,0) + 2 \mathcal{R}_{y, i}
-	.\end{align*}
-
-	The initial values of $l^-$ and $l^+$ correspond to undirected edge local times before the first excursion from $y $:
-	\[
-		\left(l^-(y,0),l^+(y,0)\right) =  \begin{cases}	
+	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the event times that $X_n$ \edt{visit site $y$ for the $k+1$-th time,}
+	$$
+	 \lambda_{y,0} =\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,k+1} = \inf\{ t> \lambda_{k}: X_t = y \},
+	$$ 
+	which is consistent with the notation in point 3 of subsection 1.4. 
+	Then the sequence 
+	$$
 		(1, 0) &,  \text{ if }  y>0 \\
 		(0, 1) &,  \text{ if }  y<0 \\  
 		(0, 0) &,  \text{ if }  y=0 \\ 
