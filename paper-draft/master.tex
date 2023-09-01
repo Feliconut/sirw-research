@@ -23,6 +23,7 @@
 % % Title and author(s)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \title{Scaling Limit of AF-SIRW for $p\leq\frac{1}{2}$.}
 \author{ 
 	Xiaoyu Liu
@@ -57,7 +58,7 @@
 \newtheorem{corollary}{Corollary}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
-\newtheorem{remark}{Remark}
+\newtheorem{remark}{Remark}[section]
 \newtheorem{scolium}{Scolium} [section]  
 \newtheorem{definition}{Definition}[section]
 \numberwithin{equation}{section}
@@ -92,6 +93,11 @@
 			\textsf{\color{blue} Blue texts are comments or tentative ideas that can be discussed.}
 	\end{itemize}
 
+	\textsf{\underline{General edits needed:}}
+	\begin{itemize}
+		\item Improve theorem numbering.
+	\end{itemize}
+
 	
 	\section{Introduction}
 	The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
@@ -103,7 +109,7 @@
 	
 	
 	\begin{equation}\label{eq: asymptotics of w}
-		\frac{1}{w(n)} = 1+\frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\chi}}}\right), \quad \mbox{as $n\to \infty$}, 	
+		\frac{1}{w(n)} = 1+\frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right), \quad \mbox{as $n\to \infty$}, 	
 	\end{equation} 
 	The SIRW $(X_i)_{i\geq 0}$ has following dynamics, 
 	$X_0 = 0$, and for any $n\geq 0$
@@ -126,14 +132,14 @@
 	\begin{equation}\label{eq: gamma}
 		\gamma:= \lim_{n\to \infty}\left( V_1(n) - U_1(n) \right) =\lim_{n\to \infty} \left( \sum_{j=0}^{n-1} \frac{1}{ w(2j+1)}-  \sum_{j=0}^{n-1}  \frac{1}{w(2j)} \right) 
 	\end{equation}
-	is well defined and $\gamma<1$. It is shown, in Theorem 1.2 \cite{KMP22}, that when $p\in (\frac{1}{2},1]$, and $\mathcal{\chi} >0 $, the rescaled process
+	is well defined and $\gamma<1$. It is shown, in Theorem 1.2 \cite{KMP22}, that when $p\in (\frac{1}{2},1]$, and $\kappa >0 $, the rescaled process
 	$$
 	\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 	$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
 	
 	Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2})$.
 	\begin{theorem}\label{thm: main}
-		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\mathcal{\chi} >0 $. Consider the SIRW $(X_n)_{n\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
+		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_n)_{n\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
 		$$
 		\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 		$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
@@ -174,7 +180,7 @@
 	$$ 
 	
 	\textbf{Step 1: Control of martingale term.}
-	The choice of $\Gamma_n$ allows us to get a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ Then the rescaled process $\frac{M_n}{\sqrt{n}}$ converges to a standard brownian motion in distribution if we have the control of martingales 
+	The choice of $\Gamma_n$ allows us to get a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ Then using the Martingale Central Limit Theorem (Theorem~18.2, \cite{B99}), the rescaled process $\frac{M_n}{\sqrt{n}}$ converges to a standard brownian motion in distribution if we have the control of martingales 
 	\begin{equation}\label{eq: QV term}
 		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1,  \mbox{ in probability}.
 	\end{equation}
@@ -186,7 +192,7 @@
 	\end{proposition}
 	The proof of Proposition \ref{lm: control of martingale} is in section \ref{sec: approximations}.
 	
-	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_n$ by a fixed linear combination of the distances between $X_n$ and its running maximum $S_n$ and minimum $I_n$:
+	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_{k}$ by a fixed linear combination of the distances between $X_k$ and its running maximum $M_k$ and minimum $I_k$:
 	\begin{proposition}\label{lm: control of acc drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
 		\begin{equation}\label{eq: control of acc drift}
@@ -199,7 +205,7 @@
 		\Gamma_k^0 &= \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = X_k) \\
 		\Gamma_k^- &= \sum_{y < X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
 		.\end{align} 
-	The contribution from $\Gamma_n^0$ is negligible (\TBD). We only need to consider the term $\Gamma_n^+$ while the contribution from $\Gamma_k^-$ \textcolor{red}{almost follows a symmetric argument}. (\TBD) 
+	The contribution from $\Gamma_n^0$ is negligible (\TBD). We only need to consider the term $\Gamma_n^+$ while the contribution from $\Gamma_k^-$ \textcolor{red}{follows a symmetric argument}.
 	
 	In view of \eqref{eq: accumulated local drift} and $X_k=x$, $\Gamma_k^+$ is the sum 
 	$$
@@ -289,8 +295,10 @@
 	where we drop the subscript $y$ for simplicity of notation. We will continue to do so when we talk about a fixed site of $y$ and when there's no confusion.
 
 	For a generalized P\'{o}lya urn process $(\mathcal{B}_i,\mathcal{R}_i )_{i\geq 0}$ associated to the site $y$, it is convenient to consider the event times of left/right jumps $\tau^\mathcal{B}_k$ and $ \tau^\mathcal{R}_k $,	
-	\edt{$$ \tau^\mathcal{B}_k = \inf\{ i\geq 0: \mathcal{B}_{i} =k   \}  \mbox{, and } \tau^\mathcal{R}_k = \inf\{ i\geq 0: \mathcal{R}_{i} =k   \} ,
-	$$}
+	\edt{
+		$$ \tau^\mathcal{B}_k = \inf\{ i\geq 0: \mathcal{B}_{i} =k   \}  \mbox{, and } \tau^\mathcal{R}_k = \inf\{ i\geq 0: \mathcal{R}_{i} =k   \} ,
+	$$
+}
 	\comment{Would be simpler to define $\tau^\cdot_k$ for general process?}
 	and the signed difference $\mathcal{D}_{i} $ for any $i\geq 0$
 	\begin{equation}\label{eq:signed difference}
@@ -331,7 +339,10 @@
 		
 		
 		\subsection{Branching-Like Processes}
-		Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process derived from $X_n$ associated to a single site $y$ in $\mathbb{Z}$, the branching-like processes is a Markov process spatially, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time. More precisely, for an SIRW $(X_n)_{n\geq 0}$ with weight $w(.)$, at any fixed time $n \geq 0$, assuming that $X_n = x \geq 0 $, the local times $\tilde{\zeta}= \left(\mathcal{E}^{n}_{x+k,+} \right)_{k\geq 0}$, and ${\zeta}= \left(\mathcal{E}^{n}_{x-k,-} \right)_{k\leq 0}$ are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}. The transition probabilities can be derived from a correspondence from one dimensional random walk and a branching process. \TBD Formally, we can project a random walk on $\mathbb{Z}$ (up to any finite time) on a tree by viewing each $X_n= k$ as an agent of the $k$-th generation. Each right move from $X_n=k$ to $X_{n+1}=k+1$ gives a birth to a descendant in the $k+1$-th generation, and each left move traces the ancestor of $X_n=k$ in the $k-1$-th generation. It is possible that an agent $A$ corresponding to $X_n=k$ in the $k$-th generation has more than one $n$ with $X_n=k$, and it is visited exactly $L+1$ times if it has exactly $L$ descendants in the $k+1$-th generation and $X_T $ is not in the sub-tree with the root $A$. 
+		Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process derived from $X_n$ associated to a single site $y$ in $\mathbb{Z}$, the branching-like processes is a Markov process spatially, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time.
+		More precisely, for an SIRW $(X_n)_{n\geq 0}$ with weight $w(.)$, at any fixed time $n \geq 0$, \edt{assuming that $X_n = x \geq 0 $, the local times $\tilde{\zeta}= \left(\mathcal{E}^{n}_{x+k,+} \right)_{k\geq 0}$, and ${\zeta}= \left(\mathcal{E}^{n}_{x-k,-} \right)_{k\leq 0}$ are two Markov processes on $\mathbb{N}\cup\{0\}$,} whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}.
+		The transition probabilities can be derived from a correspondence from one dimensional random walk and a branching process. \TBD Formally, we can project a random walk on $\mathbb{Z}$ (up to any finite time) on a tree by viewing each $X_n= k$ as an agent of the $k$-th generation. Each right move from $X_n=k$ to $X_{n+1}=k+1$ gives a birth to a descendant in the $k+1$-th generation, and each left move traces the ancestor of $X_n=k$ in the $k-1$-th generation.
+		It is possible that an agent $A$ corresponding to $X_n=k$ in the $k$-th generation has more than one $n$ with $X_n=k$, and it is visited exactly $L+1$ times if it has exactly $L$ descendants in the $k+1$-th generation and $X_T $ is not in the sub-tree with the root $A$. 
 		Then, since $X_0=0$ and $X_n =x \geq 0$, the difference $\mathcal{E}^n_{y,+} -\mathcal{E}^n_{y+1,-} $ depends on the relative position of $y$ with respect to $x$ and $0$ 
 		\begin{equation}\label{eq: edge values}
 			\mathcal{E}^n_{y,+} =\begin{cases}
@@ -377,7 +388,7 @@
 		The construction of branching-like processes enables us to consider a generic time $k\leq nt$ and study the local times at a time $k$ from the Markov processes $\zeta$ and $\bar{\zeta}$. An advantage is that a typical event (\TBD{see equations to be defined in section \ref{sec: approximations}}) on a collection of spatial points will be also a typical event on a 'typical' single site. Then expressions like \eqref{eq: conditional mean in GPU represenetation} reduces the problem to a problem involving generalized P\'{o}lya urn process associated to a single site. The difficulty is then transferred to constructing typical events that can be estimated. For example, Lemma \ref{lm: number of rarely visit sites} below describes a typical event, and it reduces the proof of proposition \ref{lm: approximation of means of local drift} to \eqref{eq: convergence of conditional expectation} below. In the following subsection, we recall some properties of generalized P\'{o}lya urn process and branching-like processes.
 		
 		\subsection{Preliminary Results}
-		To facilitate our arguments in section \ref{sec: approximations}, we list four results from \cite{KMP22,T96}, whose proofs \textcolor{red}{we omit at this moment.}
+		To facilitate our arguments in section \ref{sec: approximations}, we list four results from \cite{KMP22,T96}, whose proofs \edt{we omit at this moment.}
 		
 		The first result is a concentration inequality for $\mathcal{D}_i$ in a generalized P\'{o}lya urn process. This lemma is a major tool in estimating the probabilities of good events.
 		\begin{lemma}(Lemma 4.1 \cite{KMP22})\label{lm: concentration inequality}
@@ -412,7 +423,7 @@
 		
 		The last result is a result from the branching-like processes. It gives a control of the number of sites with "small" local times:
 		\begin{lemma}(Lemma 2.2 \cite{KMP22})\label{lm: number of rarely visit sites}
-			Let $\alpha =0$, and $\gamma_+ = \gamma \vee 0$. Then for any $M>0$, and any $b>\frac{\gamma_+}{2}$ we have
+			Let $\gamma_+ = \gamma \vee 0$. Then for any $M>0$, and any $b>\frac{\gamma_+}{2}$ we have
 			$$
 			\lim_{n\to\infty} P\left(\sup_{k\leq nt}  \sum_{x\in [I^X_{k-1}, S^X_{k-1}]} \mathbb{1}_{\{ L(x,k-1) \leq M \}} \geq 4n^b \right) = 0.
 			$$
@@ -426,7 +437,7 @@
 		
 		
 		\subsection{Convergence of conditional Expectation}
-		In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), on the event that $ L = \mathcal{E}^{(x,m)}_{y-1}$, we have \eqref{eq: conditional mean in GPU represenetation} 
+		In view of the generalized P\'{o}lya urn process (associated to a site $y> x > 0$), (\comment{currently only one side is dealt}) on the event that $ L = \mathcal{E}^{(x,m)}_{y-1}$, we have \eqref{eq: conditional mean in GPU represenetation} 
 		$$\rho^{(x,m)}_y = E[\mathcal{D}_{\tau_L^B}].$$ 
 		On one hand, $M_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on the other hand, Lemma \ref{lm: number of rarely visit sites} says that, up to $n^b$ sites, (where $\frac{\gamma \vee 0}{2}<b<\frac{1}{2}$,) every site $y$ between $X_k=x$ and $\mathcal{M}^{(x,m)} =S_{k}^X$ has $ \mathcal{E}^{(x,m)}_{y-1} \geq M  $ with a high probability. To show Proposition \ref{lm: approximation of means of local drift}, it suffices to show 
 		\begin{equation}\label{eq: convergence of conditional expectation}
@@ -439,6 +450,9 @@
 			\lim_{M\to\infty} E[\mathcal{D}_{\tau_M^B}] = \gamma. 
 			$$
 		\end{lemma} 
+		\begin{remark}
+			This lemma is an extension of Lemma~2.4 of \cite{KMP22} which only deals with the $p \in (\frac{1}{2}, 1]$ case. In their case, the local drift absolutely converges, which allows for a simpler argument. However, in the $p \in (0,\frac{1}{2}]$ case the local drift tends to infinity, which demands a more sophisticated argument.
+		\end{remark}
 		\begin{proof} 
 			We start from \eqref{eq: gamma} and identity \eqref{eq: Toth's Identity 1}. For any $m \geq 10$,
 			\begin{align}
@@ -509,8 +523,10 @@
 		Similarly, for $y=0$, the associated generalized P\'{o}lya urn process has 
 		$$\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] = 0.$$
 		
-		\TBD \textcolor{red}{We will need to define $\rho$ for negative sites.} We extend the definition of $\rho^{(x,m)}_y$ for sites $y< x$ by symmetry, 
-		$$\rho^{(x,m)}_y := \mathbb{E}\left[  \Delta^{(x,m)}_y   \left\vert  \sigma\left( D^{(x,m)}_z:  y<z\leq  x  \right. \right) \right].   $$ In terms of the generalized P\'{o}lya urn process associated to the site $y$,
+		\TBD \edt{We will need to define $\rho$ for negative sites.} We extend the definition of $\rho^{(x,m)}_y$ for sites $y< x$ by symmetry, 
+		\[
+	\rho^{(x,m)}_y := \mathbb{E}\left[  \Delta^{(x,m)}_y   \left\vert  \sigma\left( \mathcal{E}^{(x,m)}_{z, -}:  y<z\leq  x  \right. \right) \right].   \]
+	In terms of the generalized P\'{o}lya urn process associated to the site $y$,
 		\begin{equation} \label{eq: extended definition}
 			\rho^{(x,m)}_y = \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right], 
 		\end{equation} where $L = \mathcal{E}^{(x,m)}_{y+1,-} = \mathcal{E}^{(x,m)}_{y,+}.$ With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
@@ -539,7 +555,7 @@
 	$$A_{n,K}:=\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}$$
 	$$B_{n,M}:= \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\},  $$
 	and 
-	$$B'_{n,M}:=  \left\{  \sup_{k\leq n t} \sum_{ y\in [I_{k-1}, X_{k-1})}  \mathbb{1}_{\{ \mathcal{D}^{k-1}_{y+1} \leq M  \}} >n^b  \right\}.$$
+	$$B'_{n,M}:=  \left\{  \sup_{k\leq n t} \sum_{ y\in [I_{k-1}, X_{k-1})}  \mathbb{1}_{\{ \mathcal{D}^{k-1}_{y+1, -} \leq M  \}} >n^b  \right\}.$$
 Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}, B'_{n,M}$ are increasing in $M$. We claim that for $n$ large, the event 
 $$
 F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
@@ -574,7 +590,7 @@ is contained in $A_{n,K} \cup B_{n,M} \cup  B'_{n,M},$ for any $K>0$, and $M$ wi
 \eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 
 \subsection{Approximation of Local Drifts by Conditional Means}
-In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. \textcolor{red}{\TBD. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}.}
+In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}.
 
 By construction, the inner sum in \eqref{eq: control of martingale difference for local drift} is a martingale depending on the pair  $(x,m)$. To control the sum, we restrict on a good event where this martingale has bounded increments. 
 
@@ -608,7 +624,7 @@ For every integer $K>0$ and define the good event
 The next lemma gives a deterministic bound for $|\Delta_y^{(x,m)} - \rho_y^{(x,m)}|$ uniform in $y$ on the good event $G_{n,K,t}$, making the inner sum in \eqref{eq: control of martingale difference for local drift} a martingale with bounded variations.
 
 \begin{lemma}\label{lm:lipchitz-bound-on-good-event}
-	On $G_{K}^{(x,m)}$, when $p \in (0,\frac{1}{2})$, for all  $y \ge x$, we have
+	On $G_{n, K, t}$, when $p \in (0,\frac{1}{2})$, for all  $y \ge x$, we have
 	\[
 		\left| \Delta_y^{(x,m)} \right| \le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n
 	.\] 
@@ -623,7 +639,7 @@ The next lemma gives a deterministic bound for $|\Delta_y^{(x,m)} - \rho_y^{(x,m
 \begin{proof}[Proof of Proposition~\ref{lm: approx local drift by conditional means}]
 Having Lemma~\ref{lm:lipchitz-bound-on-good-event}, we can apply Azuma's inequality to the sum in \eqref{eq: control of martingale difference for local drift} on $G_{n, K, t}$. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
 
-{\color{red} shall I write those as conditional probability on good event?}
+\comment{ shall I write those as conditional probability on good event?}
 \begin{align}
 	P\left( \left| \sum_{y\ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)})  \right| > \varepsilon \sqrt{n}  \right) \notag
 	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) + P\left(  G_{n, K, t}^c   \right) \notag \\
@@ -658,7 +674,7 @@ Next we justify the that the good event $G_{n, K, t}$ we defined is indeed typic
 	.\] 
 	To do so, we treat each term \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4} in the definition of $G_{n, K, t}$ separately.
 
-	From process-level tightness of $\left( \frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} } \right)_{t \ge 0} $({\color{red} Reference Missing}) we know that probability of \eqref{eqn:good-event-1} goes to $1$ (uniformly in $n$) as $K $ goes to infinity. 
+	From process-level tightness of $\left( \frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} } \right)_{t \ge 0} $(\edt{add reference here}) we know that probability of \eqref{eqn:good-event-1} goes to $1$ (uniformly in $n$) as $K $ goes to infinity. 
 
 	The second event \eqref{eqn:good-event-2} provides uniform restriction to local time of all sites. Its probability is controlled by Lemma \TBD.
 
