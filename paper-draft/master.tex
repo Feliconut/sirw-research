@@ -96,16 +96,11 @@
 			\textsf{\color{blue} Blue texts are comments or tentative ideas that can be discussed.}
 	\end{itemize}
 
-	\textsf{\underline{General edits needed:}}
-	\begin{itemize}
-		\item Improve theorem numbering.
-	\end{itemize}
 
-	
+
 	\section{Introduction}
 	The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
 	\TBD 
-	
 	
 	\subsection{Model Description} 
 	We consider a discrete time nearest neighbor self-interaction random walk $(X_i)_{i\geq 0}$ on $\mathbb{Z}$ starting from site $x=0$ with transition probabilities depending on its edge local times and a (deterministic) weight function $w$ on $\mathbb{N}\cup \{0\}$. More precisely, let $w(.)$ be a monotone positive function on $\mathbb{N}_0$ satisfying
@@ -283,19 +278,32 @@
 	\end{cases}
 \] 
 	Let $b(y,i)$ and $r(y,i)$ denote the weight of corresponding edges:
-	\begin{align*}
-		b(y,i) &:= w(l^-(y,i)) \\
-		r(y,i) &:= w(l^+(y,i))
-	.\end{align*}
+	\begin{align}
+		w^-(y,i) &:= w(l^-(y,i)) \\
+		w^+(y,i) &:= w(l^+(y,i)) \nonumber
+	.\end{align}
 	Now the transition probabilities
 	for the generalized P\'{o}lya urn process at a fixed site $y$ are given by
-	\begin{align*}\label{eq: transition prob for GPU}
-		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i}+1,\mathcal{R}_{i}\right) \right)     &= \frac{b(i)}{b(i)+r(i)}, \mbox{ and}  \\
-		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i},\mathcal{R}_{i}+1\right) \right)     &= \frac{r(i)}{b(i)+r(i)},
-	\end{align*} 
-
-
+	\begin{align}\label{eq: transition prob for GPU}
+		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i}+1,\mathcal{R}_{i}\right) \right)     &= \frac{w^-(i)}{w^-(i)+w^+(i)}, \mbox{ and}  \\
+		\mathbb{P} \left( \left(\mathcal{B}_{i+1},\mathcal{R}_{i+1}\right)=   \left(\mathcal{B}_{i},\mathcal{R}_{i}+1\right) \right)     &= \frac{w^+(i)}{w^-(i)+w^+(i)},
+	\end{align} 
 	where we drop the subscript $y$ for simplicity of notation. We will continue to do so when we talk about a fixed site of $y$ and when there's no confusion.
+
+	The transition probabilities can be written explicitly as:
+	\comment{here the use of $i, j, k$ are different}
+\begin{align*}
+		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{b(i)}{b(i)+r(j)}, \mbox{ and}  \\
+		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{r(j)}{b(i)+r(j)},
+	\end{align*} where the generalized weights $(b(k),r(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
+	\begin{equation}\label{eq: generalized weights}
+		(b(k), r(k)) = \begin{cases}
+			(w(2k+1), w(2k)) &,  \text{ if }  y>0 \\
+			(w(2k), w(2k+1)) &,  \text{ if }  y<0 \\  
+			(w(2k), w(2k)) &,  \text{ if }  y=0 \\ 
+		\end{cases}.
+	\end{equation}
+	
 
 	For a generalized P\'{o}lya urn process $(\mathcal{B}_i,\mathcal{R}_i )_{i\geq 0}$ associated to the site $y$, it is convenient to consider the event times of left/right jumps $\tau^\mathcal{B}_k$ and $ \tau^\mathcal{R}_k $,	
 	\edt{
@@ -642,7 +650,6 @@ The next lemma gives a deterministic bound for $|\Delta_y^{(x,m)} - \rho_y^{(x,m
 \begin{proof}[Proof of Proposition~\ref{lm: approx local drift by conditional means}]
 Having Lemma~\ref{lm:lipchitz-bound-on-good-event}, we can apply Azuma's inequality to the sum in \eqref{eq: control of martingale difference for local drift} on $G_{n, K, t}$. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
 
-\comment{ shall I write those as conditional probability on good event?}
 \begin{align}
 	P\left( \left| \sum_{y\ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)})  \right| > \varepsilon \sqrt{n}  \right) \notag
 	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) + P\left(  G_{n, K, t}^c   \right) \notag \\
