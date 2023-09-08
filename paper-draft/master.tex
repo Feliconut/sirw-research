@@ -236,6 +236,9 @@
 			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left(\Delta_{y}^{\edt{(X_k,L(X_k,k))}}- \rho_{y}^{\edt{(X_k,L(X_k,k))}} \right)   }  > \epsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{proposition}
+
+	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
+
 	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_n)_{n\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_n)_{n\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
 	
 	\TBD With some slight efforts, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, and obtain the full Proposition \ref{lm: control of acc drift}.
@@ -270,7 +273,7 @@
 		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0} \overset{d}{=} \left(\mathcal{E}^{(-x,m)}_{-x-k,-} \right)_{k\geq 0}
 		\]
 	   \end{remark}
-	 
+
 	   
 	 
 	   Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\{y,y-1\}$ and $\{y,y+1\}$ at time $\lambda_{y,0}$ is 
@@ -324,11 +327,12 @@
 				\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y-1,+} -1  } D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ).
 			\end{equation}			
 	From \eqref{eq: conditional increment}, $\abs{  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} )} \leq  \tau^{B}_{l+1,y}-\tau^{B}_{l,y}$ is stochastically dominated by a geometric random variable with a mean independent of $l$. 
-	Since the process $(\tau^B_{l,y})_{l\geq 0}$ is Markov, and  $ (\mathcal{E}^{(x,m)}_{y})_{ y \geq x} $ is also Markov from the following subsection \TBD, we get that, on the event that $ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} = k \right\} = \left\{ \mathcal{E}^{(x,m)}_{y,-} = k  \right\}$, $ \rho_{y}^{(x,m)} $ equals
-	$$
-		 \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)} \right] 
+	Since the process $(\tau^B_{l,y})_{l\geq 0}$ is Markov, and  $ (\mathcal{E}^{(x,m)}_{y})_{ y \geq x} $ is also Markov from the following subsection \TBD, we get that, on the event that $ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} \equiv \mathcal{E}^{(x,m)}_{y,-}  = k \right\}$,
+	\[
+		  \rho_{y}^{(x,m)} := 
+		  \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)} \right] 
 		= \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]. 
-	$$
+	\]
 	As $\left(\tau^B_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $,  $\left(D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} )\right)_{l\geq 0}$ is also independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $. Then, from \eqref{eq: conditional increment} again, on the event $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k  \right \}$
 	\begin{equation} \label{eq: conditional mean in GPU represenetation}
 		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
@@ -360,7 +364,7 @@
 		We denote the natural filtrations of $\tilde{\zeta}$ and $\zeta$ as $\mathcal{G}_{y, +}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, +}: x \le z \le y\right) $ for $y \ge x$ and $\mathcal{G}_{y, -}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, -}: y \le z \le x\right) $ for $y \le x$. We may simply write $\mathcal{G}_y^{(x,m)}$ is clear from context.
 
 		Now we evaluate the urns in a more refined order and construct a filtration that is term-wise finer than $\mathcal{G}_y^{(x,m)}$.
-		We first construct a finer version of $\tilde{\zeta}= \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}$. Due to the strong Markov property of $X_n$, the generalized P\'{o}lya urn processes at different sites are independent, and the sequences $(\tau^B_{k,y})_{k\geq 0} $ are also independent in $y \geq x$. As each sequence $(\tau^B_{k,y})_{k\geq 0} $ is Markov in $k$,  the collection of stopping times  
+		We first construct a finer version of $\tilde{\zeta}= \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}$. Due to the strong Markov property of $X_n$, the generalized P\'{o}lya urn processes at different sites are independent, and the sequences $(\tau^B_{k,y})_{k\geq 0} $ are also independent in $y \geq x$. As each sequence $\left(\tau^B_{k,y}\right)_{k\geq 0} $ is Markov in $k$,  the collection of stopping times  
 		\begin{equation}\label{eq: markov 1} 
 			\left\{\tau^B_{k,y}: y\geq x, k\geq 0 \right\} \mbox{are Markov in $(y,k)$}
 		\end{equation}
@@ -635,7 +639,7 @@ is contained in $A_{n,K} \cup B_{n,M} \cup  B'_{n,M},$ for any $K>0$, and $M$ wi
 \eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 
 \subsection{Approximation of Local Drifts by Conditional Means}
-In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}.
+In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. Its proof is composed of by an argument similar to that on page 20 of \cite{KP16}. 
 
 In \eqref{eq: control of martingale difference for local drift}, for a fixed $(x,m)$, the inner sum is a martingale. To control the sum, we restrict on a good event where this martingale has bounded increments. 
 
@@ -666,6 +670,12 @@ Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-ad
 .\end{align}
 
 
+Note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
+	\begin{equation}
+		\label{eqn:goodgood}
+		G_{n, K, t} \subset  A_{n, K, t} \cap 
+		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}
+	.\end{equation} 
 
 \begin{lemma}
 	\label{lem:good-event}
@@ -673,11 +683,6 @@ Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-ad
 	\[
 		\lim_{K \to \infty } \limsup_{n \to \infty } 
 		P(G_{n, K,t}) = 1
-	.\] 
-	And if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
-	\[
-		G_{n, K, t} \subset  A_{n, K, t} \cap 
-		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}
 	.\] 
 \end{lemma}
 
@@ -716,20 +721,20 @@ In the case $p = \frac{1}{2}$ the bound becomes
 .\end{align}
 In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity.  
 
-To bound $\sup_{k < nt} \left| \sum_{y > X_k} (\Delta_y^{(X_k,L(X_k, \left\lfloor nt \right\rfloor)} - \rho_y^{(X_k,L(X_k, \left\lfloor nt \right\rfloor)}) \right|$, we can do a supremum bound on all possible combinations of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Thus, this amounts to bounding the supremum of $\sum_{y > x}\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $ over all $(x,m)$ pairs. Also note that, by Lemma~\ref{lem:good-event}, $G_{n, K}^{(x,m)}(y)$ is true for all $y \ge x$ on the event $G_{n, K, t}$.
+To bound $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we can do a supremum bound on all possible combinations of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Thus, this amounts to bounding the supremum of $\sum_{y > x}\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $ over all $(x,m)$ pairs. Also note that, by \eqref{eqn:goodgood}, $G_{n, K}^{(x,m)}(y)$ is true for all $y \ge x$ on the event $G_{n, K, t}$.
 \begin{align*}
-	& P\left( \sup_{k < nt} \left| \sum_{y > X_k} (\Delta_y^{(X_k,L(X_k, \left\lfloor nt \right\rfloor)} - \rho_y^{(X_k,L(X_k, \left\lfloor nt \right\rfloor)}) \right| > \varepsilon \sqrt{n}  \right) \\
-	&\le P(G_{n, K, t}^c) + P\left( \sup _{|x|, m < K \sqrt{n} } \left| \sum_{y > x} \left(\Delta_y^{(x,m)} - \rho_y^{(x,m)}\right) \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
+	& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
+	\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
+	\right| > \varepsilon \sqrt{n}  \right) \\
+	&\le P(G_{n, K, t}^c) + P\left( \sup _{|x|, m < K \sqrt{n} } \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
 	&\le P(G_{n, K, t}^c) + K^2 n \sup _{|x|, m \le  K \sqrt{n} }
-	P\left( \left| \sum_{y \ge X_k} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
+	P\left( \left| \sum_{y \ge X_k} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
 	&\le P(G_{n, K, t}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) \right) 
 .\end{align*}
 In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
 \vspace{2em}
-
-Next we justify the that the good event $G_{n, K, t}$ we defined is indeed typical.
 
 \begin{proof}[Proof of Lemma~\ref{lem:good-event}]
 	Fix $t>0$. We want to justify
