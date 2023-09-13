@@ -107,6 +107,8 @@
 	\begin{equation}\label{eq: asymptotics of w}
 		\frac{1}{w(n)} = 1+\frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right), \quad \mbox{as $n\to \infty$}, 	
 	\end{equation} 
+	where $B \in \mathbb{R}$, $p \in (0,1)$ and $\kappa > 0$.
+
 	The SIRW $(X_i)_{i\geq 0}$ has following dynamics, 
 	$X_0 = 0$, and for any $n\geq 0$
 	\begin{equation}\label{dynamic}
@@ -345,14 +347,16 @@
 		Having understood the behavior of the walk at a fixed site in terms of the urn processes, we now want to characterize how urn processes at different sites are related. As observed in \cite{KMP22}, if we know the number of upcrossings $n$ from site $y$ to $y+1$ before $\lambda_{x, m}$, it implies that the walk has made $n$ excursions to the right. The end of the $n$-th excursion coincides with the $n$-th left step from $y+1$ after  $\lambda_{x, 0}$. Therefore the directed edge local times at $y+1$ can be reconstructed by drawing from the local urn at $y+1$ until we hit the $n$-th step to the left. By iterating this process, we observe that the directed edge local times at $\lambda_{x,m}$ form Markov chains, and 
 		\begin{align}
 			\label{eqn:BLP-trans}
-			\mathbb{E}\left[\mathcal{E}_{y, +}^{(x,m)} \middle| \mathcal{E}_{x, +}^{(x,m)},\ldots, \mathcal{E}_{y-1, +}^{(x,m)} = j \right]
-			&=\mathbb{E}\left[\mathcal{E}_{y, +}^{(x,m)} \middle| \mathcal{E}_{y-1, +}^{(x,m)} = j \right] = \mathcal{R}_{\tau_{j}^{\mathcal{B}}} 
+			P\left(\mathcal{E}_{y, +}^{(x,m)} = i \middle| \mathcal{E}_{y-1, +}^{(x,m)} = j \right) 
+			&= P\left(  \mathcal{R}_{\tau_{j}^{\mathcal{B}}}^{(y)} = i \right)  
 			&\text{whenever }y > x , \\
-			\mathbb{E}\left[\mathcal{E}_{y, -}^{(x,m)} \middle| \mathcal{E}_{x, -}^{(x,m)},\ldots, \mathcal{E}_{y+1, +}^{(x,m)} = j \right]
-			&=\mathbb{E}\left[\mathcal{E}_{y, -}^{(x,m)} \middle| \mathcal{E}_{y+1, -}^{(x,m)} = j \right] = \mathcal{B}_{\tau_{j}^{\mathcal{R}}} 
+			P\left(\mathcal{E}_{y, -}^{(x,m)} = i \middle| \mathcal{E}_{y+1, -}^{(x,m)} = j \right) 
+			&= P\left( \mathcal{B}_{\tau_{j}^{\mathcal{R}}}^{(y)}  = i \right) 
 			&\text{whenever }y < x , \nonumber
 	\end{align} 
 	where the urn processes on the right are all located at $y$.
+
+	\comment{This expression should not require assumption that $x>0$ since this is encoded in the different initial states of the urns at different locations.}
 		
 	In view of Remark~\ref{rem:symmetry}, we assume $x \ge 0$. We define the \textit{branching-like processes} to be
 		\[
@@ -649,8 +653,8 @@ For integers $K>0$, $n > 0$ and $y > x$ we define the good event
 \begin{align}
 	G_{n,K}^{(x,m)}(y) :=  \qquad
 		& \left\{ L(y,  \lambda_{x, m}  ) < K \sqrt{n} \right\} \cap \\
-		& \bigcap_{i = 1}^{L(z, \lambda_{x, m}) } \left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
-		& \bigcap_{i = 1}^{L(z, \lambda_{x, m}) } \left\{\left| \tau_{i+1}^{\mathcal{B},y} - \tau_i^{\mathcal{B},y} \right| < \log^2 n \right\}  
+		& \bigcap_{i = 1}^{L(y, \lambda_{x, m}) } \left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
+		& \bigcap_{i = 1}^{L(y, \lambda_{x, m}) } \left\{\left| \tau_{i+1}^{\mathcal{B},y} - \tau_i^{\mathcal{B},y} \right| < \log^2 n \right\}  
 .\end{align}
 
 Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-adapted, that is, $G_{n, K}^{(x,m)}(y)\in \mathcal{H}_{y, +}^{(x,m)}$.
@@ -674,7 +678,7 @@ Note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
 	\begin{equation}
 		\label{eqn:goodgood}
 		G_{n, K, t} \subset  A_{n, K, t} \cap 
-		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}
+		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}(y)
 	.\end{equation} 
 
 \begin{lemma}
@@ -696,13 +700,33 @@ Note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
 	.\end{align*}
 	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
 \end{lemma}
+\begin{lemma}
+	On $G_{n, K, t}$, $\sum_{y \ge x} \left( \Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)} \right) $ is Lipchitz with some Lipchitz constant depending on $K, p$ and $n$. Note, however, that it is not a martingale.
+\end{lemma}
+\begin{proof}
+	The previous lemma provides a control for all $\Delta_y^{(x,m)} - \rho_y^{(x,m)}$. Hence we need to control the difference $\rho_y^{(x,m)} - \tilde \rho_y^{(x,m)}$. 
+	\begin{align*}
+		\rho_y^{(x,m)} - \tilde \rho_y^{(x,m)}
+		&= \mathbb{E}\left[ \Delta_y^{(x,m)} - \Delta_{y}^{(x,m)}\mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
+		&= \mathbb{E}\left[ \Delta_y^{(x,m)} \mathbf{1}\left( \left( G_{n, K}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)} \right] 
+	.\end{align*}
+	Hence
+	\begin{align*}
+		\left| \rho_y^{(x,m)} - \tilde \rho_y^{(x,m)} \right| 
+		&\le \sqrt{
+			\mathbb{E}\left[ \left( \Delta_y^{(x,m)} \right) ^2 \middle| \mathcal{H}_{y-1}^{(x,m)} \right] P\left( \left( G_{n, K}^{(x,m)}(y) \right) ^c  \right)  
+		}
+	.\end{align*}
+	On $G_{n,K, t}$, \TBD
+\end{proof}
+
 
 
 \begin{proof}[Proof of Proposition~\ref{lm: approx local drift by conditional means}]
 From Lemma~\ref{lm:lipchitz-bound-on-good-event}, we know that for some fixed $(x,m)$, the sum
 \begin{equation}
 	\label{eqn:good-martingale}
-	\sum_{y \ge x} \left( \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right) \mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right)  \mathbf{1}\left(|y| < K \sqrt{n}\right) 
+	\sum_{y \ge x} \left( \Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)} \right) \mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right)  \mathbf{1}\left(|y| < K \sqrt{n}\right) 
 \end{equation}
 is a Lipchitz martingale adapted to $\mathcal{H}_{y,+}^{(x,m)}$.
 
