@@ -255,7 +255,7 @@
 	\subsection{Generalized P\'{o}lya  Urn}
 	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ \edt{visit site $y$ for the $\left( k+1 \right) $-th time:}
 	\[
-		\lambda_{y,0} :=\inf\{ k\geq 0: X_t = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
+		\lambda_{y,0} :=\inf\{ k\geq 0: X_k = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
 	   \] 
 	
 	   \edt{which is consistent with the notation in point 3 of subsection 1.4. }
@@ -265,7 +265,7 @@
 	   :=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} 
 	   =  \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0},
 	   \end{equation}
-	   which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{i}^{(t)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
+	   which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{i}^{(k)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
 	\begin{remark}
 		\label{rem:symmetry}
 		By symmetry considerations, when $X_0 = 0$, $\mathcal{E}_{y, + }^{k} \overset{d}{=} \mathcal{E}_{-y, - }^{k}$ for all $k \ge 0$ and $y \in \mathbb{Z}$. Moreover, $\mathcal{E}_{y, +}^{(x, m)} \overset{d}{=} \mathcal{E}_{-y, -}^{(-x, m)}$ for all $x, y \in \mathbb{Z}$.
@@ -315,7 +315,7 @@
 	\[
 	\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^B_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right].  
 	\] 
-	Summing over the terms between two consecutive stopping times $\tau^{B}_{l,y} $ and $\tau^{B}_{l+1,y} $, for any $0\leq l \leq k -1$,  we get a sum depending only on $\tau^{B}_{l,y} $, $\tau^{B}_{l+1,y} $, 
+	Summing over the terms between two consecutive stopping times $\tau^{B}_{l,y} $ and $\tau^{B}_{l+1,y} $, for any $0\leq l \leq k -1$,  we get a sum depending only on $\tau^{B}_{l,y} $, $\tau^{B}_{l+1,y} $ and $l$, 
 	\begin{align} \label{eq: conditional increment}
 		 \sum_{j=\tau^{B}_{l,y}}^{\tau^B_{l+1,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} - \mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] =&
 		  \sum_{j=0}^{\tau^B_{l+1,y}-\tau^{B}_{l,y}-1} \frac{ r(\tau^{B}_{l,y}-l + j) - b(l)  }{ r(\tau^{B}_{l,y}-l + j) + b(l)  } 
@@ -338,6 +338,7 @@
 		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
 		= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right].
 	\end{equation} 
+	\comment{This needs to be more motivated at the start of the section}
 	 Expressions like \eqref{eq: cummulated drift at a site} and \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To analyze events like $ L(y,\lambda_{x,m}) = k+k'$ and $\mathcal{E}^{(x,m)}_{y-1,+} = k $, the branching-like processes play a key role.
 		
 		
