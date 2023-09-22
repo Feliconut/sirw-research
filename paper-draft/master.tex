@@ -426,8 +426,9 @@
 
 We define our second filtration
 \[
-	\mathcal{H}_{y, +}^{(x,m)} = \sigma\left(\left\{\mathcal{F}_{m}^{\mathcal{B}, \mathcal{R}^{(x)}}\right\}  \cup \left\{\tau_{k, z}^{B} : x < z \le y, 0 \le k \le \mathcal{E}_{z, -}^{(x,m)} \right\} \right) 
+	\mathcal{H}_{y, +}^{(x,m)} = \sigma\left(\left\{\mathcal{F}_{m}^{\mathcal{B}, \mathcal{R}^{(x)}}\right\}  \cup \left\{\tau_{k, z}^{B} : x < z \le y, 0 \le k \le \mathcal{E}_{z-1, +}^{(x,m)} \right\} \right) 
 .\] 
+\comment{Iterative Construction}
 $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly. We drop the $+, -$ signs when there is no ambiguity. Now, observe that 
 \begin{enumerate}
 	\item 
@@ -594,9 +595,9 @@ $\mathcal{G}_y^{(x,m)} \subset \mathcal{H}_y^{(x,m)}.$
 			\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
 			$$
 			Furthermore,
-		$$
+		\[
 	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
-	$$
+	\]
 \end{lemma}
 \begin{proof} There are only three types of weight sequences for the generalized P\'{o}lya urn processes, see \eqref{eq: generalized weights}. Therefore, from Lemma \ref{lm: convergence of mean of discrepancies}, and \eqref{eq: mean of discrepancies for left sites}, there is a decreasing function $C(.)$ on $\mathbb{N}_0$ with $\lim_{L\to \infty}C(L) =0$ such that for any $y \in \mathbb{Z}$,
 	\begin{equation}\label{eq: uniform convergence}
@@ -670,7 +671,7 @@ Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-ad
 		\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_i^{\mathcal{B}} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
 		\label{eqn:good-event-4}
 		& \bigcap_{y = - K \sqrt{n} }^{K \sqrt{n}} 
-		\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| < \log^2 n \right\}  
+		\bigcap_{i = 0}^{K \sqrt{n} } \left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| < \log^2 n \right\}  
 .\end{align}
 
 
@@ -700,33 +701,51 @@ Note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
 	.\end{align*}
 	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
 \end{lemma}
-\begin{lemma}
-	On $G_{n, K, t}$, $\sum_{y \ge x} \left( \Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)} \right) $ is Lipchitz with some Lipchitz constant depending on $K, p$ and $n$. Note, however, that it is not a martingale.
-\end{lemma}
-\begin{proof}
-	The previous lemma provides a control for all $\Delta_y^{(x,m)} - \rho_y^{(x,m)}$. Hence we need to control the difference $\rho_y^{(x,m)} - \tilde \rho_y^{(x,m)}$. 
-	\begin{align*}
-		\rho_y^{(x,m)} - \tilde \rho_y^{(x,m)}
-		&= \mathbb{E}\left[ \Delta_y^{(x,m)} - \Delta_{y}^{(x,m)}\mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
-		&= \mathbb{E}\left[ \Delta_y^{(x,m)} \mathbf{1}\left( \left( G_{n, K}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)} \right] 
-	.\end{align*}
-	Hence
-	\begin{align*}
-		\left| \rho_y^{(x,m)} - \tilde \rho_y^{(x,m)} \right| 
-		&\le \sqrt{
-			\mathbb{E}\left[ \left( \Delta_y^{(x,m)} \right) ^2 \middle| \mathcal{H}_{y-1}^{(x,m)} \right] P\left( \left( G_{n, K}^{(x,m)}(y) \right) ^c  \right)  
-		}
-	.\end{align*}
-	On $G_{n,K, t}$, \TBD
-\end{proof}
 
+Now $\sum_y \Delta_y^{(x,m)} - \rho_y^{(x,m)}$ is a martingale, and on the event $G_{n, K, t}$ it should have bounded increments. We define a tempered version of the martingale that is Lipchitz:
+\[
+	\tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbf{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
+	\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
+.\] 
+
+Now we have the following decomposition of total drift at $\lambda_{x, m}$ :
+\begin{align}
+	&\sum_{y > x} \Delta_y^{(x,m)} - \gamma \\
+	\label{eqn:tempered-difference-1}
+	&= \sum_{y > x} \Delta_y^{(x,m)} - \tilde\Delta_y^{(x,m)} \\
+	\label{eqn:tempered-difference-2}
+	&+ \sum_{y > x} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)} \\
+	\label{eqn:tempered-difference-3}
+	&+ \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \\
+	\label{eqn:tempered-difference-4}
+	&+ \sum_{y > x} \rho_y^{(x,m)} - \gamma
+.\end{align}
+
+On $G_{n, K, t}$, \eqref{eqn:tempered-difference-1} is zero. Since \eqref{eqn:tempered-difference-2} is a Lipchitz martingale, it can be bounded on $G_{n, K, t}$ using Azuma's inequality, and we will do later. Proposition~\ref{lm: approximation of means of local drift} has controlled \eqref{eqn:tempered-difference-4}. It remains to control \eqref{eqn:tempered-difference-3} on $G_{n, K, t}$. 
+	\begin{align*}
+		\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
+		&= \sum_{y > x} \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
+		&= \sum_{y > x} -\mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
+		\intertext{We have on $G_{n, K, t}$,}
+		&= \sum_{y > x}^{\tau} -\mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \mathbf{1}\left(G_{n, K}^{(x,m)}(y-1)\right)
+	.\end{align*}
+Its absolute value is bounded by
+\begin{align*}
+	K \sqrt{n} \sqrt{
+			\mathbb{E}\left[ \Delta_{x+1}^2 | \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right]
+			P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right) 
+	}
+.\end{align*}
+
+\TBD
 
 
 \begin{proof}[Proof of Proposition~\ref{lm: approx local drift by conditional means}]
+	\edt{Edit needed, depends on previous lemma}
 From Lemma~\ref{lm:lipchitz-bound-on-good-event}, we know that for some fixed $(x,m)$, the sum
 \begin{equation}
 	\label{eqn:good-martingale}
-	\sum_{y \ge x} \left( \Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)} \right) \mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right)  \mathbf{1}\left(|y| < K \sqrt{n}\right) 
+	\sum_{y > x}^{K \sqrt{n} } \left( \Delta_y^{(x,m)} \mathbf{1}\left( G_{n, K}^{(x,m)}(y) \right) - \tilde\rho_y^{(x,m)} \right)
 \end{equation}
 is a Lipchitz martingale adapted to $\mathcal{H}_{y,+}^{(x,m)}$.
 
@@ -763,7 +782,7 @@ In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $
 \begin{proof}[Proof of Lemma~\ref{lem:good-event}]
 	Fix $t>0$. We want to justify
 	\[
-		\lim_{K\to \infty } \limsup_{n \to \infty } G_{n, K, t} = 1
+		\lim_{K\to \infty } \liminf _{n \to \infty } P \left( G_{n, K, t}\right) = 1
 	.\] 
 	To do so, we treat each term \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4} in the definition of $G_{n, K, t}$ separately.
 
@@ -800,7 +819,7 @@ Finally, we verify the deterministic bound on martingale increments of \eqref{eq
 
 \begin{proof}[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
 	We verify this lemma for the case $y \ge  x > 0$. \TBD {\color{red} need to remark about other cases}.
-	For notational simplicity, write $\alpha(i,j) := \left|\frac{-w(2 i + 1) + w(2 j)}{w(2i + 1) + w(2 j}\right|$. Then
+	For notational simplicity, write $\alpha(i,j) := \frac{-w(2 i + 1) + w(2 j)}{w(2i + 1) + w(2 j}$. Then
 \begin{equation*}
 	\left| \Delta_y^{(x,m)} \right| 
 	= 
