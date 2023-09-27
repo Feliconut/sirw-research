@@ -672,7 +672,7 @@ Note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
 	\begin{equation}
 		\label{eqn:goodgood}
 		G_{n, K, t} \subset  A_{n, K, t} \cap 
-		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}
+		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}(y)
 	.\end{equation} 
 
 \begin{lemma}
@@ -725,12 +725,41 @@ On $G_{n, K, t}$, \eqref{eqn:tempered-difference-1} is zero. Since \eqref{eqn:te
 Its absolute value is bounded by
 \begin{align*}
 	K \sqrt{n} \sqrt{
-			\mathbb{E}\left[ \Delta_{x+1}^2 | \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right]
+			\mathbb{E}\left[ (\Delta_{x+1}^{(x,m)})^2 \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right]
 			P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right) 
 	}
 .\end{align*}
 
-\TBD
+\textbf{Control of the probability of bad event}
+\begin{align*}
+	P(\mathcal{E}_{x+1}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x}^{(x, m)} = K \sqrt{n})
+	&\le P\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
+	\intertext{By Hoeffding bound,}
+	&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
+.\end{align*}
+
+\textbf{Control of squared drift, very crude bound}
+When $\mathcal{E}_{x+1}^{(x,m)} < K^2 \sqrt{n} $,
+\begin{align*}
+	\left( \Delta_{x+1}^{(x,m)} \right) ^2 
+	&\leq \left| \mathcal{E}_{x+1}^{(x,m)} + K \sqrt{n}  \right|^2  \\
+	&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
+	&\leq 4 K^4 n
+.\end{align*}
+
+Therefore,
+\[
+	P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 > 4 K^4 n \right) \le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
+.\] 
+
+The expectation is controlled by
+\begin{align*}
+	\mathbb{E}\left[\left(  \Delta_{x+1}^{(x,m)} \right) ^2 \right] 
+	&= \sum_{i = 0}^\infty P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 \ge  i \right)  \\
+	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
+.\end{align*}
+
+
 
 
 \begin{proof}[Proof of Proposition~\ref{lm: approx local drift by conditional means}]
@@ -745,8 +774,8 @@ is a Lipchitz martingale adapted to $\mathcal{H}_{y,+}^{(x,m)}$.
 We can apply Azuma's inequality to the sum in \eqref{eqn:good-martingale}. In the case $p < \frac{1}{2}$ we get for all $\varepsilon>0$,
 
 \begin{align}
-	P\left( \left| \sum_{y > x} (\Delta_y^{(x,m)} - \rho_y^{(x,m)}) \mathbf{1}\left(G_{n, K}^{(x,m)}(y)\right) \mathbf{1}\left(|y| < K\sqrt{n}\right) \right| > \varepsilon \sqrt{n}  \right) 
-	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) \notag \\
+	P\left( \left| \sum_{y = x + 1}^{K \sqrt{n} } (\tilde\Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)}) \right| > \varepsilon \sqrt{n}  \right) 
+	&\le \exp\left( - \frac{\varepsilon^2 n}{2 K^2 \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) \notag \\
 	&= \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right)
    \label{eqn:azuma-drift-martingale}
    \intertext{
