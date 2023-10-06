@@ -7,13 +7,14 @@
 % % Modified  2023_09_020
 % % Lastest Edition, 2023_09_20
 % % Description of changes:
-% %  Major changes are in subsection 3.1, 3.2: 
-% % construction of BLPs
+% % Major changes are in section 3.
+% % 1.1) descriptions in subsection 3.1 
+% %	1.2) addition of subsction 3.3, which consists of Delta and related sigma filed. motivations after constructions   
 % % 
-% % Changes to be made: 
-% % (1) subsction 3.2: motivations after constructions  
-% % (2) Motivations for 2.2 for 2.2; 
-% % (3) rework of descriptions after proposition 2.2, especially a focus on lambda_{x,m} instead of time k: 
+% % Changes to be made:  
+% % (1) Motivations for 2.2 for 2.2; 
+% % (2) rework of descriptions after proposition 2.2, especially a focus on lambda_{x,m} instead of time k:
+% % (3) Updates on subsection 4.1 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -28,7 +29,7 @@
 	\and
 	Zhe Wang}
 
-\date{Sep 20th, 2023}
+\date{Oct 5th, 2023}
 
 
 % This is the definition of the type of document
@@ -250,27 +251,36 @@
 	
 	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
 
-	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes, and recall some of their properties needed in the proofs of Propositions \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
+	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes. As explained earlier in section \ref{sec: proof of main}, these two auxiliary processes are essential in studying approximations of $\Gamma_k^+= \sum_{y\geq X_k} \Delta_{y}^{(x,m)}$ on the event that $\lambda_{x,m} = k$. We will show in subsection \ref{subsec: measurability} that each $\Delta^{(x,m)}_{y}$ is almost a function of the BLP processes modulo extra information, and its conditional expectation $\rho^{(x,m)}_{y}$ only involves the generalized P\'{o}lya urn processes associated to site $y$. Therefore, to approximate $\Gamma_k$ and $\Delta_{y}^{(x,m)}$ we only need to study the BLP process with additional information, which turns out to be a Markov process with some convenient properties. In the last subsection, we recall some properties of these auxiliary processes needed in the proofs of Propositions \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Most of the these properties are well-known in works such as \cite{KP16} and \cite{KMP22}. 
+	
+	Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
 
 	\subsection{Generalized P\'{o}lya  Urn}
-	Given a (recurrent) random walk $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ \edt{visit site $y$ for the $\left( k+1 \right) $-th time:}
+	Given a (recurrent) SIRW $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ visit site $y$ for the $\left( k+1 \right) $-th time:
 	\[
-		\lambda_{y,0} :=\inf\{ k\geq 0: X_k = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
+		\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
 	   \] 
-	
-	   \edt{which is consistent with the notation in point 3 of subsection 1.4. }
+	\edt{This is consistent with the notation in point 3 of subsection 1.4. }
 	   We define the \textit{generalized P\'olya urn process} at site $y$ as 
 	  \begin{equation} \label{eq: RW to GPU}
 	   \left(\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k} \right)_{k\ge 0}
 	   :=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} 
 	   =  \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0},
 	   \end{equation}
-	   which is a Markov process with an initial value $(0,0)$. \comment{We can use $k$ only in the context of $X_k$.} Intuitively, $\left(\mathcal{B}_{i}^{(k)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
+	   which is a Markov process with an initial value $(0,0)$. 
+	   %\comment{We can use $k$ only in the context of $X_k$.} 
+	   Intuitively, $\left(\mathcal{B}_{i}^{(y)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
 	\begin{remark}
 		\label{rem:symmetry}
-		By symmetry considerations, when $X_0 = 0$, $\mathcal{E}_{y, + }^{k} \overset{d}{=} \mathcal{E}_{-y, - }^{k}$ for all $k \ge 0$ and $y \in \mathbb{Z}$. Moreover, $\mathcal{E}_{y, +}^{(x, m)} \overset{d}{=} \mathcal{E}_{-y, -}^{(-x, m)}$ for all $x, y \in \mathbb{Z}$.
+		By symmetry considerations, when $X_0 = 0$, for all $y \in \mathbb{Z}$, the generalized P\'{o}lya urn processes at sites $y$ and $-y$ are symmetric
+		$$\left(\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k} \right)_{k\ge 0}
+		%= \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0} 
+		\overset{d}{=} 
+		%\left(\mathcal{E}^{(-y,k)}_{-y,+}, \mathcal{E}^{(-y,k)}_{-y,-}\right)_{k\geq 0} =
+		\left(\mathcal{R}^{(-y)}_{k},\mathcal{B}^{(-y)}_{k} \right)_{k\ge 0} $$
+		Moreover, for all $x, m \in \mathbb{Z}$, with $m\geq 0$
 \[
-		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0} \overset{d}{=} \left(\mathcal{E}^{(-x,m)}_{-x-k,-} \right)_{k\geq 0}
+		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0} \overset{d}{=} \left(\mathcal{E}^{(-x,m)}_{-x-k,-} \right)_{k\geq 0}.
 		\]
 	   \end{remark}
 
@@ -287,12 +297,12 @@
 	Therefore, we get three types of transition probabilities
 	for the generalized P\'{o}lya urn process depending on $y>0$, $y<0$ or $y=0$:
 	\begin{align*}\label{eq: transition prob for GPU}
-		\mathbb{P} \left(\left(\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y} \right)=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{b(i)}{b(i)+r(j)}, \mbox{ and}  \\
-		\mathbb{P} \left((\mathcal{B}_{k+1,y},\mathcal{R}_{k+1,y})=  (i+1,j) \vert (\mathcal{B}_{k,y},\mathcal{R}_{k,y}) =(i,j)  \right) &= \frac{r(j)}{b(i)+r(j)},
+		\mathbb{P} \left(\left(\mathcal{B}^{(y)}_{k+1},\mathcal{R}^{(y)}_{k+1} \right)=  (i+1,j) \vert (\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k}) =(i,j)  \right) &= \frac{b_y(i)}{b_y(i)+r_y(j)}, \mbox{ and}  \\
+		\mathbb{P} \left((\mathcal{B}^{(y)}_{k+1},\mathcal{R}^{(y)}_{k})=  (i+1,j) \vert (\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k}) =(i,j)  \right) &= \frac{r_y(j)}{b_y(i)+r_y(j)},
 	\end{align*} 
-	where the generalized weights $(b(k),r(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
+	where the generalized weights $(b_y(k),r_y(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
 	\begin{equation}\label{eq: generalized weights}
-		(b(k), r(k)) = \begin{cases}
+		(b_y(k), r_y(k)) = \begin{cases}
 			(w(2k+1), w(2k)) &,  \text{ if }  y>0 \\
 			(w(2k), w(2k+1)) &,  \text{ if }  y<0 \\  
 			(w(2k), w(2k)) &,  \text{ if }  y=0 \\ 
@@ -307,101 +317,53 @@
 	Also, for every integer $k\geq 0$, we denote by $\mathcal{F}^{\mathcal{B},\mathcal{R}}_k$ (or $\mathcal{F}^{\mathcal{B},\mathcal{R}}_{k,y}$) the sigma algebra generated by  
 	\[\mathcal{F}^{\mathcal{B},\mathcal{R}}_k = \sigma\left((\mathcal{B}_j,\mathcal{R}_j ): j\leq k \right).
 	\]  
-	
-	\TBD With the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_{k\geq 0}$ associated to the site $y$, we can study $\Delta_{y}^{(x,m)}$ and its approximation $\rho_{y}^{(x,m)}$ defined in \eqref{eq: accumulated local drift} and \eqref{eq: conditional mean}. For $y>x $, at time $\lambda_{x,m}$, the local time at site $y$ is $L(y,\lambda_{x,m})$, and the last jump from site $y$ is a left jump. Then for any integers $k\geq 1$ and $k' \geq 0$, the event 
-	$$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k, \mathcal{E}^{(x,m)}_{y,+} = k'\right\} = \left\{\mathcal{E}^{(x,m)}_{y,-} =k,  L(y,\lambda_{x,m}) = k+k' \right\} = \{ \tau^B_{k,y} = k+k' \},$$ on which the (random) quantity $\Delta_{y}^{(x,m)}$ equals
-
-
-	\[
-	\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^B_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right].  
-	\] 
-	Summing over the terms between two consecutive stopping times $\tau^{B}_{l,y} $ and $\tau^{B}_{l+1,y} $, for any $0\leq l \leq k -1$,  we get a sum depending only on $\tau^{B}_{l,y} $, $\tau^{B}_{l+1,y} $ and $l$, 
-	\begin{align} \label{eq: conditional increment}
-		 \sum_{j=\tau^{B}_{l,y}}^{\tau^B_{l+1,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} - \mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] =&
-		  \sum_{j=0}^{\tau^B_{l+1,y}-\tau^{B}_{l,y}-1} \frac{ r(\tau^{B}_{l,y}-l + j) - b(l)  }{ r(\tau^{B}_{l,y}-l + j) + b(l)  } 
-		  =:  D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right),
-	\end{align}   
-	where $(b(i),r(i))_{i\geq 0}$ are the general weights associated to $y$ from \eqref{eq: generalized weights}.
-	Therefore,  $\Delta_{y}^{(x,m)}$ is a sum of $\mathcal{E}^{(x,m)}_{y-1,+} $ increments which (jointly) depend only on $ \left(\tau^{B}_{l+1,y}: 0\leq l\leq   \mathcal{E}^{(x,m)}_{y-1,+}-1 \right) $
-			\begin{equation} \label{eq: cummulated drift at a site}
-				\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y-1,+} -1  } D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l \right).
-			\end{equation}			
-	From \eqref{eq: conditional increment}, $\abs{  D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right)} \leq  \tau^{B}_{l+1,y}-\tau^{B}_{l,y}$ is stochastically dominated by a geometric random variable with a mean independent of $l$ and $y$. 
-	Since the process $(\tau^B_{l,y})_{l\geq 0}$ is Markov, and  $ (\mathcal{E}^{(x,m)}_{y})_{ y \geq x} $ is also Markov from the following subsection \TBD, we get that, on the event that $ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} \equiv \mathcal{E}^{(x,m)}_{y,-}  = k \right\}$,
-	\[
-		  \rho_{y}^{(x,m)} := 
-		  \mathbb{E}\left[\Delta_{y}^{(x,m)} \vert \mathcal{G}_{y-1}^{(x,m)} \right] 
-		= \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]. 
-	\]
-	As $\left(\tau^B_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $,  $\left(D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right))\right)_{l\geq 0}$ is also independent of $ \mathcal{E}^{(x,m)}_{y-1,+} $. Then, from \eqref{eq: conditional increment} again, on the event $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k  \right \}$
-	\begin{equation} \label{eq: conditional mean in GPU represenetation}
-		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
-		= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right].
-	\end{equation} 
-	\comment{This needs to be more motivated at the start of the section}
-	 Expressions like \eqref{eq: cummulated drift at a site} and \eqref{eq: conditional mean in GPU represenetation} help us simplify the analysis of $\Delta_{y}^{(x,m)}$ and $\rho_{y}^{(x,m)}$, as will be shown section \ref{sec: approximations}. To analyze events like $ L(y,\lambda_{x,m}) = k+k'$ and $\mathcal{E}^{(x,m)}_{y-1,+} = k $, the branching-like processes play a key role.
-		
 		
 		\subsection{Branching-Like Processes}
 		Having understood the behavior of the walk at a fixed site in terms of the urn processes, we now want to characterize how urn processes at different sites are related. Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process in time, the branching-like processes is a Markov process in space, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time.
 		More precisely, for any integers $x,m$ with $m\geq 0$, the local times at the stopping time $\lambda_{x,m}$, 
 		\[
-		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad = \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
+		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
 		\]
-		are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}.
+		are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}, summarized in \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} below. The derivation is known in several earlier works, such as \cite{T96, KP16, KMP22}. We state some facts in their derivation, which is also used in the next subsection.
 		
-		
-		To derive the transition probabilities, we first use Remark~\ref{rem:symmetry} and assume $x \ge 0$. We define the \textit{branching-like processes} to be
+		Due to Remark~\ref{rem:symmetry}, its natural to assume $x \ge 0$. We define the \textit{branching-like processes} to be
 		\[
 			\tilde{\zeta} := \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad
 			\zeta := \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
 			.\]
-			We start with $\tilde{\zeta}$ which has transition probabilities homogeneous in k, while $\zeta$ has inhomo
-			geneous ones. Although the generalized P\'{o}lya urn processes at different sites are not independent, the sequences $(\tau^B_{k,y})_{k\geq 0} $ are independent in $y \geq x$. As each sequence $\left(\tau^B_{k,y}\right)_{k\geq 0} $ is Markov in $k$,  the collection of stopping times  
+		In particular, $\tilde{\zeta}$ is a homogeneous Markov chain, while $\zeta$ is inhomogeneous. We have the followings for 	$\tilde{\zeta}$:
+		\begin{enumerate}
+			\item Although the generalized P\'{o}lya urn processes at different sites are not independent, the sequences $(\tau^B_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^B_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times  
 			\begin{equation}\label{eq: markov 1} 
 				\left\{\tau^B_{k,y}: y\geq x, k\geq 0 \right\} \mbox{are Markov in $(y,k)$}
 			\end{equation}
 			under the lexicographical order (which is a total order on any subset of $\mathbb{Z}^2$): 
-			\begin{equation}\label{eq: lexicographical order}
+			\begin{equation*}\label{eq: lexicographical order}
 				(y,k) \preceq (y',k')  \mbox{ if and only if  }
 				k \leq k'   \mbox{ when $y' = y$,  or }   
 				y <y'. 
+			\end{equation*} 
+			
+			\item For any $y\geq x$, we only need $\tau_{k,y+1}$ for $k\leq \mathcal{E}_{y+1,-}$ to obtain $\mathcal{E}_{y+1,+}$,
+			\begin{equation} \label{eq: recursive formula for upcrossings}
+				\mathcal{E}_{y+1,+}^{(x,m)}	=  \sum_{k= 0 }^{\mathcal{E}_{y+1,-}^{(x,m)}-1}	\left(\tau^B_{k+1,y+1}-\tau^B_{k,y+1}-1 \right) = \tau^B_{ L,y } - L = \mathcal{R}_{\tau^B_{ L,y+1 }},
+			\end{equation}
+			where $L = \mathcal{E}_{y+1,-}^{(x,m)}$.
+			
+			\item The directed edge local times at two consecutive sites satisfies:
+			\begin{equation}\label{eq: source of inhomogeneity}
+				\mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }
+			\end{equation}
+			
+			\item  From \eqref{eq: markov 1}, and \eqref{eq: recursive formula for upcrossings}, the transition probabilities for $\tilde{\zeta}$ are 
+			\begin{equation}\label{eq: transition prob on positive}
+				\mathbb{P}\left(\tilde{\zeta}_{k+1}=j \vert \tilde{\zeta}_k =i  \right) = 
+				\mathbb{P}\left( \mathcal{R}_{\tau_{i,1}^B} = j \right), \mbox{for any $i,j\geq 0$, } 
 			\end{equation} 
-			Moreover, at time $\lambda_{x,m}$, for any site $y\geq x$, we only need the indices 
-			$$
-			k\leq \mathcal{E}_{y,-},
-			$$
-			and $\mathcal{E}_{y+1,-}$ can be obtained recursively from $\mathcal{E}_{y,-}$ and $(\tau^B_{k,y})_{k}$. Since the last jump from site $y+1$ is a left jump and it is the $\mathcal{E}_{y+1,-}^{(x,m)}=\mathcal{E}_{y,+}^{(x,m)}$ -th left jump, the number of right jumps from site $y+1$ is exactly
-		\begin{equation} \label{eq: recursive formula for upcrossings}
-			\mathcal{E}_{y+1,+}^{(x,m)}	=  \sum_{k= 0 }^{\mathcal{E}_{y+1,-}^{(x,m)}-1}	\left(\tau^B_{k+1,y}-\tau^B_{k,y}-1 \right) = \tau^B_{ L,y } - L = \mathcal{R}_{\tau^B_{ L,y }},
-		\end{equation}  
-	   where $L = \mathcal{E}_{y+1,-}^{(x,m)}=\mathcal{E}_{y,+}^{(x,m)} $. With \eqref{eq: markov 1}, and \eqref{eq: recursive formula for upcrossings}, we conclude that $\tilde{\zeta} = \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}$ is a homogeneous Markov chain when $x\geq 0$, and its the transition probabilities are 
-	   	\begin{equation}\label{eq: transition prob on positive}
-	   	\mathbb{P}\left(\tilde{\zeta}_{k+1}=j \vert \tilde{\zeta}_k =i  \right) = 
-	   	\mathbb{P}\left( \mathcal{R}_{\tau_{i,1}^B} = j \right), \mbox{for any $i,j\geq 0$, } 
-	   \end{equation} 
-   		where the generalized weights corresponds to the case when $y>0$.
-   		For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$ follows a similar arguments. We get similar statements as \eqref{eq: markov 1} and \eqref{eq: recursive formula for upcrossings}:
-   		\begin{enumerate}
-   			\item 
-   			at time $\lambda_{x,m}$, for any $y\leq x$, the last jump from site $y-1$ is a right jump, and it is the 
-   			\begin{equation}\label{eq: source of inhomogeneity}
-   				\mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }
-   			\end{equation}
-   			-th right jump; 
-   			\item 
-   			the collection of stopping times
-   			\begin{equation}\label{eq: markov 2} 
-   				\left\{\tau^R_{k,x-y}: y\geq x, k\geq 0 \right\} \mbox{is Markov in $(y,k)$}
-   			\end{equation} with respect to the lexicographical order \eqref{eq: lexicographical order}; 
-   			\item 
-   			for $y\leq x$, the number of left jumps from site $y-1$  at time $\lambda_{x,m}$ is
-   		\begin{equation} \label{eq: recursive formula for downcrossings}
-   			\mathcal{E}_{y-1,-}^{(x,m)} 	=  \sum_{k= 0 }^{\mathcal{E}_{y-1,+}^{(x,m)}-1}	\left(\tau^R_{k+1,y}-\tau^R_{k,y}-1 \right) = \tau^R_{ L,y } - L = \mathcal{B}_{\tau^R_{ L,y }},
-   		\end{equation}  where $L= \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{\{ 1\leq y \leq x \}} $ 
-   		for the generalized Polya urns at site $y-1$.
-   		\end{enumerate}	
-   	 Therefore, $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$ is an inhomogeneous Markov chain, with the transitional probabilities  depending on the sign of $x-k$: for $i,j\geq 0$
+			where the generalized weights corresponds to the case when $y>0$.
+		\end{enumerate}
+		  
+	   For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar statement by reversing the roles of $+$ and $-$, as well as $\mathcal{B}$ and $\mathcal{R}$. $\zeta$ is inhomogeneous because of \eqref{eq: source of inhomogeneity}, and we have the transition probabilities depending on the sign of $x-k$: for $i,j\geq 0$
 	   \begin{equation}\label{eq: transition prob on negative}
 		   	\mathbb{P}\left(\zeta_{k+1}=j \vert \zeta_k =i  \right) = 
 		   \begin{cases}
@@ -414,27 +376,66 @@
 		\end{equation}
  where the generalized weights correspond to the case when $y>0$, $y=0$ and $y<0$ from \eqref{eq: generalized weights}.
 
-It's convenient to consider two types of filtrations for both $\tilde{\zeta}$ and $\zeta$. The natural filtrations of $\tilde{\zeta}$ and $\zeta$ are of the first type. They are defined via $\mathcal{G}_{y, +}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, +}: x \le z \le y\right) $ for $y \ge x$ and $\mathcal{G}_{y, -}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, -}: y \le z \le x\right) $ for $y \le x$.
-The second type of filtration is built from independent Markov processes $\left(\tau_{k, z}^{B}\right)_{k\geq 0}$ and random times $ \mathcal{E}^{(x,m)}_{z, -}$:
-\edt{
+\subsection{Filtrations of BLPs, and Approximation of Accumulated Drifts}\label{subsec: measurability}
+
+As we want to study $\Delta^{(x,m)}_{y}$ and $\rho^{(x,m)}_{y}$ in terms of the BLPs $\tilde{\zeta}$ and $\zeta$, it's convenient to consider two types of filtrations for both $\tilde{\zeta}$ and $\zeta$. The natural filtrations of $\tilde{\zeta}$ and $\zeta$ are of the first type. They are defined via 
+$$\mathcal{G}_{y, +}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, +}: x \le z \le y\right) $$ for $y \ge x$ and $$\mathcal{G}_{y, -}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, -}: y \le z \le x\right) $$ for $y \le x$.
+In view of the \eqref{eq: markov 1} and \eqref{eq: recursive formula for upcrossings},
+the second type of filtration contains additional information of all arrival times $\tau^B_{k,y}$ for all $k\leq \mathcal{E}^{(x,m)}_{y, -}$ and $\mathcal{E}^{(x,m)}_{y, -}$,
 \[
 	\mathcal{H}_{y, +}^{(x,m)} = \sigma\left( \mathcal{E}_{z, -}^{(x,m)}, \tau_{k, z}^{B}\cdot \mathbb{1}_{\{ k\leq \mathcal{E}_{z, -}^{(x,m)} \}} : x \leq  z \leq y,  k \geq 0 \right) 
-.\] 
-} 
+\]
 for $y\geq x$, and $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly for $y\leq x$.
-In particular, $\mathcal{E}_{y+1, -}^{(x,m)} = \mathcal{E}_{y, +}^{(x,m)}$ is  $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $y\geq x$ by \eqref{eq: recursive formula for upcrossings}, and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$ by \eqref{eq: source of inhomogeneity} and \eqref{eq: recursive formula for upcrossings}. Therefore, we get a finer filtration than the first type.
- We drop the $+, -$ signs when there is no ambiguity. Now, observe that 
-\begin{enumerate}
-	\item 
-$\mathcal{G}_y^{(x,m)} \subset \mathcal{H}_y^{(x,m)}.$ 
-	\item $\Delta_y^{(x,m)} \in \mathcal{H}_y^{(x,m)}$ but $\not\in \mathcal{G}_y^{(x,m)}$
-	\item $\rho_y^{(x,m)} \in \mathcal{G}_y^{(x,m)}$.
-\end{enumerate}
+In particular, $\mathcal{H}_{y, +}^{(x,m)}$ is finer than $\mathcal{G}_{y, +}^{(x,m)}$ because $\mathcal{E}_{y+1, -}^{(x,m)} = \mathcal{E}_{y, +}^{(x,m)}$ is  $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $y\geq x$ by \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity} , and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$. 
+
+The following lemma discusses whether $\Delta^{(x,m)}_{y}$ and $\rho^{(x,m)}_y$ are measurable with respect to $\mathcal{G}_{y, +}^{(x,m)}$ and $\mathcal{H}_{y, -}^{(x,m)}$.  $\mathcal{H}_{y, -}^{(x,m)}$ has an identity similar to \eqref{eq: recursive formula for upcrossings} for the BLP $\zeta$, and is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{H}_{y, +}^{(x,m)}$- measurable. The argument is standard. \TBD \edt{The argument works for $x\geq 0$ but the identity should be modified slightly for $\Delta$, due to \eqref{eq: source of inhomogeneity}}
+\begin{lemma}\label{lm: identities for Del, rho} 
+	For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }$  and $ \tau_{k,y}$ for $k\leq \mathcal{E}^{(x,m)}_{y,-} $,
+	\begin{equation} \label{eq: cummulated drift at a site}
+		\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y,-} -1  } D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l \right),
+	\end{equation}	
+for some function $D(A,B,l)$ depending only on the sign of $y$.
+Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1}_{\{1\leq y\leq x\}}  \right\}$
+\begin{equation} \label{eq: conditional mean in GPU represenetation}
+	\rho_{y}^{(x,m)} = \mathbb{E}\left[ \Delta_{y}^{(x,m)}\vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	  
+	= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right].
+\end{equation} 
+\end{lemma}  
+ \begin{proof} 
+ 	The first identity is similar to \eqref{eq: recursive formula for upcrossings}.
+ 	 For any $y>x $, at time $\lambda_{x,m}$, the last jump from site $y$ is a left jump. Since \eqref{eq: source of inhomogeneity}, we have for any integers $k\geq 0$ and $k' \geq 0$, the event 
+ 	$$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k +  \mathbb{1}_{\{1\leq y\leq x\}}, \mathcal{E}^{(x,m)}_{y,+} = k'\right\} = \left\{\mathcal{E}^{(x,m)}_{y,-} =k,  L(y,\lambda_{x,m}) = k+k' \right\} = \{ \tau^B_{k,y} = k+k' \},$$ on which the (random) quantity $\Delta_{y}^{(x,m)}$ equals
+ 	\[
+ 	\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^B_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right].  
+ 	\] 
+ 	Summing over the terms between two consecutive stopping times $\tau^{B}_{l,y} $ and $\tau^{B}_{l+1,y} $, for any $0\leq l \leq k -1$,  we get a sum depending only on $\tau^{B}_{l,y} $, $\tau^{B}_{l+1,y} $ and $l$, 
+ 	\begin{align} \label{eq: conditional increment}
+ 		\sum_{j=\tau^{B}_{l,y}}^{\tau^B_{l+1,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} - \mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] =&
+ 		\sum_{j=0}^{\tau^B_{l+1,y}-\tau^{B}_{l,y}-1} \frac{ r(\tau^{B}_{l,y}-l + j) - b(l)  }{ r(\tau^{B}_{l,y}-l + j) + b(l)  } 
+ 		=:  D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right),
+ 	\end{align}   
+ 	where $(b(i),r(i))_{i\geq 0}$ are the general weights associated to $y$ from \eqref{eq: generalized weights}. Therefore, \eqref{eq: cummulated drift at a site} follows.
+ 	
+ 	On the other hand, by \eqref{eq: conditional increment}, $\abs{  D\left(\tau^{B}_{l,y},\tau^{B}_{l+1,y},l\right)} \leq  \tau^{B}_{l+1,y}-\tau^{B}_{l,y}$ is stochastically dominated by a geometric random variable with a mean uniform in $l, y$. In view of \eqref{eq: markov 1} and \eqref{eq: source of inhomogeneity},  $\left(\tau^B_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+}$, and we get that on the event that ${ \left\{ \mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\{1\leq y\leq x\}}  \right\} }$, 
+ 	\begin{equation*} 
+ 		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{B}_{l,y},\tau^{B}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{B}_{l+1,y}} -\mathcal{D}_{\tau^{B}_{l,y}} \right]  
+ 		= \mathbb{E}\left[  \mathcal{D}_{\tau^{B}_{k,y}} \right].
+ 	\end{equation*} 
+ \end{proof}
+
+% We drop the $+, -$ signs when there is no ambiguity. Now, observe that 
+%\begin{enumerate}
+%	\item 
+%	$\mathcal{G}_y^{(x,m)} \subset \mathcal{H}_y^{(x,m)}.$ 
+%	\item $\Delta_y^{(x,m)} \in \mathcal{H}_y^{(x,m)}$ but $\not\in \mathcal{G}_y^{(x,m)}$
+%	\item $\rho_y^{(x,m)} \in \mathcal{G}_y^{(x,m)}$.
+%\end{enumerate}	
+	
 		
 		The construction of branching-like processes enables us to study the local times profiles at a generic local $\lambda(x,m)$, from the Markov processes $\zeta$ and $\bar{\zeta}$. An advantage is that a typical event (\TBD{see equations to be defined in section \ref{sec: approximations}}) on a collection of spatial points will be also a typical event on a 'typical' single site. Then expressions like \eqref{eq: conditional mean in GPU represenetation} reduces the problem to a problem involving generalized P\'{o}lya urn process associated to a single site. The difficulty is then transferred to constructing typical events that can be estimated. For example, Lemma \ref{lm: number of rarely visit sites} below describes a typical event, and it reduces the proof of proposition \ref{lm: approximation of means of local drift} to \eqref{eq: convergence of conditional expectation} below. In the following subsection, we recall some properties of generalized P\'{o}lya urn process and branching-like processes.
 		
 		\subsection{Preliminary Results}
-		To facilitate our arguments in section \ref{sec: approximations}, we list four results from \cite{KMP22,T96}, whose proofs \textcolor{red}{we omit at this moment.}
+		To facilitate our arguments in section \ref{sec: approximations}, we list some results from \cite{KMP22,T96}, whose proofs \textcolor{red}{we omit at this moment.}
 		
 		The first result is a concentration inequality for $\mathcal{D}_i$ in a generalized P\'{o}lya urn process. This lemma is a major tool in estimating the probabilities of good events.
 		\begin{lemma}(Lemma 4.1 \cite{KMP22})\label{lm: concentration inequality}
