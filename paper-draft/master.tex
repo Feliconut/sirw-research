@@ -7,6 +7,7 @@
 % % Modified  2023_09_020
 % % Lastest Edition, 2023_09_20
 % % Description of changes:
+% % (0) Minor updates
 % % (1) Major updates on Section 4.1. 
 % %	(2) Slight modifications on section 3   
 % % 
@@ -27,7 +28,7 @@
 	\and
 	Zhe Wang}
 
-\date{Oct 10th, 2023}
+\date{Oct 17th, 2023}
 
 
 % This is the definition of the type of document
@@ -106,6 +107,7 @@
 	\begin{equation}\label{eq: asymptotics of w}
 		\frac{1}{w(n)} = 1+\frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right), \quad \mbox{as $n\to \infty$}, 	
 	\end{equation} 
+	for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$.
 	The SIRW $(X_i)_{i\geq 0}$ has following dynamics, 
 	$X_0 = 0$, and for any $n\geq 0$
 	\begin{equation}\label{dynamic}
@@ -132,17 +134,17 @@
 	\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 	$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
 	
-	Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2})$.
+	Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2}]$.
 	\begin{theorem}\label{thm: main}
 		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_n)_{n\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
 		$$
 		\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 		$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
 	\end{theorem}
-	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP22}, which relies on martingale methods, analysis of branching-like processes, and generalized Ray-Knight Theorems. This approach is classical in random walk in random environments \TBD, and it has also been used previously in other self-interacting random walk in dimension one, such as \TBD. The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when certain edge local time is large. \TBD These good events are closely related to the generalized P\'{o}lya  urn processes associated to sites, and we estimtate their probabilities by studying branching-like processes, which are derived from the original SIRW $(X_n)_{n\geq 0}$ via the generalized Ray-Knight Theorem. At this point, we also point out that the approximation of accumulated local drifts $\Delta_y^{(x,m)}$ is different from those in \cite{KMP22} since in the case when $p\in(\frac{1}{2},1]$, the conditional mean $\rho_{y}^{(x,m)}$ converges absolutely, which does not hold in the case when $p\leq \frac{1}{2}$. We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
+	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP22}, which relies on martingale methods, analysis of branching-like processes, and generalized Ray-Knight Theorems. This approach is classical in random walk in random environments \TBD, and it has also been used previously in other self-interacting random walk in dimension one, such as \TBD. The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when certain edge local times are large. \TBD These good events are closely related to the generalized P\'{o}lya  urn processes associated to sites, and we estimtate their probabilities by studying branching-like processes, which are derived from the original SIRW $(X_n)_{n\geq 0}$ via the generalized Ray-Knight Theorem. At this point, we also point out that the approximation of accumulated local drifts $\Delta_y^{(x,m)}$ is different from those in \cite{KMP22} since in the case when $p\in(\frac{1}{2},1]$, the conditional mean $\rho_{y}^{(x,m)}$ converges absolutely, which does not hold in the case when $p\leq \frac{1}{2}$. We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
 	
 	\subsection{Organization of Paper}
-	In section \ref{sec: proof of main}, we prove Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_n)$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
+	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_n)_{n\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
 	
 	\subsection{Notation}
 	We end this section by introducing some notations related to SIRW $(X_n)_{n\geq 0}$. To avoid confusion, the notations related to generalized P\'{o}lya urn, and branching-like processes are in section \ref{sec: generalized Polya Urn, BLP}.
@@ -169,7 +171,9 @@
 	\end{enumerate}
 	
 	\section{Outline for the Proof of Theorem \ref{thm: main}}\label{sec: proof of main}
-	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. We will divide the proof in four main steps. We first decompose the random walk into
+	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. 
+	Similar strategies are also available in other exited random walk models, such as \cite{KP16,KMP22}.
+	 We divide the proof into four main steps. We first decompose the random walk into
 	$$X_n = M_n+ \Gamma_n, $$ where
 	$$ 
 	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X \right].
@@ -181,7 +185,8 @@
 		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1,  \mbox{ in probability}.
 	\end{equation}
 	Since $\abs{X_{n+1}-X_n}=1$,  \eqref{eq: QV term} is implied by the estimate
-	\begin{proposition} \label{lm: control of martingale} Let $p\in (0,\frac{1}{2}]$. Then, for any $\epsilon >0$
+	\begin{proposition} \label{lm: control of martingale} 
+		Let $p\in (0,\frac{1}{2}]$. Then, for any $\epsilon >0$
 		\begin{equation}\label{eq:  term}
 			\lim_{n \to \infty }\mathbb{P}\left(\frac{1}{n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 > \epsilon \right) =0. 
 		\end{equation}
@@ -202,12 +207,11 @@
 		\Gamma_k^- &= \sum_{y < X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
 		.\end{align*} 
 	 We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD).
-	 \edt{
 	 Then,  we consider the stopping time $\lambda_{x,m}$, for any integers $x ,m  \in \mathbb{Z}$ with $m \geq 0$. The event that 
 	 $$\{ \lambda_{x,m} =k \} = \{ X_k = x, L(x,k) =m +1  \}.  $$ 
-	In view of \eqref{eq: accumulated local drift},  $\Gamma_k^+$ is the sum} 
+	In view of \eqref{eq: accumulated local drift},  $\Gamma_k^+$ is the sum
 	\begin{equation}
-	\Gamma_k^+ = \sum_{y>x} \Delta_y^{(x,m)}, \mbox{\edt{\quad on the event that $\{ \lambda_{x,m}=k  \}$}},
+	\Gamma_k^+ = \sum_{y>x} \Delta_y^{(x,m)}, \mbox{\quad on the event that $\{ \lambda_{x,m}=k  \}$},
 	\end{equation} 
 	which has $(S_k - X_k)$ terms. If we can further approximate terms $\Delta_y^{(x,m)}$ by $\gamma\cdot sgn(y)$ without generating a total error of size $\epsilon \sqrt{n}$, $\Gamma_k^+$ is approximately 
 	$$   
@@ -236,11 +240,11 @@
 		\end{equation}
 	\end{proposition}
 
-	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
+%	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
 
-	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_n)_{n\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_n)_{n\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
+	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_n)_{n\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_n)_{n\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like those in Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
 	
-	\TBD With some slight efforts, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, and obtain the full Proposition \ref{lm: control of acc drift}.
+	\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Proposition \ref{lm: control of acc drift}.
 	
 	
 	\textbf{Step 3: Tightness.} \TBD This follows from (\cite{KMP22}, Proposition~2.1).
@@ -442,7 +446,7 @@ Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1
 			P\left(  \abs{ \mathcal{D}_{\tau_k^B}   } \geq m \right) \leq C e^{\frac{-cm^2}{m \vee k}}.
 			$$
 		\end{lemma} 
-		Lemma \ref{lm: concentration inequality} remains valid for the generalized P\'{o}lya urn process $(\mathcal{B}_{k},\mathcal{R}_{k})_k$ associated to sites $y<0$ and $y=0$. For these two cases, the sequence of weights $(r(i),b(i))$ are slightly different, see \eqref{eq: generalized weights}. When $y<0$, $r(i) = w(2i+1)$, $b(i)= w(2i) $; when $y=0$, $r(i) = b(i)=w(2i)$.
+		Lemma \ref{lm: concentration inequality} remains valid for the generalized P\'{o}lya urn process $(\mathcal{B}_{k},\mathcal{R}_{k})_k$ associated to sites $y<0$ and $y=0$. For these two cases, the sequence of weights $(r(i),b(i))$ are slightly different due to \eqref{eq: generalized weights}. When $y<0$, $r(i) = w(2i+1)$, $b(i)= w(2i) $; when $y=0$, $r(i) = b(i)=w(2i)$.
 		
 		The second result is an identity for a generalized P\'{o}lya urn process $(\mathcal{B}_{k},\mathcal{R}_{k})_k$. For any $k\geq 0$ denote by $\mu(k)= \tau^B_k - k$ the number of red balls extracted before the $k$-th blue ball. 
 		\begin{lemma}(Lemma 1, \cite{T96}) \label{lm: Toth's Identity}
@@ -478,11 +482,13 @@ Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1
 		
 		
 		\section{Approximations of Local Drifts}\label{sec: approximations}
-		In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}. \TBD
+		In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}.\edt{ We first prove Propositions \ref{lm: approx local drift by conditional means}, \ref{lm: approximation of means of local drift}, and therefore Proposition \ref{lm: control of acc drift}; then we prove \ref{lm: control of martingale}}. \TBD
 		
 		
 		\subsection{Convergence of conditional Expectation}
-		In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), (\comment{maybe $ y>x>0 $ currently only one side is dealt}) on the event that \edt{$ L = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x}\}$}, we have \eqref{eq: conditional mean in GPU represenetation} 
+		In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
+%		(\comment{maybe $ y>x>0 $ currently only one side is dealt}) 
+		on the event that \edt{$ L = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$}, we have \eqref{eq: conditional mean in GPU represenetation} 
 		$$\rho^{(x,m)}_y = E[\mathcal{D}_{\tau_L^B}].$$ 
 		On one hand, $M_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on the other hand, Lemma \ref{lm: number of rarely visit sites} says that, up to $n^b$ sites, (where $\frac{\gamma \vee 0}{2}<b<\frac{1}{2}$,) every site $y$ between $X_k=x$ and $\mathcal{M}^{(x,m)} =S_{k}^X$ has $ \mathcal{E}^{(x,m)}_{y-1,+} \geq M  $ with a high probability. To show Proposition \ref{lm: approximation of means of local drift}, it suffices to show 
 		\begin{equation}\label{eq: convergence of conditional expectation}
@@ -570,7 +576,7 @@ Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1
 		\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_{m,-1}} \right] = \lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^R_{m,1}} \right] = -\gamma.
 		\end{equation}
 		Similarly, for $y=0$, the associated generalized P\'{o}lya urn process has 
-		$$\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] = 0.$$
+		$\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] = 0.$
 		
 %		\TBD \textcolor{red}{We will need to define $\rho$ for downcrossings.} 
 %		We extend the definition of $\rho^{(x,m)}_y$ for sites $y< x$ by symmetry in Remark \ref{rem:symmetry}. 
