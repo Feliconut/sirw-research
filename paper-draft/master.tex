@@ -4,16 +4,17 @@
 % % your document, to wit:
 % %
 % % first draft, 2023_08_03
-% % Modified  2023_09_020
-% % Lastest Edition, 2023_09_20
+% % Modified  2023_10_27
+% % Lastest Edition, 2023_10_27
 % % Description of changes:
-% % (0) Minor updates
-% % (1) Major updates on Section 4.1. 
-% %	(2) Slight modifications on section 3   
+% % (1) Updates according to Tom's comments 
+% % (2) Minor updates for the proofs in section 4
 % % 
 % % Changes to be made:  
-% % (1) Motivations for 2.2 for 2.2; 
-% % (2) rework of descriptions after proposition 2.2, especially a focus on lambda_{x,m} instead of time k: 
+% % (0) pages 
+% % (1) Introduction, and major motivations
+% % (2) Motivations for 2.2 for 2.2; 
+% % (3) rework of descriptions after proposition 2.2, especially a focus on lambda_{x,m} instead of time k: 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -28,7 +29,7 @@
 	\and
 	Zhe Wang}
 
-\date{Oct 17th, 2023}
+\date{Oct 26th, 2023}
 
 
 % This is the definition of the type of document
@@ -101,14 +102,14 @@
 	\TBD 
 	
 	\subsection{Model Description} 
-	We consider a discrete time nearest neighbor self-interaction random walk $(X_i)_{i\geq 0}$ on $\mathbb{Z}$ starting from site $x=0$ with transition probabilities depending on its edge local times and a (deterministic) weight function $w$ on $\mathbb{N}\cup \{0\}$. More precisely, let $w(.)$ be a monotone positive function on $\mathbb{N}_0$ satisfying
+	We consider a discrete time nearest neighbor self-interaction random walk $(X_i)_{i\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP22}. More precisely, let $w(.)$ be a monotone positive function on $\mathbb{N}_0$ satisfying
 	
 	
 	\begin{equation}\label{eq: asymptotics of w}
-		\frac{1}{w(n)} = 1+\frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right), \quad \mbox{as $n\to \infty$}, 	
+		\frac{1}{w(n)} = 1 + \frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right), \quad \mbox{as $n\to \infty$}, 	
 	\end{equation} 
 	for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$.
-	The SIRW $(X_i)_{i\geq 0}$ has following dynamics, 
+	The SIRW $(X_i)_{i\geq 0}$ has the following dynamics, 
 	$X_0 = 0$, and for any $n\geq 0$
 	\begin{equation}\label{dynamic}
 		\mathbb{P}\left( X_{n+1} =  X_n +1 | X_0,X_1,\dots,X_n   \right) =  \frac{  w(r(X_i,i) )}{ w(l(X_i,i))  + w(r(X_i,i))   },
@@ -120,7 +121,8 @@
 	
 	\subsection{Main Result}
 	\begin{definition}
-		Let $\theta_+, \theta_- <1$. A BMPE $W^{\theta_+, \theta_-} = \left(W^{\theta_+, \theta_-}_t, t\geq 0\right)$ with parameter  $(\theta_+, \theta_-)$ is the pathwise unique solution of the equation
+		Let $\theta_+, \theta_- <1$. A Brownian motions perturbed at
+		extrema (BMPE) $W^{\theta_+, \theta_-} = \left(W^{\theta_+, \theta_-}_t, t\geq 0\right)$ with parameter  $(\theta_+, \theta_-)$ is the pathwise unique solution of the equation
 		$$
 		W_t = B_t + \theta_+ \cdot \sup_{s\leq t} W_s  + \theta_- \cdot \inf_{s\leq t} W_s,   \quad W_0 = 0.
 		$$
@@ -153,14 +155,16 @@
 	\begin{enumerate}
 		\item for any $x \in \mathbb{Z}$, and $j\in \mathbb{N}_0$, the local time of a site $x$ by time $j$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\} }$; % the definition for local time in \cite{KMP22} and \cite{KP16} are different by at most 1. The main difference comes from whether to count the last step $X_n$. For the former case, $L(x,\lambda_{x,m}) = m+1$, while $L(x,\lambda_{x,m}) =m$ for the latter case.  
 		
-		\item the local time of directed bond $(x,x+1)$ by time $j\in \mathbb{N}_0$,
-		$ \mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1 \} } $; the local time of directed bond $(x,x-1)$ by time $j$ is $ \mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $
+		\item the local time of the directed bond $(x,x+1)$ by time $j\in \mathbb{N}_0$,
+		$$ \mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1 \} } ,$$
+		and the local time of the directed bond $(x,x-1)$ by time $j$ is 
+		$$ \mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $$
 		
 		
 		\item for any $m\geq 0$, the \edt{$m+1$}-th visit time to site $x$, $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = \edt{m+1} \}$;
 			\comment{A possible notation scheme: $L_y^k$ for site local time; $\overleftarrow{L}_y^k = L_{y, -}^k$ for directed edge local time $y \to y-1$; $\overrightarrow{L}_y^k = L_{y, +}^k$ for directed edge local time  $y \to y+1$; $L_{\{y, y+1\}}^k $ for undirected edge local times.}
 		
-		\item the running maximum of the process at time $n$, $M_n= \sup\{y: L(y,n)\geq 1 \} $; the minimum of the process at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
+		\item the running maximum of $(X_n)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
 		
 		\item 
 %		the accumulated local drifts at site $x$ by $m$-th visit, $$\delta_{x,m}:= \sum_{i=0}^\infty E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=x, L(x,i)\leq m\}};$$ 
@@ -265,12 +269,12 @@
 	Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
 
 	\subsection{Generalized P\'{o}lya  Urn}
-	Given a (recurrent) SIRW $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ visit site $y$ for the $\left( k+1 \right) $-th time:
+	Given a (recurrent) SIRW $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ visit site $y$ for the $\left( k+1 \right) $-th time:
 	\[
 		\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
 	   \] 
-	\edt{This is consistent with the notation in point 3 of subsection 1.4. }
-	   We define the \textit{generalized P\'olya urn process} at site $y$ as 
+%	\edt{This is consistent with the notation in point 3 of subsection 1.4. }
+	   Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
 	  \begin{equation} \label{eq: RW to GPU}
 	   \left(\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k} \right)_{k\ge 0}
 	   :=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} 
@@ -278,7 +282,7 @@
 	   \end{equation}
 	   which is a Markov process with an initial value $(0,0)$. 
 	   %\comment{We can use $k$ only in the context of $X_k$.} 
-	   Intuitively, $\left(\mathcal{B}_{i}^{(y)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason that we define $\lambda_{y, 0}$ to be the first time the walk reaches $y$ : this is right before the first draw be made from the urn. 
+	   1$\left(\mathcal{B}_{i}^{(y)},\mathcal{R}_{i}^{(y)} \right)$ is the state of a (generalized) P\'olya urn, after the $i$-th draw made from the urn. This is the reason why we define $\lambda_{y, 0}$ as the first time the walk reaches $y$ : this is right before the first draw is made from the urn. 
 	\begin{remark}
 		\label{rem:symmetry}
 		By symmetry considerations, when $X_0 = 0$, for all $y \in \mathbb{Z}$, the generalized P\'{o}lya urn processes at sites $y$ and $-y$ are symmetric
@@ -333,7 +337,7 @@
 		\[
 		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
 		\]
-		are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}, summarized in \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} below. The derivation is known in several earlier works, such as \cite{T96, KP16, KMP22}. We state some facts in the derivation of \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} , which is also used in the next subsection.
+		are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}, summarized in \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} below. The derivation is known in several earlier works, such as \cite{T96, KP16}. We state some facts in the derivation of \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} , which is also used in the next subsection.
 		
 		Due to Remark~\ref{rem:symmetry}, its natural to assume $x \ge 0$. We define the \textit{branching-like processes} to be
 		\[
@@ -342,7 +346,7 @@
 			.\]
 		In particular, $\tilde{\zeta}$ is a homogeneous Markov chain, while $\zeta$ is inhomogeneous. We have the followings for 	$\tilde{\zeta}$:
 		\begin{enumerate}
-			\item Although the generalized P\'{o}lya urn processes at different sites are not independent, the sequences $(\tau^B_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^B_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times  
+			\item Although the generalized P\'{o}lya urn processes at different sites are not independent at stopping times $\lambda_{x,m}$, the sequences $(\tau^B_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^B_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times  
 			\begin{equation}\label{eq: markov 1} 
 				\left\{\tau^B_{k,y}: y\geq x, k\geq 0 \right\} \mbox{are Markov in $(y,k)$}
 			\end{equation}
@@ -397,7 +401,7 @@ the second type of filtration contains additional information of all arrival tim
 for $y\geq x$, and $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly for $y\leq x$.
 In particular, $\mathcal{H}_{y, +}^{(x,m)}$ is finer than $\mathcal{G}_{y, +}^{(x,m)}$ because $\mathcal{E}_{z, +}^{(x,m)}$ is  $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $z$ in $[x,y]$ by \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity}, and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$. 
 
-The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{H}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. The argument is standard, \TBD \edt{and works for any $x\in \mathbb{Z}$.}
+The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. The argument is standard, \TBD \edt{and works for any $x\in \mathbb{Z}$.}
 \begin{lemma}\label{lm: identities for Del, rho} 
 	For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }$  and $ \tau_{k,y}$ for $k\leq \mathcal{E}^{(x,m)}_{y,-} $,
 	\begin{equation} \label{eq: cummulated drift at a site}
@@ -549,10 +553,10 @@ Also note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
 
 \begin{lemma}
 	\label{lem:good-event}
-	For any $t > 0$, The good event $G_{n,K,t}$ satisfies
+	For any $t > 0$, the good event $G_{n,K,t}$ satisfies
 	\[
 		\lim_{K \to \infty } \limsup_{n \to \infty } 
-		P(G_{n, K,t}) = 1
+		P(G^c_{n, K,t}) = 0
 	.\] 
 \end{lemma}
 \begin{proof}%[Proof of Lemma~\ref{lem:good-event}]
@@ -580,7 +584,7 @@ For \eqref{eqn:good-event-4}, we make a similar argument and note that, since th
 .\] 
 This implies that the probability of event \eqref{eqn:good-event-4} goes to $1$ as $n$ goes to infinity, for any fixed $K$.
 
-	We thus conclude that the probability of $G_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
+	We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
 
@@ -594,7 +598,7 @@ This implies that the probability of event \eqref{eqn:good-event-4} goes to $1$ 
 	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
 \end{lemma}
 \begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
-	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight difference in calculation but does not affect the bound.
+	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
 \begin{align*}
 	\left| \Delta_y^{(x,m)} \right| 
 	&= 
@@ -629,9 +633,9 @@ For small $\kappa$, this gives us the desired bound.
 \end{proof}
 
 
-		\subsection{Control of martingale Terms } 
+		\subsection{Control of Martingale Terms } 
 \begin{proof}[Proof of Proposition~\ref{lm: control of martingale}]
-It is already remarked earlier that we only need to obtain the control
+As remarked earlier that we only need to show
 
 \[
 	 \lim_{N \to \infty } \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 = 0
@@ -641,15 +645,18 @@ It is already remarked earlier that we only need to obtain the control
 We can rewrite the sum into a sum of local drifts, and isolate the first $M$ visits:
 
 \begin{align}
-	&\sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2\\
-	&= \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(n) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  \\
-	&\le  \sum_{x \in \left[ I_n^X, S_n^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_x(i) > M \right) + 
+	&\sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2
+	\notag
+	\\
+	&= \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  
+	\notag
+	\\
+	&\le  \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_x(i) > M \right) + 
 	\sum_{i = 0}^{N - 1} \mathbf{1}\left( L_{X_i}(i) \le  M \right) 
 	\label{eqn:lem-martingale-1}
 .\end{align}
-
-We now restrict ourselves to the good event $G_{n, K, t}$ stated in \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4}. Under $G$,
-the inner sum in the first term is further controlled by
+On the good event $G_{n, K, t}$ defined in \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4},
+the inner sum in the first term is further bounded by
 \begin{align*}
 	&\sum_{i =0}^{ L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_{x}(i) > M \right) \\
 	&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_N} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
@@ -660,29 +667,28 @@ the inner sum in the first term is further controlled by
 	&< C_{w, p, M} \log^9 N
 	.
 \end{align*}
+This bound is uniform in $x$ and it holds for the cases $(x=0)$ and $(x < 0)$. 
 
-Note that this bound is uniform in $x$. We remark that cases $(x=0)$ and $(x < 0)$ have the exactly same bounds. 
-
-Now apply the bound $\sum_{i = 0}^{n-1} \mathbf{1}\left( L_{X_i}(i) \le M \right) \mathbf{1}(X_i = x) \le  M$ to the second term in \eqref{eqn:lem-martingale-1}, we have
+Applying the bound $\sum_{i = 0}^{N-1} \mathbf{1}\left( L_{X_i}(i) \le M \right) \mathbf{1}(X_i = x) \le  M$ to the second term in \eqref{eqn:lem-martingale-1}, we have
 
 \begin{equation*}
 	\sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 
 	< \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M )
 \end{equation*}
 
-Using process-level tightness, the summation only add a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, we have the right hand side $\to 0$. More precisely, take $G = G_{n, K, t}$ and
+Using process-level tightness, the summation only adds a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, the right hand side converges $\to 0$ as $N$ goes to infinity. More precisely, take $G = G_{N, K, t}$ and
 \begin{align*}
 	 &P\left( \left| \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2  \right|  > \varepsilon \right)\\
 	 &\le P\left( \left| \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N \right) + P(G^c) \\
-	 &\le 2 P\left( S_N^X \ge n^{3 / 4} \right) + P\left(  \left| \sum_{|x| \le N^{3 / 4}} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  n  \right) +P(G^c)  \\
-	 &\le 2 P\left( S_N^X \ge n^{3 / 4} \right) + P\left(  C_{w, p, M} \, N^{3 / 4} \log^9 N > \varepsilon  N  \right) + P(G^c)
+	 &\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  \left| \sum_{|x| \le N^{3 / 4}} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N  \right) +P(G^c)  \\
+	 &\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  C_{w, p, M} \, N^{3 / 4} \log^9 N > \varepsilon  N  \right) + P(G^c)
 .\end{align*}
 The second term vanishes trivially; the first term vanishes by process-level tightness of $S_N^X / \sqrt{N} $. The last term goes to zero as shown in the previous section.
 \end{proof}
 
 		
 		
-		\subsection{Convergence of conditional Expectation}
+		\subsection{Convergence of Conditional Expectation}
 		In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
 %		(\comment{maybe $ y>x>0 $ currently only one side is dealt}) 
 		on the event that \edt{$ L = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$}, we have \eqref{eq: conditional mean in GPU represenetation} 
@@ -893,13 +899,12 @@ By monotonicity of BLP with respect to its initial conditions, we have the bound
 	\sqrt{ P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right) }
 	\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right]}
 .\end{multline*}
-
 To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that
 \[
 	P\left(\mathcal{E}_{x+1}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x}^{(x, m)} = K \sqrt{n}\right)
 	= P\left(\mathcal{B}^{(x+1)}_{l} > K^2 \sqrt{n} \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
 .\] 
-Use the observation that Generalized Polya urn processes are stochastically bounded by geometric random variables, 
+As increments $\tau^B_{l+1,} -\tau^B_{l,x_1}$ of the Generalized Polya urn processes are stochastically bounded by geometric random variables with parameter uniformly in $l\geq 0$ and $y \in \mathbb{Z}$, 
 \begin{align*}
 	P(\mathcal{E}_{x+1}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x}^{(x, m)} = K \sqrt{n})
 	%&\le P\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
@@ -907,14 +912,16 @@ Use the observation that Generalized Polya urn processes are stochastically boun
 	&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 .\end{align*}
 
-Having exponentially decaying probability of good event, we only need a naive bound for the second expectation.
-When $\mathcal{E}_{x+1}^{(x,m)} < K^2 \sqrt{n} $,
+\TBD
+Having exponentially decaying of good events, we only need to bound the second moments,
 \begin{align*}
 	\left( \Delta_{x+1}^{(x,m)} \right) ^2 
 	&\leq \left| \mathcal{E}_{x+1}^{(x,m)} + K \sqrt{n}  \right|^2  \\
 	&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
 	&\leq 4 K^4 n
-.\end{align*}
+,
+\end{align*}
+when $\mathcal{E}_{x+1}^{(x,m)} < K^2 \sqrt{n} $.
 
 Therefore,
 \[
@@ -928,10 +935,7 @@ The expectation is controlled by
 	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
 .\end{align*}
 
-
-
-
-To bound $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we can do a supremum bound on all possible combinations of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Thus, this amounts to bounding the supremum of $\sum_{y > x}\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $ over all $(x,m)$ pairs. Also note that, by \eqref{eqn:goodgood}, $G_{n, K}^{(x,m)}(y)$ is true for all $y \ge x$ on the event $G_{n, K, t}$.
+For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Also note from \eqref{eqn:goodgood} that $G_{n, K}^{(x,m)}(y)$ holds for all $y \ge x$ on the event $G_{n, K, t}$.
 \begin{align*}
 	& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
 	\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
