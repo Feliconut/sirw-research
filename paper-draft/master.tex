@@ -5,7 +5,7 @@
 % %
 % % first draft, 2023_08_03
 % % Modified  2023_10_27
-% % Lastest Edition, 2023_10_27
+% % Lastest Edition, 2023_11_2
 % % Description of changes:
 % % (1) Updates according to Tom's comments 
 % % (2) Minor updates for the proofs in section 4
@@ -896,44 +896,44 @@ By monotonicity of BLP with respect to its initial conditions, we have the bound
 \begin{multline*}
 	\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le \\
 	K \sqrt{n} 
-	\sqrt{ P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right) }
-	\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x}^{(x,m)} = K \sqrt{n}  \right]}
+	\sqrt{ P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
+	\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
 .\end{multline*}
-To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that
+To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that the probability is bounded by 
 \[
-	P\left(\mathcal{E}_{x+1}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x}^{(x, m)} = K \sqrt{n}\right)
+	P\left(\mathcal{E}_{x+1,+}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
 	= P\left(\mathcal{B}^{(x+1)}_{l} > K^2 \sqrt{n} \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
 .\] 
-As increments $\tau^B_{l+1,} -\tau^B_{l,x_1}$ of the Generalized Polya urn processes are stochastically bounded by geometric random variables with parameter uniformly in $l\geq 0$ and $y \in \mathbb{Z}$, 
+As increments $\tau^B_{l+1,y} -\tau^B_{l,y}$ of the Generalized Polya urn processes are stochastically bounded by independent geometric random variables with parameter uniform in $l\geq 0$ and $y \in \mathbb{Z}$, 
 \begin{align*}
-	P(\mathcal{E}_{x+1}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x}^{(x, m)} = K \sqrt{n})
+	P(\mathcal{E}_{x+1,+}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n})
 	%&\le P\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
 	%\intertext{By Hoeffding bound,}
 	&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
-.\end{align*}
-
-\TBD
-Having exponentially decaying of good events, we only need to bound the second moments,
-\begin{align*}
-	\left( \Delta_{x+1}^{(x,m)} \right) ^2 
-	&\leq \left| \mathcal{E}_{x+1}^{(x,m)} + K \sqrt{n}  \right|^2  \\
-	&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
-	&\leq 4 K^4 n
 ,
 \end{align*}
-when $\mathcal{E}_{x+1}^{(x,m)} < K^2 \sqrt{n} $.
-
+which converges to $0$ exponentially fast in $K \cdot \sqrt{N}$. Therefore, we only need to bound the conditional second moments of $\left( \Delta_{x+1}^{(x,m)} \right) ^2$: when $\mathcal{E}_{x+1,+}^{(x,m)} < K^2 \sqrt{n} $, 
+\begin{align*}
+	\left( \Delta_{x+1}^{(x,m)} \right) ^2 
+	&\leq \left| \mathcal{E}_{x+1,+}^{(x,m)} + \mathcal{E}_{x,+}^{(x,m)}  \right|^2  \\
+	&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
+	&\leq 4 K^4 n.
+\end{align*}
 Therefore,
 \[
-	P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 > 4 K^4 n \right) \le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
-.\] 
+\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le 4 K^5 n^{\frac{3}{2}} \exp\left( - 2K^2 \sqrt{n}(q - \frac{1}{K}) \right) \leq \edt{ C_K}\exp\left( - K^2 \sqrt{n}(q - \frac{1}{K}) \right). 
+\]
 
-The expectation is controlled by
-\begin{align*}
-	\mathbb{E}\left[\left(  \Delta_{x+1}^{(x,m)} \right) ^2 \right] 
-	&= \sum_{i = 0}^\infty P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 \ge  i \right)  \\
-	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
-.\end{align*}
+%\[
+%	P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 > 4 K^4 n \right) \le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
+%.\] 
+
+%The expectation is controlled by
+%\begin{align*}
+%	\mathbb{E}\left[\left(  \Delta_{x+1}^{(x,m)} \right) ^2 \right] 
+%	&= \sum_{i = 0}^\infty P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 \ge  i \right)  \\
+%	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
+%.\end{align*}
 
 For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Also note from \eqref{eqn:goodgood} that $G_{n, K}^{(x,m)}(y)$ holds for all $y \ge x$ on the event $G_{n, K, t}$.
 \begin{align*}
