@@ -153,7 +153,7 @@
 	
 	Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2}]$.
 	\begin{theorem}\label{thm: main}
-		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_n)_{n\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
+		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_k)_{k\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
 		$$
 		\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 		$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
@@ -174,12 +174,12 @@
 	%We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
 	
 	\subsection{Organization of Paper}
-	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_n)_{n\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
+	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
 	
 	\subsection{Notation}
-	We end this section by introducing some notations related to SIRW $(X_n)_{n\geq 0}$. To avoid confusion, the notations related to generalized P\'{o}lya urn, and branching-like processes are in section \ref{sec: generalized Polya Urn, BLP}.
+	We end this section by introducing some notations related to SIRW $(X_k)_{k\geq 0}$. To avoid confusion, the notations related to generalized P\'{o}lya urn, and branching-like processes are in section \ref{sec: generalized Polya Urn, BLP}.
 	
-	For an SIRW $(X_n)_{n\geq 0}$,  let $(\mathcal{F}^X_n)_n$ be its natural filtration $\mathcal{F}^X_n = \sigma\left(X_i: i\leq n \right).$ We denote by $\mathbb{P}$ and $\mathbb{E}$ its probability and corresponding expectation. The following (random) quantities related to the SIRW $(X_n)_{n\geq0}$ are important in our analysis:
+	For an SIRW $(X_k)_{k\geq 0}$,  let $(\mathcal{F}^X_k)_k$ be its natural filtration $\mathcal{F}^X_k = \sigma\left(X_i: i\leq n \right).$ We denote by $\mathbb{P}$ and $\mathbb{E}$ its probability and corresponding expectation. The following (random) quantities related to the SIRW $(X_k)_{k\geq0}$ are important in our analysis:
 	\begin{enumerate}
 		\item for any $x \in \mathbb{Z}$, and $j\in \mathbb{N}_0$, the local time of a site $x$ by time $j$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\} }$; % the definition for local time in \cite{KMP22} and \cite{KP16} are different by at most 1. The main difference comes from whether to count the last step $X_n$. For the former case, $L(x,\lambda_{x,m}) = m+1$, while $L(x,\lambda_{x,m}) =m$ for the latter case.  
 		
@@ -192,7 +192,7 @@
 		\item for any $m\geq 0$, the \edt{$m+1$}-th visit time to site $x$, $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = \edt{m+1} \}$;
 			\comment{A possible notation scheme: $L_y^k$ for site local time; $\overleftarrow{L}_y^k = L_{y, -}^k$ for directed edge local time $y \to y-1$; $\overrightarrow{L}_y^k = L_{y, +}^k$ for directed edge local time  $y \to y+1$; $L_{\{y, y+1\}}^k $ for undirected edge local times.}
 		
-		\item the running maximum of $(X_n)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
+		\item the running maximum of $(X_k)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
 		
 		\item 
 %		the accumulated local drifts at site $x$ by $m$-th visit, $$\delta_{x,m}:= \sum_{i=0}^\infty E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=x, L(x,i)\leq m\}};$$ 
@@ -206,7 +206,10 @@
 	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. 
 	Similar strategies are also available in other exited random walk models, such as \cite{KP16,KMP22}.
 	 We divide the proof into four main steps. We first decompose the random walk into
-	$$X_n = M_n+ \Gamma_n, $$ where
+	\[
+	X_k = M_k+ \Gamma_k 
+\] ,
+	where
 	$$ 
 	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X \right].
 	$$ 
@@ -216,11 +219,11 @@
 	\begin{equation}\label{eq: QV term}
 		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1,  \mbox{ in probability}.
 	\end{equation}
-	Since $\abs{X_{n+1}-X_n}=1$,  \eqref{eq: QV term} is implied by the estimate
+	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the estimate
 	\begin{proposition} \label{lm: control of martingale} 
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $\epsilon >0$
 		\begin{equation}\label{eq:  term}
-			\lim_{n \to \infty }\mathbb{P}\left(\frac{1}{n} \sum_{i = 0}^{n-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 > \epsilon \right) =0. 
+			\lim_{N \to \infty }\mathbb{P}\left(\frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k \right]^2 > \epsilon \right) =0. 
 		\end{equation}
 	\end{proposition}
 	The proof of Proposition \ref{lm: control of martingale} is given in section \ref{sec: approximations}.
@@ -274,7 +277,7 @@
 
 %	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
 
-	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_n)_{n\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_n)_{n\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like those in Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
+	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_k)_{k\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like those in Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
 	
 	\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Proposition \ref{lm: control of acc drift}.
 	
@@ -294,12 +297,12 @@
 
 	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes. As explained earlier in section \ref{sec: proof of main}, these two auxiliary processes are essential in studying approximations of $\Gamma_k^+= \sum_{y\geq X_k} \Delta_{y}^{(x,m)}$ on the event that $\lambda_{x,m} = k$. We will show in subsection \ref{subsec: measurability} that each $\Delta^{(x,m)}_{y}$ is almost a function of the BLP processes modulo extra information, and its conditional expectation $\rho^{(x,m)}_{y}$ only involves the generalized P\'{o}lya urn processes associated to site $y$. Therefore, to approximate $\Gamma_k$ and $\Delta_{y}^{(x,m)}$ we only need to study the BLP process with additional information, which turns out to be a Markov process with some convenient properties. In the last subsection, we recall some properties of these auxiliary processes needed in the proofs of Propositions \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Most of the these properties are well-known in works such as \cite{KP16} and \cite{KMP22}. 
 	
-	Both processes can be obtained from the SIRW $(X_n)_{n\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
+	Both processes can be obtained from the SIRW $(X_k)_{k\geq 0}$ at stopping times. We start with the generaized P\'{o}lya urn processes. 
 
 	\subsection{Generalized P\'{o}lya  Urn}
-	Given a (recurrent) SIRW $(X_n)_{n\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_n$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_n$ visit site $y$ for the $\left( k+1 \right) $-th time:
+	Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 	\[
-		\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,k+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
+		\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,i+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
 	   \] 
 %	\edt{This is consistent with the notation in point 3 of subsection 1.4. }
 	   Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
@@ -360,7 +363,7 @@
 	\]  
 		
 		\subsection{Branching-Like Processes}
-		Having understood the behavior of the walk at a fixed site in terms of the urn processes, we now want to characterize how urn processes at different sites are related. Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process in time, the branching-like processes is a Markov process in space, and it describes the local times of directed edges of $(X_n)_{n\geq 0}$ at a fixed stopping time.
+		Having understood the behavior of the walk at a fixed site in terms of the urn processes, we now want to characterize how urn processes at different sites are related. Unlike the generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_k$ which is a Markov process in time, the branching-like processes is a Markov process in space, and it describes the local times of directed edges of $(X_k)_{k\geq 0}$ at a fixed stopping time.
 		More precisely, for any integers $x,m$ with $m\geq 0$, the local times at the stopping time $\lambda_{x,m}$, 
 		\[
 		 \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
