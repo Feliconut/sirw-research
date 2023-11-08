@@ -177,6 +177,7 @@
 	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
 	
 	\subsection{Notation}
+	
 	We end this section by introducing some notations related to SIRW $(X_k)_{k\geq 0}$. To avoid confusion, the notations related to generalized P\'{o}lya urn, and branching-like processes are in section \ref{sec: generalized Polya Urn, BLP}.
 	
 	For an SIRW $(X_k)_{k\geq 0}$,  let $(\mathcal{F}^X_k)_k$ be its natural filtration $\mathcal{F}^X_k = \sigma\left(X_i: i\leq n \right).$ We denote by $\mathbb{P}$ and $\mathbb{E}$ its probability and corresponding expectation. The following (random) quantities related to the SIRW $(X_k)_{k\geq0}$ are important in our analysis:
@@ -201,6 +202,19 @@
 			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=y\}}.
 		\end{equation}
 	\end{enumerate}
+
+	\subsubsection{Note on letter usage (not part of paper)}
+	
+	\begin{itemize}
+		\item $k$ is walk's discrete time.
+		\item $t$ is continuous time of rescaled process.
+		\item $n$ is scaling factor.
+		\item $i, j$ are local times, and sometimes summation indices.
+		\item $x, y, z$ are sites.
+		\item $K, C$ are big constants.
+		\item $\omega, p, \gamma, B, \kappa$ reserved for model definition.
+	\end{itemize}
+	
 	
 	\section{Outline for the Proof of Theorem \ref{thm: main}}\label{sec: proof of main}
 	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. 
@@ -544,6 +558,8 @@ Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1
 The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\ref{lm: diffusion approximation of blp}. The proof mostly coincides with (Lemma~3.4, \cite{KP16}). 
 \comment{Maybe discuss here that the diffusion approximation involves $\sigma_0^{\tilde \zeta}$ instead of $\sigma_{\varepsilon n}^{\tilde \zeta}$ as in \cite{KP16}, greatly simplifying the proof of equivalent of (Lemma~3.5, \cite{KP16}. Consider rewriting the full proof.
 }
+
+\TBD. Write a proof here.
 		
 		
 		\section{Approximations of Local Drifts}\label{sec: approximations}
