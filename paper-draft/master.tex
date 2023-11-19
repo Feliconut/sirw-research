@@ -27,7 +27,7 @@
 	\and
 	Zhe Wang}
 
-\date{Nov 15th, 2023}
+\date{Nov 19th, 2023}
 
 
 % This is the definition of the type of document
@@ -100,7 +100,7 @@
 	\TBD 
 	
 	\subsection{Model Description} 
-	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP22}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non- Markov: its transition probability for $X_{k+1}$ depending on its history up to $X_k$, 
+	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP22}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov: its transition probability for $X_{k+1}$ depending on its history up to $X_k$, 
 	\begin{align}
 		\mathbb{P}\left( X_{k+1} =  X_k+1 \middle| X_0, X_1,\dots, X_k   \right) 
 		&=1- \mathbb{P}\left( X_{k+1} =  X_k-1 \middle| X_0, X_1,\dots, X_k   \right)  
@@ -135,13 +135,15 @@
 	\subsection{Main Result}
 	\begin{definition}
 		\label{defn:BMPE}
-		Let $\theta^+, \theta^- <1$. A Brownian motion perturbed at
+		Let $\theta^+, \theta^- \in (- \infty , 1)$. A Brownian motion perturbed at
 		extrema (BMPE) $W^{\theta^+, \theta^-} = \left(W^{\theta^+, \theta^-}_t, t\geq 0\right)$ with parameter  $(\theta^+, \theta^-)$ is the pathwise unique solution of the equation
 		$$
 		W_t = B_t \,+\, \theta^+ \sup_{s\leq t} W_s  \,+\, \theta^- \inf_{s\leq t} W_s \,,   \qquad t \ge 0, \quad W_0 = 0.
 		$$
 	\end{definition}
-	When the weight function $w(\cdot )$ is monotone and satisfying \eqref{eq: asymptotics of w}, for any $p\in (0,1]$
+	It was shown in [\cite{PW97, CD99}] that if $\theta^+, \theta^- < 1$ then the functional equation above almost surely has a pathwise unique solution that is continuous, adapted to the Brownian filtration, and has Brownian scaling. Furthermore, the triple $\left(\inf_{s < t} W^{\theta^{+}, \theta^{-}}(s),\, W^{\theta^{+}, \theta^{-}}(t),\, \sup _{s<t} W^{\theta^{+}, \theta^{-}}(s)\right), t \geq 0$ is a strong Markov process (see \cite{Dav99}).
+
+	When the weight function $w(.)$ is monotone and satisfying \eqref{eq: asymptotics of w}, for any $p\in (0,1]$
 	\begin{equation}\label{eq: gamma}
 		\gamma:= \lim_{n\to \infty}\left( V_1(n) - U_1(n) \right) =\lim_{n\to \infty} \left( \sum_{j=0}^{n-1} \frac{1}{ w(2j+1)}-  \sum_{j=0}^{n-1}  \frac{1}{w(2j)} \right) 
 	\end{equation}
@@ -164,7 +166,7 @@
 	In \cite{KMP22}, the analysis of local behavior of the walk through Generalized P\"olya's urn processes were crucial in the control of total drift. 
 	In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP22}, Lemma~2.3-2.4]).
 
-	When we consider $p \in (0,\frac{1}{2}]$, absolute summability of local drift is no longer present, so we need a slightly more involved argument to estimate the total drift attained at a single site. The method we adopt here is similar to \cite{KP16}, where we stop the walk at particular excursion times and express the total attained drift as another spatial martingale $\Delta_y^{(x,m)}$, adapted to the natural filtration of the branching-like process (Section~\ref{sec: generalized Polya Urn, BLP}). We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
+	When we consider $p \in (0,\frac{1}{2}]$, local drift is no longer absolutely summable, so we need a slightly more involved argument to estimate the total drift attained at a single site. The method we adopt here is similar to \cite{KP16}, where we stop the walk at particular excursion times and express the total attained drift as another spatial martingale $\Delta_y^{(x,m)}$, adapted to the natural filtration of the branching-like process (Section~\ref{sec: generalized Polya Urn, BLP}). We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
 
 	%The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. 
 	%On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when certain edge local times are large. \TBD 
