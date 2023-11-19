@@ -141,24 +141,42 @@
 		W_t = B_t \,+\, \theta^+ \sup_{s\leq t} W_s  \,+\, \theta^- \inf_{s\leq t} W_s \,,   \qquad t \ge 0, \quad W_0 = 0.
 		$$
 	\end{definition}
-	It was shown in [\cite{PW97, CD99}] that if $\theta^+, \theta^- < 1$ then the functional equation above almost surely has a pathwise unique solution that is continuous, adapted to the Brownian filtration, and has Brownian scaling. Furthermore, the triple $\left(\inf_{s < t} W^{\theta^{+}, \theta^{-}}(s),\, W^{\theta^{+}, \theta^{-}}(t),\, \sup _{s<t} W^{\theta^{+}, \theta^{-}}(s)\right), t \geq 0$ is a strong Markov process (see \cite{Dav99}).
+	It was shown in [\cite{PW97, CD99}] that if $\theta^+, \theta^- < 1$ then the functional equation above almost surely has a pathwise unique solution that is continuous, adapted to the Brownian filtration, and has Brownian scaling. 
+	Furthermore, the triple 
+	$\big(\inf_{s < t} W^{\theta^{+}, \theta^{-}}(s)$, 
+	$W^{\theta^{+}, \theta^{-}}(t) $, 
+	$\sup _{s<t} W^{\theta^{+}, \theta^{-}}(s)\big)$
+	, $t \geq 0$ is a strong Markov process (see \cite{Dav99}).
 
-	When the weight function $w(.)$ is monotone and satisfying \eqref{eq: asymptotics of w}, for any $p\in (0,1]$
-	\begin{equation}\label{eq: gamma}
+	Follow the notation in [\cite{T96}], define
+	\[
+		U_1(n):=\sum_{j=0}^{n-1}(w(2 j))^{-1} \quad \text{and} \quad
+		V_1(n):=\sum_{j=0}^{n-1}(w(2 j+1))^{-1}
+	\]
+	and set
+	\begin{equation}
+		\label{eq: gamma}
 		\gamma:= \lim_{n\to \infty}\left( V_1(n) - U_1(n) \right) =\lim_{n\to \infty} \left( \sum_{j=0}^{n-1} \frac{1}{ w(2j+1)}-  \sum_{j=0}^{n-1}  \frac{1}{w(2j)} \right) 
-	\end{equation}
-	is well defined and $\gamma<1$. It is shown, in Theorem 1.2 \cite{KMP22}, that when $p\in (\frac{1}{2},1]$, and $\kappa >0 $, the rescaled process
-	$$
+	.\end{equation}
+	It is known that for monotone $w(.)$ satisfying \eqref{eq: asymptotics of w}, for any $p\in (0,1]$, $\gamma$
+	is well defined and ${\gamma<1}$. 
+	% The process $W_t^{\gamma, \gamma}$ is then the limiting process of $X_k$ under diffusive scaling. 
+	The following functional limit theorem is shown in [\cite{KMP22}]: assuming $p\in (\frac{1}{2},1]$, we have the following process-level convergence
+	\[
 	\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
-	$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
+	\] 
+	as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 	
+	\begin{samepage}
 	Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2}]$.
 	\begin{theorem}\label{thm: main}
 		Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_k)_{k\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
-		$$
+		\[
 		\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
-		$$ as $n$ goes to infinity in the standard Skorohod topology $D([0,\infty) ).$
+		\]
+		as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 	\end{theorem}
+	\end{samepage}
 	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP22}. The proof in \cite{KMP22} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
 	This approach
 	has also been used previously in other excited random walks in dimension one, such as \cite{DK12} and \cite{KP16}.
@@ -191,14 +209,13 @@
 		$$ \mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $$
 		
 		
-		\item for any $m\geq 0$, the \edt{$m+1$}-th visit time to site $x$, $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = \edt{m+1} \}$;
-			\comment{A possible notation scheme: $L_y^k$ for site local time; $\overleftarrow{L}_y^k = L_{y, -}^k$ for directed edge local time $y \to y-1$; $\overrightarrow{L}_y^k = L_{y, +}^k$ for directed edge local time  $y \to y+1$; $L_{\{y, y+1\}}^k $ for undirected edge local times.}
+		\item for any $m\geq 0$, the time of $m$-th return ($m+1$-th visit) to site $x$, is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1 \}$;
 		
 		\item the running maximum of $(X_k)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
 		
 		\item 
 %		the accumulated local drifts at site $x$ by $m$-th visit, $$\delta_{x,m}:= \sum_{i=0}^\infty E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=x, L(x,i)\leq m\}};$$ 
-		the accumulated local drifts at site \edt{$y$} by time $\lambda_{x,m}$, 
+		the accumulated local drifts at site $y$ by time $\lambda_{x,m}$, 
 		\begin{equation}\label{eq: accumulated local drift}
 			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=y\}}.
 		\end{equation}
