@@ -98,10 +98,8 @@
 
 
 	\section{Introduction}
-	The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
-	\TBD 
+	%The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
 	
-	\subsection{Model Description} 
 	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP22}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov: its transition probability for $X_{k+1}$ depending on its history up to $X_k$, 
 	\begin{align}
 		\mathbb{P}\left( X_{k+1} =  X_k+1 \middle| X_0, X_1,\dots, X_k   \right) 
@@ -126,8 +124,7 @@
 	\end{equation} 
 	for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$. Under the monotonicity of $w(.)$, $X_k$ is self-attracting if $w(.)$ is increasing and self-repelling if $w(. )$ is decreasing.
 
-	\TBD In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$.
-
+	%\TBD In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$.
 	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, while the ``polynomially self-repelling'' case corresponds to weight functions with $w(n)\sim n^{-\alpha}$, for some $\alpha >0$. In \cite{T96}, T\'oth proved functional limit theorems for the local time processes of SIRWs of both cases ([\cite{T96}, Theorems 1A, 1B]), and local limit theorems for the position of a random walker at independent geometric times with means of linear growth ([\cite{T96}, Theorems 2A, 2B]). These local limit theorems imply that the Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below) is the only possible candidate for the weak limit of one-dimensional distributions of rescaled SIRWs if it exists. 
 	Based on these result, in \cite{KMP22}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk ([\cite{KMP22}, Proposition~2.1]), allowing them to establish functional converegence convergence of rescaled asymptotically free SIRW to BMPE, under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled polynomially self-repelling SIRW. The current work focuses on the asymptotically free case, and serves as a completion of \cite{KMP22} by removing the assumption that  $p > \frac{1}{2}$.
 
@@ -150,7 +147,7 @@
 	$\sup _{s<t} W^{\theta^{+}, \theta^{-}}(s)\big)$
 	, $t \geq 0$ is a strong Markov process (see \cite{Dav99}).
 
-	Follow the notation in [\cite{T96}], define
+	Following the notation in [\cite{T96}], we define
 	\[
 		U_1(n):=\sum_{j=0}^{n-1}(w(2 j))^{-1} \quad \text{and} \quad
 		V_1(n):=\sum_{j=0}^{n-1}(w(2 j+1))^{-1}
@@ -158,7 +155,7 @@
 	and set
 	\begin{equation}
 		\label{eq: gamma}
-		\gamma:= \lim_{n\to \infty}\left( V_1(n) - U_1(n) \right) =\lim_{n\to \infty} \left( \sum_{j=0}^{n-1} \frac{1}{ w(2j+1)}-  \sum_{j=0}^{n-1}  \frac{1}{w(2j)} \right) 
+		\gamma:= \lim_{m\to \infty}\left( V_1(m) - U_1(m) \right) =\lim_{m\to \infty} \left( \sum_{j=0}^{m-1} \frac{1}{ w(2j+1)}-  \sum_{j=0}^{m-1}  \frac{1}{w(2j)} \right) 
 	.\end{equation}
 	It is known that for monotone $w(.)$ satisfying \eqref{eq: asymptotics of w}, for any $p\in (0,1]$, $\gamma$
 	is well defined and ${\gamma<1}$. 
@@ -236,31 +233,37 @@
 	\end{itemize}
 	
 	
-	\section{Outline for the Proof of Theorem \ref{thm: main}}\label{sec: proof of main}
+	\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{thm: main}}
+	\label{sec: proof of main}
+
 	The proof of Theorem \ref{thm: main} follows a classical strategy in obtaining functional limit theorems. 
 	Similar strategies are also available in other exited random walk models, such as \cite{KP16,KMP22}.
 	 We divide the proof into four main steps. We first decompose the random walk into
-	\[
+	\begin{equation}
+		\label{eqn:decomposition}
 	X_k = M_k+ \Gamma_k 
-\] ,
+\end{equation} ,
 	where
-	$$ 
-	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X \right].
-	$$ 
+	\[ 
+	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X 
+	\right].
+	\] 
+	We refer to $M_k$ as the ``martingale term'' and $\Gamma_k$ as the ``drift term''.
 	
 	\textbf{Step 1: Control of martingale term.}
-	The choice of $\Gamma_n$ allows us to get a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ Then using the Martingale Central Limit Theorem (Theorem~18.2, \cite{B99}), the rescaled process $\frac{M_n}{\sqrt{n}}$ converges to a standard brownian motion in distribution if we have the control of martingales 
+	The above decomposition gives a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ converges to a standard brownian motion in distribution if we have the control of martingales 
 	\begin{equation}\label{eq: QV term}
 		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1,  \mbox{ in probability}.
 	\end{equation}
-	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the estimate
+	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the following estimate which we prove in section \ref{sec: approximations}. 
+	\comment{turn into a lemma?}
 	\begin{proposition} \label{lm: control of martingale} 
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $\epsilon >0$
 		\begin{equation}\label{eq:  term}
 			\lim_{N \to \infty }\mathbb{P}\left(\frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k \right]^2 > \epsilon \right) =0. 
 		\end{equation}
 	\end{proposition}
-	The proof of Proposition \ref{lm: control of martingale} is given in section \ref{sec: approximations}.
+	\vspace{2em}
 	
 	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_k$ by a fixed linear combination of the distances between $X_k$ and its running maximum $S_k$ and minimum $I_k$:
 	\begin{proposition}\label{lm: control of acc drift}
@@ -275,7 +278,7 @@
 		\Gamma_k^0 &= \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = X_k) \\
 		\Gamma_k^- &= \sum_{y < X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
 		.\end{align*} 
-	 We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD).
+		We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD \comment{consider giving proof in Sect. 4.4}).
 	 Then,  we consider the stopping time $\lambda_{x,m}$, for any integers $x ,m  \in \mathbb{Z}$ with $m \geq 0$. The event that 
 	 $$\{ \lambda_{x,m} =k \} = \{ X_k = x, L(x,k) =m +1  \}.  $$ 
 	In view of \eqref{eq: accumulated local drift},  $\Gamma_k^+$ is the sum
@@ -294,7 +297,7 @@
 	\begin{equation}\label{eq: conditional mean}
 		\rho_{y}^{(x,m)}= \mathbb{E}\left[\Delta_y^{(x,m)} | \mathcal{G}_{y-1}^{(x,m)}\right].
 	\end{equation}
-	Then \eqref{eq: control of acc drift + } follows from the following two propositions:
+	Then \eqref{eq: control of acc drift + } follows from the following two propositions.
 	\begin{proposition}\label{lm: approximation of means of local drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
 		\begin{equation}\label{eq: control of expected local drift}
@@ -311,21 +314,24 @@
 
 %	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
 
-	To prove both Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both processes are natural projections of $(X_k)_{k\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. The good events in the proof of Proposition \ref{lm: approximation of means of local drift} are easier because events like those in Lemma \ref{lm: number of rarely visit sites} below will almost do the job, and estimates of their probabilities are essentially known from \cite{KMP22}. However, the good events for Proposition \ref{lm: approx local drift by conditional means} requires a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Propositions \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after introducing the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
+	We will prove Proposition~\ref{lm: approximation of means of local drift} in section~\ref{sec:RhoGamma} and Proposition~\ref{lm: approx local drift by conditional means} in section~\ref{sec:DeltaRho}. The proofs use two auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. 
+	Both processes are natural projections of $(X_k)_{k\geq 0}$ on certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events. 
+	The proof of Proposition~\ref{lm: approximation of means of local drift} uses good events based on control of process extrema (Proposition~\ref{prop: tightness}), regularity of urn process (Lemma~\ref{lm: concentration inequality}), and control of rarely visited sites (Lemma~\ref{lm: number of rarely visit sites}, and estimates of their probabilities are essentially known from \cite{KMP22}. 
+	However, Proposition~\ref{lm: approx local drift by conditional means} requires uniform control of local time process (Lemma~\ref{lm: uniform control of local time}), and the proof requires the diffusion approximation of branching-like process (Lemma~\ref{lm: diffusion approximation of blp}).
+	We will describe the generalized P\'{o}lya Urn process and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}, and prove Propositions~\ref{lm: approximation of means of local drift}, \ref{lm: approx local drift by conditional means} in section \ref{sec: approximations}.
 	
-	\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Proposition \ref{lm: control of acc drift}.
+	%\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Proposition \ref{lm: control of acc drift}.
 	
 	
-	\textbf{Step 3: Tightness.} This is established in \cite{KMP22}, and is valid for general $p \in (0,1]$. 
-
+	\textbf{Step 3: Tightness.} We need tightness of process-level extrema, which combined with Proposition~\ref{lm: control of acc drift} gives tightness of $\left(\frac{\Gamma_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$, and hence of $\left(\frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$. This is already established in \cite{KMP22} for general  $p \in (0,1]$:
 	\begin{proposition}(\cite{KMP22}, Proposition 2.1)
 		\label{prop: tightness}
-		Let $\mathcal{S}_n^X(t)=\frac{S_{\left\lfloor n t \right\rfloor}^X}{\sqrt{n}}$ and $\mathcal{I}_n^X(t)=\frac{I_{\lfloor n t \rfloor}^X}{\sqrt{n}}$. Both $\left\{\mathcal{S}_n^X\right\}_{n \geq 0}$ and $\left\{\mathcal{I}_n^X\right\}_{n \geq 0}$ are tight in $D([0, \infty))$.
+		%The extremum processes of $X_k$ are tight under diffusive scaling. That is,
+		Both $\left\{\frac{S_{\left\lfloor n t \right\rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ and $\left\{\frac{I_{\lfloor n t \rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ are tight in $D([0, \infty))$.
 	\end{proposition}
 	
 	\textbf{Step 4: Convergence to BMPE.} 
-	\comment{Almost identical to \cite{KMP22}}.
-	Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can then conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. That is, $Y_1$ is a $(\gamma, \gamma)$-BMPE as claimed.
+	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, the subsequencial limits agree and $Y_1$ is a $(\gamma, \gamma)$-BMPE.
 
 	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
 
@@ -338,7 +344,6 @@
 	\[
 		\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,i+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
 	   \] 
-%	\edt{This is consistent with the notation in point 3 of subsection 1.4. }
 	   Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
 	  \begin{equation} \label{eq: RW to GPU}
 	   \left(\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k} \right)_{k\ge 0}
@@ -756,6 +761,7 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 		
 		
 		\subsection{Convergence of Conditional Expectation}
+		\label{sec:RhoGamma}
 		In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
 %		(\comment{maybe $ y>x>0 $ currently only one side is dealt}) 
 		on the event that \edt{$ L = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$}, we have \eqref{eq: conditional mean in GPU represenetation} 
@@ -908,9 +914,10 @@ $$
 $$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  P(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  P(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Proposition 2.1 \cite{KMP22}, or Corollary 1A \cite{T96}.
 \end{proof}
 
-\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
+%\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 
 \subsection{Approximation of Local Drifts by Conditional Means}
+\label{sec:DeltaRho}
 In this subsection, we prove Proposition \ref{lm: approx local drift by conditional means}. This proof is similar to, and slightly more technical than the proof of (Lemma~4.2, \cite{KP16}). 
 
 In \eqref{eq: control of martingale difference for local drift}, for a fixed $(x,m)$, the inner sum is a martingale. To control the sum, we compare the martingale $\sum_y \Delta_y^{(x,m)} - \rho_y^{(x,m)}$ to a tempered version $\sum_{y > x} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t}$.
