@@ -200,6 +200,7 @@
 	
 	For an SIRW $(X_k)_{k\geq 0}$,  let $(\mathcal{F}^X_k)_k$ be its natural filtration $\mathcal{F}^X_k = \sigma\left(X_i: i\leq n \right).$ We denote by $\mathbb{P}$ and $\mathbb{E}$ its probability and corresponding expectation. The following (random) quantities related to the SIRW $(X_k)_{k\geq0}$ are important in our analysis:
 	\begin{enumerate}
+		\item the running maximum of $(X_k)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
 		\item for any $x \in \mathbb{Z}$, and $j\in \mathbb{N}_0$, the local time of a site $x$ by time $j$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\} }$; % the definition for local time in \cite{KMP22} and \cite{KP16} are different by at most 1. The main difference comes from whether to count the last step $X_n$. For the former case, $L(x,\lambda_{x,m}) = m+1$, while $L(x,\lambda_{x,m}) =m$ for the latter case.  
 		
 		\item the local time of the directed bond $(x,x+1)$ by time $j\in \mathbb{N}_0$,
@@ -208,29 +209,14 @@
 		$$ \mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }; $$
 		
 		
-		\item for any $m\geq 0$, the time of $m$-th return ($m+1$-th visit) to site $x$, is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1 \}$;
+		\item for any $m\geq 0$, the time of $m$-th return ($m+1$-th visit) to site $x$, is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1 \}$. We write $\mathcal{E}^{(x,m)}_{y, -}$ for $\mathcal{E}^{\lambda_{x,m}}_{y,-}$.
 		
-		\item the running maximum of $(X_k)$ at time $n$, $S_n= \sup\{y: L(y,n)\geq 1 \} $; the running minimum at time $n$, $I_n= \inf\{y: L(y,n)\geq 1 \} $;
 		
 		\item 
 %		the accumulated local drifts at site $x$ by $m$-th visit, $$\delta_{x,m}:= \sum_{i=0}^\infty E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=x, L(x,i)\leq m\}};$$ 
-		the accumulated local drifts at site $y$ by time $\lambda_{x,m}$, 
-		\begin{equation}\label{eq: accumulated local drift}
-			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E[X_{i+1}-X_i\vert \mathcal{F}_{i}^X] \mathbb{1}_{\{X_i=y\}}.
-		\end{equation}
+		the accumulated local drifts at site $y$ by time $\lambda_{x,m}$ is denoted by $\Delta_y^{(x,m)}$, defined in \eqref{eq: accumulated local drift}.
+		
 	\end{enumerate}
-
-	\subsubsection{Note on letter usage (not part of paper)}
-	
-	\begin{itemize}
-		\item $k$ is walk's discrete time.
-		\item $t$ is continuous time of rescaled process.
-		\item $n$ is scaling factor.
-		\item $i, j$ are local times, and sometimes summation indices.
-		\item $x, y, z$ are sites.
-		\item $K, C$ are big constants.
-		\item $\omega, p, \gamma, B, \kappa$ reserved for model definition.
-	\end{itemize}
 	
 	
 	\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{thm: main}}
@@ -249,66 +235,89 @@
 	\right].
 	\] 
 	We refer to $M_k$ as the ``martingale term'' and $\Gamma_k$ as the ``drift term''.
+
+	\vspace{1em}
 	
 	\textbf{Step 1: Control of martingale term.}
-	The above decomposition gives a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ converges to a standard brownian motion in distribution if we have the control of martingales 
+	The above decomposition gives a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ is tight in $D\left( [0,\infty ) \right) $ and converges to the standard Brownian motion, if we have the control  
 	\begin{equation}\label{eq: QV term}
-		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1,  \mbox{ in probability}.
+		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1 \qquad  \mbox{ in probability}.
 	\end{equation}
-	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the following estimate which we prove in section \ref{sec: approximations}. 
-	\comment{turn into a lemma?}
+	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the following estimate to be proved in section \ref{sec: approximations}. 
 	\begin{lemma} \label{lm: control of martingale} 
-		Let $p\in (0,\frac{1}{2}]$. Then, for any $\epsilon >0$
+		Let $p\in (0,\frac{1}{2}]$. Then, for any $\varepsilon >0$
 		\begin{equation}\label{eq:  term}
-			\lim_{N \to \infty }\mathbb{P}\left(\frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k \right]^2 > \epsilon \right) =0. 
+			\lim_{N \to \infty }\mathbb{P}\left(\frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k \right]^2 > \varepsilon \right) =0. 
 		\end{equation}
 	\end{lemma}
-	\vspace{2em}
+	\vspace{1em}
 
-	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_k$ by a fixed linear combination of the distances between $X_k$ and its running maximum $S_k$ and minimum $I_k$:
+	\textbf{Step 2: Control of accumulated drift.} This is the major technical step of our article. We want to approximate the accumulated drift $\Gamma_k$ by a linear combination of its running maximum and minimum.
 	\begin{lemma}\label{lm: control of acc drift}
-		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
+		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of acc drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(M_k + I_k \right)   } > \epsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(M_k + I_k \right)   } > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
-	To prove Lemma~\ref{lm: control of acc drift}, we \edt{first decompose the accumulated drift $\Gamma_k$ as $\Gamma_k = 	\Gamma_k^+ +	\Gamma_k^0 + \Gamma_k^-$, where} 
-	\begin{align*}
-		\Gamma_k^+ &= \sum_{y > X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)\\
-		\Gamma_k^0 &= \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = X_k) \\
-		\Gamma_k^- &= \sum_{y < X_k} \sum_{i = 0}^{k-1} \mathbb{E}\left[ X_{i + 1} - X_i | \mathcal{F}_i^X \right] \mathbf{1}(X_i = y)
-		.\end{align*} 
-		We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD \comment{consider giving proof in Sect. 4.4}).
-	 Then,  we consider the stopping time $\lambda_{x,m}$, for any integers $x ,m  \in \mathbb{Z}$ with $m \geq 0$. The event that 
-	 $$\{ \lambda_{x,m} =k \} = \{ X_k = x, L(x,k) =m +1  \}.  $$ 
-	In view of \eqref{eq: accumulated local drift},  $\Gamma_k^+$ is the sum
-	\begin{equation}
-	\Gamma_k^+ = \sum_{y>x} \Delta_y^{(x,m)}, \mbox{\quad on the event that $\{ \lambda_{x,m}=k  \}$},
-	\end{equation} 
-	which has $(S_k - X_k)$ terms. If we can further approximate terms $\Delta_y^{(x,m)}$ by $\gamma\cdot sgn(y)$ without generating a total error of size $\epsilon \sqrt{n}$, $\Gamma_k^+$ is approximately 
-	$$   
-	\gamma \cdot (S_k - \abs{X_k}).
-	$$
-	More precisely, \edt{we want to show that} for any $t>0$ and any $\epsilon >0$
-	\begin{equation}\label{eq: control of acc drift + }
-		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \cdot \left(M_k - \abs{X_k} \right)   } > \epsilon \sqrt{n}  \right) =0. 
+	Before proving Lemma~\ref{lm: control of acc drift}, we first remark that the local time process of $X_k$ at excursion times $\lambda_{x,m}$ can be described in terms of spacially markovian processes, namely branching-like processes discussed in section \ref{sec: generalized Polya Urn, BLP}. This motivates considering \textit{local drift} attained at a single site $y$ at stopping times $\lambda_{x, m}$:
+	\begin{equation}\label{eq: accumulated local drift}
+			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E\left[X_{i+1}-X_i\vert \mathcal{F}_{i}^X\right] \mathbb{1}_{\{X_i=y\}}
 	\end{equation}
-	To this end, we consider the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$, where $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{(x,m)}_{y,+} : y \geq x \right)$, and further approximate $\Delta_y^{(x,m)}$ by its conditional expectation with respect to $\mathcal{G}_{y-1}^{(x,m)}$,
+	Let $k = \lambda_{x,m}$. The drift term $\Gamma_k$ is by definition a sum of local drifts:
+	\begin{equation}
+	\Gamma_k = \sum_{y\in \mathbb{Z}} \Delta_y^{(x,m)}
+	.\end{equation}
+	We decompose the accumulated drift $\Gamma_k$ into three parts: $\Gamma_k = 	\Gamma_k^+ +	\Gamma_k^0 + \Gamma_k^-$, where 
+	\[
+		\Gamma_k^{+} = \sum_{y > x} \Delta_y^{(x,m)}\qquad 
+		\Gamma_k^{0} = \Delta_x^{(x,m)} \qquad
+		\Gamma_k^{-} = \sum_{y < x} \Delta_y^{(x,m)}
+	.\]
+	\iffalse
+	\begin{align*}
+		\Gamma_k^{+ \phantom{0}} &= \sum_{y > x} \Delta_y^{(x,m)}\\
+		\Gamma_k^{0 \phantom{+}} &= \Delta_x^{(x,m)} \\[0.6em]
+		\Gamma_k^{- \phantom{0}} &= \sum_{y < x} \Delta_{y}^{(x,m)}
+		.\end{align*} 
+	\fi
+		%We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD \comment{consider giving proof in Sect. 4.4}).
+	In the proof, we will approximate $\Delta_y^{(x,m)}$ by $\gamma\cdot sgn(y)$, thus we will approximate $\Gamma_k^+$ by $\gamma \cdot (S_k - \abs{X_k})$. 
+
+	\begin{proof}[Proof of Lemma \ref{lm: control of acc drift}]
+	For each $k > 0$, we can let $x = X_k$ and there exists some $m>0$ such that $k = \lambda_{x,m}$ and $L(x,k) = m+1$. Apply the decomposition to $\Gamma_k$ as stated above, we see that
+	the lemma would follow if we can prove
+	\begin{equation}\label{eq: control of acc drift + }
+		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \cdot \left(M_k - \abs{X_k} \right)   } > \varepsilon \sqrt{n}  \right) =0. 
+	\end{equation}
+and similar results for $\Gamma_k^0$ and $\Gamma_k^-$. By symmetry, the result for $\Gamma_k^-$ follows from $\Gamma_k^+$. 
+\comment{$\Gamma_k^0$ will be dealt with when we prove the result for $\Gamma_k^+$.}
+	
+Note that \eqref{eq: control of acc drift + } is equivalent to
+\begin{equation}
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \Delta_{y}^{\edt{(X_k,L(X_k,k) - 1)}} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
+\end{equation}
+\comment{I think we need to write $(X_k,L(X_k,k) - 1)$, to maintain the identity  $L(x,k) = m + 1$.}
+
+To show \eqref{eq: control of acc drift + }, we further approximate the $\Delta_{y}^{(x,m)}$ by its conditional expectation with respect to the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$ generated by directed edge local times, $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{(x,m)}_{y,+} : y \geq x \right)$.
+
+%To this end, we consider the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$, where $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{(x,m)}_{y,+} : y \geq x \right)$, and further approximate $\Delta_y^{(x,m)}$ by its conditional expectation with respect to $\mathcal{G}_{y-1}^{(x,m)}$,
+Define
 	\begin{equation}\label{eq: conditional mean}
 		\rho_{y}^{(x,m)}= \mathbb{E}\left[\Delta_y^{(x,m)} | \mathcal{G}_{y-1}^{(x,m)}\right].
 	\end{equation}
 	Then \eqref{eq: control of acc drift + } follows from the following two propositions.
+\end{proof}
 	\begin{lemma}\label{lm: approximation of means of local drift}
-		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
+		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of expected local drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \rho_{y}^{\edt{(X_k,L(X_k,k))}} - \gamma  \cdot sgn(y) \right)   }  > \epsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \rho_{y}^{\edt{(X_k,L(X_k,k)-1)}} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
-	and
+
 	\begin{lemma}\label{lm: approx local drift by conditional means}
-		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\epsilon >0$
+		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of martingale difference for local drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left(\Delta_{y}^{\edt{(X_k,L(X_k,k))}}- \rho_{y}^{\edt{(X_k,L(X_k,k))}} \right)   }  > \epsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left(\Delta_{y}^{\edt{(X_k,L(X_k,k)-1)}}- \rho_{y}^{\edt{(X_k,L(X_k,k)-1)}} \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
 
@@ -323,12 +332,15 @@
 	%\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Lemma \ref{lm: control of acc drift}.
 	
 	
-	\textbf{Step 3: Tightness.} We need tightness of process-level extrema, which combined with Lemma~\ref{lm: control of acc drift} gives tightness of $\left(\frac{\Gamma_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$, and hence of $\left(\frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$. This is already established in \cite{KMP22} for general  $p \in (0,1]$:
-	\begin{proposition}(\cite{KMP22}, Proposition 2.1)
+	\textbf{Step 3: Tightness.} The tightness of $S_k$ and $I_k$ under diffusive scaling is already established in \cite{KMP22} for general $p \in (0,1]$:
+	\begin{proposition}
+		(\cite{KMP22}, Proposition 2.1)\\
 		\label{prop: tightness}
 		%The extremum processes of $X_k$ are tight under diffusive scaling. That is,
-		Both $\left\{\frac{S_{\left\lfloor n t \right\rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ and $\left\{\frac{I_{\lfloor n t \rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ are tight in $D([0, \infty))$.
+		Both $\left\{\frac{S_{\left\lfloor n t \right\rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ and $\left\{\frac{I_{\lfloor n t \rfloor}^X}{\sqrt{n}}\right\}_{n \geq 0}$ are tight in the standard Skorohod topology $D([0, \infty))$.
 	\end{proposition}
+This result combined with Lemma~\ref{lm: control of acc drift} gives tightness of $\left(\frac{\Gamma_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$, and hence of $\left(\frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$. 
+Now we are ready to show
 	
 	\textbf{Step 4: Convergence to BMPE.} 
 	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, the subsequencial limits agree and $Y_1$ is a $(\gamma, \gamma)$-BMPE.
