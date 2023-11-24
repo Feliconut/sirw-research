@@ -176,14 +176,34 @@
 		as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 	\end{theorem}
 	\end{samepage}
-	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP22}. The proof in \cite{KMP22} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
-	This approach
-	has also been used previously in other excited random walks in dimension one, such as \cite{DK12} and \cite{KP16}.
+	This theorem states that the amount of perturbation is directly proportional to the signed range of the process, i.e. $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. 
+	For this to be true, we expect the drift encountered by the walk to be approximated by $\gamma$ times the signed range of the walk, with an error of order $o\left(\sqrt{n} \right)$ (see Lemma~\ref{lm: control of acc drift} for the precise statement). 
+	The approximation is intuitive when drift is only attained at extremum, for example, when $w(0) = (2 - \gamma)^{-1}$ and $w(n) = 1$ for $n > 0$. 
+	%In this walk, the walk has nonsymmetric transition probabilities, i.e., attains drift, only when it hits boundary of its current range. 
+	For more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}.
 
-	In \cite{KMP22}, the analysis of local behavior of the walk through Generalized P\"olya's urn processes were crucial in the control of total drift. 
+	
+	\edt{Discussion involving ERW}
+	%the $pq$ walk studied in \cite{Dav96} defined by letting the transition probabilities be $\frac{1}{2}$ when the walker has not hit its extrema. When it hits maxima, the probability for jumping to the right in the next step is $p = (2 - \theta^+)^{-1}$. Likewise, when it hits minima, the probability for jumping to the left in the next step is $q = (2 - \theta^-)^{-1}$. This walk converges weakly to the process $W^{\theta^+, \theta^-}$ with the same scaling as Theorem~\ref{thm: main}. In fact, this is the \edt{earliest example} of BMPE arising as functional limit of rescaled excited random walks. 
+
+
+	%Upon inspection of the functional equation defining BMPE, we see that the perturbation term of our limiting process is given by $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. Hence, $\gamma$ can be interpreted as the expected drift attained at each site after sufficiently many visits. In proving Theorem~\ref{thm: main}, we need to establish such an estimate of total drift accumulated by $X_k$. To do so, we will decompose the rescaled walk into a discrete martingale and a drift process, and treat each part separately. The main difficulty comes from the existence of rarely visited sites, and we need to carefully estimate 1) how fast the drift attained at a site $y$  converges to $\gamma$, and 2) how much does the total accumulated drift $\Gamma_k$ deviate from $\gamma \left( \sup_{i \le k} X_i + \inf _{i \le k} X_i  \right) $. It turned out that the effect of rarely visited sites only contribute to error of order $o(\sqrt{n} )$ (see Lemma~\ref{lm: control of acc drift}).
+
+
+
+%	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP22}. The proof in \cite{KMP22} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
+
+	The analysis of local time process of random work via \textit{Branching-like processes}, taking advantage of the tree structure of the walk's excursions in one dimension, is core to the analysis of both SIRW (considered in this work as well as \cite{T96, KMP22}) and ERW (considered in \cite{DK12, KP16, KMP22b}). 
+	One special property of SIRW is that local behavior of the walk at different sites can be independently generated from the \textit{Generalized P\'olya's urn processes}.
+	%The walk $X_k$ itself can then be constructed from the urn processes at each site. \textit{Branching-like processes} describe the way we construct the local time process of $X_k$ from those local urns. 
+	These two auxiliary processes are crucial for controlling total drift attained by the walk in both \cite{KMP22} and this work.
 	In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP22}, Lemma~2.3-2.4]).
+	The main technical difficulties in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drift.
+Hence, we need a slightly more involved argument to estimate the total drift attained at a single site.
+We stop the walk at particular excursion times and express the total attained drift as a spatial martingale adapted to the natural filtration of the branching-like process.
+	%We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
+	This approach has also been used previously in some one-dimensional ERWs, mainly \cite{DK12} and \cite{KP16}.
 
-	When we consider $p \in (0,\frac{1}{2}]$, local drift is no longer absolutely summable, so we need a slightly more involved argument to estimate the total drift attained at a single site. The method we adopt here is similar to \cite{KP16}, where we stop the walk at particular excursion times and express the total attained drift as another spatial martingale $\Delta_y^{(x,m)}$, adapted to the natural filtration of the branching-like process (Section~\ref{sec: generalized Polya Urn, BLP}). We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
 
 	%The novelty of the current article is an approximation of accumulated local drifts $\Delta_y^{(x,m)}$, defined in section \ref{sec: proof of main} below on certain good events, which occurs with a high probability. 
 	%On these good events, the accumulated local drifts are well approximated by their conditional means $\rho_{y}^{(x,m)}$ given certain edge local times, while their conditional means $\rho_{y}^{(x,m)}$ are close to the $\gamma \cdot sgn(y)$ when certain edge local times are large. \TBD 
@@ -192,7 +212,7 @@
 	%We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
 	
 	\subsection{Organization of Paper}
-	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual proposition. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, generalized P\'{o}lya urn processes and branching-Like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
+	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual lemma. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, namely generalized P\'{o}lya urn processes and branching-like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
 	
 	\subsection{Notation}
 	
@@ -228,7 +248,7 @@
 	\begin{equation}
 		\label{eqn:decomposition}
 	X_k = M_k+ \Gamma_k 
-\end{equation} ,
+	,\end{equation} 
 	where
 	\[ 
 	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X 
@@ -239,9 +259,9 @@
 	\vspace{1em}
 	
 	\textbf{Step 1: Control of martingale term.}
-	The above decomposition gives a martingale $M_n$ with respect to $\mathcal{F}_i^X.$ By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ is tight in $D\left( [0,\infty ) \right) $ and converges to the standard Brownian motion, if we have the control  
+	The above decomposition gives a martingale $M_k$ with respect to $\mathcal{F}_k^X.$ By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ is tight in $D\left( [0,\infty ) \right) $ and converges to the standard Brownian motion, if
 	\begin{equation}\label{eq: QV term}
-		\lim_{n\to \infty}\frac{1}{n} \sum_{i=0}^{n-1}\mathbb{E}\left[ (M_{i+1}- M_{i})^2 |\mathcal{F}_i^X \right] =1 \qquad  \mbox{ in probability}.
+		\lim_{n\to \infty}\frac{1}{n} \sum_{k=0}^{n-1}\mathbb{E}\left[ (M_{k+1}- M_{k})^2 |\mathcal{F}_k^X \right] =1 \qquad  \mbox{ in probability}.
 	\end{equation}
 	Since $\abs{X_{k+1}-X_k}=1$,  \eqref{eq: QV term} is implied by the following estimate to be proved in section \ref{sec: approximations}. 
 	\begin{lemma} \label{lm: control of martingale} 
@@ -328,7 +348,7 @@ Define
 	The proof of Lemma~\ref{lm: approximation of means of local drift} uses good events based on control of process extrema (Proposition~\ref{prop: tightness}), regularity of urn process (Lemma~\ref{lm: concentration inequality}), and control of rarely visited sites (Lemma~\ref{lm: number of rarely visit sites}, and estimates of their probabilities are essentially known from \cite{KMP22}. 
 	However, Lemma~\ref{lm: approx local drift by conditional means} requires uniform control of local time process (Lemma~\ref{lm: uniform control of local time}), and the proof requires the diffusion approximation of branching-like process (Lemma~\ref{lm: diffusion approximation of blp}).
 	We will describe the generalized P\'{o}lya Urn process and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}, and prove Lemma~\ref{lm: approximation of means of local drift}, \ref{lm: approx local drift by conditional means} in section \ref{sec: approximations}.
-	
+	\vspace{1em}
 	%\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Lemma \ref{lm: control of acc drift}.
 	
 	
@@ -341,6 +361,7 @@ Define
 	\end{proposition}
 This result combined with Lemma~\ref{lm: control of acc drift} gives tightness of $\left(\frac{\Gamma_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$, and hence of $\left(\frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$. 
 Now we are ready to show
+	\vspace{1em}
 	
 	\textbf{Step 4: Convergence to BMPE.} 
 	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, the subsequencial limits agree and $Y_1$ is a $(\gamma, \gamma)$-BMPE.
