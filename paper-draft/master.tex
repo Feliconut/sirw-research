@@ -644,23 +644,49 @@
 		\label{lm: uniform control of local time}
 		\[
 		\lim_{K \to  \infty } \limsup_{n \to \infty } P\left( \sup_{y \in \mathbb{Z}} L\left( y, n \right) > K \sqrt{n}  \right) = 0
-		.\] 
-	\end{lemma}
-	The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\ref{lm: diffusion approximation of blp}. The proof mostly coincides with (Lemma~3.4, \cite{KP16}). 
-	\comment{Maybe discuss here that the diffusion approximation involves $\sigma_0^{\tilde \zeta}$ instead of $\sigma_{\varepsilon n}^{\tilde \zeta}$ as in \cite{KP16}, greatly simplifying the proof of equivalent of (Lemma~3.5, \cite{KP16}. Consider rewriting the full proof.
-	}
-	
-	\TBD. Write a proof here.
-	
-	
-	\section{Approximations of Local Drifts}\label{sec: approximations}
-	In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}.
-	
-	\subsection{Typical Events}
-	
-	For integers $K>0$, $n > 0$, $t>0$, define the event
-	\begin{align}
-		G_{n,K,t} :=  \qquad
+	.\] 
+\end{lemma}
+The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\ref{lm: diffusion approximation of blp}. The proof mostly coincides with (Lemma~3.4, \cite{KP16}). 
+\comment{Maybe discuss here that the diffusion approximation involves $\sigma_0^{\tilde \zeta}$ instead of $\sigma_{\varepsilon n}^{\tilde \zeta}$ as in \cite{KP16}, greatly simplifying the proof of equivalent of (Lemma~3.5, \cite{KP16}. }
+
+\begin{proof}
+	Consider the event that $L(y, n) > K \sqrt{n} $ for some  $y \in \mathbb{Z}, n, K > 0$. Define $m_{n, K } = \tau^{\mathcal{R}, 0}_{\sqrt{K n} }$. Now, either
+	\begin{itemize}
+		\item $L(y, \lambda_{0, m_{n, K}}) \ge L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$; or
+		\item $L(y, \lambda_{0, m_{n, K}}) \ge  L(y, n)  > K \sqrt{n} $.
+	\end{itemize}
+	By symmetry we only need to control $P\left( \sup _{y \ge  0} L(y, n) > K \sqrt{n}  \right) $. In view of the case analysis above, we have
+	\begin{align*}
+		&P\left( \sup _{y \ge  0} L(y, n) > K \sqrt{n}  \right) \\
+		&\le P\left( \lambda_{0, m_{n, K}} \le n \right) + P\left( \sup _{y \ge 0} L\left( y, \lambda_{0, m_{n, K}}\right)   > K \sqrt{n}  \right)  \\
+		&\le P\left( 2 \sum_{y \ge 0} \mathcal{E}_y^{(0,m_{n, K})} \le n \right) + P\left( \sup _{y \ge 0} \mathcal{E}_y^{\left( 0,m_{n, K} \right) }   > \frac{K \sqrt{n} }{2}  \right)+ P\left( L(0,\lambda_{0, m_{n, K}}) > K \sqrt{n}  \right)  \\
+		&\le 
+		P\left( 2 \sum_{i \ge  0} \tilde \zeta_i \le  n \middle| \tilde\zeta_0 = \sqrt{K n} \right) + 
+		P\left( \sup _{i \ge 0} \tilde \zeta_k > \frac{K \sqrt{n} }{2} \middle| \tilde \zeta_0 = \sqrt{K n}   \right)+ 
+		P\left( \mathcal{R}^{(0)} _{K \sqrt{n} } < \sqrt{K n}  \right) 
+	.\end{align*}
+	The last probability is controlled by the concentration inequality for urn process, Lemma~\ref{lm: concentration inequality}. Using diffusion approximation of BLP, Lemma~\ref{lm: diffusion approximation of blp}, and scaling properties of BESQ process, the first two probabilities have the following limits as $n \to  \infty $ :
+\begin{align*}
+	P\left( 2 \sum_{i \ge  0} \tilde \zeta_i \le  n \middle| \tilde\zeta_0 = \sqrt{K n} \right) 
+	&\to 
+	P\left(2 \int _0^{\sigma_0^{Z}} Z^{(2 \gamma)}(s) d s \le \frac{1}{K} \middle| Z^{(2 \gamma)}(0) = 1 \right),\\
+	P\left( \sup _{i \ge 0} \tilde \zeta_k > \frac{K \sqrt{n} }{2} \middle| \tilde \zeta_0 = \sqrt{K n}   \right)
+	&\to 
+	P\left( \sup_{s \ge 0} Z^{(2 \gamma)}(s \wedge \sigma_0^{Z}) > \frac{\sqrt{K} }{2} \middle| Z^{(2 \gamma)} (0) = 1 \right) 
+.\end{align*} 
+Both probabilities go to zero as we let $K$ go to infinity. 
+\end{proof}
+
+		
+		
+		\section{Approximations of Local Drifts}\label{sec: approximations}
+		In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}.
+
+		\subsection{Typical Events}
+		
+		For integers $K>0$, $n > 0$, $t>0$, define the event
+\begin{align}
+	G_{n,K,t} :=  \qquad
 		\label{eqn:good-event-1}
 		& \left\{\sup _{k \le \left\lfloor nt  \right\rfloor} |X_k| < K \sqrt{n} \right\} \cap \\
 		\label{eqn:good-event-2}
