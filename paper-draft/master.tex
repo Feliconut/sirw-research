@@ -935,7 +935,11 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 				=& 	\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] - \sum_{i=0}^{m-1} \frac{1}{r(i)} = \mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}    - \sum_{i=0}^{m-1} \frac{1}{r(i)}\right]. \label{eq: difference}
 			\end{align}
 			From \eqref{eq: asymptotics of w}, we have that $0< \inf \frac{1}{r(j)} \leq \sup \frac{1}{r(j)} <\infty $, then $\mathbb{E}\left[\mu(m)\right]$ is bounded by
-			$$\mathbb{E}\left[ \mu(m) \right] = \mathbb{E}\left[ \mu(m)\mathbb{1}_{\{\mu(m)\geq 1 \} } \right] \leq  \frac{1}{\inf 1/w(j) }\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] <\infty, $$ 
+			\[
+			\mathbb{E}\left[ \mu(m) \right] = 
+			\mathbb{E}\left[ \mu(m)\mathbb{1}_{\{\mu(m)\geq 1 \} } \right] 
+			\leq  \frac{1}{\inf_{i \in \mathbb{N}} 1/r(i) }\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] <\infty, 
+		\] 
 			so $ \mathbb{E}\left[ \mu(m) -m\right]  $ is bounded.
 			The difference in \eqref{eq: difference} is a sum
 			\begin{align} 
@@ -951,26 +955,25 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 			
 			Indeed, let $A> \frac{2}{c} \vee 1$, where $c$ is from Lemma \ref{lm: concentration inequality}. \eqref{eq: 1st term} is bounded by
 			\begin{align}
-				\sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right) & \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right) 
-				\notag
-				\\
-				& +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
+				& \sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)\\
+				& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
+				 +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
 				\notag
 				\\
 				&\leq  \sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} }
-				\label{low difference}
-				\\
-				& + 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
-				\label{large difference}
+				\quad +\quad 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+				\label{low large difference}
 			\end{align}
 		 By \eqref{eq: asymptotics of w}, there is a constant $C'>0$ such that for any $m>100 $ and any $j$ with $\abs{j-m}\leq A \sqrt m \log m $, 
 			$$ \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \leq C' A m^{-p-\frac{1}{2}} \log m, $$
-			which implies that \eqref{low difference} is bounded by
-			$$
+			which implies
+			\[
+				\sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \le 
 			C' A^2 m^{-p} (\log m)^2.
-			$$ On the other hand, Lemma \ref{lm: concentration inequality} implies that the expectation of \eqref{large difference} is bounded by
+			\] On the other hand, Lemma \ref{lm: concentration inequality} implies that
 			\begin{align*}
-				& 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{j-m \geq A \sqrt m \log m  } P( \mathcal{D}_{\tau^B_m} \geq j-m )  
+2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+				\le & 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{j-m \geq A \sqrt m \log m  } P( \mathcal{D}_{\tau^B_m} \geq j-m )  
 				\notag 
 				\\
 				\leq& 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{l \geq A \sqrt m \log m } C \exp\left( - \frac{c  \cdot l^2}{l \vee m}   \right)
@@ -1015,13 +1018,13 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 		Now we are ready to show Lemma \ref{lm: approximation of means of local drift}
 		 and a slightly stronger result. \TBD
 		\begin{lemma}
-			Let $w(.)$ be a positive monotone function on $\mathbb{N}_0$ satisfying \eqref{eq: asymptotics of w}. Then for any $0<p<1$, any $\epsilon>0$,
+			Let $w(.)$ be a positive monotone function on $\mathbb{N}_0$ satisfying \eqref{eq: asymptotics of w}. Then for any $0<p<1$, any $\varepsilon>0$,
 			$$
-			\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
+			\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
 			$$
 			Furthermore,
 		\[
-	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
+	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
 	\]
 \end{lemma}
 \begin{proof} There are only three types of weight sequences for the generalized P\'{o}lya urn processes, see \eqref{eq: generalized weights}. Therefore, from Lemma \ref{lm: convergence of mean of discrepancies}, and 
@@ -1032,7 +1035,7 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 	\end{equation} One such function is $C(l) = \sup \left\{  \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^R} \right] - \gamma \cdot sgn(y)} + \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^B} \right] - \gamma \cdot sgn(y)} : m\geq l \right\}.     $  
 	
 	
-	Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider two types of events, 
+	Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider two types of events corresponding to control of extrema and rarely visited sites:
 	\begin{align*}
 	A_{n,K}:=&\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}
 	\\
@@ -1040,7 +1043,7 @@ The second term vanishes trivially; the first term vanishes by process-level tig
 	\end{align*}
 Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}$ is increasing in $M$. We claim that for $n$ large, the event 
 $$
-F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
+F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
 
 	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
 	\begin{align*}
@@ -1052,10 +1055,10 @@ F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \l
 \end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
 \begin{equation}\label{eq: an upper bound on good set}
 	C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
-\end{equation} As $n$ goes to infinity, \eqref{eq: an upper bound on good set} is smaller than $\epsilon \sqrt{n}$ for any $K>0$ and any $M$ with $C(M) < \frac{\epsilon}{2K}$ . 
-For such pairs of $(K,M)$, $A^c_{n,K} \cap B^c_{n,M} \subset F^c_{n,\epsilon}$ when $n$ is large,  and 
+\end{equation} As $n$ goes to infinity, \eqref{eq: an upper bound on good set} is smaller than $\varepsilon \sqrt{n}$ for any $K>0$ and any $M$ with $C(M) < \frac{\varepsilon}{2K}$ . 
+For such pairs of $(K,M)$, $A^c_{n,K} \cap B^c_{n,M} \subset F^c_{n,\varepsilon}$ when $n$ is large,  and 
 $$
-\limsup_{n\to \infty} P(F_{n,\epsilon}) \leq \limsup_{n\to \infty}  P(A_{n,K}) +  \limsup_{n\to \infty}  P(B_{n,M}).
+\limsup_{n\to \infty} P(F_{n,\varepsilon}) \leq \limsup_{n\to \infty}  P(A_{n,K}) +  \limsup_{n\to \infty}  P(B_{n,M}).
 $$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  P(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  P(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Lemma 2.1 \cite{KMP22}, or Corollary 1A \cite{T96}.
 \end{proof}
 
