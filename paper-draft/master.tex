@@ -284,7 +284,7 @@ We stop the walk at particular excursion times and express the total attained dr
 	\Gamma_0 = 0, \quad \Gamma_n = \sum_{i=0}^{n-1} \mathbb{E}\left[ X_{i+1}-X_i | \mathcal{F}_i^X 
 	\right].
 	\] 
-	We refer to $M_k$ as the ``martingale term'' and $\Gamma_k$ as the ``drift term''.
+	%We refer to $M_k$ as the ``martingale term'' and $\Gamma_k$ as the ``drift term''.
 
 	\vspace{1em}
 	
@@ -309,7 +309,7 @@ We stop the walk at particular excursion times and express the total attained dr
 			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(M_k + I_k \right)   } > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
-	Before proving Lemma~\ref{lm: control of acc drift}, we first remark that the local time process of $X_k$ at excursion times $\lambda_{x,m}$ can be described in terms of spacially markovian processes, namely branching-like processes discussed in section \ref{sec: generalized Polya Urn, BLP}. This motivates considering \textit{local drift} attained at a single site $y$ at stopping times $\lambda_{x, m}$:
+	Before proving Lemma~\ref{lm: control of acc drift}, we first remark that the local time process of $(X_k)_{k \ge 0}$ at excursion times $\lambda_{x,m}$ can be described in terms of spacially markovian processes, namely branching-like processes discussed in section \ref{sec: generalized Polya Urn, BLP}. This motivates considering \textit{local drift} attained at a single site $y$ at stopping times $\lambda_{x, m}$:
 	\begin{equation}\label{eq: accumulated local drift}
 			\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E\left[X_{i+1}-X_i\vert \mathcal{F}_{i}^X\right] \mathbb{1}_{\{X_i=y\}}
 	\end{equation}
@@ -333,7 +333,6 @@ We stop the walk at particular excursion times and express the total attained dr
 		%We only need to consider the term $\Gamma_k^+$ while the contribution from $\Gamma_k^-$ follows a symmetric argument. And with a similar argument, we get that the contribution from $\Gamma_k^0$ is negligible (\TBD \comment{consider giving proof in Sect. 4.4}).
 	In the proof, we will approximate $\Delta_y^{(x,m)}$ by $\gamma\cdot sgn(y)$, thus we will approximate $\Gamma_k^+$ by $\gamma \cdot (S_k - \abs{X_k})$. 
 
-	\begin{proof}[Proof of Lemma \ref{lm: control of acc drift}]
 	For each $k > 0$, we can let $x = X_k$ and there exists some $m>0$ such that $k = \lambda_{x,m}$ and $L(x,k) = m+1$. Apply the decomposition to $\Gamma_k$ as stated above, we see that
 	the lemma would follow if we can prove
 	\begin{equation}\label{eq: control of acc drift + }
@@ -356,7 +355,6 @@ Define
 		\rho_{y}^{(x,m)}= \mathbb{E}\left[\Delta_y^{(x,m)} | \mathcal{G}_{y-1}^{(x,m)}\right].
 	\end{equation}
 	Then \eqref{eq: control of acc drift + } follows from the following two propositions.
-\end{proof}
 	\begin{lemma}\label{lm: approximation of means of local drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of expected local drift}
@@ -372,6 +370,7 @@ Define
 	\end{lemma}
 
 %	\edt{Consider changing both propositions to a version for $(x,m)$. This allows us to unify the part of the proof where we go from $(X_k, L(X_k, k))$ to $(x,m)$.}
+	\edt{General discussion involving good events, but not too much technical things; postpone those to sect. 4}
 	
 	We will prove Lemma~\ref{lm: approximation of means of local drift} in section~\ref{sec:RhoGamma} and Lemma~\ref{lm: approx local drift by conditional means} in section~\ref{sec:DeltaRho}. The proofs use two auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. 
 
@@ -612,16 +611,18 @@ Moreover, on the event that $\left\{\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1
 			\begin{enumerate}
 				\item 
 			For $n\geq 1$, let $\zeta^{(n)}=(\zeta^{(n)}_k)_{k\geq 0 }  $ be the BLP with initial value $\zeta^{(n)}_0 = \lfloor yn \rfloor$ for some $y \geq 0$, and let $\mathcal{Z}_n(t) = \frac{\zeta^{(n)}_{\lfloor nt \rfloor}}{n}$ for $n\geq 1$ and $t\geq 0$. Then we have that 
-			$$
+			\[
 			\mathcal{Z}_n(.) \Longrightarrow Z^{(2-2\gamma)}(.)
-			$$ as $n$ goes to infinity on $D([0,\infty)),$ where $Z^{(2-2\gamma)}(.)$ is the squared Bessel processes of dimension $2-2\gamma$.
+			\] 
+			as $n$ goes to infinity on $D([0,\infty)),$ where $Z^{(2-2\gamma)}(.)$ is $\frac{1}{2}$ times the squared Bessel processes of dimension $2-2\gamma$.
 
 			\item
 				For $n\geq 1$, let $\tilde\zeta^{(n)}=(\tilde\zeta^{(n)}_k)_{k\geq 0 }  $ be the BLP with initial value $\tilde\zeta^{(n)}_0 = \lfloor yn \rfloor$ for some $y \geq 0$, and let $\tilde{\mathcal{Z}}_n(t) = \frac{\tilde\zeta^{(n)}_{\lfloor nt \rfloor}}{n}$ for $n\geq 1$ and $t\geq 0$. Then we have that 
-			$$
+			\[
 			\left(\tilde{\mathcal{Z}}_n(.), \sigma_0^{\tilde{\mathcal{Z}}_n}\right) 
 			\Longrightarrow \left(Z^{(2\gamma)}(. \wedge \sigma_0^{Z^{(2 \gamma)}}), \sigma_0^{Z^{(2 \gamma)}}\right)
-			$$ as $n$ goes to infinity on $D([0,\infty)) \times [0,\infty )$.
+			\]
+			as $n$ goes to infinity on $D([0,\infty)) \times [0,\infty )$.
 			\end{enumerate}
 
 		
@@ -664,29 +665,52 @@ The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\r
 		& \left\{\sup _{k \le \left\lfloor nt  \right\rfloor} |X_k| < K \sqrt{n} \right\} \cap \\
 		\label{eqn:good-event-2}
 		& \left\{\sup_{y \in \mathbb{Z}} L(y, \left\lfloor nt  \right\rfloor) < K \sqrt{n} \right\} \cap \\
+		\nonumber
+		B_{n, K}
+.\end{align}
+
+where
+\begin{align}
+	B_{n, K} := \qquad
 		\label{eqn:good-event-3}
 		& \bigcap_{y = - K \sqrt{n} }^{K \sqrt{n}} 
-		\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_i^{\mathcal{B}} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
+		\bigcap_{i = 1}^{K \sqrt{n} } 
+		\left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
 		\label{eqn:good-event-4}
 		& \bigcap_{y = - K \sqrt{n} }^{K \sqrt{n}} 
-		\bigcap_{i = 0}^{K \sqrt{n} } \left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| < \log^2 n \right\}  
+		\bigcap_{i = 0}^{K \sqrt{n} } 
+		\left\{\left| \tau_{i+1}^{\mathcal{B}, y} - \tau_i^{\mathcal{B}, y} \right| < \log^2 n \right\}  
 .\end{align}
+
+Also define
+
+\begin{align*}
+	\overline{B} _{n, K} := 
+& \left\{\sup _{k \le \lambda_{0, \left\lfloor K^2 \sqrt{n} \right\rfloor }} |X_k| < K^3 \sqrt{n} \right\} \cap \\
+	&\bigcap_{y \in \mathbb{Z}} 
+	\left\{L\left( y, \lambda_{0, \left\lfloor K^2 \sqrt{n} \right\rfloor } \right) < K^3 \sqrt{n} \right\}  \cap  \\
+	& \bigcap_{|y| < K \sqrt{n} }  
+	\left\{L\left( y, \lambda_{0, \left\lfloor K^2 \sqrt{n} \right\rfloor } \right) > K \sqrt{n} \right\}
+.\end{align*}
+\begin{align*}
+	\overline{G}_{n, K} := 
+		\overline{B} _{n, K} \cap 
+	 B_{n, K^3}
+.\end{align*}
 
 For each site $x \in \mathbb{Z}$ and $y > x$, and each integer $m > 0$, we define the event
 \begin{align}
 	G_{n,K}^{(x,m)}(y) :=  \qquad
-		& \left\{ L(y,  \lambda_{x, m}  ) < K \sqrt{n} \right\} \cap \\
-		& \bigcap_{i = 1}^{L(z, \lambda_{x, m}) } \left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
-		& \bigcap_{i = 1}^{L(z, \lambda_{x, m}) } \left\{\left| \tau_{i+1}^{\mathcal{B},y} - \tau_i^{\mathcal{B},y} \right| < \log^2 n \right\}  
+	\label{eqn:good-event-5}
+		& \left\{ L(y,  \lambda_{x, m}  ) < K^3 \sqrt{n} \right\} \cap \\
+	\label{eqn:good-event-6}
+		& \bigcap_{i = 1}^{L(y, \lambda_{x, m}) } \left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}  \cap \\
+	\label{eqn:good-event-7}
+		& \bigcap_{i = 1}^{L(y, \lambda_{x, m}) } \left\{\left| \tau_{i+1}^{\mathcal{B},y} - \tau_i^{\mathcal{B},y} \right| < \log^2 n \right\}  
 .\end{align}
 
 Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-adapted, that is, $G_{n, K}^{(x,m)}(y)\in \mathcal{H}_{y, +}^{(x,m)}$.
-Also note that  if we denote \eqref{eqn:good-event-1} by $A_{n, K, t}$, then
-	\begin{equation}
-		\label{eqn:goodgood}
-		G_{n, K, t} \subset  A_{n, K, t} \cap 
-		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}(y)
-	.\end{equation} 
+	 
 
 \begin{lemma}
 	\label{lem:good-event}
@@ -724,6 +748,36 @@ This implies that the probability of event \eqref{eqn:good-event-4} goes to $1$ 
 	We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
+\begin{lemma}
+\[
+		\lim_{K \to \infty } \limsup_{n \to \infty } 
+		P(\overline{G} ^c_{n, K}) = 0
+	.\]
+	and 
+	\begin{equation}
+		\label{eqn:goodgood}
+		\overline{G} _{n, K} \subset 
+		\bigcap_{|x|, m < K \sqrt{n} } \bigcap_{y \in \mathbb{Z}} G_{n, K}^{(x,m)}(y)
+	.\end{equation}
+\end{lemma}
+\begin{proof}
+	Following similar arguments in the previous lemma, we conclude that
+	\[
+		\lim_{K \to \infty } \limsup_{n \to \infty } P\left(B_{n, K^3}^c\right) = 0
+	\]
+	.
+	To prove the other two events, observe that due to construction of BLP and symmetry around site $0$,
+	\begin{align*}
+	P\left( \overline{B}  _{n, K} \right) 
+	&= 2 P_{K^{2} \sqrt{n} }^{\tilde \zeta}\left( \sup_{i \in \mathbb{N}} \tilde \zeta_i < K^3 \sqrt{n},
+	\sigma_{K \sqrt{n} } > K \sqrt{n} , \sigma_{0} < K^3 \sqrt{n}   \right) 
+	%&= 2 P_{K^{2} \sqrt{n} }^{\tilde \zeta}\left( \sup_{i \in \mathbb{N}} \tilde \zeta_i < K^3 \sqrt{n}  \right)  
+	%+ 2 P_{K^{2} \sqrt{n} }^{\tilde \zeta}\left( \sigma_{K \sqrt{n} } > K \sqrt{n} , \sigma_{0} < K^3 \sqrt{n}   \right) 
+	.\end{align*}
+	Using the diffusion approximation of BLP, and scaling property of $Z^{2 \gamma}$, we can conclude that $P\left( \overline{B} _{n, K}^c \right) $ goes to $0$ when we first take $n$ to infinity and then take $K$ to infinity.
+
+	To verify \eqref{eqn:goodgood}, note that, by monotonicity of local time process, under event $\overline{G} _{n, K}$, for any $|x|, m < K \sqrt{n}$, the local time process $L\left( y, \lambda_{x, m} \right) $ is dominated by $L\left( y, \lambda_{0, \left\lfloor K^2 \sqrt{n} \right\rfloor } \right) $. This proves \eqref{eqn:good-event-5}. Finally, note that the control $L(y, \lambda_{x, m}) < K^3 \sqrt{n} $ and $B_{n, K^3}$ gives \eqref{eqn:good-event-6} and \eqref{eqn:good-event-7}.
+\end{proof}
 
 
 \begin{lemma}\label{lm:lipchitz-bound-on-good-event}
@@ -985,7 +1039,7 @@ $$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation a
 \label{sec:DeltaRho}
 In this subsection, we prove Lemma \ref{lm: approx local drift by conditional means}. This proof is similar to, and slightly more technical than the proof of (Lemma~4.2, \cite{KP16}). 
 
-In \eqref{eq: control of martingale difference for local drift}, for a fixed $(x,m)$, the inner sum is a martingale. To control the sum, we compare the martingale $\sum_y \Delta_y^{(x,m)} - \rho_y^{(x,m)}$ to a tempered version $\sum_{y > x} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t}$.
+In \eqref{eq: control of martingale difference for local drift}, for a fixed $(x,m)$, the inner sum is a martingale. To control the sum, we compare the martingale $\sum_y \Delta_y^{(x,m)} - \rho_y^{(x,m)}$ to a tempered version $\sum_{y > x} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}$ that has bounded increments.
 \[
 	\tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbf{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
 	\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
@@ -1006,12 +1060,11 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 .\end{align}
 
 \begin{proof}[Proof of Lemma~\ref{lm: approx local drift by conditional means}]
-	We first control \eqref{eqn:tempered-difference-0}.
+	For arbitrary $|x| , m < K \sqrt{n} $, we can control \eqref{eqn:tempered-difference-0} on $G_{n, K, t} \cap \overline{G} _{n, K}$.
 On $G_{n, K, t}$, \eqref{eqn:tempered-difference-1} is zero. Lemma~\ref{lm: approximation of means of local drift} has controlled \eqref{eqn:tempered-difference-4}. 
-
-To control \eqref{eqn:tempered-difference-2} on $G_{n, K, t}$, Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event} imply for arbitrary $\varepsilon>0$,
+To control \eqref{eqn:tempered-difference-2} on $\overline{G} _{n, K}$, Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event} imply for arbitrary $\varepsilon>0$,
 \begin{align}
-	P\left( \left| \sum_{y = x + 1}^{K \sqrt{n} } (\tilde\Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)}) \right| > \varepsilon \sqrt{n}  \right) 
+	P\left( \left| \sum_{y = x + 1}^{K^3 \sqrt{n} } (\tilde\Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)}) \right| > \varepsilon \sqrt{n}  \right) 
 	%&\le \exp\left( - \frac{\varepsilon^2 n}{2 K^2 \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) \notag \\
 	&
 	\label{eqn:azuma-drift-martingale}
@@ -1024,44 +1077,49 @@ To control \eqref{eqn:tempered-difference-2} on $G_{n, K, t}$, Azuma's inequalit
 .\end{align}
 In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity.  
 
-It remains to control  \eqref{eqn:tempered-difference-3} on $G_{n, K, t}$:
+It remains to control  \eqref{eqn:tempered-difference-3} on $\overline{G} _{n, K}$. In view of \ref{eqn:goodgood},
 	\begin{align*}
-		\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
-		&= \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
-		&= \sum_{y = x + 1}^{K \sqrt{n} } -\mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
-		&= \sum_{y = x + 1}^{K \sqrt{n} } -\mathbf{1}\left(G_{n, K}^{(x,m)}(y-1)\right) \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] 
+		&\mathbf{1}\left( \overline{G} _{n, K} \right) 
+	\left| 	\sum_{y = x + 1}^{K^3 \sqrt{n} } \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \\
+		&= \mathbf{1}\left( \overline{G} _{n, K} \right)
+		\left| \sum_{y = x + 1}^{K^3 \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \right|   \\
+		&= \mathbf{1}\left( \overline{G} _{n, K} \right)
+		\left| \sum_{y = x + 1}^{K^3 \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \right|   \\
+		&\le \left|\sum_{y = x + 1}^{K^3 \sqrt{n} }  \mathbf{1}\left(G_{n, K}^{(x,m)}(y-1)\right) \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \right|  
 	.\end{align*}
 By monotonicity of BLP with respect to its initial conditions, we have the bound
 \begin{multline*}
-	\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le \\
-	K \sqrt{n} 
-	\sqrt{ P\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
-	\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
+	\mathbf{1}\left( \overline{G} _{n, K} \right) \left| \sum_{y = x + 1}^{K^3 \sqrt{n}}  \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le \\
+	K^3 \sqrt{n} 
+	\sqrt{ P\left( \left( G^{(x,m)}_{n, K^2}(y+1) \right) ^{c} \middle| \mathcal{E}_{y,+}^{(x,m)} = K^3 \sqrt{n}  \right) }
+	\sqrt{ \mathbb{E}\left[ \left(\Delta_{y+1}^{(x,m)}\right)^2 \mathbf{1}\left( \mathcal{E}_{y,+}^{(x,m)} = K^3 \sqrt{n}\right)  \right]}
 .\end{multline*}
-To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that the probability is bounded by 
+To control the first probability, write $l = L\left( y+1, \lambda_{x, m} \right) $, and note that the probability is bounded by 
 \[
-	P\left(\mathcal{E}_{x+1,+}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
-	= P\left(\mathcal{B}^{(x+1)}_{l} > K^2 \sqrt{n} \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
+	P\left(\mathcal{E}_{y+1,+}^{(x,m)} > K^6 \sqrt{n} \middle| \mathcal{E}_{y,+}^{(x, m)} = K^3 \sqrt{n}\right)
+	= P\left(\mathcal{B}^{(y+1)}_{l} > K^6 \sqrt{n} \middle| \mathcal{R}^{(y + 1)}_l = K^3 \sqrt{n}  \right)
 .\] 
 As increments $\tau^B_{l+1,y} -\tau^B_{l,y}$ of the Generalized Polya urn processes are stochastically bounded by independent geometric random variables with parameter uniform in $l\geq 0$ and $y \in \mathbb{Z}$, 
 \begin{align*}
-	P(\mathcal{E}_{x+1,+}^{(x,m)} > K^2 \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n})
-	%&\le P\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
+	P\left(\mathcal{E}_{y+1,+}^{(x,m)} > K^6 \sqrt{n} \middle| \mathcal{E}_{y,+}^{(x, m)} = K^3 \sqrt{n}\right)
+	%&\le P\left( \text{Binom}(K^6 \sqrt{n}, q ) < K^3 \sqrt{n}  \right)  \\
 	%\intertext{By Hoeffding bound,}
-	&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
+	&\le \exp\left( - 2 K^6 \sqrt{n}(q - \frac{1}{K^3})  \right) 
 ,
 \end{align*}
-which converges to $0$ exponentially fast in $K \cdot \sqrt{N}$. Therefore, we only need to bound the conditional second moments of $\left( \Delta_{x+1}^{(x,m)} \right) ^2$: when $\mathcal{E}_{x+1,+}^{(x,m)} < K^2 \sqrt{n} $, 
+which converges to $0$ exponentially fast in both $K$ and $n$. Therefore, we need to bound expectation of $\left( \Delta_{y+1}^{(x,m)} \right) ^2$.  In view of Lemma~\ref{lm: concentration inequality}, we have
 \begin{align*}
-	\left( \Delta_{x+1}^{(x,m)} \right) ^2 
-	&\leq \left| \mathcal{E}_{x+1,+}^{(x,m)} + \mathcal{E}_{x,+}^{(x,m)}  \right|^2  \\
-	&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
-	&\leq 4 K^4 n.
-\end{align*}
-Therefore,
+	\mathbb{E}\left[ \left(\Delta_{y+1}^{(x,m)}\right)^2 \mathbf{1}\left( \mathcal{E}_{y,+}^{(x,m)} = K^3 \sqrt{n}\right)  \right]
+	&\leq \sum_{m = 0}^{\infty} \left( K^3 \sqrt{n}  + m \right) ^2 P\left( \left| \mathcal{E}_{y, +}^{(x,m)} - \mathcal{E}_{y+1, +}^{(x,m)} \right| > m \right)  \\
+	&\leq \sum_{m = 0}^{\infty} \left( K^3 \sqrt{n}  + m \right) ^2 C e^{\frac{- c m^2}{ m \vee  K^3 \sqrt{n} }}  \\
+	& < C' K^6 n 
+.\end{align*}
+
+Therefore, on the event $\overline{G} _{n, K}$, we have
 \[
-\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le 4 K^5 n^{\frac{3}{2}} \exp\left( - 2K^2 \sqrt{n}(q - \frac{1}{K}) \right) \leq  C_K\exp\left( - K^2 \sqrt{n}(q - \frac{1}{K}) \right). 
-\]
+\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| 
+\le C' K^6 n \exp\left( - K^6 \sqrt{n}(q - \frac{1}{K^3}) \right) 
+.\]
 
 %\[
 %	P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 > 4 K^4 n \right) \le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
@@ -1074,15 +1132,15 @@ Therefore,
 %	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
 %.\end{align*}
 
-For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ of $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Also note from \eqref{eqn:goodgood} that $G_{n, K}^{(x,m)}(y)$ holds for all $y \ge x$ on the event $G_{n, K, t}$.
+Finally, we control $\sup_{k < \left\lfloor nt \right\rfloor} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$ on the event $G_{n, K, t} \cap  \overline{G} _{n, K}$. First note that each $k < \left\lfloor nt \right\rfloor$ corresponds to some $x , m$ such that $|x| , m < K \sqrt{n} $ and $k = \lambda_{x, m}, X_k = x$, thanks to the event $G_{n, K, t}$. Also note from \eqref{eqn:goodgood} that for all $|x| , m < K \sqrt{n} $ we have $G_{n, K}^{(x,m)}(y)$ for all $y \ge x$, thanks to the event $\overline{G} _{n, K}$.
 \begin{align*}
 	& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
-	\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
+	\Delta_y^{\left(X_k,L(X_k, k)-1\right)} - \rho_y^{\left(X_k,L(X_k, k)-1\right)}
 	\right| > \varepsilon \sqrt{n}  \right) \\
-	&\le P(G_{n, K, t}^c) + P\left( \sup _{|x|, m < K \sqrt{n} } \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
-	&\le P(G_{n, K, t}^c) + K^2 n \sup _{|x|, m \le  K \sqrt{n} }
-	P\left( \left| \sum_{y \ge X_k} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right) \\
-	&\le P(G_{n, K, t}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) \right) 
+	&\le P(G_{n, K, t}^c) + P(\overline{G} _{n, K}^c) +  P\left( \sup _{|x|, m < K \sqrt{n} } \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y \ge  x} G_{n, K}^{(x,m)}(y) \right) \\
+	&\le P(G_{n, K, t}^c) + P(\overline{G} _{n, K}^c) + K^2 n \sup _{|x|, m \le  K \sqrt{n} }
+	P\left( \left| \sum_{y \ge X_k} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y \ge  x} G_{n, K}^{(x,m)}(y) \right) \\
+	&\le P(G_{n, K, t}^c) + P(\overline{G} _{n, K}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) \right) 
 .\end{align*}
 In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
