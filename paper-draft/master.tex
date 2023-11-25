@@ -720,127 +720,127 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		\[
 		\lim_{K \to \infty } \limsup_{n \to \infty } 
 		P(G^c_{n, K,t}) = 0
-		.\] 
-	\end{lemma}
-	\begin{proof}%[Proof of Lemma~\ref{lem:good-event}]
-		From the process-level tightness of $\left( \frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} } \right)_{t \ge 0}$ we know that the probability of event \eqref{eqn:good-event-1} goes to $1$ (uniformly in $n$) as $K $ goes to infinity. The probability of the second event \eqref{eqn:good-event-2} is controlled by Lemma~\ref{lm: uniform control of local time}. The remaining two events \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4} encode the asymptotic behavior of Polya's Urn processes at each site $y$. To estimate the probability of event \eqref{eqn:good-event-3}, we use Lemma~\ref{lm: concentration inequality} and the remark after it. Specifically,
-		\begin{align*}
-			1-P\left(\bigcap_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_i^{\mathcal{B},y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}
-			\right) 
-			&\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } P\left( |\tau_i^{\mathcal{B},y} - 2i| \ge \sqrt{i} \log^2 n \right) \\
-			&\le CK \sqrt{n} \sum_{i < K \sqrt{ n} } \exp\left( - c \frac{i \log^4 n}{\sqrt{i}  \log^2 n \vee i} \right)  \\
-			&\le CK \sqrt{n}  \sum_{i < K \sqrt{ n} }  
-			\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  + 
-			\exp\left( - c \log^4 n \right) \right),
-		\end{align*}
-		which goes to $0$ as $n$ goes to infinity, for any $K>0$. 
-		For event \eqref{eqn:good-event-4}, we use a similar argument. Since the probability that the next ball drawn is blue is bounded below by some constant $q > 0$, $\tau_{i+1}^{\mathcal{B}} - \tau_{i}^{\mathcal{B}}$ is stochastically dominated by some geometric random variable $\text{Geo}(q)$. Therefore, \comment{Consider making this a remark in the Polya's Urn section.}
-		\[
-		P\left(\bigcup_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcup_{i = 1}^{K \sqrt{n}}\left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| \ge  \log^2 n \right\}\right) 
-		\le C K^2 n \exp\left( - c \log^2 n \right) 
-		,\] 
-		which also goes to $0$ as $n$ goes to infinity, for any fixed $K$. We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
-	\end{proof}
+	.\] 
+\end{lemma}
+\begin{proof}%[Proof of Lemma~\ref{lem:good-event}]
+	From the process-level tightness of $\left( \frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} } \right)_{t \ge 0}$ we know that the probability of event \eqref{eqn:good-event-1} goes to $1$ (uniformly in $n$) as $K $ goes to infinity. The probability of the second event \eqref{eqn:good-event-2} is controlled by Lemma~\ref{lm: uniform control of local time}. The remaining two events \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4} encode the asymptotic behavior of Polya's Urn processes at each site $y$. To estimate the probability of event \eqref{eqn:good-event-3}, we use Lemma~\ref{lm: concentration inequality} and the remark after it. Specifically,
+	\begin{align*}
+		1-P\left(\bigcap_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_i^{\mathcal{B},y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}
+		\right) 
+		&\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } P\left( |\tau_i^{\mathcal{B},y} - 2i| \ge \sqrt{i} \log^2 n \right) \\
+		&\le CK \sqrt{n} \sum_{i < K \sqrt{ n} } \exp\left( - c \frac{i \log^4 n}{\sqrt{i}  \log^2 n \vee i} \right)  \\
+		&\le CK \sqrt{n}  \sum_{i < K \sqrt{ n} }  
+		\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  + 
+		\exp\left( - c \log^4 n \right) \right),
+	\end{align*}
+	which goes to $0$ as $n$ goes to infinity, for any $K>0$. 
+	For event \eqref{eqn:good-event-4}, we use a similar argument. Since the probability that the next ball drawn is blue is bounded below by some constant $q > 0$, $\tau_{i+1}^{\mathcal{B}} - \tau_{i}^{\mathcal{B}}$ is stochastically dominated by some geometric random variable $\text{Geo}(q)$. Therefore, \comment{Consider making this a remark in the Polya's Urn section.}
+	\[
+	P\left(\bigcup_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcup_{i = 1}^{K \sqrt{n}}\left\{\left| \tau_{i+1}^{\mathcal{B}} - \tau_i^{\mathcal{B}} \right| \ge  \log^2 n \right\}\right) 
+	\le C K^2 n \exp\left( - c \log^2 n \right) 
+	,\] 
+	which also goes to $0$ as $n$ goes to infinity, for any fixed $K$. We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
+\end{proof}
+
+
+
+\begin{lemma}\label{lm:lipchitz-bound-on-good-event}
+	For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2})$,  we have
+	\begin{align*}
+		\left| \Delta_y^{(x,m)} \right| &\le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n &\text{when }p \in \left(0,\frac{1}{2}\right)\\
+		\left| \Delta_y^{(x,m)} \right| &\le C_K \log^5 n &\text{when }p = \frac{1}{2}
+		.\end{align*}
+	As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
+\end{lemma}
+\begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
+	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
+	\begin{align*}
+		\left| \Delta_y^{(x,m)} \right| 
+		&= 
+		\left| 	\sum_{i = 0}^{\mathcal{E}_{y,-}^{(x,m)}} 
+		\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+		\alpha(\mathcal{B}_l, \mathcal{R}_l)
+		\right| \\
+		&\le \sum_{i = 0}^{K \sqrt{n} } 
+		\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
+		|\alpha(\mathcal{B}_l, \mathcal{R}_l)|\\
+		&\le C_w \sum_i \sum_l \left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w(2 \mathcal{B}_l + 1)} \right|  \\
+		&= C_w \sum_i \sum_l \left| \frac{1}{w(2 l - 2 i)} - \frac{1}{w(2i + 1)} \right|  \\
+		&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left| \frac{1}{w(2j)} - \frac{1}{w(2i + 1)} \right|  \\
+		&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|  \\
+		\intertext{
+			In view of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4},
+		}
+		&\le C_w \sum_i \log^2 n \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right| \\
+		&\le C_{w, p} \sum_i \log^2 n \left( 
+		(4 \sqrt{ i } \log^2 n) (2 i - 2 \sqrt{ i } \log^2 n)^{- p - 1} + (2 i)^{- p - 1} + O(i^{- \kappa - 1})
+		\right)  \\
+		&\le C_{w, p} \sum_i \log^2 n \left( i ^{-p - \frac{1}{2}} \log^2 n +  i^{- \kappa - 1} \right)  \\
+		&= C_{w, p} \sum_i i^{- p - \frac{1}{2}} \log^4 n + i^{- \kappa - 1 } \log^2 n
+		%\intertext{for small $\kappa$,}
+		%&\le \begin{cases}
+		%C_{w, p} \left( (K \sqrt{ n} )^{-p+ \frac{1}{2}} \log^4 n + (K \sqrt{ n} )^{- \kappa } \log^2 n \right)  
+		%C_{w, p, K} n^{-\frac{1}{2}p + \frac{1}{4}  }  \log^4 n  & 0<p<\frac{1}{2}\\ 
+		%C_{w, p, K} \log^5 n		& p = \frac{1}{2}
+		%\end{cases}
+		.\end{align*} 
+	For $\kappa>0$, this gives us the desired bound.
+\end{proof}
+
+
+\subsection{Control of Martingale Terms } 
+\begin{proof}[Proof of Lemma~\ref{lm: control of martingale}]
+	As remarked earlier that we only need to show
+	
+	\[
+	\lim_{N \to \infty } \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 = 0
+	.\] 
 	
 	
+	We can rewrite the sum into a sum of local drifts, and isolate the first $M$ visits:
 	
-	\begin{lemma}\label{lm:lipchitz-bound-on-good-event}
-		For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2})$,  we have
-		\begin{align*}
-			\left| \Delta_y^{(x,m)} \right| &\le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n &\text{when }p \in \left(0,\frac{1}{2}\right)\\
-			\left| \Delta_y^{(x,m)} \right| &\le C_K \log^5 n &\text{when }p = \frac{1}{2}
-			.\end{align*}
-		As a corollary, those bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
-	\end{lemma}
-	\begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
-		We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
-		\begin{align*}
-			\left| \Delta_y^{(x,m)} \right| 
-			&= 
-			\left| 	\sum_{i = 0}^{\mathcal{E}_{y,-}^{(x,m)}} 
-			\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
-			\alpha(\mathcal{B}_l, \mathcal{R}_l)
-			\right| \\
-			&\le \sum_{i = 0}^{K \sqrt{n} } 
-			\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
-			|\alpha(\mathcal{B}_l, \mathcal{R}_l)|\\
-			&\le C_w \sum_i \sum_l \left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w(2 \mathcal{B}_l + 1)} \right|  \\
-			&= C_w \sum_i \sum_l \left| \frac{1}{w(2 l - 2 i)} - \frac{1}{w(2i + 1)} \right|  \\
-			&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left| \frac{1}{w(2j)} - \frac{1}{w(2i + 1)} \right|  \\
-			&= C_w \sum_i \sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|  \\
-			\intertext{
-				In view of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4},
-			}
-			&\le C_w \sum_i \log^2 n \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right| \\
-			&\le C_{w, p} \sum_i \log^2 n \left( 
-			(4 \sqrt{ i } \log^2 n) (2 i - 2 \sqrt{ i } \log^2 n)^{- p - 1} + (2 i)^{- p - 1} + O(i^{- \kappa - 1})
-			\right)  \\
-			&\le C_{w, p} \sum_i \log^2 n \left( i ^{-p - \frac{1}{2}} \log^2 n +  i^{- \kappa - 1} \right)  \\
-			&= C_{w, p} \sum_i i^{- p - \frac{1}{2}} \log^4 n + i^{- \kappa - 1 } \log^2 n
-			%\intertext{for small $\kappa$,}
-			%&\le \begin{cases}
-			%C_{w, p} \left( (K \sqrt{ n} )^{-p+ \frac{1}{2}} \log^4 n + (K \sqrt{ n} )^{- \kappa } \log^2 n \right)  
-			%C_{w, p, K} n^{-\frac{1}{2}p + \frac{1}{4}  }  \log^4 n  & 0<p<\frac{1}{2}\\ 
-			%C_{w, p, K} \log^5 n		& p = \frac{1}{2}
-			%\end{cases}
-			.\end{align*} 
-		For $\kappa>0$, this gives us the desired bound.
-	\end{proof}
+	\begin{align}
+		&\sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2
+		\notag
+		\\
+		&= \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  
+		\notag
+		\\
+		&\le  \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_x(i) > M \right) + 
+		\sum_{i = 0}^{N - 1} \mathbf{1}\left( L_{X_i}(i) \le  M \right) 
+		\label{eqn:lem-martingale-1}
+		.\end{align}
+	On the good event $G_{n, K, t}$ defined in \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4},
+	the inner sum in the first term is further bounded by
+	\begin{align*}
+		&\sum_{i =0}^{ L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_{x}(i) > M \right) \\
+		&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_N} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
+		\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w\left( 2 \mathcal{B}_l + 1 \right) } \right|^2 \\
+		&\le C_{w, p} \sum_i i^{- 2 p - 1} \log^8 n  \\
+		&\le C_{w, p} \left(\left[ M^{- 2 p} - \mathcal{B}_N^{- 2 p} \right] \log^8 N + \log^9 N\right)  \\
+		%&< C_{w, p} \left(M^{-2 p} \log^8 N + \log^9 N\right)
+		&< C_{w, p, M} \log^9 N
+		.
+	\end{align*}
+	This bound is uniform in $x$ and it holds for the cases $(x=0)$ and $(x < 0)$. 
 	
+	Applying the bound $\sum_{i = 0}^{N-1} \mathbf{1}\left( L_{X_i}(i) \le M \right) \mathbf{1}(X_i = x) \le  M$ to the second term in \eqref{eqn:lem-martingale-1}, we have
 	
-	\subsection{Control of Martingale Terms } 
-	\begin{proof}[Proof of Lemma~\ref{lm: control of martingale}]
-		As remarked earlier that we only need to show
-		
-		\[
-		\lim_{N \to \infty } \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 = 0
-		.\] 
-		
-		
-		We can rewrite the sum into a sum of local drifts, and isolate the first $M$ visits:
-		
-		\begin{align}
-			&\sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2
-			\notag
-			\\
-			&= \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  
-			\notag
-			\\
-			&\le  \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_x(i) > M \right) + 
-			\sum_{i = 0}^{N - 1} \mathbf{1}\left( L_{X_i}(i) \le  M \right) 
-			\label{eqn:lem-martingale-1}
-			.\end{align}
-		On the good event $G_{n, K, t}$ defined in \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4},
-		the inner sum in the first term is further bounded by
-		\begin{align*}
-			&\sum_{i =0}^{ L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbf{1}\left( L_{x}(i) > M \right) \\
-			&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_N} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
-			\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w\left( 2 \mathcal{B}_l + 1 \right) } \right|^2 \\
-			&\le C_{w, p} \sum_i i^{- 2 p - 1} \log^8 n  \\
-			&\le C_{w, p} \left(\left[ M^{- 2 p} - \mathcal{B}_N^{- 2 p} \right] \log^8 N + \log^9 N\right)  \\
-			%&< C_{w, p} \left(M^{-2 p} \log^8 N + \log^9 N\right)
-			&< C_{w, p, M} \log^9 N
-			.
-		\end{align*}
-		This bound is uniform in $x$ and it holds for the cases $(x=0)$ and $(x < 0)$. 
-		
-		Applying the bound $\sum_{i = 0}^{N-1} \mathbf{1}\left( L_{X_i}(i) \le M \right) \mathbf{1}(X_i = x) \le  M$ to the second term in \eqref{eqn:lem-martingale-1}, we have
-		
-		\begin{equation*}
-			\sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 
-			< \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M )
-		\end{equation*}
-		
-		Using process-level tightness, the summation only adds a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, the right hand side converges $\to 0$ as $N$ goes to infinity. More precisely, take $G = G_{N, K, t}$ and
-		\begin{align*}
-			&P\left( \left| \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2  \right|  > \varepsilon \right)\\
-			&\le P\left( \left| \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N \right) + P(G^c) \\
-			&\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  \left| \sum_{|x| \le N^{3 / 4}} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N  \right) +P(G^c)  \\
-			&\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  C_{w, p, M} \, N^{3 / 4} \log^9 N > \varepsilon  N  \right) + P(G^c)
-			.\end{align*}
-		The second term vanishes trivially; the first term vanishes by process-level tightness of $S_N^X / \sqrt{N} $. The last term goes to zero as shown in the previous section.
-	\end{proof}
+	\begin{equation*}
+		\sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L_x(N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 
+		< \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M )
+	\end{equation*}
 	
+	Using process-level tightness, the summation only adds a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, the right hand side converges $\to 0$ as $N$ goes to infinity. More precisely, take $G = G_{N, K, t}$ and
+	\begin{align*}
+		&P\left( \left| \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2  \right|  > \varepsilon \right)\\
+		&\le P\left( \left| \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N \right) + P(G^c) \\
+		&\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  \left| \sum_{|x| \le N^{3 / 4}} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N  \right) +P(G^c)  \\
+		&\le 2 P\left( S_N^X \ge N^{3 / 4} \right) + P\left(  C_{w, p, M} \, N^{3 / 4} \log^9 N > \varepsilon  N  \right) + P(G^c)
+		.\end{align*}
+	The second term vanishes trivially; the first term vanishes by process-level tightness of $S_N^X / \sqrt{N} $. The last term goes to zero as shown in the previous section.
+\end{proof}
+
 	
 	
 	\subsection{Convergence of Conditional Expectation}
@@ -889,26 +889,25 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		
 		Indeed, let $A> \frac{2}{c} \vee 1$, where $c$ is from Lemma \ref{lm: concentration inequality}. \eqref{eq: 1st term} is bounded by
 		\begin{align}
-			\sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right) & \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right) 
-			\notag
-			\\
-			& +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
+			& \sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)\\
+			& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
+			 +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
 			\notag
 			\\
 			&\leq  \sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} }
-			\label{low difference}
-			\\
-			& + 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
-			\label{large difference}
+			\quad +\quad 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+			\label{low large difference}
 		\end{align}
-		By \eqref{eq: asymptotics of w}, there is a constant $C'>0$ such that for any $m>100 $ and any $j$ with $\abs{j-m}\leq A \sqrt m \log m $, 
+	 By \eqref{eq: asymptotics of w}, there is a constant $C'>0$ such that for any $m>100 $ and any $j$ with $\abs{j-m}\leq A \sqrt m \log m $, 
 		$$ \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \leq C' A m^{-p-\frac{1}{2}} \log m, $$
-		which implies that \eqref{low difference} is bounded by
-		$$
+		which implies
+		\[
+			\sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \le 
 		C' A^2 m^{-p} (\log m)^2.
-		$$ On the other hand, Lemma \ref{lm: concentration inequality} implies that the expectation of \eqref{large difference} is bounded by
+		\] On the other hand, Lemma \ref{lm: concentration inequality} implies that
 		\begin{align*}
-			& 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{j-m \geq A \sqrt m \log m  } P( \mathcal{D}_{\tau^B_m} \geq j-m )  
+2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+			\le & 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{j-m \geq A \sqrt m \log m  } P( \mathcal{D}_{\tau^B_m} \geq j-m )  
 			\notag 
 			\\
 			\leq& 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{l \geq A \sqrt m \log m } C \exp\left( - \frac{c  \cdot l^2}{l \vee m}   \right)
@@ -920,7 +919,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		\end{equation}
 		\eqref{eq: 2nd term} can be treated similarly. With our choice of $A >\frac{2}{c} \vee 1$,
 		\eqref{eq: difference} -- 
-		%			, \eqref{eq: 1st term}, \eqref{eq: 2nd term}, 
+%			, \eqref{eq: 1st term}, \eqref{eq: 2nd term}, 
 		\eqref{eq: major term}, and \eqref{boound}, we get that
 		$$ \abs{ V_1(m)- U_1(m) -\frac{1}{r(m)}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] }
 		\leq 2C' A^2 m^{-p} \log m + 2C''  \left( m ^{-cA^2} +  m^{-cA} \right), 
@@ -953,58 +952,60 @@ Both probabilities go to zero as we let $K$ go to infinity.
 	Now we are ready to show Lemma \ref{lm: approximation of means of local drift}
 	and a slightly stronger result. \TBD
 	\begin{lemma}
-		Let $w(.)$ be a positive monotone function on $\mathbb{N}_0$ satisfying \eqref{eq: asymptotics of w}. Then for any $0<p<1$, any $\epsilon>0$,
+		Let $w(.)$ be a positive monotone function on $\mathbb{N}_0$ satisfying \eqref{eq: asymptotics of w}. Then for any $0<p<1$, any $\varepsilon>0$,
 		$$
-		\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
+		\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
 		$$
 		Furthermore,
 		\[
-		\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}     \right) =0.
-		\]
-	\end{lemma}
-	\begin{proof} There are only three types of weight sequences for the generalized P\'{o}lya urn processes, see \eqref{eq: generalized weights}. Therefore, from Lemma \ref{lm: convergence of mean of discrepancies}, and 
-		%(it was)	\eqref{eq: mean of discrepancies for left sites}
-		\eqref{eq: general expected drift}, there is a decreasing function $C(.)$ on $\mathbb{N}_0$ with $\lim_{L\to \infty}C(L) =0$ such that for any $y \in \mathbb{Z}$,
-		\begin{equation}\label{eq: uniform convergence}
-			\abs{\mathbb{E}\left[ \mathcal{D}_{\tau_L^R} \right] - \gamma \cdot sgn(y)}, \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_L^B} \right] - \gamma \cdot sgn(y)} \leq C(L).
-		\end{equation} One such function is $C(l) = \sup \left\{  \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^R} \right] - \gamma \cdot sgn(y)} + \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^B} \right] - \gamma \cdot sgn(y)} : m\geq l \right\}.     $  
-		
-		
-		Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider two types of events, 
-		\begin{align*}
-			A_{n,K}:=&\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}
-			\\
-			B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\}.
-		\end{align*}
-		Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}$ is increasing in $M$. We claim that for $n$ large, the event 
-		$$
-		F_{n,\epsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \epsilon \sqrt{n}    \right \}$$ is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
-		
-		Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
-		\begin{align*}
-			\sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \leq &  
-			C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
-			\notag
-			\\
-			+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
-		\end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
-		\begin{equation}\label{eq: an upper bound on good set}
-			C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
-		\end{equation} As $n$ goes to infinity, \eqref{eq: an upper bound on good set} is smaller than $\epsilon \sqrt{n}$ for any $K>0$ and any $M$ with $C(M) < \frac{\epsilon}{2K}$ . 
-		For such pairs of $(K,M)$, $A^c_{n,K} \cap B^c_{n,M} \subset F^c_{n,\epsilon}$ when $n$ is large,  and 
-		$$
-		\limsup_{n\to \infty} P(F_{n,\epsilon}) \leq \limsup_{n\to \infty}  P(A_{n,K}) +  \limsup_{n\to \infty}  P(B_{n,M}).
-		$$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  P(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  P(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Lemma 2.1 \cite{KMP22}, or Corollary 1A \cite{T96}.
-	\end{proof}
+	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
+	\]
+\end{lemma}
+\begin{proof} There are only three types of weight sequences for the generalized P\'{o}lya urn processes, see \eqref{eq: generalized weights}. Therefore, from Lemma \ref{lm: convergence of mean of discrepancies}, and 
+%(it was)	\eqref{eq: mean of discrepancies for left sites}
+	\eqref{eq: general expected drift}, there is a decreasing function $C(.)$ on $\mathbb{N}_0$ with $\lim_{L\to \infty}C(L) =0$ such that for any $y \in \mathbb{Z}$,
+	\begin{equation}\label{eq: uniform convergence}
+		\abs{\mathbb{E}\left[ \mathcal{D}_{\tau_L^R} \right] - \gamma \cdot sgn(y)}, \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_L^B} \right] - \gamma \cdot sgn(y)} \leq C(L).
+	\end{equation} One such function is $C(l) = \sup \left\{  \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^R} \right] - \gamma \cdot sgn(y)} + \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^B} \right] - \gamma \cdot sgn(y)} : m\geq l \right\}.     $  
 	
-	%\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 	
-	\subsection{Approximation of Local Drifts by Conditional Means}
-	\label{sec:DeltaRho}
-	In this subsection, we prove Lemma \ref{lm: approx local drift by conditional means}. This proof is similar to, and slightly more technical than the proof of (Lemma~4.2, \cite{KP16}). 
+	Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider two types of events corresponding to control of extrema and rarely visited sites:
+	\begin{align*}
+		A_{n,K}:=&\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}
+		\\
+		B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\}.
+	\end{align*}
+	Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}$ is increasing in $M$. We claim that for $n$ large, the event 
+	$$
+	F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \}
+	$$ 
+	is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
 	
-	In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$, where
-	\[
+	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
+	\begin{align*}
+		\sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \leq &  
+		C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
+		\notag
+		\\
+		+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
+	\end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
+	\begin{equation}\label{eq: an upper bound on good set}
+		C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
+	\end{equation} As $n$ goes to infinity, \eqref{eq: an upper bound on good set} is smaller than $\varepsilon \sqrt{n}$ for any $K>0$ and any $M$ with $C(M) < \frac{\varepsilon}{2K}$ . 
+	For such pairs of $(K,M)$, $A^c_{n,K} \cap B^c_{n,M} \subset F^c_{n,\varepsilon}$ when $n$ is large,  and 
+	$$
+	\limsup_{n\to \infty} P(F_{n,\varepsilon}) \leq \limsup_{n\to \infty}  P(A_{n,K}) +  \limsup_{n\to \infty}  P(B_{n,M}).
+	$$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  P(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  P(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Lemma 2.1 \cite{KMP22}, or Corollary 1A \cite{T96}.
+\end{proof}
+
+%\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
+
+\subsection{Approximation of Local Drifts by Conditional Means}
+\label{sec:DeltaRho}
+In this subsection, we prove Lemma \ref{lm: approx local drift by conditional means}. This proof is similar to, and slightly more technical than the proof of (Lemma~4.2, \cite{KP16}). 
+
+In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$, where
+\[
 	\tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbf{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
 	\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
 	.\] 
