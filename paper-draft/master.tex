@@ -4,14 +4,15 @@
 % % your document, to wit:
 % %
 % % first draft, 2023_08_03
-% % Modified  2023_11_24
-% % Lastest Edition, 2023_11_15
+% % Modified  2023_11_26
+% % Lastest Edition, 2023_11_26
 % % Description of changes:
-% % (1) Updates in introduction before 1.1 
+% % (1) changes in subsections 4.1,4.3
 % % 
 % % Changes to be made:  
-% % (1) Introduction, and major motivations
-% % (2) Motivations for 2.2 for 2.2; 
+% % (1) Updates in introduction before 1.1 
+% % (2) Introduction, and major motivations
+% % (3) Motivations for 2.2 for 2.2; 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,7 +28,7 @@
 	\and
 	Zhe Wang}
 
-\date{Nov 24th, 2023}
+\date{Nov 26th, 2023}
 
 
 % This is the definition of the type of document
@@ -976,7 +977,7 @@
 	\label{sec:DeltaRho}
 	In this subsection, we prove Lemma \ref{lm: approx local drift by conditional means}. This proof is similar to, and slightly more technical than the proof of (Lemma~4.2, \cite{KP16}). 
 	
-	In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z>x}^{y} \left( \Delta_z^{(x,m)} - \rho_z^{(x,m)} \right) $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_y \Delta_y^{(x,m)} - \rho_y^{(x,m)}$ to a tempered version $\sum_{y > x} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$, where
+	In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$, where
 	\[
 	\tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbf{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
 	\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
@@ -1001,7 +1002,11 @@
 		We first control \eqref{eqn:tempered-difference-0} on $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$. From \eqref{eqn:goodgood} and that $G_{n,K}^{(x,m)}(y)$ is increasing in $K$, we get that  \eqref{eqn:tempered-difference-1} is zero on $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$. 
 %		Lemma~\ref{lm: approximation of means of local drift} has controlled \eqref{eqn:tempered-difference-4}. 
 		
-		To control \eqref{eqn:tempered-difference-2} on $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$, Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event} imply for arbitrary $\varepsilon>0$,
+		For \eqref{eqn:tempered-difference-2}, it equals to
+		$
+		 \sum_{y > x}^{K\sqrt{n}} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}
+		$
+		 on $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$. By Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event}, we get that for any $\varepsilon>0$,
 		\begin{align}
 			P\left( \left| \sum_{y = x + 1}^{K \sqrt{n} } (\tilde\Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)}) \right| > \varepsilon \sqrt{n}  \right) 
 			%&\le \exp\left( - \frac{\varepsilon^2 n}{2 K^2 \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) \notag \\
@@ -1014,7 +1019,7 @@
 				& p = \frac{1}{2}
 			\end{cases}
 			.\end{align}
-		In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity.  
+%		In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity.  
 		
 		It remains to control  \eqref{eqn:tempered-difference-3} on $G_{n, K, t} \cap \{\lambda_{x,m} \leq nt \}$:
 		\begin{align*}
@@ -1034,9 +1039,9 @@
 		To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that the probability is bounded by 
 		\[
 		P\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2 \sqrt{n} }{2} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
-		= P\left(\mathcal{B}^{(x+1)}_{l} > \frac{K^2 \sqrt{n} }{2} \sqrt{n} \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
+		= P\left(\mathcal{B}^{(x+1)}_{l} > \frac{K^2 \sqrt{n} }{2}  \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
 		.\] 
-		As increments $\tau^B_{l+1,y} -\tau^B_{l,y}$ of the Generalized  P\'{o}lya urn processes are stochastically bounded by independent geometric random variables with parameter uniform in $l\geq 0$ and $y \in \mathbb{Z}$, 
+		As increments $\tau^B_{l+1,y} -\tau^B_{l,y}$ of the Generalized  P\'{o}lya urn processes are stochastically bounded by independent geometric random variables with parameter $q$ uniform in $l\geq 0$ and $y \in \mathbb{Z}$, 
 		\begin{align*}
 			P(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n})
 			%&\le P\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
@@ -1044,17 +1049,15 @@
 			&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 			,
 		\end{align*}
-		which converges to $0$ exponentially fast in $K \cdot \sqrt{N}$. Therefore, we only need to bound the conditional second moments of $\left( \Delta_{x+1}^{(x,m)} \right) ^2$: when $\mathcal{E}_{x+1,+}^{(x,m)} < K^2 \sqrt{n} $, 
+		which converges to $0$ exponentially fast in $K \cdot \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x+1,-}^{(x,m)} + \mathcal{E}_{x+1,+}^{(x,m)}$, which is stochastically dominated by the sum of $ \mathcal{E}_{x,+}^{(x,m)}$ i.i.d. geometric random variables the conditional second moments of $ \Delta_{x+1}^{(x,m)} $ is bounded by 
 		\begin{align*}
-			\left( \Delta_{x+1}^{(x,m)} \right) ^2 
-			&\leq \left| \mathcal{E}_{x+1,+}^{(x,m)} + \mathcal{E}_{x,+}^{(x,m)}  \right|^2  \\
-			&\leq \left| K^2 \sqrt{n}  + K \sqrt{n}  \right|^2  \\
-			&\leq 4 K^4 n.
-		\end{align*}
-		Therefore,
-		\[
-		\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le 4 K^5 n^{\frac{3}{2}} \exp\left( - 2K^2 \sqrt{n}(q - \frac{1}{K}) \right) \leq  C_K\exp\left( - K^2 \sqrt{n}(q - \frac{1}{K}) \right). 
-		\]
+			\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right] \leq  C_q K^2 n,
+		\end{align*} for some $C_q$ depending only on $q$.
+		Therefore, on $G_{n,K,t} \cap \{ \lambda_{x,m} \leq nt \}$,
+		\begin{equation}\label{eq: difference of cond means}
+		\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le C_q K n^{\frac{1}{2}} \exp\left( - 2K^2 \sqrt{n}(q - \frac{1}{K}) \right) \leq  C_q\exp\left( - K^2 \sqrt{n}(q - \frac{1}{K}) \right), 
+		\end{equation}
+	which is smaller than $\frac{\varepsilon \sqrt{n}}{2}$ for $K$ large.
 		
 		%\[
 		%	P\left( \left( \Delta_{x+1}^{(x,m)} \right) ^2 > 4 K^4 n \right) \le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
@@ -1067,17 +1070,17 @@
 		%	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
 		%.\end{align*}
 	
-	For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ for $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Note that if $G_{n,k,t}$ occurs, for any $k\leq nt$, there is a pair $(x,m)$ with $\abs{x},m <K\sqrt{n}$ and $\lambda{x,m}=k$. Therefore, we get from \eqref{eqn:goodgood} that 
+	For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ for $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Note that if $G_{n,k,t}$ occurs, for any $k\leq nt$, there is a pair $(x,m)$ with $\abs{x},m <K\sqrt{n}$ such that $\lambda_{x,m}=k$. Therefore, we get from \eqref{eqn:azuma-drift-martingale} and \eqref{eq: difference of cond means} that 
 	\begin{align*}
 		& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
 		\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
 		\right| > \varepsilon \sqrt{n}  \right) \\
-		&\le P(G_{n, K, t}^c) + P\left( \sup _{|x|, m < K \sqrt{n} } \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y) \right)
+		&\le P(G_{n, K, t}^c) + P\left( \bigcup_{k,x,m: k \leq nt} \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n}, \lambda_{x,m} =k\right\} \cap G_{n,K,t} \right)
 		\\
-		&\le P(G_{n, K, t}^c) + P\left( \bigcup_{|x|, m < K \sqrt{n} } \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} \right\}, \bigcap_{y > x} G_{n, K}^{(x,m)}(y) , \{ \lambda_{x,m} \leq nt\} \right) \\
+		&\le P(G_{n, K, t}^c) + P\left( \bigcup_{|x|, m < K \sqrt{n} } \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n},  \lambda_{x,m} \leq nt \right\} \cap G_{n,K,t} \right) \\
 		&\le P(G_{n, K, t}^c) + K^2 n \sup _{|x|, m \le  K \sqrt{n} }
-		P\left( \left| \sum_{y \ge x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , \bigcap_{y > x} G_{n, K}^{(x,m)}(y)  \right) \\
-		&\le P(G_{n, K, t}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right) \right) 
+		P\left( \left| \sum_{y \ge x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , G_{n,K,t}\cap \{\lambda_{x,m} \leq nt \}  \right) \\
+		&\le P(G_{n, K, t}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right)\right) 
 		.\end{align*}
 	In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
