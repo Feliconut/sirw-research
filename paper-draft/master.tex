@@ -28,7 +28,7 @@
 	\and
 	Zhe Wang}
 
-\date{Nov 28th, 2023}
+\date{Nov 29th, 2023}
 
 
 % This is the definition of the type of document
@@ -127,27 +127,25 @@
 	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk, 
 	%(\cite{KMP23}, Proposition~2.1])
 	allowing them to establish functional convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case. The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
+
+
+
+	\edt{More discussion here about the Ray-Knight type of approach in establishing functional convergence to BMPE.}
 	
-	%Discuss related result to the functional convergence to BMPE, and the Ray-Knight type of approach. Discuss roughly which conditions/models are "stable" having this result, and which ones don't or having technical difficulties.
-	% One focus it to discuss the Ray-knight approaches,
-	% drawing attention to different scaling limits (still the Ray-Knight arguments are applicaple)
-	% so that this approach is "robust" of certain conditions: recurrent condition. + theta<1 (non boundary case). 
-	% It will be worth mentioning:
-	% 1. Other 1-D SIRWs with functional convergence to BMPE, such as ERW with iid markovian, edge local time (once reinforced)
-	% 2. Conditions on the weight function, 1) local time on site VS oriented/nonoriented edge 2)random assumption and with certain "regularity" such as i.i.d ergodicity/ellipticity; boundedness; Markovian (with unique stationary measure) 
-	% 3. BMPE is not the only limit for the ERW: for transient case, we get BM + drift case, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).
-	% 4. Ray-Knight type of approach is very powerful and promising in deriving (some of) the above mentioned properties and deriving properties of the local time profile is a good starting point for infering information of original walk.  
-	% recurrence of the SIRW / non-boundary recurrent case of ERW. Drop non-boundary condition and the scaling become different. "RN is easier to use when walk is transient, invert hitting times of random walks" from Markov paper. 
+	\comment{
+	Discuss related result to the functional convergence to BMPE, and the Ray-Knight type of approach. Discuss roughly which conditions/models are "stable" having this result, and which ones don't or having technical difficulties.
+	 One focus it to discuss the Ray-knight approaches,
+	 drawing attention to different scaling limits (still the Ray-Knight arguments are applicaple)
+	 %so that this approach is "robust" of certain conditions: recurrent condition. + theta<1 (non boundary case). 
+	 It will be worth mentioning:\\
+	 1. Other 1-D SIRWs with functional convergence to BMPE, such as ERW with iid markovian, edge local time (once reinforced)\\
+	 2. Conditions on the weight function, 1) local time on site VS oriented/nonoriented edge 2)random assumption and with certain "regularity" such as i.i.d ergodicity/ellipticity; boundedness; Markovian (with unique stationary measure) \\
+	 3. BMPE is not the only limit for the ERW: for transient case, we get BM + drift case, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).\\
+	 4. Ray-Knight type of approach is very powerful and promising in deriving (some of) the above mentioned properties and deriving properties of the local time profile is a good starting point for inferring information of original walk.  \\
+	 5. Recurrence of the SIRW is comparable to non-boundary recurrent case of ERW. In the boundary case the ERW has a different scaling. %RN is easier to use when walk is transient, invert hitting times of random walks" from Markov paper. 
+ }
 	  
-	The functional convergence of rescaled SIRW to BMPE has also been shown for other non-Markov one-dimensional random walks,
-	% so they are variants of the current model.
-	such as once-reinforced random walks, excited random walks, and rotor walks with defects, see \cite{Dav96,Dav99,DK12,KP16,KMP22,HLSH18} and references therein. 
-	In particular, the exited random walks (ERWs) have interactions through local times of sites instead of local times of undirected edges, and their studies have been generalized to the context of random walks in random environment by allowing weight functions to be random and site-dependent, 
-	see \cite{KZ13, KMP22} 
-	%\comment{Shall we change this to specific reference for RWRE?} for some review. 
-	Our result should be compared to those recurrent ERWs in the non-boundary case, see \cite{KP16,KMP22}, because their properties and the approaches are very similar. 
-	Under recurrence (and non boundary), the diffusive scaling is the correct scaling for both the walk and the local time profiles and BMPE is the limit expected (as observed in \cite{T96}), while a nontrivial scaling limit under a different scaling other than BMPE is expected when the walk is transient (or in the boundary recurrent case). 
-	%In the following subsection, we will discuss our main result and approaches.
+		%In the following subsection, we will discuss our main result and approaches.
 	% The Ray-Knight approach should be a focus in either of the discussion here or after Theorem 1.1. The approach is quite robust in these 1-D RW model, when scaling limit of local time profile is applicable, for example when diffusive approximation is available in the recurrent case, and other ones in the transient case. The nontrivial aspect of this approach is how to derive from the local time profiles (BLPs) back to the walk $X_t$ when certain conditions are relaxed.
 	
 	
@@ -203,23 +201,37 @@
 			as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 		\end{theorem}
 	\end{samepage}
+
 	This theorem states that the amount of perturbation is directly proportional to the signed range of the limiting process, i.e. $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. 
 	One way to establish this is to approximate drift encountered by the walk by $\gamma$ times the signed range of the walk, with an error of order $o\left(\sqrt{n} \right)$ (see Lemma~\ref{lm: control of acc drift} for the precise statement). 
 	The approximation is intuitive when drift is only attained at extremum, for example, when $w(0) = (2 - \gamma)^{-1}$ and $w(n) = 1$ for $n > 0$. 
 	%In this walk, the walk has nonsymmetric transition probabilities, i.e., attains drift, only when it hits boundary of its current range. 
 	%Drift approximation for SIRW with more general $w(.)$ will be discussed in section \ref{sec: approximations}. 
-	For more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}.
+	For more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}. 
+	\comment{Discuss scope and limitation of this method.}
+
 	%\edt{Discussion involving ERW}
 	%the $pq$ walk studied in \cite{Dav96} defined by letting the transition probabilities be $\frac{1}{2}$ when the walker has not hit its extrema. When it hits maxima, the probability for jumping to the right in the next step is $p = (2 - \theta^+)^{-1}$. Likewise, when it hits minima, the probability for jumping to the left in the next step is $q = (2 - \theta^-)^{-1}$. This walk converges weakly to the process $W^{\theta^+, \theta^-}$ with the same scaling as Theorem~\ref{thm: main}. In fact, this is the \edt{earliest example} of BMPE arising as functional limit of rescaled excited random walks. 
 	%Upon inspection of the functional equation defining BMPE, we see that the perturbation term of our limiting process is given by $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. Hence, $\gamma$ can be interpreted as the expected drift attained at each site after sufficiently many visits. In proving Theorem~\ref{thm: main}, we need to establish such an estimate of total drift accumulated by $X_k$. To do so, we will decompose the rescaled walk into a discrete martingale and a drift process, and treat each part separately. The main difficulty comes from the existence of rarely visited sites, and we need to carefully estimate 1) how fast the drift attained at a site $y$  converges to $\gamma$, and 2) how much does the total accumulated drift $\Gamma_k$ deviate from $\gamma \left( \sup_{i \le k} X_i + \inf _{i \le k} X_i  \right) $. It turned out that the effect of rarely visited sites only contribute to error of order $o(\sqrt{n} )$ (see Lemma~\ref{lm: control of acc drift}).
 	%	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP23}. The proof in \cite{KMP23} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
+
+
+The functional convergence of rescaled SIRW to BMPE has also been shown for other non-Markov one-dimensional random walks,
+	% so they are variants of the current model.
+	such as once-reinforced random walks, excited random walks, and rotor walks with defects, see \cite{Dav96,Dav99,DK12,KP16,KMP22,HLSH18} and references therein. 
+	In particular, the exited random walks (ERWs) have interactions through local times of sites instead of local times of undirected edges, and their studies have been generalized to the context of random walks in random environment by allowing weight functions to be random and site-dependent, 
+	see \cite{KZ13, KMP22} 
+	%\comment{Shall we change this to specific reference for RWRE?} for some review. 
+	Our result should be compared to those recurrent ERWs in the non-boundary case, see \cite{KP16,KMP23}, because their properties and the approaches are very similar. 
+	In the recurrent non-boundary case, the diffusive scaling is the correct scaling for both the walk and the local time profiles and BMPE is the limit expected (as observed in \cite{T96}), while a nontrivial scaling limit under a different scaling other than BMPE is expected when the walk is transient (or in the boundary recurrent case). 
+
 
 	The analysis of local time process of random work via \textit{Branching-like processes}, taking advantage of the tree structure of the walk's excursions in one dimension, is core to the analysis of both SIRW (considered in this work as well as \cite{T96, KMP23}) and ERW (considered in \cite{DK12, KP16, KMP22}). 
 	One special property of SIRW is that local behavior of the walk at different sites can be generated from independent \textit{Generalized P\'olya's urn processes} assigned to each site.
 	%The walk $X_k$ itself can then be constructed from the urn processes at each site. \textit{Branching-like processes} describe the way we construct the local time process of $X_k$ from those local urns. 
 	These two auxiliary processes are crucial for controlling total drift attained by the walk in both \cite{KMP23} and this work.
 In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily (\cite{KMP23}, Lemma~2.3-2.4).
-	The main technical difficulties in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drifts.
+	The main technical difficulty in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drifts.
 	It turns out that we can estimate accumulated drift using absolute summability of local drifts, if we stop the walk at particular excursion times and express the total attained drift as a spatial martingale adapted to the natural filtration of the branching-like process. Then the martingale has bounded increments on an event with high probability, allowing us to sum the local drifts and obtain estimate for the walker's accumulated drift.
 	%We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
 	This approach has also been used previously in some one-dimensional ERWs, mainly \cite{DK12} and \cite{KP16}.
@@ -394,9 +406,9 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\] 
 	Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
 	\begin{equation} \label{eq: RW to GPU}
-		\left(\mathcal{B}^{(y)}_{k},\mathcal{R}^{(y)}_{k} \right)_{k\ge 0}
-		:=\left(\mathcal{E}^{\lambda_{y,k}}_{y,-}, \mathcal{E}^{\lambda_{y,k}}_{y,+}\right)_{k\geq 0} 
-		=  \left(\mathcal{E}^{(y,k)}_{y,-}, \mathcal{E}^{(y,k)}_{y,+}\right)_{k\geq 0},
+		\left(\mathcal{B}^{(y)}_{i},\mathcal{R}^{(y)}_{i} \right)_{i\ge 0}
+		:=\left(\mathcal{E}^{\lambda_{y,i}}_{y,-}, \mathcal{E}^{\lambda_{y,i}}_{y,+}\right)_{i\geq 0} 
+		=  \left(\mathcal{E}^{(y,i)}_{y,-}, \mathcal{E}^{(y,i)}_{y,+}\right)_{i\geq 0},
 	\end{equation}
 	which is a Markov process with an initial value $(0,0)$. 
 	%\comment{We can use $k$ only in the context of $X_k$.} 
@@ -527,7 +539,8 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	for $y\geq x$, and $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly for $y\leq x$.
 	In particular, $\mathcal{H}_{y, +}^{(x,m)}$ is finer than $\mathcal{G}_{y, +}^{(x,m)}$ because $\mathcal{E}_{z, +}^{(x,m)}$ is  $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $z$ in $[x,y]$ by \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity}, and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$. 
 	
-	The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. The argument is standard, \edt{and works for any $x\in \mathbb{Z}$.}
+	The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. 
+	%The argument is standard, \edt{and works for any $x\in \mathbb{Z}$.}
 	\begin{lemma}\label{lm: identities for Del, rho} 
 		For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }$  and $ \tau_{k,y}$ for $k\leq \mathcal{E}^{(x,m)}_{y,-} $,
 		\begin{equation} \label{eq: cummulated drift at a site}
@@ -574,7 +587,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	The construction of branching-like processes enables us to study the local times profiles at a generic local $\lambda(x,m)$, from the Markov processes $\zeta$ and $\bar{\zeta}$. An advantage is that a typical event (\TBD{see equations to be defined in section \ref{sec: approximations}}) on a collection of spatial points will be also a typical event on a 'typical' single site. Then expressions like \eqref{eq: conditional mean in GPU represenetation} reduces the problem to a problem involving generalized P\'{o}lya urn process associated to a single site. The difficulty is then transferred to constructing typical events that can be estimated. For example, Lemma \ref{lm: number of rarely visit sites} below describes a typical event, and it reduces the proof of proposition \ref{lm: approximation of means of local drift} to \eqref{eq: convergence of conditional expectation} below. In the following subsection, we recall some properties of generalized P\'{o}lya urn process and branching-like processes.
 	
 	\subsection{Preliminary Results}
-	To facilitate our arguments in section \ref{sec: approximations}, we list some results from \cite{KMP23,T96}, whose proofs \textcolor{red}{we omit at this moment.}
+	To facilitate our arguments in section \ref{sec: approximations}, we list some results from \cite{KMP23,T96}, whose proofs we omit at this moment.
 	
 	The first result is a concentration inequality for $\mathcal{D}_i$ in a generalized P\'{o}lya urn process. This lemma is a major tool in estimating the probabilities of good events.
 	\begin{lemma}(Lemma 4.1 \cite{KMP23})\label{lm: concentration inequality}
