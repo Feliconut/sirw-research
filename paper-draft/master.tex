@@ -28,7 +28,7 @@
 	\and
 	Zhe Wang}
 
-\date{Nov 26th, 2023}
+\date{Nov 28th, 2023}
 
 
 % This is the definition of the type of document
@@ -88,16 +88,7 @@
 		\TBD
 	\end{abstract}
 	
-	\underline{\textsf{Information about coloring:}}
-	\begin{itemize}
-		\item 
-		\textsf{\color{red} Red text, include \TBD marks, are pending works and existing problems.}
-		\item 
-		\textsf{\color{blue} Blue texts are comments or tentative ideas that can be discussed.}
-	\end{itemize}
-	
-	
-	
+
 	\section{Introduction}
 	%The current project is a completion of Theorem 1.2 in \cite{KMP22}. 
 	
@@ -144,7 +135,8 @@
 	% 2. Conditions on the weight function, 1) local time on site VS oriented/nonoriented edge 2)random assumption and with certain "regularity" such as i.i.d ergodicity/ellipticity; boundedness; Markovian (with unique stationary measure) 
 	% 3. BMPE is not the only limit for the ERW: for transient case, we get BM + drift case, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).
 	% 4. Ray-Knight type of approach is very powerful and promising in deriving (some of) the above mentioned properties and deriving properties of the local time profile is a good starting point for infering information of original walk.  
-	
+	% recurrence of the SIRW / non-boundary recurrent case of ERW. Drop non-boundary condition and the scaling become different. "RN is easier to use when walk is transient, invert hitting times of random walks" from Markov paper. 
+	  
 	The functional convergence of rescaled SIRW to BMPE has also been shown for other non-Markov one-dimensional random walks,
 	% so they are variants of the current model.
 	such as once-reinforced random walks, excited random walks, and rotor walks with defects, see \cite{Dav96,Dav99,DK12,KP16,KMP22B,HLSH18} and references therein. In particular, the exited random walks(ERWs) have interactions through local times of sites instead of local times of undirected edges, and their studies have been generalized to the context of random walks in random environment by allowing weight functions to be random, see \TBD \cite{KZ13, KMP22B}  for some review. Our result should be compared to those recurrent ERWs in the non-boundary case, see \cite{KP16,KMP22B}, because their properties and the approaches are very similar. Under recurrence (and non boundary), the diffusive scaling is the correct scaling for both the walk and the local time profiles and BMPE is the limit expected (as observed in \cite{T96}), while a nontrivial scaling limit under a different scaling other than BMPE is expected when the walk is transient (or in the boundary recurrent case). In the following subsection, we will discuss our main result and approaches.
@@ -222,7 +214,7 @@
 	One special property of SIRW is that local behavior of the walk at different sites can be independently generated from the \textit{Generalized P\'olya's urn processes}.
 	%The walk $X_k$ itself can then be constructed from the urn processes at each site. \textit{Branching-like processes} describe the way we construct the local time process of $X_k$ from those local urns. 
 	These two auxiliary processes are crucial for controlling total drift attained by the walk in both \cite{KMP22} and this work.
-	In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP22}, Lemma~2.3-2.4]).
+In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP22}, Lemma~2.3-2.4]).
 	The main technical difficulties in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drift.
 	Hence, we need a slightly more involved argument to estimate the total drift attained at a single site.
 	We stop the walk at particular excursion times and express the total attained drift as a spatial martingale adapted to the natural filtration of the branching-like process.
@@ -268,7 +260,7 @@
 		the accumulated local drifts at site $y$ by time $\lambda_{x,m}$ is denoted by $\Delta_y^{(x,m)}$, defined in \eqref{eq: accumulated local drift}.
 		
 	\end{enumerate}
-	
+
 	
 	\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{thm: main}}
 	\label{sec: proof of main}
@@ -393,7 +385,7 @@
 	This result combined with Lemma~\ref{lm: control of acc drift} gives tightness of $\left(\frac{\Gamma_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$, and hence of $\left(\frac{X_{\left\lfloor nt  \right\rfloor}}{\sqrt{n} }\right)_{t \ge 0}$. 
 	Now we are ready to show
 	\vspace{1em}
-	
+
 	\textbf{Step 4: Convergence to BMPE.} 
 	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, the subsequencial limits agree and $Y_1$ is a $(\gamma, \gamma)$-BMPE.
 	
@@ -745,7 +737,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 
 
 \begin{lemma}\label{lm:lipchitz-bound-on-good-event}
-	For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2})$,  we have
+	For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2}]$,  we have
 	\begin{align*}
 		\left| \Delta_y^{(x,m)} \right| &\le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n &\text{when }p \in \left(0,\frac{1}{2}\right)\\
 		\left| \Delta_y^{(x,m)} \right| &\le C_K \log^5 n &\text{when }p = \frac{1}{2}
@@ -754,6 +746,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 \end{lemma}
 \begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
 	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
+	\edt{comment about $y$}.
 	\begin{align*}
 		\left| \Delta_y^{(x,m)} \right| 
 		&= 
@@ -861,7 +854,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		$$
 	\end{lemma} 
 	\begin{remark}
-		Lemma \ref{lm: convergence of mean of discrepancies} is a completion of Lemma~2.4 of \cite{KMP22} which only deals with the case when ${p \in (\frac{1}{2}, 1]}$. When $p \in (\frac{1}{2}, 1]$, the local drift converges absolutely, and there is a simpler argument. However, when $p \in (0,\frac{1}{2}]$ the local drift tends to infinity in general, requiring additional care.
+		Lemma \ref{lm: convergence of mean of discrepancies} is a completion of Lemma~2.4 of \cite{KMP22} which only deals with the case when ${p \in (\frac{1}{2}, 1]}$. When $p \in (\frac{1}{2}, 1]$, the local drift converges absolutely, and there is a simpler argument. However, when $p \in (0,\frac{1}{2}]$ the local drift is not absolutely summable in general, requiring additional care.
 	\end{remark}
 	\begin{proof} 
 		We start from \eqref{eq: gamma} and identity \eqref{eq: Toth's Identity 1}. For any $m \geq 10$,
@@ -1119,6 +1112,29 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 	In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
+	\subsubsection{Note on notation for authors (to be removed in final draft)}
+	
+	\begin{itemize}
+		\item $k$ is walk's discrete time.
+		\item $t$ is continuous time of rescaled process.
+		\item $n$ is scaling factor.
+		\item $i, j$ are local times, and sometimes summation indices.
+		\item $x, y, z$ are sites.
+		\item $K, C$ are big constants.
+		\item $\omega, p, \gamma, B, \kappa$ reserved for model definition.
+	\end{itemize}	
+
+	\underline{\textsf{Information about coloring:}}
+	\begin{itemize}
+		\item 
+	\textsf{\color{red} Red text, include \TBD marks, are pending works and existing problems.}
+		\item 
+			\textsf{\color{blue} Blue texts are comments or tentative ideas that can be discussed.}
+	\end{itemize}
+
+
+
+	
 
 \printbibliography
 \end{document}
