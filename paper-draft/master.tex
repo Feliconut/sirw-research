@@ -49,23 +49,25 @@
 \usepackage{hyperref}
 \usepackage{mathrsfs}
 \usepackage{csquotes}
-\usepackage[backend=biber,style=draft,sorting=none]{biblatex}
+\usepackage[backend=biber,style=alphabetic,sorting=none]{biblatex}
 \usepackage[inline, left]{showlabels} %Note: add "final" option to turn off labels.
 \renewcommand{\showlabelfont}{\small\color{lightgray}}
 
 \addbibresource{zotero.bib}
 
+\usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{corollary}{Corollary}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem{scolium}{Scolium} [section]  
 \newtheorem{definition}{Definition}[section]
 \numberwithin{equation}{section}
 
-%% This defines the "proo" environment, which is the same as proof, but
-\newenvironment{proof}[1][Proof]{{\sc #1}:}{~\hfill $\square$}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+%\newenvironment{proof}[1][Proof]{{\sc #1}:}{~\hfill $\square$}
 \newenvironment{AMS}{}{}
 \newenvironment{keywords}{}{}
 
@@ -73,7 +75,7 @@
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 \newcommand\TBD{\textcolor{red}{TBD.}}
 \newcommand{\edt}[1]{\textcolor{red}{#1}} %edit time 09/20/2023
-\newcommand{\comment}[1]{\textcolor{blue}{#1}}
+\newcommand{\comment}[1]{\textcolor{blue}{(Comment: #1)}}
 
 
 
@@ -84,8 +86,8 @@
 	\setcounter{page}{1} 
 	
 	\begin{abstract}
-		This document is an outline of the article for the Scaling limit of SIRW. We complete the functional CLT in \cite{KMP23} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-Knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
 		\TBD
+		This document is an outline of the article for the Scaling limit of SIRW. We complete the functional CLT in \cite{KMP23} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-Knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
 	\end{abstract}
 	
 
@@ -118,12 +120,12 @@
 	
 	%\TBD In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$.
 	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, while the the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
-	%([\cite{T96}, Theorems 1A, 1B])
+	%(\cite{T96}, Theorems 1A, 1B])
 	and local limit theorems for the position of a random walker at independent geometric times with means of linear growth. 
-	%([\cite{T96}, Theorems 2A, 2B]) 
+	%(\cite{T96}, Theorems 2A, 2B]) 
 	These local limit theorems imply that the Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below) is the only possible candidate for the weak limit of one-dimensional distributions of rescaled SIRWs if the limit exists. 
 	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk, 
-	%([\cite{KMP23}, Proposition~2.1])
+	%(\cite{KMP23}, Proposition~2.1])
 	allowing them to establish functional convergence of rescaled asymptotically free SIRW to BMPE, under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case. The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
 	
 	%Discuss related result to the functional convergence to BMPE, and the Ray-Knight type of approach. Discuss roughly which conditions/models are "stable" having this result, and which ones don't or having technical difficulties.
@@ -158,16 +160,15 @@
 		W_t = B_t \,+\, \theta^+ \sup_{s\leq t} W_s  \,+\, \theta^- \inf_{s\leq t} W_s \,,   \qquad t \ge 0, \quad W_0 = 0.
 		$$
 	\end{definition}
-	It was shown in [\cite{PW97, CD99}] that if $\theta^+, \theta^- < 1$ then the functional equation above almost surely has a pathwise unique solution that is continuous, adapted to the Brownian filtration, and has Brownian scaling. 
+	It was shown in \cite{PW97, CD99} that if $\theta^+, \theta^- < 1$ then the functional equation above almost surely has a pathwise unique solution that is continuous, adapted to the Brownian filtration, and has Brownian scaling. 
 	Furthermore, the triple 
 	$\big(\inf_{s < t} W^{\theta^{+}, \theta^{-}}(s)$, 
 	$W^{\theta^{+}, \theta^{-}}(t) $, 
 	$\sup _{s<t} W^{\theta^{+}, \theta^{-}}(s)\big)$
-	, $t \geq 0$ is a strong Markov process.
+	, $t \geq 0$ is a strong Markov process (see Theorem~1 in \cite{PW97}).
 	% (see \cite{Dav99}). 
-	\comment{This result is from [PW97] Thoerem 1.}
 	
-	Following the notation in [\cite{T96}], we define
+	Following the notation in \cite{T96}, we define
 	\[
 	U_1(n):=\sum_{j=0}^{n-1}(w(2 j))^{-1} \quad \text{and} \quad
 	V_1(n):=\sum_{j=0}^{n-1}(w(2 j+1))^{-1}
@@ -181,12 +182,15 @@
 	is well defined and ${\gamma<1}$. 
 	% The process $W_t^{\gamma, \gamma}$ is then the limiting process of $X_k$ under diffusive scaling. 
 	%\comment{part of this statement will be our main result. We can state previous result, and list our current one directly.}
-	The following functional limit theorem is shown in [\cite{KMP23}]: assuming $p\in (\frac{1}{2},1]$, we have the following process-level convergence
+
+	The following functional limit theorem is shown in \cite{KMP23}: 
+	\begin{theorem*}[\cite{KMP23}, Theorem~1.1]
+		Assuming $p\in (\frac{1}{2},1]$, we have the following process-level convergence
 	\[
 	\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 	\] 
 	as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
-	
+	\end{theorem*}
 	\begin{samepage}
 		Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2}]$.
 		\begin{theorem}\label{thm: main}
@@ -197,31 +201,23 @@
 			as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 		\end{theorem}
 	\end{samepage}
-	This theorem states that the amount of perturbation is directly proportional to the signed range of the process, i.e. $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. 
-	For this to be true, we expect the drift encountered by the walk to be approximated by $\gamma$ times the signed range of the walk, with an error of order $o\left(\sqrt{n} \right)$ (see Lemma~\ref{lm: control of acc drift} for the precise statement). 
+	This theorem states that the amount of perturbation is directly proportional to the signed range of the limiting process, i.e. $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. 
+	One way to establish this is to approximate drift encountered by the walk by $\gamma$ times the signed range of the walk, with an error of order $o\left(\sqrt{n} \right)$ (see Lemma~\ref{lm: control of acc drift} for the precise statement). 
 	The approximation is intuitive when drift is only attained at extremum, for example, when $w(0) = (2 - \gamma)^{-1}$ and $w(n) = 1$ for $n > 0$. 
 	%In this walk, the walk has nonsymmetric transition probabilities, i.e., attains drift, only when it hits boundary of its current range. 
-	For more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}.
-	
-	
-	\edt{Discussion involving ERW}
+	Drift approximation for SIRW with more general $w(.)$ will be discussed in section \ref{sec: approximations}. 
+	%\edt{Discussion involving ERW}
 	%the $pq$ walk studied in \cite{Dav96} defined by letting the transition probabilities be $\frac{1}{2}$ when the walker has not hit its extrema. When it hits maxima, the probability for jumping to the right in the next step is $p = (2 - \theta^+)^{-1}$. Likewise, when it hits minima, the probability for jumping to the left in the next step is $q = (2 - \theta^-)^{-1}$. This walk converges weakly to the process $W^{\theta^+, \theta^-}$ with the same scaling as Theorem~\ref{thm: main}. In fact, this is the \edt{earliest example} of BMPE arising as functional limit of rescaled excited random walks. 
-	
-	
 	%Upon inspection of the functional equation defining BMPE, we see that the perturbation term of our limiting process is given by $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. Hence, $\gamma$ can be interpreted as the expected drift attained at each site after sufficiently many visits. In proving Theorem~\ref{thm: main}, we need to establish such an estimate of total drift accumulated by $X_k$. To do so, we will decompose the rescaled walk into a discrete martingale and a drift process, and treat each part separately. The main difficulty comes from the existence of rarely visited sites, and we need to carefully estimate 1) how fast the drift attained at a site $y$  converges to $\gamma$, and 2) how much does the total accumulated drift $\Gamma_k$ deviate from $\gamma \left( \sup_{i \le k} X_i + \inf _{i \le k} X_i  \right) $. It turned out that the effect of rarely visited sites only contribute to error of order $o(\sqrt{n} )$ (see Lemma~\ref{lm: control of acc drift}).
-	
-	
-	
 	%	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP23}. The proof in \cite{KMP23} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
-	
+
 	The analysis of local time process of random work via \textit{Branching-like processes}, taking advantage of the tree structure of the walk's excursions in one dimension, is core to the analysis of both SIRW (considered in this work as well as \cite{T96, KMP23}) and ERW (considered in \cite{DK12, KP16, KMP22}). 
-	One special property of SIRW is that local behavior of the walk at different sites can be independently generated from the \textit{Generalized P\'olya's urn processes}.
+	One special property of SIRW is that local behavior of the walk at different sites can be generated from independent \textit{Generalized P\'olya's urn processes} assigned to each site.
 	%The walk $X_k$ itself can then be constructed from the urn processes at each site. \textit{Branching-like processes} describe the way we construct the local time process of $X_k$ from those local urns. 
 	These two auxiliary processes are crucial for controlling total drift attained by the walk in both \cite{KMP23} and this work.
-In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP23}, Lemma~2.3-2.4]).
-	The main technical difficulties in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drift.
-	Hence, we need a slightly more involved argument to estimate the total drift attained at a single site.
-	We stop the walk at particular excursion times and express the total attained drift as a spatial martingale adapted to the natural filtration of the branching-like process.
+In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily (\cite{KMP23}, Lemma~2.3-2.4).
+	The main technical difficulties in proving Theorem~\ref{thm: main} for the $p \le \frac{1}{2}$ case is that we no longer have absolute summability of local drifts.
+	It turns out that we can estimate accumulated drift using absolute summability of local drifts, if we stop the walk at particular excursion times and express the total attained drift as a spatial martingale adapted to the natural filtration of the branching-like process. Then the martingale has bounded increments on an event with high probability, allowing us to sum the local drifts and obtain estimate for the walker's accumulated drift.
 	%We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
 	This approach has also been used previously in some one-dimensional ERWs, mainly \cite{DK12} and \cite{KP16}.
 	
@@ -231,15 +227,9 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	%These good events are closely related to the generalized P\'{o}lya  urn processes associated to sites, and we estimtate their probabilities by studying branching-like processes, which are derived from the original SIRW $(X_n)_{n\geq 0}$ via the generalized Ray-Knight Theorem. 
 	%At this point, we also point out that the approximation of accumulated local drifts $\Delta_y^{(x,m)}$ is different from those in \cite{KMP23} since in the case when $p\in(\frac{1}{2},1]$, the conditional mean $\rho_{y}^{(x,m)}$ converges absolutely, which does not hold in the case when $p\leq \frac{1}{2}$. 
 	%We need to construct certain good events on which the errors $\Delta_y^{(x,m)}- \rho_y^{(x,m)}$ are well-behaved.
-	The proof of Theorem \ref{thm: main} follows a strategy similar to that of Theorem 1.2 \cite{KMP23}. The proof in \cite{KMP23} first uses generalized Ray-Knight theorem to establish the tightness of scaled SIRW, and applied martingale methods to control the accumulated drift of the walk, giving uniqueness of subsequential limit. 
-	This approach
-	has also been used previously in excited random walks in dimension one, such as \cite{DK12} and \cite{KP16}. % our model is not excited random walk.
-	In \cite{KMP23}, the analysis of local behavior of the walk through Generalized P\"olya's urn processes were crucial in the control of total drift. 
-	In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x$ turns out to be absolutely summable, which allows one to estimate the total drift easily ([\cite{KMP23}, Lemma~2.3-2.4]).
-	When $p \in (0,\frac{1}{2}]$, local drift is no longer absolutely summable, so we need a slightly more involved argument to estimate the total drift attained at a single site. The method we adopt here is similar to \cite{KP16}, where we stop the walk at particular excursion times and express the total attained drift as another spatial martingale $\Delta_y^{(x,m)}$, adapted to the natural filtration of the branching-like process (Section~\ref{sec: generalized Polya Urn, BLP}). We are then able to estimate drifts by estimating their conditional expectations $\rho_y^{(x,m)}$, which provides more regularity.
-	
+
 	\subsection{Organization of Paper}
-	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual lemma. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, namely generalized P\'{o}lya urn processes and branching-like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some preliminary results related to technical results. In section \ref{sec: approximations}, we show the approximations of local drifts on good events as well as estimating their probabilities. 
+	In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{thm: main} in several technical steps, each of which is stated as an individual lemma. In particular, the proofs of three technical results are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe these auxiliary processes, namely generalized P\'{o}lya urn processes and branching-like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and show some technical results. In section \ref{sec: approximations}, we complete the approximation of accumulated drift, finishing proof of Theorem~\ref{thm: main}. 
 	
 	\subsection{Notation}
 	
@@ -303,7 +293,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\begin{lemma}\label{lm: control of acc drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of acc drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(M_k + I_k \right)   } > \varepsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma_k - \gamma \left(S_k + I_k \right)   } > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
 	Before proving Lemma~\ref{lm: control of acc drift}, we first remark that the local time process of $(X_k)_{k \ge 0}$ at excursion times $\lambda_{x,m}$ can be described in terms of spacially markovian processes, namely branching-like processes discussed in section \ref{sec: generalized Polya Urn, BLP}. This motivates considering \textit{local drift} attained at a single site $y$ at stopping times $\lambda_{x, m}$:
@@ -333,16 +323,16 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	For each $k > 0$, we can let $x = X_k$ and there exists some $m>0$ such that $k = \lambda_{x,m}$ and $L(x,k) = m+1$. Apply the decomposition to $\Gamma_k$ as stated above, we see that
 	the lemma would follow if we can prove
 	\begin{equation}\label{eq: control of acc drift + }
-		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \cdot \left(M_k - \abs{X_k} \right)   } > \varepsilon \sqrt{n}  \right) =0. 
+		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\Gamma^+_k - \gamma \cdot \left(S_k - \abs{X_k} \right)   } > \varepsilon \sqrt{n}  \right) =0. 
 	\end{equation}
 	and similar results for $\Gamma_k^0$ and $\Gamma_k^-$. By symmetry, the result for $\Gamma_k^-$ follows from $\Gamma_k^+$. 
 	\comment{$\Gamma_k^0$ will be dealt with when we prove the result for $\Gamma_k^+$.}
 	
 	Note that \eqref{eq: control of acc drift + } is equivalent to
 	\begin{equation}
-		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \Delta_{y}^{\edt{(X_k,L(X_k,k) - 1)}} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
+		\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \Delta_{y}^{(X_k,L(X_k,k) - 1)} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
 	\end{equation}
-	\comment{I think we need to write $(X_k,L(X_k,k) - 1)$, to maintain the identity  $L(x,k) = m + 1$.}
+	%\comment{I think we need to write $(X_k,L(X_k,k) - 1)$, to maintain the identity  $L(x,k) = m + 1$.}
 	
 	To show \eqref{eq: control of acc drift + }, we further approximate the $\Delta_{y}^{(x,m)}$ by its conditional expectation with respect to the filtration $\left(\mathcal{G}_{y}^{(x,m)}\right)_{y\geq x}$ generated by directed edge local times, $ \mathcal{G}_{y}^{(x,m)} = \sigma\left( \mathcal{E}^{(x,m)}_{y,+} : y \geq x \right)$.
 	
@@ -355,14 +345,14 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\begin{lemma}\label{lm: approximation of means of local drift}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of expected local drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \rho_{y}^{\edt{(X_k,L(X_k,k)-1)}} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left( \rho_{y}^{(X_k,L(X_k,k)-1)} - \gamma  \cdot sgn(y) \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
 	
 	\begin{lemma}\label{lm: approx local drift by conditional means}
 		Let $p\in (0,\frac{1}{2}]$. Then, for any $t>0$ and any $\varepsilon >0$
 		\begin{equation}\label{eq: control of martingale difference for local drift}
-			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left(\Delta_{y}^{\edt{(X_k,L(X_k,k)-1)}}- \rho_{y}^{\edt{(X_k,L(X_k,k)-1)}} \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
+			\lim_{n \to \infty }\mathbb{P}\left(\sup_{k\leq nt} \abs{\sum_{y> X_k} \left(\Delta_{y}^{(X_k,L(X_k,k)-1)}- \rho_{y}^{(X_k,L(X_k,k)-1)} \right)   }  > \varepsilon \sqrt{n}  \right) =0. 
 		\end{equation}
 	\end{lemma}
 	
@@ -376,8 +366,6 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	However, Lemma~\ref{lm: approx local drift by conditional means} requires uniform control of local time process (Lemma~\ref{lm: uniform control of local time}), and the proof requires the diffusion approximation of branching-like process (Lemma~\ref{lm: diffusion approximation of blp}).
 	We will describe the generalized P\'{o}lya Urn process and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}, and prove Lemma~\ref{lm: approximation of means of local drift}, \ref{lm: approx local drift by conditional means} in section \ref{sec: approximations}.
 	\vspace{1em}
-	%\TBD With symmetric arguments, we extend \eqref{eq: control of acc drift + } for $\Gamma_k^+$ to $\Gamma_k^-$, \edt{while the $\Gamma_k^0$ is considered simultaneously with either $\Gamma_k^+$ or $\Gamma_k^-$,} and obtain the full Lemma \ref{lm: control of acc drift}.
-	
 	
 	\textbf{Step 3: Tightness.} The tightness of $S_k$ and $I_k$ under diffusive scaling is already established in \cite{KMP23} for general $p \in (0,1]$:
 	\begin{proposition}
@@ -391,7 +379,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\vspace{1em}
 
 	\textbf{Step 4: Convergence to BMPE.} 
-	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, the subsequencial limits agree and $Y_1$ is a $(\gamma, \gamma)$-BMPE.
+	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, $\frac{1}{\sqrt{n} } X_{\left\lfloor nt  \right\rfloor}$ converges to a $(\gamma, \gamma)$-BMPE.
 	
 	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
 	
@@ -531,7 +519,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	for $y\geq x$, and $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly for $y\leq x$.
 	In particular, $\mathcal{H}_{y, +}^{(x,m)}$ is finer than $\mathcal{G}_{y, +}^{(x,m)}$ because $\mathcal{E}_{z, +}^{(x,m)}$ is  $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $z$ in $[x,y]$ by \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity}, and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$. 
 	
-	The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. The argument is standard, \TBD \edt{and works for any $x\in \mathbb{Z}$.}
+	The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and we have two identities for $\Delta^{(x,m)}_{y}$ and  $\rho_{y}^{(x,m)}$. The argument is standard, \edt{and works for any $x\in \mathbb{Z}$.}
 	\begin{lemma}\label{lm: identities for Del, rho} 
 		For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }$  and $ \tau_{k,y}$ for $k\leq \mathcal{E}^{(x,m)}_{y,-} $,
 		\begin{equation} \label{eq: cummulated drift at a site}
@@ -599,7 +587,9 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 		\end{equation}	
 	\end{lemma}
 	\eqref{eq: Toth's Identity 1} is a direct consequence of the first identity. And the first identity can be proved via (exponential) martingales associated to the generalized P\'{o}lya urn process $(\mathcal{B}_{k},\mathcal{R}_{k})$, 
-	$$M_k(\lambda) = \prod_{i=0}^{ \mathcal{B}_{k}-1 } \left(1-\frac{\lambda}{b(i)}\right) \prod_{j=0}^{\mathcal{R}_{k}-1 } \left(1+\frac{\lambda}{r(j)}\right). $$
+	\[
+	S_k(\lambda) = \prod_{i=0}^{ \mathcal{B}_{k}-1 } \left(1-\frac{\lambda}{b(i)}\right) \prod_{j=0}^{\mathcal{R}_{k}-1 } \left(1+\frac{\lambda}{r(j)}\right)
+.\]
 	
 	The third result is about the diffusion approximations of the branching-like processes, and it follows from the Proposition A.3 in \cite{KMP23}. Its proof follows arguments from Toth \cite{T96}. A consequence of this result is the process level tightness of extrema, Proposition 2.1 \cite{KMP23}. 
 	
@@ -634,7 +624,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 		$$
 		
 	\end{lemma}	
-	Lemma \ref{lm: number of rarely visit sites} is a technical result, and its proof involves the analysis of BLPs and the concentration inequality in Lemma \ref{lm: concentration inequality} for the generalized P\'{o}lya urn process. The statement of Lemma \ref{lm: number of rarely visit sites} remains in force if we replace the range $[I_{k-1}, M_{k-1}]$ by $[X_k,M_k]$ (or $[I_{k-1},X_k]$ respectively), and replace the local times $L(x,k-1)$ by the numbers of up-crossings $\mathcal{E}^{k}_{x,+}$ (or $\mathcal{E}^{k}_{x,-}$ respectively). In fact, these two extended results are partial steps in the proof of Lemma 2.2 in \cite{KMP23}.   
+	Lemma \ref{lm: number of rarely visit sites} is a technical result, and its proof involves the analysis of BLPs and the concentration inequality in Lemma \ref{lm: concentration inequality} for the generalized P\'{o}lya urn process. The statement of Lemma \ref{lm: number of rarely visit sites} remains in force if we replace the range $[I_{k-1}, S_{k-1}]$ by $[X_k,S_k]$ (or $[I_{k-1},X_k]$ respectively), and replace the local times $L(x,k-1)$ by the numbers of up-crossings $\mathcal{E}^{k}_{x,+}$ (or $\mathcal{E}^{k}_{x,-}$ respectively). In fact, these two extended results are partial steps in the proof of Lemma 2.2 in \cite{KMP23}.   
 	
 	\begin{lemma}
 		\label{lm: uniform control of local time}
@@ -675,8 +665,9 @@ Both probabilities go to zero as we let $K$ go to infinity.
 
 		
 		
-		\section{Approximations of Local Drifts}\label{sec: approximations}
-		In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}.
+\section{Approximations of Accumulated Drift}\label{sec: approximations}
+	In this section, we will prove the technical propositions in the proof of Theorem \ref{thm: main}.
+	For more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}.
 
 		\subsection{Typical Events}
 		
@@ -702,6 +693,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		& \left\{\left| \tau_i^{\mathcal{B}, y} - 2 i \right| < \sqrt{ i } \log^2 n, \mbox{for all $i\leq  \mathcal{E}_{y,-}^{(x,m)}$} \right\}  \cap \\
 		& \left\{\left| \tau_{i+1}^{\mathcal{B},y} - \tau_i^{\mathcal{B},y} \right| < \log^2 n,  \mbox{for all $i\leq  \mathcal{E}_{y,-}^{(x,m)}$}  \right\}  
 		.\end{align}
+	Where we mean $\tau_i^{\mathcal{B}^{(y)}}$ by writing $\tau_i^{\mathcal{B}, y}$.
 	Then  $\left\{G_{n, K}^{(x,m)}(y)\right\}_{y \ge x}$ is $\mathcal{H}^{(x,m)}$-adapted, that is, $G_{n, K}^{(x,m)}(y)\in \mathcal{H}_{y, +}^{(x,m)}$.
 	Also note that for any $ \abs{x},m < K\sqrt{n}$, 
 	\begin{equation}
@@ -750,7 +742,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 \end{lemma}
 \begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
 	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
-	\edt{comment about $y$}.
+	%\edt{comment about $y$}.
 	\begin{align*}
 		\left| \Delta_y^{(x,m)} \right| 
 		&= 
@@ -844,9 +836,9 @@ Both probabilities go to zero as we let $K$ go to infinity.
 	\label{sec:RhoGamma}
 	In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
 	%		(\comment{maybe $ y>x>0 $ currently only one side is dealt}) 
-	on the event that \edt{$ L = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$}, we have \eqref{eq: conditional mean in GPU represenetation} 
-	$$\rho^{(x,m)}_y = E[\mathcal{D}_{\tau_L^B}].$$ 
-	On one hand, $M_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on the other hand, Lemma \ref{lm: number of rarely visit sites} says that, up to $n^b$ sites, (where $\frac{\gamma \vee 0}{2}<b<\frac{1}{2}$,) every site $y$ between $X_k=x$ and $\mathcal{M}^{(x,m)} =S_{k}^X$ has $ \mathcal{E}^{(x,m)}_{y-1,+} \geq M  $ with a high probability. To show Lemma \ref{lm: approximation of means of local drift}, it suffices to show 
+	on the event that $l = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$, we have \eqref{eq: conditional mean in GPU represenetation} 
+	$$\rho^{(x,m)}_y = E\left[\mathcal{D}_{\tau_l^{\mathcal{B}}}^{(y)}\right].$$ 
+	On one hand, $S_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on the other hand, Lemma \ref{lm: number of rarely visit sites} says that, up to $n^b$ sites, (where $\frac{\gamma \vee 0}{2}<b<\frac{1}{2}$,) every site $y$ between $X_k=x$ and $\mathcal{M}^{(x,m)} =S_{k}^X$ has $ \mathcal{E}^{(x,m)}_{y-1,+} \geq M  $ with a high probability. To show Lemma \ref{lm: approximation of means of local drift}, it suffices to show 
 	\begin{equation}\label{eq: convergence of conditional expectation}
 		\lim_{M\to\infty} E[\mathcal{D}_{\tau_M^B}] = \gamma , 
 	\end{equation} for positive sites. This is shown in Lemma \ref{lm: convergence of mean of discrepancies} below, and a symmetric argument after Lemma \ref{lm: convergence of mean of discrepancies} allows us to get the factor $sgn(y)$ for sites $y<0$ and $y=0$.
@@ -925,8 +917,9 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_m} \right] = \gamma, 
 		$$ from $\lim_{m\to\infty}\frac{1}{r(m)} =1$ and $ \lim_{m\to \infty} \left(V_1(m)-U_1(m) \right) = \gamma$.
 	\end{proof}
-	\\
-	For the generalized P\'{o}lya urn process associated to a site $y<0$, we have $r(i) = w(2i+1)$, $b(i) =w(2i)$. The right hand side of \eqref{eq: difference} is the same as $U_1(m)-V_1(m)$, which converges to $-\gamma$ as $m$ goes to infinity. Then we get that  \edt{(also from symmetry in Remark \ref{rem:symmetry})}
+
+	For the generalized P\'{o}lya urn process associated to a site $y<0$, we can use spatial symmetry of urn processes discussed in Remark~\ref{rem:symmetry}. Specifically, we have $r(i) = w(2i+1)$, $b(i) =w(2i)$. \eqref{eq: difference} becomes $U_1(m)-V_1(m)$, which converges to $-\gamma$ as $m$ goes to infinity.
+
 	\begin{equation}\label{eq: general expected drift}
 		\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^B_{m,-1}} \right] = \lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^R_{m,1}} \right] = -\gamma.
 	\end{equation}
@@ -947,15 +940,15 @@ Both probabilities go to zero as we let $K$ go to infinity.
 		%		\end{equation}
 	%		
 	Now we are ready to show Lemma \ref{lm: approximation of means of local drift}
-	and a slightly stronger result. \TBD
+	and a slightly stronger result.
 	\begin{lemma}
 		Let $w(.)$ be a positive monotone function on $\mathbb{N}_0$ satisfying \eqref{eq: asymptotics of w}. Then for any $0<p<1$, any $\varepsilon>0$,
 		$$
-		\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
+		\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[X_{k}+1 ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
 		$$
 		Furthermore,
 		\[
-	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
+	\lim_{n\to\infty} P\left( \sup_{k\leq n t}  \abs{  	\sum_{y\in \left[I_k^{X} ,S_{k}^X\right]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}     \right) =0.
 	\]
 \end{lemma}
 \begin{proof} There are only three types of weight sequences for the generalized P\'{o}lya urn processes, see \eqref{eq: generalized weights}. Therefore, from Lemma \ref{lm: convergence of mean of discrepancies}, and 
@@ -966,25 +959,25 @@ Both probabilities go to zero as we let $K$ go to infinity.
 	\end{equation} One such function is $C(l) = \sup \left\{  \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^R} \right] - \gamma \cdot sgn(y)} + \abs{\mathbb{E}\left[ \mathcal{D}_{\tau_m^B} \right] - \gamma \cdot sgn(y)} : m\geq l \right\}.     $  
 	
 	
-	Let $t>0$, and $b \in [\frac{\gamma \vee 0 }{2},\frac{1}{2})$.  For any $n,K,M>0$, we consider two types of events corresponding to control of extrema and rarely visited sites:
+	Let $t>0$, and $b \in \left[\frac{\gamma \vee 0 }{2},\frac{1}{2}\right)$.  For any $n,K,M>0$, we consider two types of events corresponding to control of extrema and rarely visited sites:
 	\begin{align*}
-		A_{n,K}:=&\left\{ \min\{-I_{nt}, M_{nt}\} \geq K \sqrt{n}  \right\}
+		A_{n,K}:=&\left\{ \min\{-I_{nt}, S_{nt}\} \geq K \sqrt{n}  \right\}
 		\\
-		B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, M_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\}.
+		B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, S_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\}.
 	\end{align*}
 	Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}$ is increasing in $M$. We claim that for $n$ large, the event 
 	$$
-	F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \}
+	F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,S_k]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \}
 	$$ 
 	is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
 	
-	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
+	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
 	\begin{align*}
-		\sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,M_k]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right) } \leq &  
-		C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
+		\sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,S_k]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \leq &  
+		C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
 		\notag
 		\\
-		+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,M_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
+		+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
 	\end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
 	\begin{equation}\label{eq: an upper bound on good set}
 		C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
@@ -995,7 +988,7 @@ Both probabilities go to zero as we let $K$ go to infinity.
 	$$ In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  P(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  P(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Lemma 2.1 \cite{KMP23}, or Corollary 1A \cite{T96}.
 \end{proof}
 
-%\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,M_{k}]} \left( \rho^{(X_k,L(X_k,k))}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
+%\eqref{eq: an upper bound on good set} can be used as a crude estimate for 	$\sum_{y\in [X_{k}+1 ,S_{k}]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right)$   on the "good events" $A^c_{n,K}\cap B^c_{n,M}$.
 
 \subsection{Approximation of Local Drifts by Conditional Means}
 \label{sec:DeltaRho}
@@ -1101,7 +1094,7 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 		%	&\leq \sum_{i = 0}^\infty \exp\left( - \sqrt{i}(q - \frac{1}{K})  \right)
 		%.\end{align*}
 	
-	For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ for $(X_k, L(X_k, \left\lfloor nt  \right\rfloor)$. Note that if $G_{n,k,t}$ occurs, for any $k\leq nt$, there is a pair $(x,m)$ with $\abs{x},m <K\sqrt{n}$ such that $\lambda_{x,m}=k$. Therefore, we get from \eqref{eqn:azuma-drift-martingale} and \eqref{eq: difference of cond means} that 
+	For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ for $\left(X_k, L\left(X_k, \left\lfloor nt  \right\rfloor - 1\right)\right)$. Note that if $G_{n,k,t}$ occurs, for any $k\leq nt$, there is a pair $(x,m)$ with $\lambda_{x,m}=k$ such that $\abs{x},m <K\sqrt{n}$. Therefore, we get from \eqref{eqn:azuma-drift-martingale} and \eqref{eq: difference of cond means} that 
 	\begin{align*}
 		& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
 		\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
