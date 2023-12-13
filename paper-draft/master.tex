@@ -89,8 +89,7 @@
 	\setcounter{page}{1} 
 	
 	\begin{abstract}
-		\TBD
-		This document is an outline of the article for the Scaling limit of SIRW. We complete the functional CLT in \cite{KMP23} for the asymptotically free self-interacting random walk (AF-SIRW) in the case $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via the study of the directed edge local times, which are described by branching-like processes and generalized Ray-Knight Theorems. Xiaoyu Liu and Zhe Wang are working on this project. 
+			We consider a one-dimensional non-Markovs self-interacting random walk, and complete the functional limit theorem in \cite{KMP23} for the asymptotically free case with $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via studying the directed edge local times, which are described by branching-like processes and generalized Ray-Knight Theorems. It turns out that certain martingales associated to branch-like processes are well behaved. (Or we construct certain events on which martingales associated to branch-like processes are well behaved.)
 	\end{abstract}
 	
 
@@ -397,7 +396,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\textbf{Step 4: Convergence to BMPE.} 
 	From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, $\frac{1}{\sqrt{n} } X_{\left\lfloor nt  \right\rfloor}$ converges to a $(\gamma, \gamma)$-BMPE.
 	
-	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
+ 	\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
 	
 	In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes. As explained earlier in section \ref{sec: proof of main}, these two auxiliary processes are essential in studying approximations of $\Gamma_k^+= \sum_{y\geq X_k} \Delta_{y}^{(x,m)}$ on the event that $\lambda_{x,m} = k$. We will show in subsection \ref{subsec: measurability} that each $\Delta^{(x,m)}_{y}$ is almost a function of the BLP processes to be introduced modulo extra information, and its conditional expectation $\rho^{(x,m)}_{y}$ only involves the generalized P\'{o}lya urn processes associated to site $y$. Therefore, to approximate $\Gamma_k$ and $\Delta_{y}^{(x,m)}$ we only need to study the BLP process with additional information, which turns out to be a Markov process with some convenient properties. In the last subsection, we recall some properties of these auxiliary processes needed in the proofs of Lemma \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Most of the these properties are well-known in works such as \cite{KP16} and \cite{KMP23}. 
 	
