@@ -4,17 +4,16 @@
 % % your document, to wit:
 % %
 % % first draft, 2023_08_03
-% % Modified  2023_12_13
-% % Lastest Edition, 2023_12_13
-% % Description of changes:
-% % (1) Minor changes in abstract.
+% % Modified  2023_12_18
+% % Lastest Edition, 2023_12_18
+
+% % (1) Minor change in the abstrac to avoid "we consider" at the start of both Abstract and Introduction)
+% % (2) Discussion of Ray-Knight approaches in abstract 
+% % (3) Minor changes for typos. 
 % % 
 % % Changes to be made:  
-% % (1) Issues in Introduction
-% % (1.1) Ray-knight Approaches/or not
-% % (1.2)
-% % (2) Abstract
-% % (3) Removing comments/TBD, and double check
+% % (1) Issues in Introduction (acoording to Tom/ John's comments)
+% % (2) Removing comments/TBD, and double check
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,8 +89,7 @@
 
 % We can omit the last sentence of the abstract	
 	\begin{abstract}
-We consider a one-dimensional non-Markov self-interacting random walk,
-and show its convergence to a Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in \cite{KMP23} for the asymptotically free case when $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via studying the directed edge local times, described by branching-like processes and generalized Ray-Knight Theorems. (We construct certain events where martingales associated to the branching-like processes are well behaved.)
+We show the convergence of a one-dimensional self-interacting random walk to a Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in \cite{KMP23} for the asymptotically free case when $0<p \leq \frac{1}{2}$. The approach is to carefully approximate the local drifts of the random walk via studying the directed edge local times, described by branching-like processes and generalized Ray-Knight Theorems. (We construct certain events where martingales associated to the branching-like processes are well behaved.)
 	\end{abstract}
 
 
@@ -102,7 +100,7 @@ and show its convergence to a Brownian motion perturbed at extrema under the dif
 	\section{Introduction}
 	%The current project is a completion of Theorem 1.2 in \cite{KMP23}. 
 	
-	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP23}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov: its transition probability for $X_{k+1}$ depending on its history up to $X_k$, 
+	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP23}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov: its transition probability for $X_{k+1}$ depends on its history up to $X_k$, 
 	\begin{align}
 		\mathbb{P}\left( X_{k+1} =  X_k+1 \middle| X_0, X_1,\dots, X_k   \right) 
 		&=1- \mathbb{P}\left( X_{k+1} =  X_k-1 \middle| X_0, X_1,\dots, X_k   \right)  
@@ -127,31 +125,22 @@ and show its convergence to a Brownian motion perturbed at extrema under the dif
 	for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$. Under the monotonicity of $w(.)$, $X_k$ is self-attracting if $w(.)$ is increasing and self-repelling if $w(. )$ is decreasing.
 	
 	%\TBD In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$.
-	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, while the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
+	% changes to be made here on the asymptotic free
+	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, 
+	\comment{Some transition from \cite{T96} to \cite{KMP23} on the asymptotically free cases is needed}
+	while the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. 
+
+	\edt{
+	A key element in T\'oth's analysis of SIRW is the connection between SIRW and its local time, which is in spirit, similar to how Ray-Knight theorem connects the local times of a Brownian motion with certain squared Bessel processes. By taking diffusion approximations of the local times processes for SIRW, squared Bessel processes of appropriate dimensions appears as the diffusion limits. These generalized Ray-Knight Theorems can be used to infer certain behaviors of scaling limits of the original SIRW.}
+	In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
 	%(\cite{T96}, Theorems 1A, 1B])
 	and local limit theorems for the position of a random walker at independent geometric times with means of linear growth. 
 	%(\cite{T96}, Theorems 2A, 2B]) 
 	These local limit theorems imply that the Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below) is the only possible candidate for the weak limit of one-dimensional distributions of disffusively rescaled SIRWs if the limit exists. 
-	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk, 
-	%(\cite{KMP23}, Proposition~2.1])
-	allowing them to establish functional convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case, which means that there is no general thereom to pass easily from local time processes to functional convergence of the walk. The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
-
-
-
-	\edt{More discussion here about the Ray-Knight type of approach in establishing functional convergence to BMPE.}
+	\edt{Similar diffusion approximations have also been proved for other one dimensional non-Markov random walks, such as excited random walks (ERW), see \cite{KM11,KZ13,KP16,DK12,HLSH18,KMP22} for some recent references. Although the squared Bessel processes also arise as the limiting distribution, the behaviors of these ERWs can be very different from SIRWs, for example transience versus recurrence, limiting distributions as Brownian motions versus BMPE.}  
+	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case, which means that there is no general thereom to pass easily from local time processes to functional convergence of the walk. The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
 	
-	\comment{
-	Discuss related result to the functional convergence to BMPE, and the Ray-Knight type of approach. Discuss roughly which conditions/models are "stable" having this result, and which ones don't or having technical difficulties.
-	 One focus it to discuss the Ray-knight approaches,
-	 drawing attention to different scaling limits (still the Ray-Knight arguments are applicaple)
-	 %so that this approach is "robust" of certain conditions: recurrent condition. + theta<1 (non boundary case). 
-	 It will be worth mentioning:\\
-	 1. Other 1-D SIRWs with functional convergence to BMPE, such as ERW with iid markovian, edge local time (once reinforced)\\
-	 2. Conditions on the weight function, 1) local time on site VS oriented/nonoriented edge 2)random assumption and with certain "regularity" such as i.i.d ergodicity/ellipticity; boundedness; Markovian (with unique stationary measure) \\
-	 3. BMPE is not the only limit for the ERW: for transient case, we get BM + drift case, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).\\
-	 4. Ray-Knight type of approach is very powerful and promising in deriving (some of) the above mentioned properties and deriving properties of the local time profile is a good starting point for inferring information of original walk.  \\
-	 5. Recurrence of the SIRW is comparable to non-boundary recurrent case of ERW. In the boundary case the ERW has a different scaling. %RN is easier to use when walk is transient, invert hitting times of random walks" from Markov paper. 
- }
+	% Discussions on the BLP/ diffusion approximation/ Ray-knight theorem in \cite{KP16}, \cite{KP15} ,\cite{KMP23} are major sources for this part
 	  
 		%In the following subsection, we will discuss our main result and approaches.
 	% The Ray-Knight approach should be a focus in either of the discussion here or after Theorem 1.1. The approach is quite robust in these 1-D RW model, when scaling limit of local time profile is applicable, for example when diffusive approximation is available in the recurrent case, and other ones in the transient case. The nontrivial aspect of this approach is how to derive from the local time profiles (BLPs) back to the walk $X_t$ when certain conditions are relaxed.
@@ -215,8 +204,7 @@ and show its convergence to a Brownian motion perturbed at extrema under the dif
 	The approximation is intuitive when drift experienced at extremum, for example, when $w(0) = (2 - \gamma)^{-1}$ and $w(n) = 1$ for $n > 0$. 
 	%In this walk, the walk has nonsymmetric transition probabilities, i.e., attains drift, only when it hits boundary of its current range. 
 	%Drift approximation for SIRW with more general $w(.)$ will be discussed in section \ref{sec: approximations}. 
-	As out proof will show that for more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites}. 
-	\comment{Discuss scope and limitation of this method.}
+	As our proof will show that for more general $w(.)$, this approximation is still true because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites} below. 
 
 	%\edt{Discussion involving ERW}
 	%the $pq$ walk studied in \cite{Dav96} defined by letting the transition probabilities be $\frac{1}{2}$ when the walker has not hit its extrema. When it hits maxima, the probability for jumping to the right in the next step is $p = (2 - \theta^+)^{-1}$. Likewise, when it hits minima, the probability for jumping to the left in the next step is $q = (2 - \theta^-)^{-1}$. This walk converges weakly to the process $W^{\theta^+, \theta^-}$ with the same scaling as Theorem~\ref{thm: main}. In fact, this is the \edt{earliest example} of BMPE arising as functional limit of rescaled excited random walks. 
@@ -411,7 +399,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\subsection{Generalized P\'{o}lya  Urn}
 	Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 	\[
-	\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,i+1} := \inf\{ t> \lambda_{y, k}: X_t = y \}.
+	\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,i+1} := \inf\{ t> \lambda_{y, i}: X_t = y \}.
 	\] 
 	Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
 	\begin{equation} \label{eq: RW to GPU}
@@ -624,7 +612,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 .\]
 	
 	The third result is about the diffusion approximations of the branching-like processes, and it follows from the Proposition A.3 in \cite{KMP23}. Its proof follows arguments from Toth \cite{T96}. A consequence of this result is the process level tightness of extrema, Proposition 2.1 \cite{KMP23}. 
-	
+	% we remark that in \cite{HLSH18}, the tightness of extrema is proved via a comparison argument, so it is not a consequence of diffusion approximation in their work.
 	\begin{lemma}(Proposition A.3 \cite{KMP23})\label{lm: diffusion approximation of blp}
 		\begin{enumerate}
 			\item 
@@ -632,7 +620,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 		\[
 		\mathcal{Z}_n(.) \Longrightarrow Z^{(2-2\gamma)}(.)
 		\] 
-		as $n$ goes to infinity on $D([0,\infty)),$ where $Z^{(2-2\gamma)}(.)$ is $\frac{1}{2}$ times the squared Bessel processes of dimension $2-2\gamma$.
+		as $n$ goes to infinity on $D([0,\infty)),$ where $2Z^{(2-2\gamma)}(.)$ is the squared Bessel processes of dimension $2-2\gamma$.
 
 		\item
 			For $n\geq 1$, let $\tilde\zeta^{(n)}=(\tilde\zeta^{(n)}_k)_{k\geq 0 }  $ be the BLP with initial value $\tilde\zeta^{(n)}_0 = \lfloor yn \rfloor$ for some $y \geq 0$, and let $\tilde{\mathcal{Z}}_n(t) = \frac{\tilde\zeta^{(n)}_{\lfloor nt \rfloor}}{n}$ for $n\geq 1$ and $t\geq 0$. Then we have that 
