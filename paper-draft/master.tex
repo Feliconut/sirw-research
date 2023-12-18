@@ -50,7 +50,7 @@
 \usepackage{mathrsfs}
 \usepackage{csquotes}
 \usepackage[backend=biber,style=alphabetic,sorting=none]{biblatex}
-\usepackage[inline, left]{showlabels} %Note: add "final" option to turn off labels.
+\usepackage[inline, left, final]{showlabels} %Note: add "final" option to turn off labels.
 \renewcommand{\showlabelfont}{\small\color{lightgray}}
 
 \addbibresource{zotero.bib}
@@ -94,7 +94,7 @@
 	\section{Introduction}
 	%The current project is a completion of Theorem 1.2 in \cite{KMP23}. 
 	
-	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP23}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov: its transition probability for $X_{k+1}$ depending on its history up to $X_k$, 
+	We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP23}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov:
 	\begin{align}
 		\mathbb{P}\left( X_{k+1} =  X_k+1 \middle| X_0, X_1,\dots, X_k   \right) 
 		&=1- \mathbb{P}\left( X_{k+1} =  X_k-1 \middle| X_0, X_1,\dots, X_k   \right)  
@@ -112,23 +112,25 @@
 	w: \mathbb{N} \to  (0, \infty )
 	$ 
 	is a weight function.
-	In this model, we require $w(.)$ to be monotone, with regular polynomial asymptotic behavior,
+	In this model, we require $w(.)$ to be monotone and converging to $1$, with regular polynomial asymptotic behavior,
 	\begin{equation}\label{eq: asymptotics of w}
 		\frac{1}{w(n)} = 1 + \frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right) \quad \mbox{as $n\to \infty$}, 	
 	\end{equation} 
 	for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$. Under the monotonicity of $w(.)$, $X_k$ is self-attracting if $w(.)$ is increasing and self-repelling if $w(. )$ is decreasing.
 	
 	%\TBD In our case, the weight function $w(.)$ is deterministic and identical for each site $x\in \mathbb{Z}$.
-	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, while the the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
+	\comment{note Toth assumed $p = 1$ but the proof generalizes}
+	This model was first studied by B. T\'oth in \cite{T96}, according to whose terminology, the SIRWs with weight functions of the form \eqref{eq: asymptotics of w} fall into the ``asymptotically free'' case: $w(n)\sim 1$, while the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
 	%(\cite{T96}, Theorems 1A, 1B])
 	and local limit theorems for the position of a random walker at independent geometric times with means of linear growth. 
 	%(\cite{T96}, Theorems 2A, 2B]) 
-	These local limit theorems imply that the Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below) is the only possible candidate for the weak limit of one-dimensional distributions of rescaled SIRWs if the limit exists. 
-	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk, 
+	These local limit theorems imply that the Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below) is the only possible candidate for the weak limit of one-dimensional distributions of diffusively rescaled SIRWs if the limit exists. 
+	\edt{Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level tightness of extrema process of walk, 
 	%(\cite{KMP23}, Proposition~2.1])
-	allowing them to establish functional convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case. The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
+	allowing them to establish functional convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case. }
+	The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that  $p > \frac{1}{2}$.
 
-
+	\comment{Key question: 1) Can we get functional limits? 2) Can one prove convergence to BMPE? Yes for AFRW for p > 1/2, no for PSRRW}
 
 	\edt{More discussion here about the Ray-Knight type of approach in establishing functional convergence to BMPE.}
 	
@@ -140,7 +142,7 @@
 	 It will be worth mentioning:\\
 	 1. Other 1-D SIRWs with functional convergence to BMPE, such as ERW with iid markovian, edge local time (once reinforced)\\
 	 2. Conditions on the weight function, 1) local time on site VS oriented/nonoriented edge 2)random assumption and with certain "regularity" such as i.i.d ergodicity/ellipticity; boundedness; Markovian (with unique stationary measure) \\
-	 3. BMPE is not the only limit for the ERW: for transient case, we get BM + drift case, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).\\
+	 3. BMPE is not the only limit for the ERW: for transient case, we get \edt{BM + drift case for $\gamma > 4$ and others behaviors}, while in the reccurent case the issue is much more subtle, with boundary case and nonboundary case ( our case is the nonboundary case ).\\
 	 4. Ray-Knight type of approach is very powerful and promising in deriving (some of) the above mentioned properties and deriving properties of the local time profile is a good starting point for inferring information of original walk.  \\
 	 5. Recurrence of the SIRW is comparable to non-boundary recurrent case of ERW. In the boundary case the ERW has a different scaling. %RN is easier to use when walk is transient, invert hitting times of random walks" from Markov paper. 
  }
@@ -661,7 +663,7 @@ The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\r
 \begin{proof}
 	Consider the event that $L(y, n) > K \sqrt{n} $ for some  $y \in \mathbb{Z}, n, K > 0$. Define $m_{n, K } = \tau^{\mathcal{R}, 0}_{\sqrt{K n} }$. Now, either
 	\begin{itemize}
-		\item $L(y, \lambda_{0, m_{n, K}}) \ge L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$; or
+		\item $L(y, \lambda_{0, m_{n, K}}) \le L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$; or
 		\item $L(y, \lambda_{0, m_{n, K}}) \ge  L(y, n)  > K \sqrt{n} $.
 	\end{itemize}
 	By symmetry we only need to control $P\left( \sup _{y \ge  0} L(y, n) > K \sqrt{n}  \right) $. In view of the case analysis above, we have
@@ -1126,7 +1128,7 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 	For $\sup_{k < nt} \left| \sum_{y > X_k} \Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)} \right|$, we use a union bound by considering possible values $(x,m)$ for $\left(X_k, L\left(X_k, \left\lfloor nt  \right\rfloor - 1\right)\right)$. Note that if $G_{n,k,t}$ occurs, for any $k\leq nt$, there is a pair $(x,m)$ with $\lambda_{x,m}=k$ such that $\abs{x},m <K\sqrt{n}$. Therefore, we get from \eqref{eqn:azuma-drift-martingale} and \eqref{eq: difference of cond means} that 
 	\begin{align*}
 		& P\left( \sup_{k < nt} \left| \sum_{y > X_k} 
-		\Delta_y^{\left(X_k,L(X_k, k)\right)} - \rho_y^{\left(X_k,L(X_k, k)\right)}
+		\Delta_y^{\left(X_k,L(X_k, k)-1\right)} - \rho_y^{\left(X_k,L(X_k, k)-1\right)}
 		\right| > \varepsilon \sqrt{n}  \right) \\
 		%&\le P(G_{n, K, t}^c) + P\left( \bigcup_{k,x,m: k \leq nt} \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n}, \lambda_{x,m} =k\right\} \cap G_{n,K,t} \right) \\
 		&\le P(G_{n, K, t}^c) + P\left( \bigcup_{|x|, m < K \sqrt{n} } \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n},  \lambda_{x,m} \leq nt \right\} \cap G_{n,K,t} \right) \\
