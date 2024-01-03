@@ -113,10 +113,10 @@
 		&=  \frac{  w(r_{X_k}^k)}{ w(l_{X_k}^k)  + w(r_{X_k}^k)   }
 		, \label{dynamic}
 	\end{align}
-	where $l_x^k$ and $r_x^k$ are the local times by time $k$ for the undirected edges $\{x,x-1\}$ and $\{x,x+1\}$:
+	where $l_x^k$ and $r_x^k$ are the local times by time $k$ for the undirected edges $\left\{x,x-1\right\}$ and $\left\{x,x+1\right\}$:
 	\[ 
-	l_x^k = \sum_{j=0}^{i-1} \mathbb{1}_{ \left\{  \{X_j, X_{j+1}\} =  \{x,x-1\} \right\} }, \qquad
-	r_x^k = \sum_{j=0}^{i-1} \mathbb{1}_{ \left\{  \{X_j, X_{j+1}\} =  \{x,x+1\} \right\} }   
+	l_x^k = \sum_{j=0}^{i-1} \mathbb{1}_{ \left\{  \left\{X_j, X_{j+1}\right\} =  \left\{x,x-1\right\} \right\} }, \qquad
+	r_x^k = \sum_{j=0}^{i-1} \mathbb{1}_{ \left\{  \left\{X_j, X_{j+1}\right\} =  \left\{x,x+1\right\} \right\} }   
 	;\]
 	and $
 	w: \mathbb{N} \to  (0, \infty )
@@ -263,16 +263,16 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	The following (random) quantities related to the SIRW $(X_k)_{k\geq0}$ are important in our analysis:
 	\begin{enumerate}
 		\item The running maximum of $(X_i)_{i \ge 0}$ at time $k$, $S_k= \sup\left\{X_i : i \le k\right\}$; the running minimum at time $n$, $I_n= \inf \left\{X_i: i \le k\right\} $.
-		\item The local time of a site $x \in \mathbb{Z}$ by time $j \in \mathbb{N}_0$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\} }
+		\item The local time of a site $x \in \mathbb{Z}$ by time $j \in \mathbb{N}_0$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\left\{X_i=x\right\} }
 			.$
 			% the definition for local time in \cite{KMP23} and \cite{KP16} are different by at most 1. The main difference comes from whether to count the last step $X_n$. For the former case, $L(x,\lambda_{x,m}) = m+1$, while $L(x,\lambda_{x,m}) =m$ for the latter case.  
 		\item The local time of the directed bond $(x,x+1)$ by time $j\in \mathbb{N}_0$,
 		\[
-		\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1 \} } ,
+		\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\left\{X_i=x, X_{i+1} =x+1 \right\} } ,
 	\]
 		and the local time of the directed bond $(x,x-1)$ by time $j$ is 
 		\[
-		\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1 \} }.
+		\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\left\{X_i=x, X_{i+1} =x-1 \right\} }.
 	\]
 		\item For any $m\geq 0$, the time of $m$-th return ($m+1$-th visit) to site $x$ is denoted by
 			\[
@@ -326,7 +326,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\end{lemma}
 	Before proving Lemma~\ref{lm: control of acc drift}, we first remark that the local time process of $(X_k)_{k \ge 0}$ at excursion times $\lambda_{x,m}$ can be described in terms of spacially markovian processes, namely branching-like processes discussed in section \ref{sec: generalized Polya Urn, BLP}. This motivates considering \textit{local drift} attained at a single site $y$ at stopping times $\lambda_{x, m}$:
 	\begin{equation}\label{eq: accumulated local drift}
-		\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E\left[X_{i+1}-X_i\vert \mathcal{F}_{i}^X\right] \mathbb{1}_{\{X_i=y\}}
+		\Delta_y^{(x,m)}:= \sum_{i=0}^{\lambda_{x,m}-1} E\left[X_{i+1}-X_i\vert \mathcal{F}_{i}^X\right] \mathbb{1}_{\left\{X_i=y\right\}}
 	\end{equation}
 	On the event that $k = \lambda_{x,m}$, the drift term $\Gamma_k$ is by definition a sum of local drifts:
 	\begin{equation}\label{eq: drift in terms of local drifts}
@@ -417,7 +417,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\subsection{Generalized P\'{o}lya Urn}
 	Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 	\[
-	\lambda_{y,0} :=\inf\{ t\geq 0: X_t = y \} , \quad \lambda_{y,i+1} := \inf\{ t> \lambda_{y, i}: X_t = y \}.
+	\lambda_{y,0} :=\inf\left\{ t\geq 0: X_t = y \right\} , \quad \lambda_{y,i+1} := \inf\left\{ t> \lambda_{y, i}: X_t = y \right\}.
 	\] 
 	Then we define the \textit{generalized P\'olya urn process} at site $y$ as 
 	\begin{equation} \label{eq: RW to GPU}
@@ -433,7 +433,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	
 	
 	
-	Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\{y,y-1\}$ and $\{y,y+1\}$ at time $\lambda_{y,0}$ is 
+	Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\left\{y,y-1\right\}$ and $\left\{y,y+1\right\}$ at time $\lambda_{y,0}$ is 
 	\begin{equation}\label{eq: initial condition}
 		\left(l(y,\lambda_{y,0}),  r( y ,\lambda_{y,0})\right) =  \begin{cases}	
 			(1, 0) &,  \text{ if }  y>0 \\
@@ -459,7 +459,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\TBD\edt{we didn't define $\tau_{k,y}^{\mathcal{B}}$, it can be appropriate to define it after \eqref{eq:signed difference}}
 	For the same reason, we write $\tau_k^{\mathcal{B}}$ \edt{or $\tau_{k,y}^{\mathcal{B}}$} in place of $\tau_k^{\mathcal{B}^{(y)}}$, and $\tau_k^{\mathcal{R}}$ \edt{or $\tau_{k,y}^{\mathcal{R}}$} in place of $\tau_k^{\mathcal{R}^{(y)}}$.
 	
-	For a generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_{k\geq 0}$ associated to the site $y$, we define the signed difference process $\{\mathcal{D}_{k}\}_{k \ge 0} $ to be
+	For a generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_{k\geq 0}$ associated to the site $y$, we define the signed difference process $\left\{\mathcal{D}_{k}\right\}_{k \ge 0} $ to be
 	\begin{equation}\label{eq:signed difference}
 		\mathcal{D}_k  =\mathcal{R}_k -\mathcal{B}_k.  
 	\end{equation}
@@ -492,7 +492,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\[
 	\left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
 	\]
-	are two Markov processes on $\mathbb{N}\cup\{0\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}, summarized in \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} below. The derivation is known in several earlier works, such as \cite{T96, KP16}. We state some facts in the derivation of \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} , which is also used in the next subsection.
+	are two Markov processes on $\mathbb{N}\cup\left\{0\right\}$, whose transition probabilities are related to the generalized weights in \eqref{eq: generalized weights}, summarized in \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} below. The derivation is known in several earlier works, such as \cite{T96, KP16}. We state some facts in the derivation of \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} , which is also used in the next subsection.
 	
 	Due to Remark~\ref{rem:symmetry}, its natural to assume $x \ge 0$. We define the \textit{branching-like processes} to be
 	\[
@@ -520,7 +520,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 		
 		\item The directed edge local times at two consecutive sites satisfies:
 		\begin{equation}\label{eq: source of inhomogeneity}
-			\mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }
+			\mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \left\{ 1\leq y \leq x \right\} }
 		\end{equation}
 		
 		\item  From \eqref{eq: markov 1}, \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity}, the transition probabilities for $\tilde{\zeta}$ are 
@@ -551,7 +551,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	In view of the \eqref{eq: markov 1} and \eqref{eq: recursive formula for upcrossings},
 	the second type of filtration contains additional information of all arrival times $\tau^\mathcal{B}_{k,z}$ for all $k\leq \mathcal{E}^{(x,m)}_{z, -}$, and $x\leq z \leq y$
 	\[
-	\mathcal{H}_{y, +}^{(x,m)} = \sigma\left( \mathcal{E}_{z, -}^{(x,m)}, \tau_{k, z}^\mathcal{B}\cdot \mathbb{1}_{\{ k\leq \mathcal{E}_{z, -}^{(x,m)} \}} : x \leq  z \leq y,  k \geq 0 \right) 
+	\mathcal{H}_{y, +}^{(x,m)} = \sigma\left( \mathcal{E}_{z, -}^{(x,m)}, \tau_{k, z}^\mathcal{B}\cdot \mathbb{1}_{\left\{ k\leq \mathcal{E}_{z, -}^{(x,m)} \right\}} : x \leq  z \leq y,  k \geq 0 \right) 
 	\]
 	for $y\geq x$, and $\mathcal{H}_{y, -}^{(x,m)}$ is defined similarly for $y\leq x$.
 	In particular, $\mathcal{H}_{y, +}^{(x,m)}$ is finer than $\mathcal{G}_{y, +}^{(x,m)}$ because $\mathcal{E}_{z, +}^{(x,m)}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable for any $z$ in $[x,y]$ by \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity}, and similarly, $\mathcal{E}_{y, -}^{(x,m)}$ is $\mathcal{H}_{y, -}^{(x,m)}$- measurable for $ y\leq x$. 
@@ -559,7 +559,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)}$- measurable but not $\mathcal{G}_{y, +}^{(x,m)}$- measurable, and they follow from two identities for $\Delta^{(x,m)}_{y}$ and $\rho_{y}^{(x,m)}$. The identity \eqref{eq: cummulated drift at a site} below is not used directly in section \ref{sec: approximations} when we estimate $\Delta^{(x,m)}_{y}$, but we use its more explicit formula, see the proofs of Lemmas \ref{lm:lipchitz-bound-on-good-event} and \ref{lm: control of martingale} below.
 	%The argument is standard, \edt{and works for any $x\in \mathbb{Z}$.}
 	\begin{lemma}\label{lm: identities for Del, rho} 
-		For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \{ 1\leq y \leq x \} }$ and $ \tau^{\mathcal{B}}_{l,y}$ for $l\leq \mathcal{E}^{(x,m)}_{y,-} $,
+		For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \left\{ 1\leq y \leq x \right\} }$ and $ \tau^{\mathcal{B}}_{l,y}$ for $l\leq \mathcal{E}^{(x,m)}_{y,-} $,
 		\begin{equation} \label{eq: cummulated drift at a site}
 			\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y,-} -1  } D\left(\tau^{\mathcal{B}}_{l,y},\tau^{\mathcal{B}}_{l+1,y},l \right),
 		\end{equation}	
@@ -569,12 +569,12 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 			\rho_{y}^{(x,m)} = \mathbb{E}\left[ \Delta_{y}^{(x,m)}\vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	  
 			= \mathbb{E}\left[  \mathcal{D}_{\tau^{\mathcal{B}}_{k,y}} \right],
 		\end{equation} 
-		on the event that $\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1}_{\{1\leq y\leq x\}}.$
+		on the event that $\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}}.$
 	\end{lemma}
 	\begin{proof} 
 		The first identity is similar to \eqref{eq: recursive formula for upcrossings}.
 		For any $y>x $, at time $\lambda_{x,m}$, the last jump from site $y$ is a left jump. For any integers $k\geq 0$, the event 
-		$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k +  \mathbb{1}_{\{1\leq y\leq x\}}\right\}$ equals $\left\{  L(y,\lambda_{x,m}) = \tau_{k,y}^{\mathcal{B}} \right\}, $ on which
+		$\left\{ \mathcal{E}^{(x,m)}_{y-1,+} =k +  \mathbb{1}_{\left\{1\leq y\leq x\right\}}\right\}$ equals $\left\{  L(y,\lambda_{x,m}) = \tau_{k,y}^{\mathcal{B}} \right\}, $ on which
 		\[
 		\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right] = \sum_{j=0}^{\tau^\mathcal{B}_{k,y}-1} \mathbb{E}\left[ \mathcal{D}_{j+1} -\mathcal{D}_{j}  \vert \mathcal{F}^{\mathcal{B},\mathcal{R}}_{j} \right].  
 		\] 
@@ -591,7 +591,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 			\rho_{y}^{(x,m)} = \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D(\tau^{\mathcal{B}}_{l,y},\tau^{\mathcal{B}}_{l+1,y} ) \vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathcal{D}_{\tau^{\mathcal{B}}_{l+1,y}} -\mathcal{D}_{\tau^{\mathcal{B}}_{l,y}} \right]  
 			= \mathbb{E}\left[  \mathcal{D}_{\tau^{\mathcal{B}}_{k,y}} \right],
 		\end{equation*}
-	on the event that $\mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\{1\leq y\leq x\}}.  $ 
+	on the event that $\mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}}.  $ 
 	\end{proof}
 	
 	% We drop the $+, -$ signs when there is no ambiguity. Now, observe that 
@@ -621,7 +621,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	
 	The second result is an identity for a generalized P\'{o}lya urn process $(\mathcal{B}_{k},\mathcal{R}_{k})_k$. For any $k,m\geq 0$ denote by $\mu(k)= \tau^{\mathcal{B}}_k - k$ the number of red balls extracted before the $k$-th blue ball. 
 	\begin{lemma}(Lemma 1, \cite{T96}) \label{lm: Toth's Identity}
-		For any $m\in \mathbb{N}$ and $\lambda < \min\{ b(j): 0\leq j\leq m-1 \}$, we have the following identity,
+		For any $m\in \mathbb{N}$ and $\lambda < \min\left\{ b(j): 0\leq j\leq m-1 \right\}$, we have the following identity,
 		$$  \mathbb{E}\left[  \prod_{j=0}^{ \mu(m)-1 } \left(1+ \frac{\lambda}{r(j)}   \right) \right] =   \prod_{j=0}^{ m-1 } \left(1- \frac{\lambda}{b(j)}   \right)^{-1}.   $$ 
 		In particular, 
 		\begin{equation}\label{eq: Toth's Identity 1}
@@ -662,7 +662,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	\begin{lemma}(Lemma 2.2 \cite{KMP23})\label{lm: number of rarely visit sites}
 		Let $\gamma_+ = \gamma \vee 0$. Then for any $M>0$, and any $b>\frac{\gamma_+}{2}$ we have
 		$$
-		\lim_{n\to\infty} P\left(\sup_{k\leq\lfloor nt \rfloor}  \sum_{x\in [I^X_{k-1}, S^X_{k-1}]} \mathbb{1}_{\{ L(x,k-1) \leq M \}} \geq 4n^b \right) = 0.
+		\lim_{n\to\infty} P\left(\sup_{k\leq\lfloor nt \rfloor}  \sum_{x\in [I^X_{k-1}, S^X_{k-1}]} \mathbb{1}_{\left\{ L(x,k-1) \leq M \right\}} \geq 4n^b \right) = 0.
 		$$
 		
 	\end{lemma}	
@@ -743,7 +743,7 @@ Both probabilities go to zero as $K$ goes to infinity.
 	Also note that for any $ \abs{x},m < K\sqrt{n}$, 
 	\begin{equation}
 		\label{eqn:goodgood}
-		G_{n, K, t}\cap \{ \lambda_{x,m} \leq\lfloor nt \rfloor \} \subset   \bigcap_{y>x}^{K\sqrt{n}} G_{n, K}^{(x,m)}(y) \subset   \bigcap_{y>x}^{K\sqrt{n}} G_{n, K^2}^{(x,m)}(y)
+		G_{n, K, t}\cap \left\{ \lambda_{x,m} \leq\lfloor nt \rfloor \right\} \subset   \bigcap_{y>x}^{K\sqrt{n}} G_{n, K}^{(x,m)}(y) \subset   \bigcap_{y>x}^{K\sqrt{n}} G_{n, K^2}^{(x,m)}(y)
 		.\end{equation} 
 	
 	We first verify that the event $G_{n, K, t}$ is indeed typical.
@@ -883,7 +883,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 	\label{sec:RhoGamma}
 	In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
 	%		(\comment{maybe $ y>x>0 $ currently only one side is dealt}) 
-	on the event that $l = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\{1\leq y\leq x\}}$, we have \eqref{eq: conditional mean in GPU represenetation} 
+	on the event that $l = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\left\{1\leq y\leq x\right\}}$, we have \eqref{eq: conditional mean in GPU represenetation} 
 	$$\rho^{(x,m)}_y = E\left[\mathcal{D}_{\tau_l^{\mathcal{B}}}^{(y)}\right].$$ 
 	On one hand, $S_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on the other hand, Lemma \ref{lm: number of rarely visit sites} says that, up to $n^b$ sites, (where $\frac{\gamma \vee 0}{2}<b<\frac{1}{2}$,) every site $y$ between $X_k=x$ and $\mathcal{M}^{(x,m)} =S_{k}^X$ has $ \mathcal{E}^{(x,m)}_{y-1,+} \geq M $ with a high probability. To show Lemma \ref{lm: approximation of means of local drift}, it suffices to show 
 	\begin{equation}\label{eq: convergence of conditional expectation}
@@ -909,14 +909,14 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 			=& 	\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] - \sum_{i=0}^{m-1} \frac{1}{r(i)} = \mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}    - \sum_{i=0}^{m-1} \frac{1}{r(i)}\right]. \label{eq: difference}
 		\end{align}
 		From \eqref{eq: asymptotics of w}, we have that $0< \inf \frac{1}{r(j)} \leq \sup \frac{1}{r(j)} <\infty $, then $\mathbb{E}\left[\mu(m)\right]$ is bounded by
-		$$\mathbb{E}\left[ \mu(m) \right] = \mathbb{E}\left[ \mu(m)\mathbb{1}_{\{\mu(m)\geq 1 \} } \right] \leq  \frac{1}{\inf 1/w(j) }\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] <\infty, $$ 
+		$$\mathbb{E}\left[ \mu(m) \right] = \mathbb{E}\left[ \mu(m)\mathbb{1}_{\left\{\mu(m)\geq 1 \right\} } \right] \leq  \frac{1}{\inf 1/w(j) }\mathbb{E}\left[  \sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)}   \right] <\infty, $$ 
 		so $ \mathbb{E}\left[ \mu(m) -m\right]  $ is bounded.
 		The difference in \eqref{eq: difference} is a sum
 		\begin{align} 
-			\sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)} - \sum_{i=0}^{m-1} \frac{1}{r(i)} =& \sum_{j=m}^{\mu(m)-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \cdot\mathbb{1}_{\{\mu(m)\geq m\}} 
+			\sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)} - \sum_{i=0}^{m-1} \frac{1}{r(i)} =& \sum_{j=m}^{\mu(m)-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \cdot\mathbb{1}_{\left\{\mu(m)\geq m\right\}} 
 			\label{eq: 1st term}
 			\\	
-			& - \sum_{j=\mu(m)}^{m-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \mathbb{1}_{\{\mu(m)< m\}} 
+			& - \sum_{j=\mu(m)}^{m-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \mathbb{1}_{\left\{\mu(m)< m\right\}} 
 			\label{eq: 2nd term}
 			\\
 			& + \frac{\mu(m)-m}{ r(m) }. \label{eq: major term}
@@ -925,13 +925,13 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 		
 		Indeed, let $A> \frac{2}{c} \vee 1$, where $c$ is from Lemma \ref{lm: concentration inequality}. \eqref{eq: 1st term} is bounded by
 		\begin{align}
-			& \sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)\\
-			& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
-			 +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\{\mu(m)\geq j \}}\right)
+			& \sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)\\
+			& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)
+			 +  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)
 			\notag
 			\\
 			&\leq  \sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} }
-			\quad +\quad 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+			\quad +\quad 2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\left\{ \mu(m) > j \right\}}
 			\label{low large difference}
 		\end{align}
 	 By \eqref{eq: asymptotics of w}, there is a constant $C'>0$ such that for any $m>100 $ and any $j$ with $\abs{j-m}\leq A \sqrt m \log m $, 
@@ -942,7 +942,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 		C' A^2 m^{-p} (\log m)^2.
 		\] On the other hand, Lemma \ref{lm: concentration inequality} implies that
 		\begin{align*}
-2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\{ \mu(m) > j \}}
+2\left(\sup_j \frac{1}{w(j)}\right) \cdot \sum_{j\geq m + A\sqrt{m}\log m } \mathbb{1}_{\left\{ \mu(m) > j \right\}}
 			\le & 2\left(\sup_j \frac{1}{w(j)}\right) \sum_{j-m \geq A \sqrt m \log m  } P( \mathcal{D}_{\tau^{\mathcal{B}}_m} \geq j-m )  
 			\notag 
 			\\
@@ -981,7 +981,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 	%		In terms of the generalized P\'{o}lya urn process associated to the site $y$,
 	%		\begin{equation} \label{eq: extended definition}
 		%			\rho^{(x,m)}_y = \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right], 
-		%		\end{equation} where \edt{$L = \mathcal{E}^{(x,m)}_{y,+} = \mathcal{E}^{(x,m)}_{y+1,-}-\mathbb{1}_{\{0\leq y\leq x-1}\}.$} With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
+		%		\end{equation} where \edt{$L = \mathcal{E}^{(x,m)}_{y,+} = \mathcal{E}^{(x,m)}_{y+1,-}-\mathbb{1}_{\left\{0\leq y\leq x-1}\right\}.$} With an argument similar to the proof of Lemma \ref{lm: convergence of mean of discrepancies}, we get that 
 	%		\begin{equation}\label{eq: mean of discrepancies for left sites}
 		%			\lim_{L\to \infty} \mathbb{E}\left[\mathcal{D}_{\tau_L^R}\right] =  sgn(y) \cdot \gamma = \lim_{L\to \infty} \mathbb{E}\left[\mathcal{D}_{\tau_L^B}\right].
 		%		\end{equation}
@@ -1008,23 +1008,23 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 	
 	Let $t>0$ and $b \in \left[\frac{\gamma \vee 0 }{2},\frac{1}{2}\right)$. For any $n,K,M>0$, we consider two types of events corresponding to controls of extrema and rarely visited sites:
 	\begin{align*}
-		A_{n,K}:=&\left\{ \min\{-I_{nt}, S_{nt}\} \geq K \sqrt{n}  \right\}
+		A_{n,K}:=&\left\{ \min\left\{-I_{nt}, S_{nt}\right\} \geq K \sqrt{n}  \right\}
 		\\
-		B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, S_{k-1}]}  \mathbb{1}_{\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \}} >n^b  \right\}.
+		B_{n,M}:=& \left\{  \sup_{k\leq n t} \sum_{ y\in (X_{k-1}, S_{k-1}]}  \mathbb{1}_{\left\{ \mathcal{E}^{k-1}_{y-1,+} \leq M  \right\}} >n^b  \right\}.
 	\end{align*}
 	Clearly, $A_{n,K}$ is decreasing in $K$, and $B_{n,M}$ is increasing in $M$. We claim that for $n$ large, the event 
 	$$
-	F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,S_k]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \}
+	F_{n,\varepsilon}:= \left\{ \sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,S_k]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \geq  \varepsilon \sqrt{n}    \right \right\}
 	$$ 
 	is contained in $A_{n,K} \cup B_{n,M} $ for some finite $K, M$ independent of $n$:   
 	
 	Indeed, depending on $(\mathcal{E}^{k-1}_{y-1,+} \leq M)$, terms  $\left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right)$ are bounded by $C(0)$ or $C(M)$. Therefore, the supremum is bounded by
 	\begin{align*}
 		\sup_{k\leq n t}  \abs{  	\sum_{y\in [X_{k}+1 ,S_k]} \left( \rho^{(X_k,L(X_k,k)-1)}_y -  \gamma \cdot sgn(y) \right) } \leq &  
-		C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \leq M \} } \right\}
+		C(0) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \left\{ \mathcal{E}^{k-1}_{y-1,+} \leq M \right\} } \right\}
 		\notag
 		\\
-		+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \{ \mathcal{E}^{k-1}_{y-1,+} \geq M \} } \right\},
+		+& C(M) \cdot \sup_{k\leq n t} \left\{   	\sum_{y\in [X_{k}+1 ,S_k]} \mathbb{1}_{ \left\{ \mathcal{E}^{k-1}_{y-1,+} \geq M \right\} } \right\},
 	\end{align*} which is bounded on $A^c_{n,K} \cap B^c_{n,M}$ by
 	\begin{equation}\label{eq: an upper bound on good set}
 		C(0)n^b  + C(M) \left(K \sqrt{n} -n^b\right).
@@ -1041,7 +1041,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 \label{sec:DeltaRho}
 In this subsection, we prove Lemma~\ref{lm: approx local drift by conditional means} and thus complete the proof of Theorem~\ref{thm: main}. This proof is similar to, and slightly more technical than the proof of {Lemma~4.2} in \cite{KP16}. 
 
-In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}$, where
+In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$, where
 \[
 	\tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbf{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
 	\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
@@ -1063,14 +1063,14 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 		.\end{align}
 	
 	\begin{proof}[Proof of Lemma~\ref{lm: approx local drift by conditional means}]
-		We first control \eqref{eqn:tempered-difference-0} on $G_{n, K, t} \cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}$. From \eqref{eqn:goodgood} and that $G_{n,K}^{(x,m)}(y)$ is increasing in $K$, we get that  \eqref{eqn:tempered-difference-1} is zero on $G_{n, K, t} \cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}$. 
+		We first control \eqref{eqn:tempered-difference-0} on $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$. From \eqref{eqn:goodgood} and that $G_{n,K}^{(x,m)}(y)$ is increasing in $K$, we get that  \eqref{eqn:tempered-difference-1} is zero on $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$. 
 %		Lemma~\ref{lm: approximation of means of local drift} has controlled \eqref{eqn:tempered-difference-4}. 
 		
 		For \eqref{eqn:tempered-difference-2}, it equals to
 		$
 		 \sum_{y > x}^{K\sqrt{n}} \tilde \Delta_{y}^{(x,m)} - \tilde\rho_y^{(x,m)}
 		$
-		 on $G_{n, K, t} \cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}$. By Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event}, we get that for any $\varepsilon>0$,
+		 on $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$. By Azuma's inequality and Lemma~\ref{lm:lipchitz-bound-on-good-event}, we get that for any $\varepsilon>0$,
 		\begin{align}
 			P\left( \left| \sum_{y = x + 1}^{K \sqrt{n} } (\tilde\Delta_y^{(x,m)} - \tilde\rho_y^{(x,m)}) \right| > \varepsilon \sqrt{n}  \right) 
 			%&\le \exp\left( - \frac{\varepsilon^2 n}{2 K^2 \sqrt{n} \left( C_{K} n^{-\frac{1}{2}p + \frac{1}{4}} \log^2 n  \right)^2 } \right) \notag \\
@@ -1085,7 +1085,7 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 			.\end{align}
 %		In both cases, the right hand side vanish when we first take $n $ to infinity, and then take $K$ to infinity.  
 		
-		It remains to control  \eqref{eqn:tempered-difference-3} on $G_{n, K, t} \cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}$:
+		It remains to control  \eqref{eqn:tempered-difference-3} on $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$:
 		\begin{align*}
 			\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
 			&= \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbf{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
@@ -1125,7 +1125,7 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 		\begin{align*}
 			\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right] \leq  C_q K^2 n,
 		\end{align*} for some $C_q$ depending only on $q$.
-		Therefore, on $G_{n,K,t} \cap \{ \lambda_{x,m} \leq\lfloor nt \rfloor \}$,
+		Therefore, on $G_{n,K,t} \cap \left\{ \lambda_{x,m} \leq\lfloor nt \rfloor \right\}$,
 		\begin{equation}\label{eq: difference of cond means}
 		\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le C_q K n^{\frac{1}{2}} \exp\left( - 2K^2 \sqrt{n}(q - \frac{1}{K}) \right) \leq  C_q\exp\left( - K^2 \sqrt{n}(q - \frac{1}{K}) \right), 
 		\end{equation}
@@ -1150,7 +1150,7 @@ In \eqref{eq: control of martingale difference for local drift}, for any fixed $
 		%&\le P(G_{n, K, t}^c) + P\left( \bigcup_{k,x,m: k \leq nt} \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n}, \lambda_{x,m} =k\right\} \cap G_{n,K,t} \right) \\
 		&\le P(G_{n, K, t}^c) + P\left( \bigcup_{|x|, m < K \sqrt{n} } \left\{  \left| \sum_{y > x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n},  \lambda_{x,m} \leq\lfloor nt \rfloor \right\} \cap G_{n,K,t} \right) \\
 		&\le P(G_{n, K, t}^c) + K^2 n \sup _{|x|, m \le  K \sqrt{n} }
-		P\left( \left| \sum_{y \ge x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , G_{n,K,t}\cap \{\lambda_{x,m} \leq\lfloor nt \rfloor \}  \right) \\
+		P\left( \left| \sum_{y \ge x} \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right|  > \varepsilon \sqrt{n} , G_{n,K,t}\cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}  \right) \\
 		&\le P(G_{n, K, t}^c) + K^2 n \left( \exp\left( - C_{K, \varepsilon} \, n^{p } \log^{-4} n \right) + \exp\left( - C_{K, \varepsilon} \, \sqrt{n}  \log^{-5} n \right)\right) 
 		.\end{align*}
 	In view of Lemma~\ref{lem:good-event}, the last line vanishes as we first take $n$ to infinity and then take $K$ to infinity.
