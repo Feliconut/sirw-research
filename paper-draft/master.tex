@@ -253,7 +253,7 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 
 Now we introduce notations for some random variables related to the SIRW $(X_k)_{k\geq0}$ that are important in our analysis.
 \begin{enumerate}
-	\item Running Maximum and Minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_n = \inf {X_i: i \le k}$.
+	\item Running Maximum and Minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_k = \inf \{X_i: i \le k\}$.
 		\item
 Local Time at a Site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is denoted as $L(x,j)$ and is calculated by $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\}}$. 
 \comment{This definition aligns closely with those found in references such as [KMP23] and [KP16], with minor variations in the count of the last step $X_n$.}
@@ -437,17 +437,15 @@ Stopping Times: For any process $X_t$ where $t \in \mathbb{N}_0$, we write $\tau
 			(w(2k), w(2k)) &,  \text{ if }  y=0 \\ 
 		\end{cases}.
 	\end{equation}
-	For simplicity of notation, we drop the subscript $y$ when a fixed site of $y$ is clear from context. 
-	\TBD\edt{we didn't define $\tau_{k,y}^{\mathcal{B}}$, it can be appropriate to define it after \eqref{eq:signed difference}}
-	For the same reason, we write $\tau_k^{\mathcal{B}}$ \edt{or $\tau_{k,y}^{\mathcal{B}}$} in place of $\tau_k^{\mathcal{B}^{(y)}}$, and $\tau_k^{\mathcal{R}}$ \edt{or $\tau_{k,y}^{\mathcal{R}}$} in place of $\tau_k^{\mathcal{R}^{(y)}}$.
+	For simplicity of notation, we write $\tau_{k,y}^{\mathcal{B}}$ in place of $\tau_k^{\mathcal{B}^{(y)}}$, and $\tau_{k,y}^{\mathcal{R}}$ in place of $\tau_k^{\mathcal{R}^{(y)}}$.
 	
-	For a generalized P\'{o}lya urn process $(\mathcal{B}_k,\mathcal{R}_k )_{k\geq 0}$ associated to the site $y$, we define the signed difference process $\left\{\mathcal{D}_{k}\right\}_{k \ge 0} $ to be
+	For a generalized P\'{o}lya urn process $(\mathcal{B}^{(y)}_k,\mathcal{R}^{(y)}_k )_{k\geq 0}$ associated to the site $y$, we define the signed difference process $\left\{\mathcal{D}^{(y)}_{k}\right\}_{k \ge 0} $ to be
 	\begin{equation}\label{eq:signed difference}
-		\mathcal{D}_k  =\mathcal{R}_k -\mathcal{B}_k.  
+		\mathcal{D}^{(y)}_k  =\mathcal{R}^{(y)}_k -\mathcal{B}^{(y)}_k.  
 	\end{equation}
-	Let $\left(\mathcal{F}^{\mathcal{B},\mathcal{R}, y}_{k}\right)_{k \ge 0}$ be the natural filtration associated to the urn process at site $y$:  
+	Let $\left(\mathcal{F}^{\mathcal{B},\mathcal{R}}_{k, y}\right)_{k \ge 0}$ be the natural filtration associated to the urn process $(\mathcal{B}^{(y)}_k,\mathcal{R}^{(y)}_k )_{k\geq 0}$:  
 	\[
-		\mathcal{F}^{\mathcal{B},\mathcal{R}, y}_{k} = \sigma\left((\mathcal{B}_j^{(y)},\mathcal{R}_j^{(y)} ): j\leq k \right).
+		\mathcal{F}^{\mathcal{B},\mathcal{R}}_{k, y} = \sigma\left((\mathcal{B}_j^{(y)},\mathcal{R}_j^{(y)} ): j\leq k \right).
 	\]  
 	We may drop the $y$ when there is no ambiguity.
 	\begin{remark}
@@ -483,7 +481,7 @@ Stopping Times: For any process $X_t$ where $t \in \mathbb{N}_0$, we write $\tau
 	.\]
 	In particular, $\tilde{\zeta}$ is a homogeneous Markov chain, while $\zeta$ is inhomogeneous. We have the followings for 	$\tilde{\zeta}$:
 	\begin{enumerate}
-		\item Although the generalized P\'{o}lya urn processes at different sites are not independent at stopping times $\lambda_{x,m}$, the sequences $(\tau^{\mathcal{B}}_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^{\mathcal{B}}_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times
+		\item The sequences $(\tau^{\mathcal{B}}_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^{\mathcal{B}}_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times
 		\begin{equation}\label{eq: markov 1} 
 			\left\{\tau^{\mathcal{B}}_{k,y}: y\geq x, k\geq 0 \right\} \mbox{are Markov in $(y,k)$}
 		\end{equation}
@@ -758,7 +756,7 @@ Both probabilities go to zero as $K$ goes to infinity.
 	which also goes to $0$ as $n$ goes to infinity, for any fixed $K$. We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
-On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to apply martingale concentration inequalities to estimate accumulated drift.
+On $G_{n, K, t}$, we obtain priori bounds \comment{a priori?} of local drifts, which allows us to apply martingale concentration inequalities to estimate accumulated drift.
 \begin{lemma}\label{lm:lipchitz-bound-on-good-event}
 	For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2}]$,  we have
 	\begin{align*}
@@ -768,7 +766,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 	As a corollary, these bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
 \end{lemma}
 \begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
-	We verify this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but they do not affect the bound.
+	We present the proof of this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but identical bound. For simplicity of notation, we drop $y$ from the P\"olya's urn processes. We first use \eqref{eq: cummulated drift at a site} to write 
 	%\edt{comment about $y$}.
 	\begin{align*}
 		\left| \Delta_y^{(x,m)} \right| 
@@ -777,6 +775,7 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 		\sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
 		\frac{w(2 \mathcal{R}_l)- w(2 \mathcal{B}_l + 1)}{w(2 \mathcal{R}_l)+ w(2 \mathcal{B}_l + 1)}
 		\right| \\
+		\intertext{From the identity $2\frac{a - b}{a + b} = (\frac{1}{a} - \frac{1}{b})(\frac{1}{a} + \frac{1}{b})^{-1}$, and the fact that $w(.)$ is bounded, this is controlled by}
 		&\le C_w \sum_{i = 0}^{K \sqrt{n} } \sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
 		\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w(2 \mathcal{B}_l + 1)} \right|  \\
 		&= C_w \sum_{i = 0}^{K \sqrt{n} } \sum_{l = \tau_i^{\mathcal{B}}} ^{\tau_{i+1}^{\mathcal{B}}  -1}
@@ -786,14 +785,13 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 		&= C_w \sum_{i = 0}^{K \sqrt{n} }
  		\sum_{j = \tau_i^{\mathcal{B}} - i}^{\tau_{i+1}^{\mathcal{B}} - i - 1} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|  \\
 		\intertext{
-			In view of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4}, \comment{it might be good to mention that $\sqrt{i} > \log^2{n}$}
+			In view of \eqref{eqn:good-event-3} and \eqref{eqn:good-event-4},
 		}
-		&\le C_w \sum_i \log^2 n \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right| \\
-		&\le C_{w, p} \sum_i \log^2 n \left( 
-		(4 \sqrt{ i } \log^2 n) (2 i - 2 \sqrt{ i } \log^2 n)^{- p - 1} + (2 i)^{- p - 1} + O(i^{- \kappa - 1})
+		&\le C_w \left(4 \log^4 n + \sum_{i = 4 \log^4 n}^{K \sqrt{n} } \log^2 n \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|\right)\\
+		&\le C_{w, p} \sum_{i = 0}^{K \sqrt{n} } \log^2 n \left( 
+		\frac{4 \sqrt{ i } \log^2 n }{\left(2 i - 2 \sqrt{ i } \log^2 n\right)^{p + 1}} + \frac{1}{\left(2 i\right)^{p + 1}} + O\left( \frac{1}{i^{\kappa + 1}} \right)
 		\right)  \\
-		&\le C_{w, p} \sum_i \log^2 n \left( i ^{-p - \frac{1}{2}} \log^2 n +  i^{- \kappa - 1} \right)  \\
-		&= C_{w, p} \sum_i i^{- p - \frac{1}{2}} \log^4 n + i^{- \kappa - 1 } \log^2 n
+		&\le C_{w, p} \sum_{i = 0}^{K \sqrt{n} } i^{- p - \frac{1}{2}} \log^4 n + i^{- \kappa - 1 } \log^2 n
 		%\intertext{for small $\kappa$,}
 		%&\le \begin{cases}
 		%C_{w, p} \left( (K \sqrt{ n} )^{-p+ \frac{1}{2}} \log^4 n + (K \sqrt{ n} )^{- \kappa } \log^2 n \right)  
@@ -810,53 +808,53 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 	As remarked earlier that we only need to show
 	
 	\[
-	\lim_{N \to \infty } \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2 = 0
+	\lim_{N \to \infty } \frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k^X \right]^2 = 0
 	.\] 
 	
 	
 	We can rewrite the sum into a sum of local drifts, and isolate the first $M$ visits:
 	
 	\begin{align}
-		&\sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2
+		&\sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k^X \right]^2
 		\notag
 		\\
 		&= \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L(x, N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  
 		\notag
 		\\
-		&\le  \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L(x,N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbb{1}\left( L(x, i) > M \right) + 
-		\sum_{i = 0}^{N - 1} \mathbb{1}\left( L(X_i, i) \le  M \right) 
+		&\le  \sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = M}^{L(x,N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2  + 
+		\sum_{k = 0}^{N - 1} \mathbb{1}\left( L(X_k, k) <  M \right) 
 		\label{eqn:lem-martingale-1}
 		.\end{align}
 	On the good event $G_{n, K, t}$ defined by \eqref{eqn:good-event-1}-\eqref{eqn:good-event-4},
 	the inner sum in the first term is further bounded by
 	\begin{align*}
-		&\sum_{i =0}^{ L(x, N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 \mathbb{1}\left( L(x, i) > M \right) \\
+		&\sum_{i =M}^{ L(x, N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2\\
 		&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathcal{B}_N} \sum_{l = \tau_i^{\mathcal{B}}}^{\tau_{i+1}^{\mathcal{B}}-1} 
 		\left| \frac{1}{w(2 \mathcal{R}_l)} - \frac{1}{w\left( 2 \mathcal{B}_l + 1 \right) } \right|^2 \\
 		&\le C_{w, p} \sum_{i = M}^{\mathcal{B}_N} i^{- 2 p - 1} \log^8 n  \\
-		&\le C_{w, p} \left(\left[ M^{- 2 p} - \mathcal{B}_N^{- 2 p} \right] \log^8 N + \log^9 N\right)  \\
+		&\le C_{w, p} \left(\left[ M^{- 2 p} -\left(  \mathcal{B}_N \right) ^{- 2 p} \right] \log^8 N + \log^9 N\right)  \\
 		%&< C_{w, p} \left(M^{-2 p} \log^8 N + \log^9 N\right)
 		&< C_{w, p, M} \log^9 N
 		.
 	\end{align*}
 	In the cases $(x=0)$ and $(x < 0)$ we have exactly the same bound with minor differences in calculation.
 	
-	Since $\sum_{i = 0}^{N-1} \mathbb{1}\left( L(X_i, i) \le M \right) \mathbb{1}(X_i = x) \le  M$ for all $x \in \mathbb{Z}$, we can bound \eqref{eqn:lem-martingale-1} by
+	Since $\sum_{k = 0}^{N-1} \mathbb{1}\left( L(X_k, k) \le M \right) \mathbb{1}(X_k = x) \le  M$ for all $x \in \mathbb{Z}$, we can bound \eqref{eqn:lem-martingale-1} by
 	\begin{equation*}
-		\sum_{x \in \left[ I_N^X, S_N^X \right]} \sum_{i = 0}^{L(x,N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 
-		< \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M )
+		\sum_{x \in \left[ I_N, S_N \right]} \sum_{i = 0}^{L(x,N) - 1} \mathbb{E}\left[ \mathcal{D}_{i+1}^{(x)} - \mathcal{D}_i^{(x)} | \mathcal{F}_{i}^{\mathcal{B}, \mathcal{R}} \right]^2 
+		< \sum_{x \in \left[ I_N, S_N \right]} (C_{w, p, M} \log^9 N +M )
 	\end{equation*}
 	
 	%Using process-level tightness, the summation only adds a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, the right hand side converges $\to 0$ as $N$ goes to infinity. More precisely, take $G = G_{N, K, t}$ and
 	Finally we can control the probability using the typical event $G_{N, K, 1}$ :
 	\begin{align*}
-		&\mathbb{P}\left( \left| \frac{1}{N} \sum_{i = 0}^{N-1} \mathbb{E}\left[ X_{i+1} - X_i | \mathcal{F}_i \right]^2  \right|  > \varepsilon \right)\\
-		&\le \mathbb{P}\left( \left| \sum_{x \in \left[ I_N^X, S_N^X \right]} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N \right) + \mathbb{P}\left( G_{N, K, 1}^c \right)  \\
+		&\mathbb{P}\left( \left| \frac{1}{N} \sum_{k = 0}^{N-1} \mathbb{E}\left[ X_{k+1} - X_k | \mathcal{F}_k^X \right]^2  \right|  > \varepsilon \right)\\
+		&\le \mathbb{P}\left( \left| \sum_{x \in \left[ I_N, S_N \right]} (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N \right) + \mathbb{P}\left( G_{N, K, 1}^c \right)  \\
 		&\le \mathbb{P}\left(  \left| \sum_{|x| \le K \sqrt{N} } (C_{w, p, M} \log^9 N +M ) \right| > \varepsilon  N  \right) + \mathbb{P}\left( G_{N, K, 1}^c \right)  \\
 		&\le \mathbb{P}\left(  C_{w, p, M, K} \, \sqrt{N} \log^9 N > \varepsilon  N  \right) + \mathbb{P}\left( G_{N, K, 1}^c \right) 
 		.\end{align*}
 		The first term vanishes trivially and the second term goes to zero as shown in Lemma~\ref{lem:good-event}. 
-		\comment{We comment here that the second part of $G_{n, K, t}$, \eqref{eqn:good-event-2}, is not used in this proof.}
+		We comment here that the second part of $G_{n, K, t}$, \eqref{eqn:good-event-2}, is not used in this proof.
 	\end{proof}
 
 	
@@ -941,10 +939,12 @@ On $G_{n, K, t}$, we obtain priori bounds of local drifts, which allows us to ap
 		\eqref{eq: major term}, and \eqref{boound}, we get that
 		$$ \abs{ V_1(m)- U_1(m) -\frac{1}{r(m)}\mathbb{E}\left[ \mathcal{D}_{\tau^{\mathcal{B}}_m} \right] }
 		\leq 2C' A^2 m^{-p} \log m + 2C''  \left( m ^{-cA^2} +  m^{-cA} \right), 
-		$$ which converges to $0$ as $m$ goes to infinity. We conclude that 
-	
+		$$ 
+		which converges to $0$ as $m$ goes to infinity. We conclude that 
+	$$
 		\lim_{m\to\infty}\mathbb{E}\left[ \mathcal{D}_{\tau^{\mathcal{B}}_m} \right] = \gamma, 
-		$$ from $\lim_{m\to\infty}\frac{1}{r(m)} =1$ and $ \lim_{m\to \infty} \left(V_1(m)-U_1(m) \right) = \gamma$.
+		$$ 
+		from $\lim_{m\to\infty}\frac{1}{r(m)} =1$ and $ \lim_{m\to \infty} \left(V_1(m)-U_1(m) \right) = \gamma$.
 	\end{proof}
 
 	For the generalized P\'{o}lya urn process associated to a site $y<0$, we can use spatial symmetry of urn processes discussed in Remark~\ref{rem:symmetry}. Specifically, we have $r(i) = w(2i+1)$, $b(i) =w(2i)$. \eqref{eq: difference} becomes $U_1(m)-V_1(m)$, which converges to $-\gamma$ as $m$ goes to infinity.
