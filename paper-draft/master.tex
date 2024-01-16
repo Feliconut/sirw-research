@@ -31,7 +31,7 @@
 	\and
 	Zhe Wang}
 
-\date{Nov 29th, 2023}
+\date{Jan 15th, 2024}
 
 
 % This is the definition of the type of document
@@ -90,17 +90,9 @@
 
 	\begin{abstract}
 	We show convergence of a one-dimensional self-interacting random walk to a Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in \cite{KMP23} for the asymptotically free case when $0<p \leq \frac{1}{2}$. 
-	The approach is to approximate the total drift experienced by the walker via studying the directed edge local times, which has an underlying markovian structure described by the branching like processes. The analysis depends on the diffusive limits of the branching like processes obtained in the Ray-Knight type framework. 
+	The approach is to approximate the total drift experienced by the walker via studying the directed edge local times, which has an underlying markovian structure described by the branching-like processes. The analysis depends on the diffusive approximation of the branching-like processes obtained in the Ray-Knight type framework.
 
-	\comment{The approach is to approximate drifts experienced by the walker at each site via studying the directed edge local time processes in align with the generalized Ray-Knight approach.}
-
-\comment{For simplicity, did not mention that BLP is markovian only at fixed excursion times.}
-
-\comment{Did not mention ``martingale''.}
 	\end{abstract}
-
-	\comment{Grammar: BLP or BLPs? Past tense or present tense? }
-
 
 	\section{Introduction}
 	
@@ -135,11 +127,12 @@
 	%while the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. 
 
 	This type of model for SIRW was first introduced in \cite{T96}, with slightly different conditions on $w(n)$ and different classes of asymptotic behaviors. ``Asymptotically free'' SIRWs, in B. T\'oth's original terminology, refers to those walks with weight functions of the type $\frac{1}{w(n)} = 1 + B n^{-1} + O(n^{-2})$. 
-	The current assumption \eqref{eq: asymptotics of w} on $w(n)$ is introduced in \cite{KMP23}, where the new parameter $p$ allows more general asymptotic behaviors of $w(.)$.
+	The current assumption \eqref{eq: asymptotics of w} on $w(n)$ is introduced in \cite{KMP23}, where the new parameter $p$ allows more general asymptotic behaviors of $w(.)$. 
+	T\'oth also studied another type of SIRW with weight functions of the type $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, called the ``polynomially self-repelling'' case. 
 
 	A key element in T\'oth's analysis of SIRW is the connection between SIRW and its local time, which is in spirit, similar to how Ray-Knight theorem connects the local times of a Brownian motion with certain squared Bessel processes. 
 	\edt{
-This generalized Ray-Knight approach establishes convergence of local time processes of SIRWs, under linear scaling, to squared Bessel processes of appropriate dimensions. These Ray-Knight type results provides information about the scaling limits of the original SIRW.}
+This generalized Ray-Knight approach establishes convergence of local time processes of SIRWs, under scaling, to squared Bessel processes of appropriate dimensions. These Ray-Knight type results provides information about the scaling limits of the original SIRW.}
 	%In \cite{T96}, T\'oth proved for both cases functional limit theorems for the local time processes of SIRWs, 
 	%(\cite{T96}, Theorems 1A, 1B])
 For example, in \cite{T96}, T\'oth also proved local limit theorems for the position of a random walker at independent geometric times with means of linear growth. 
@@ -147,8 +140,8 @@ For example, in \cite{T96}, T\'oth also proved local limit theorems for the posi
 	These local limit theorems identified the diffusive limit of the SIRW as Brownian motion perturbed at extrema (BMPE) (see Definition~\ref{defn:BMPE} below), provided the limit exists. 
 	The general question of whether there exists universal conditions that allows one to pass from Ray-Knight type result to functional limit theorem was since open.
 	Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level convergence of rescaled asymptotically free SIRW to BMPE under an additional assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case, proving that there is no general thereom to pass directly from scaling limit of local time processes to functional convergence of the walk. 
-	\comment{May need some transition}
-	\edt{The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that $p > \frac{1}{2}$.}
+	%\comment{May need some transition}
+	The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that $p > \frac{1}{2}$.
 	
 	% Discussions on the BLP/ diffusion approximation/ Ray-knight theorem in \cite{KP16}, \cite{KP15} ,\cite{KMP23} are major sources for this part
 	  
@@ -190,31 +183,32 @@ For example, in \cite{T96}, T\'oth also proved local limit theorems for the posi
 	% The process $W_t^{\gamma, \gamma}$ is then the limiting process of $X_k$ under diffusive scaling. 
 	%\comment{part of this statement will be our main result. We can state previous result, and list our current one directly.}
 
-	\comment{Maybe we do not need to state the ``same'' theorem twice.}
-
+\begin{samepage}
 	The following functional limit theorem is shown in \cite{KMP23}: 
 	\begin{theorem*}[\cite{KMP23}, Theorem~1.1]
-			Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (\frac{1}{2},1]$, and $\kappa >0 $, we have the following process-level convergence
+			Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (\frac{1}{2},1]$, and $\kappa >0 $. Consider the SIRW $(X_k)_{k\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. We have the following process-level convergence
 	\[
 	\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 	\] 
 	as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 	\end{theorem*}
+\end{samepage}
 	\begin{samepage}
 		Our main result is the functional limit theorem in the case when $p\in (0,\frac{1}{2}]$.
 		\begin{theorem}\label{thm: main}
-			Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_k)_{k\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. Then the rescaled process
+			Let $w(.)$ be monotone and satisfy \eqref{eq: asymptotics of w} for $p\in (0,\frac{1}{2}]$, and $\kappa >0 $. Consider the SIRW $(X_k)_{k\geq 0}$ defined in \eqref{dynamic} with $X_0 =0$. We have the following process-level convergence
 			\[
 			\left(  \frac{X_{\lfloor nt \rfloor }}{\sqrt{n}}  \right)_{t\geq 0} \Longrightarrow \left( W^{\gamma,\gamma}_{t}\right)_{t\geq 0},
 			\]
-			as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
+	as $n$ goes to infinity, in the standard Skorohod topology $D([0,\infty) ).$
 		\end{theorem}
 	\end{samepage}
 
 	This theorem states that the amount of perturbation is directly proportional to the signed range of the limiting process, i.e. $W_t - B_t = \gamma \left( \sup_{s \le t} W_t + \inf _{s \le t} W_s \right) $. 
 	One way to establish this is to approximate drift encountered by the walk by $\gamma$ times the signed range of the walk, with an error of order $o\left(\sqrt{n} \right)$ (see Lemma~\ref{lm: control of acc drift} for the precise statement). 
 	The approximation is intuitive when drift experienced at extremum, for example, when $w(0) = (2 - \gamma)^{-1}$ and $w(n) = 1$ for $n > 0$. 
-	As our proof will show, this approximation remains true for more general $w(.)$, because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range\edt{, in the sense that rarely visited sites grow as $O(n^b)$,  $b < \frac{1}{2}$, when the range grows as $O(\sqrt{n} )$}. This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites} below. 
+	As our proof will show, this approximation remains true for more general $w(.)$, because the local drifts converge to $\gamma$ fast enough and the walker makes enough visits to each site in its range. 
+	This will be made precise in Lemma~\ref{lm: convergence of mean of discrepancies} and Lemma~\ref{lm: number of rarely visit sites} below. 
 
 	%\edt{Discussion involving ERW}
 	%the $pq$ walk studied in \cite{Dav96} defined by letting the transition probabilities be $\frac{1}{2}$ when the walker has not hit its extrema. When it hits maxima, the probability for jumping to the right in the next step is $p = (2 - \theta^+)^{-1}$. Likewise, when it hits minima, the probability for jumping to the left in the next step is $q = (2 - \theta^-)^{-1}$. This walk converges weakly to the process $W^{\theta^+, \theta^-}$ with the same scaling as Theorem~\ref{thm: main}. In fact, this is the \edt{earliest example} of BMPE arising as functional limit of rescaled excited random walks. 
@@ -232,7 +226,7 @@ The functional convergence of rescaled SIRW to BMPE has also been shown for othe
 	In the recurrent non-boundary case, the diffusive scaling is the correct scaling for both the walk and the local time processes and BMPE and squared Bessel processes are only possible limits (as observed in \cite{T96}), while a nontrivial scaling limit under a different scaling other than BMPE is expected when the walk is transient or in the boundary recurrent case. We also remark that $\gamma<1$ in our model implies that we are not in the boundary recurrent case.
 
 
-	The analysis of local time process of random walk via \textit{branching-like processes} (BLPs), taking advantage of the tree structure of the walk's excursions in one dimension, is core to the analysis of both SIRW (considered in this work as well as \cite{T96, KMP23}) and ERW (considered in \cite{DK12, KP16, KMP22}). 
+	The analysis of local time processes of random walks via \textit{branching-like processes} (BLPs), taking advantage of the tree structure of the walk's excursions in one dimension, is core to the analysis of both SIRW (considered in this work as well as \cite{T96, KMP23}) and ERW (considered in \cite{DK12, KP16, KMP22}). 
 	One special property of SIRW is that local behavior of the walk at different sites can be generated from independent \textit{generalized P\'olya's urn processes} assigned to each site.
 	%The walk $X_k$ itself can then be constructed from the urn processes at each site. \textit{Branching-like processes} describe the way we construct the local time process of $X_k$ from those local urns. 
 	Analysis of these two auxiliary processes are central in controlling total drift attained by the SIRW in both \cite{KMP23} and this work.
@@ -254,34 +248,22 @@ In the case $p \in (\frac{1}{2}, 1]$, the total drift accumulated at any site $x
 	
 	\subsection{Notation}
 
-	\comment{We could re-evaluate whether to have a Notations section.}
-	
-	We end this section by introducing some notations related to SIRW $(X_k)_{k\geq 0}$. To avoid confusion, the notations related to generalized P\'{o}lya urn, and branching-like processes are in section \ref{sec: generalized Polya Urn, BLP}.
-	
-	For an SIRW $(X_k)_{k\geq 0}$, let $(\mathcal{F}^X_k)_k$ be its natural filtration $\mathcal{F}^X_k = \sigma\left(X_i: i\leq n \right).$ 
-	\edt{We denote by $\mathbb{P}$ and $\mathbb{E}$ its probability and corresponding expectation. }
-	The following (random) quantities related to the SIRW $(X_k)_{k\geq0}$ are important in our analysis:
-	\begin{enumerate}
-		\item The running maximum of $(X_i)_{i \ge 0}$ at time $k$, $S_k= \sup\left\{X_i : i \le k\right\}$; the running minimum at time $n$, $I_n= \inf \left\{X_i: i \le k\right\} $.
-		\item The local time of a site $x \in \mathbb{Z}$ by time $j \in \mathbb{N}_0$, $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\left\{X_i=x\right\} }
-			.$
-			% the definition for local time in \cite{KMP23} and \cite{KP16} are different by at most 1. The main difference comes from whether to count the last step $X_n$. For the former case, $L(x,\lambda_{x,m}) = m+1$, while $L(x,\lambda_{x,m}) =m$ for the latter case.  
-		\item The local time of the directed bond $(x,x+1)$ by time $j\in \mathbb{N}_0$,
-		\[
-		\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\left\{X_i=x, X_{i+1} =x+1 \right\} } ,
-	\]
-		and the local time of the directed bond $(x,x-1)$ by time $j$ is 
-		\[
-		\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\left\{X_i=x, X_{i+1} =x-1 \right\} }.
-	\]
-		\item For any $m\geq 0$, the time of $m$-th return ($m+1$-th visit) to site $x$ is denoted by
-			\[
-				\lambda_{x,m} = \inf\left\{t \geq 0: L(x,t) = m+1 \right\}
-		.\]
-		We write $\mathcal{E}^{(x,m)}_{y, -}$ for $\mathcal{E}^{\lambda_{x,m}}_{y,-}$, and $\mathcal{E}^{(x,m)}_{y, +}$ for $\mathcal{E}^{\lambda_{x,m}}_{y,+}$. \comment{Note that for $x\neq 0$, $\lambda_{x,0} > 0$.}
-	\end{enumerate}
+	Assume some fixed $p \in (0,\frac{1}{2}]$ and $\kappa > 0$ as in the statement of Theroem~\ref{thm: main}. For an SIRW $(X_k)_{k\geq 0}$, let $(\mathcal{F}^X_k)_k$ be its natural filtration $\mathcal{F}^X_k = \sigma\left(X_i: i\leq n \right).$ 
+	We denote by $\mathbb{P}$ its probability measure and by $\mathbb{E}$ we mean expectation with respect to $\mathbb{P}$. This is the only probability measure we are working with, since we have deterministic environment in this model. For a precise definition of the probability measures and related $\sigma$-algebras, see \cite{KMP23}.
 
-	
+Now we introduce notations for some random variables related to the SIRW $(X_k)_{k\geq0}$ that are important in our analysis.
+\begin{enumerate}
+	\item Running Maximum and Minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_n = \inf {X_i: i \le k}$.
+		\item
+Local Time at a Site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is denoted as $L(x,j)$ and is calculated by $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\}}$. 
+\comment{This definition aligns closely with those found in references such as [KMP23] and [KP16], with minor variations in the count of the last step $X_n$.}
+\item
+Local Time of Directed Bonds: For a directed bond $(x,x+1)$ and time $j \in \mathbb{N}_0$, the local time is expressed as $\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1\}}$. Similarly, for the directed bond $(x,x-1)$ by time $j$, it is $\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1\}}$.
+\item
+Time of Return to a Site: For any non-negative integer $m$, the time of the $m$-th return (or the $(m+1)$-th visit) to a site $x$ is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1\}$. The notations $\mathcal{E}^{(x,m)}_{y, -}$ and $\mathcal{E}^{(x,m)}_{y, +}$ represent $\mathcal{E}^{\lambda_{x,m}}_{y,-}$ and $\mathcal{E}^{\lambda_{x,m}}_{y,+}$, respectively. It is important to note that for $x\neq 0$, $\lambda_{x,0} > 0$.
+\item
+Stopping Times: For any process $X_t$ where $t \in \mathbb{N}_0$, we write $\tau^X_{i} = \inf \{j \in  \mathbb{N}_0: X_j \ge  i\}$.
+\end{enumerate}
 	\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{thm: main}}
 	\label{sec: proof of main}
 	
