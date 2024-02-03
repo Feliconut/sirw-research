@@ -4,17 +4,14 @@
 % % your document, to wit:
 % %
 % % first draft, 2023_08_03
-% % Modified 2024_01_16
-% % Lastest Edition, 2023_1_16
+% % Modified 2024_02_03
+% % Lastest Edition, 2024_02_03
 
-% % (1) Minor changes in the abstrac and intro
-% % (2) grammatic changes 
-% % (3) small changes in subsection 4.2
+% % (1) Changes responding to comments
+% % (2) Modifications and double check around /comment and /edt
 % % 
 % % Changes to be made:  
-% % (1) Issues in Introduction
-% % (2) Definitions of tau_^B_k
-% % (3) Removing comments/TBD, and double check
+% % (1) Removing comments/TBD, and double check
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +28,7 @@
 	\and
 	Zhe Wang}
 
-\date{Jan 16th, 2024}
+\date{Feb 3rd, 2024}
 
 
 % This is the definition of the type of document
@@ -90,7 +87,7 @@
 	
 	\begin{abstract}
 		We show convergence of a family of one-dimensional self-interacting random walks to Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in \cite{KMP23} for the asymptotically free case when $0<p \leq \frac{1}{2}$. 
-		The approach is to approximate the total drift experienced by the walker via using directed edge local times, described by the branching-like processes. The analysis depends on the diffusive approximation of the branching-like processes obtained in the Ray-Knight type framework.
+		The approach is to approximate the total drift experienced by the walker via analyzing directed edge local times, described by the branching-like processes. The analysis depends on the diffusive approximation of the branching-like processes obtained in the Ray-Knight type framework.
 		
 	\end{abstract}
 	
@@ -510,7 +507,7 @@
 		where the generalized weights correspond to the case when $y>0$.
 	\end{enumerate}
 	
-	For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar statement by reversing the roles of $+$ and $-$, as well as $\mathcal{B}$ and $\mathcal{R}$. $\zeta$ is inhomogeneous because of \eqref{eq: source of inhomogeneity}, and we have the transition probabilities depending on the sign of $x-k$: for $i,j\geq 0$
+	For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar statements by reversing the roles of $+$ and $-$, as well as $\mathcal{B}$ and $\mathcal{R}$. $\zeta$ is inhomogeneous because of \eqref{eq: source of inhomogeneity}, and we have the transition probabilities depending on the sign of $x-k$: for $i,j\geq 0$
 	\begin{equation}\label{eq: transition prob on negative}
 		\mathbb{P}\left(\zeta_{k+1}=j \vert \zeta_k =i  \right) = 
 		\begin{cases}
@@ -518,10 +515,11 @@
 			\\
 			\mathbb{P}\left( \mathcal{B}_{\tau_{i+1,0}^{\mathcal{R}}} = j \right) ,& \mbox{ if $k =  x-1$, }
 			\\
-		\edt{	\mathbb{P}\left( \mathcal{B}_{\tau_{i,-1}^{\mathcal{R}}} = j \right) },& \mbox{ if $k \geq x$ }
+			\mathbb{P}\left( \mathcal{B}_{\tau_{i,-1}^{\mathcal{R}}} = j \right) ,& \mbox{ if $k \geq x$ }
 		\end{cases}
 	\end{equation}
-	where the generalized weights correspond to the case when $y>0$, $y=0$ and $y<0$ from \eqref{eq: generalized weights}.
+	where the generalized weights correspond to the case when $y>0$, $y=0$ and $y<0$ from \eqref{eq: generalized weights}. \comment{We note that both transition probabilities \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} agree on $[x,\infty)$.}
+	
 	
 	\subsection{Filtrations of BLPs, and Approximation of Accumulated Drifts}\label{subsec: measurability}
 	
@@ -1094,14 +1092,14 @@
 			\sqrt{ \mathbb{P}\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
 			\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
 			.\end{multline*}
-		\comment{Slight change in calculation when $x\leq 0$.}
-		To control the first probability, write $l = L\left( x+1, \lambda_{x, m} \right) $, and note that the probability is bounded by 
-		\[
-		\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2 \sqrt{n} }{2} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
-		= \mathbb{P}\left(\mathcal{B}^{(x+1)}_{l} > \frac{K^2 \sqrt{n} }{2}  \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
-		.\] 
-		As increments $\tau^{\mathcal{B}}_{l+1,y} -\tau^{\mathcal{B}}_{l,y}$ of the generalized P\'{o}lya urn processes are stochastically bounded by independent geometric random variables with parameter $q$ uniform in $l\geq 0$ and $y \in \mathbb{Z}$, we get from recursive formulas \eqref{eq: recursive formula for upcrossings} and \eqref{eq: source of inhomogeneity} that  $\mathcal{E}_{x+1,+}^{(x,m)}$ is stochastically dominated by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. 
-		Therefore, we get that
+		\comment{We modify the argument to avoid the case when $x\leq 0$.}
+		To control the first probability, we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathcal{B}}_{k+1,y} -\tau^{\mathcal{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniform in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is bounded by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. 
+		Thus, provided that $q> \frac{1}{K}$, the first probability is bounded by
+%		\[
+%		\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2 \sqrt{n} }{2} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
+%%		= \mathbb{P}\left(\mathcal{B}^{(x+1)}_{l} > \frac{K^2 \sqrt{n} }{2}  \middle| \mathcal{R}^{(x + 1)}_l = K \sqrt{n}  \right)
+%		.\] 
+%		
 		\begin{align*}
 			\mathbb{P}(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n})
 			%&\le \mathbb{P}\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
@@ -1109,7 +1107,7 @@
 			&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 			,
 		\end{align*}
-		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x+1,-}^{(x,m)} + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is bounded by at most $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ products, and therefore,
+		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is bounded by at most $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ products, we get that
 		\begin{align*}
 			\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]  \leq C_q K^2 n,
 		\end{align*}
