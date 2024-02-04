@@ -1094,7 +1094,6 @@
 			\sqrt{ \mathbb{P}\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
 			\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
 			.\end{multline*}
-		
 		To control the first probability, we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathcal{B}}_{k+1,y} -\tau^{\mathcal{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniform in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is bounded by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. 
 		Thus, provided that $q> \frac{1}{K}$, the first probability is bounded by
 %		\[
@@ -1109,7 +1108,7 @@
 			&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 			,
 		\end{align*}
-		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is sum of at most $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ terms, each a product of , we get that
+		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is bounded by a sum of $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ pairwise products, so
 		\begin{align*}
 			\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]  \leq C_q K^2 n,
 		\end{align*}
