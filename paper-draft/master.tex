@@ -32,7 +32,7 @@
 
 
 % This is the definition of the type of document
-\documentclass[twoside,12pt, a4paper]{article}
+\documentclass[twoside,12pt, a4paper, final]{article}
 %\documentclass{article}
 
 \usepackage[english]{babel}
@@ -251,16 +251,18 @@
 	
 	Now we introduce notations for some random variables related to the SIRW $(X_k)_{k\geq0}$ that are important in our analysis.
 	\begin{enumerate}
-		\item Running Maximum and Minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_k = \inf \{X_i: i \le k\}$.
+		\item Running maximum and minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_k = \inf \left\{X_i: i \le k\right\}$.
 		\item
-		Local Time at a Site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is denoted as $L(x,j)$ and is calculated by $L(x,j):= \sum_{i=0}^j \mathbb{1}_{\{X_i=x\}}$. 
-		\comment{This definition is a minor variation of those from references such as [KMP23] and [KP16], and the difference is due to the count of the last step $X_n$.}
+		Local time at a site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is denoted as $L(x,j)$ and is calculated by $L(x,n):= \sum_{i=0}^n \mathbb{1}_{\{X_i=x\}}$. 
+		This definition, together with $\lambda_{x, m}$ defined below, are minor variations of those in \cite{KMP23} and \cite{KP16}, and the only difference is whether we consider the last step $X_n$.
 		\item
-		Local Time of Directed Bonds: For a directed bond $(x,x+1)$ and time $j \in \mathbb{N}_0$, the local time is expressed as $\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1\}}$. Similarly, for the directed bond $(x,x-1)$ by time $j$, it is $\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1\}}$.
+		Time of return to a site: For any non-negative integer $m$, the time of the $m$-th return (or the $(m+1)$-th visit) to a site $x$ is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1\}$. 
+		We note that for $x\neq 0$, $\lambda_{x,0} > 0$; also, every $\lambda_{x,m}<\infty$ because the walk is recurrent, see \cite{T96}.
 		\item
-		Time of Return to a Site: For any non-negative integer $m$, the time of the $m$-th return (or the $(m+1)$-th visit) to a site $x$ is denoted by $\lambda_{x,m} = \inf\{t \geq 0: L(x,t) = m+1\}$. The notations $\mathcal{E}^{(x,m)}_{y, -}$ and $\mathcal{E}^{(x,m)}_{y, +}$ represent $\mathcal{E}^{\lambda_{x,m}}_{y,-}$ and $\mathcal{E}^{\lambda_{x,m}}_{y,+}$, respectively. We note that for $x\neq 0$, $\lambda_{x,0} > 0$; also, every $\lambda_{x,m}<\infty$ because the walk is recurrent, see \cite{T96}.
+		Local time of directed bonds: For a directed bond $(x,x+1)$ and time $j \in \mathbb{N}_0$, the local time is expressed as $\mathcal{E}^j_{x,+} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x+1\}}$. Similarly, for the directed bond $(x,x-1)$ by time $j$, it is $\mathcal{E}^j_{x,-} = \sum_{i=0}^{j-1} \mathbb{1}_{\{X_i=x, X_{i+1} =x-1\}}$.
+		The notations $\mathcal{E}^{(x,m)}_{y, -}$ and $\mathcal{E}^{(x,m)}_{y, +}$ represent $\mathcal{E}^{\lambda_{x,m}}_{y,-}$ and $\mathcal{E}^{\lambda_{x,m}}_{y,+}$, respectively.
 		\item
-		Stopping Times: For any stochastic process $(Y_k)_{k \in \mathbb{N}_0}$ we write $\tau^Y_{i} = \inf \{k \in  \mathbb{N}_0: Y_k \ge  i\}$.
+		Stopping times: For any stochastic process $(Y_k)_{k \in \mathbb{N}_0}$ we write $\tau^Y_{i} = \inf \{k \in  \mathbb{N}_0: Y_k \ge  i\}$.
 	\end{enumerate}
 	\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{thm: main}}
 	\label{sec: proof of main}
@@ -504,10 +506,10 @@
 			\mathbb{P}\left(\tilde{\zeta}_{k+1}=j \vert \tilde{\zeta}_k =i  \right) = 
 			\mathbb{P}\left( \mathcal{R}_{\tau_{i,1}^{\mathcal{B}}} = j \right), \mbox{for any $i,j\geq 0$, } 
 		\end{equation} 
-		where the generalized weights correspond to the case when $y>0$.
+		where the urn processes are located at $y = 1$ (or equivalently, any site $y>0$).
 	\end{enumerate}
 	
-	For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar statements by reversing the roles of $+$ and $-$, as well as $\mathcal{B}$ and $\mathcal{R}$. $\zeta$ is inhomogeneous because of \eqref{eq: source of inhomogeneity}, and we have the transition probabilities depending on the sign of $x-k$: for $i,j\geq 0$
+	For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar statements using Remark~\ref{rem:symmetry}, by reversing the roles of $+$ and $-$, as well as $\mathcal{B}$ and $\mathcal{R}$. $\zeta$ is inhomogeneous because of \eqref{eq: source of inhomogeneity}, and we have the transition probabilities depending on the sign of $x-k$: for $i,j\geq 0$
 	\begin{equation}\label{eq: transition prob on negative}
 		\mathbb{P}\left(\zeta_{k+1}=j \vert \zeta_k =i  \right) = 
 		\begin{cases}
@@ -518,7 +520,7 @@
 			\mathbb{P}\left( \mathcal{B}_{\tau_{i,-1}^{\mathcal{R}}} = j \right) ,& \mbox{ if $k \geq x$ }
 		\end{cases}
 	\end{equation}
-	where the generalized weights correspond to the case when $y>0$, $y=0$ and $y<0$ from \eqref{eq: generalized weights}. \comment{We note that both transition probabilities \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} agree on $[x,\infty)$.}
+	where the urn processes $\mathcal{B}, \mathcal{R}$ are located at $y = 1, y=0$ and $y = -1$ respectively. We note that both transition probabilities \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} agree for $k \ge x$.
 	
 	
 	\subsection{Filtrations of BLPs, and Approximation of Accumulated Drifts}\label{subsec: measurability}
@@ -1092,7 +1094,7 @@
 			\sqrt{ \mathbb{P}\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
 			\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
 			.\end{multline*}
-		\comment{We modify the argument to avoid the case when $x\leq 0$.}
+		
 		To control the first probability, we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathcal{B}}_{k+1,y} -\tau^{\mathcal{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniform in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is bounded by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. 
 		Thus, provided that $q> \frac{1}{K}$, the first probability is bounded by
 %		\[
@@ -1101,13 +1103,13 @@
 %		.\] 
 %		
 		\begin{align*}
-			\mathbb{P}(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n})
+			\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
 			%&\le \mathbb{P}\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
 			%\intertext{By Hoeffding bound,}
 			&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 			,
 		\end{align*}
-		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is bounded by at most $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ products, we get that
+		which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, as $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is sum of at most $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ terms, each a product of , we get that
 		\begin{align*}
 			\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]  \leq C_q K^2 n,
 		\end{align*}
