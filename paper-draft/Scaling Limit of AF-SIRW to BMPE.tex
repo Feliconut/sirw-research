@@ -109,12 +109,12 @@
 %%                                                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\KEYWORDS{Self-interacting random walk; Brownian motion perturbed at extrema ; Branching-like processes} % Separate items with ;
+\KEYWORDS{Self-interacting random walk; Brownian motion perturbed at extrema ; Branching-like processes; Functional limit theorem} % Separate items with ;
 
 \AMSSUBJ{60K35} % Edit. Separate items with ;
 \AMSSUBJSECONDARY{60F17; 60J55} % Optional, separate items with ;
 
-\SUBMITTED{February 11, 2024} % Edit.
+\SUBMITTED{February 16, 2024} % Edit.
 \ACCEPTED{ } % Edit.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -486,7 +486,7 @@ In this section, we describe two auxiliary processes, generalized P\'{o}lya urn 
 Both processes can be obtained from the SIRW $(X_k)_{k\geq 0}$ at stopping times. We start with the generalized P\'{o}lya urn processes. 
 
 \subsection{Generalized P\'{o}lya Urn}
-Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
+Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,i})_{i\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 \[
 \lambda_{y,0} :=\inf\left\{ t\geq 0: X_t = y \right\} , \quad \lambda_{y,i+1} := \inf\left\{ t> \lambda_{y, i}: X_t = y \right\}.
 \] 
@@ -514,7 +514,7 @@ Therefore, we get three types of transition probabilities
 for the generalized P\'{o}lya urn process depending on $y>0$, $y<0$ or $y=0$:
 \begin{align*}\label{eq: transition prob for GPU}
 	\mathbb{P} \left(\left(\mathscr{B}^{(y)}_{k+1},\mathscr{R}^{(y)}_{k+1} \right)=  (i+1,j) \vert \left(\mathscr{B}^{(y)}_{k},\mathscr{R}^{(y)}_{k}\right) =(i,j)  \right) &= \frac{b_y(i)}{b_y(i)+r_y(j)}, \mbox{ and}  \\
-	\mathbb{P} \left( \left(\mathscr{B}^{(y)}_{k+1},\mathscr{R}^{(y)}_{k+1}\right)=  (i+1,j) \vert \left(\mathscr{B}^{(y)}_{k},\mathscr{R}^{(y)}_{k}\right) =(i,j)  \right) &= \frac{r_y(j)}{b_y(i)+r_y(j)},
+	\mathbb{P} \left( \left(\mathscr{B}^{(y)}_{k+1},\mathscr{R}^{(y)}_{k+1}\right)=  (i,j+1) \vert \left(\mathscr{B}^{(y)}_{k},\mathscr{R}^{(y)}_{k}\right) =(i,j)  \right) &= \frac{r_y(j)}{b_y(i)+r_y(j)},
 \end{align*} 
 where the generalized weights $(b_y(k),r_y(k))_{k\geq 0}$ depend on $w(.)$ and $y$ by  
 \begin{equation}\label{eq: generalized weights}
@@ -655,12 +655,15 @@ The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)
 	where $(b(i),r(i))_{i\geq 0}$ is from \eqref{eq: generalized weights} and only depends on $sgn(y)$. Therefore, \eqref{eq: cummulated drift at a site} follows.
 	
 	To get \eqref{eq: conditional mean in GPU represenetation}, we note that from \eqref{eq: conditional increment} and Remark \ref{rk:UrnGeo}, $\abs{  D\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l\right)} \leq  \tau^{\mathscr{B}}_{l+1,y}-\tau^{\mathscr{B}}_{l,y}$ is stochastically dominated by a geometric random variable with a mean uniform in $l, y$. In view of \eqref{eq: markov 1} and \eqref{eq: source of inhomogeneity},  $\left(\tau^{\mathscr{B}}_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+}$, and we get that 
-	\begin{equation*} 
+	\begin{align*} 
 		\rho_{y}^{(x,m)} 
-		= \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D\left(\tau^{\mathscr{B}}_{l,y}\,\,,\,\tau^{\mathscr{B}}_{l+1,y} \right) \middle| \mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}} \right]	
-		= \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathscr{D}_{\tau^{\mathscr{B}}_{l+1,y}} -\mathscr{D}_{\tau^{\mathscr{B}}_{l,y}} \right]  
+		=& \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D\left(\tau^{\mathscr{B}}_{l,y}\,\,,\,\tau^{\mathscr{B}}_{l+1,y} , l \right) \middle| \mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}} \right]	
+		\\
+		=&
+		 \mathbb{E}\left[ \sum_{l=0}^{k-1}  \mathscr{D}_{\tau^{\mathscr{B}}_{l+1,y}} -\mathscr{D}_{\tau^{\mathscr{B}}_{l,y}} \right]  
 		= \mathbb{E}\left[  \mathscr{D}_{\tau^{\mathscr{B}}_{k,y}} \right]
-		.\end{equation*}
+		.
+	\end{align*}
 \end{proof}
 
 % We drop the $+, -$ signs when there is no ambiguity. Now, observe that 
@@ -748,7 +751,7 @@ The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\r
 \begin{proof}
 	Consider the event that $L(y, n) > K \sqrt{n} $ for some $y \in \mathbb{Z}, n, K > 0$. Define $m_{n, K } = \tau^{\mathscr{R}, 0}_{\sqrt{K n} }$. Then either of the followings occurs:
 	\begin{itemize}
-		\item $L(y, \lambda_{0, m_{n, K}}) \le L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$,
+		\item $L(y, \lambda_{0, m_{n, K}}) \le L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$;
 		\item $L(y, \lambda_{0, m_{n, K}}) \ge  L(y, n)  > K \sqrt{n} $.
 	\end{itemize}
 	By symmetry we only need to control $\mathbb{P}\left( \sup _{y \ge  0} L(y, n) > K \sqrt{n}  \right) $. In view of the above two cases, we have
@@ -829,9 +832,9 @@ We first verify that the event $G_{n, K, t}$ is indeed typical.
 	From the process-level tightness of extremum (Proposition~\ref{prop: tightness}), we know that the probability of event \eqref{eq:good-event-1} goes to $1$ (uniformly in $n$) as $K $ goes to infinity. The probability of the second event \eqref{eq:good-event-2} is controlled by Lemma~\ref{lm: uniform control of local time}. 
 	The remaining two events \eqref{eq:good-event-3} and \eqref{eq:good-event-4} encode the asymptotic behavior of P\'{o}lya's Urn processes at each site $y$. To estimate the probability of event \eqref{eq:good-event-3}, we use Lemma~\ref{lm: concentration inequality}. Specifically,
 	\begin{align*}
-		1-\mathbb{P}\left(\bigcap_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcap_{i = 1}^{K \sqrt{n} } \left\{\left| \tau_i^{\mathscr{B},y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}
+		1-\mathbb{P}\left(\bigcap_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcap_{i = 1}^{K \sqrt{n} }\right. &\left. \left\{\left| \tau_i^{\mathscr{B},y} - 2 i \right| < \sqrt{ i } \log^2 n \right\}
 		\right) 
-		&\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } \mathbb{P}\left( |\tau_i^{\mathscr{B},y} - 2i| \ge \sqrt{i} \log^2 n \right) \\
+		\le \sum_{y < \sqrt{n} }\sum_{i < K \sqrt{ n} } \mathbb{P}\left( |\tau_i^{\mathscr{B},y} - 2i| \ge \sqrt{i} \log^2 n \right) \\
 		&\le CK \sqrt{n} \sum_{i < K \sqrt{ n} } \exp\left( - c \frac{i \log^4 n}{\sqrt{i}  \log^2 n \vee i} \right)  \\
 		&\le CK \sqrt{n}  \sum_{i < K \sqrt{ n} }  
 		\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  + 
@@ -850,8 +853,8 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 \begin{lemma}\label{lm:lipchitz-bound-on-good-event}
 	For all  $y \ge x$, on $G_{n, K}^{(x,m)}(y)$, when $p \in (0,\frac{1}{2}]$,  we have
 	\begin{align*}
-		\left| \Delta_y^{(x,m)} \right| &\le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n &\text{when }p \in \left(0,\frac{1}{2}\right)\\
-		\left| \Delta_y^{(x,m)} \right| &\le C_K \log^5 n &\text{when }p = \frac{1}{2}
+		\left| \Delta_y^{(x,m)} \right| &\le C_K n^{-\frac{1}{2}p + \frac{1}{4}} \log^4 n &&\text{when }p \in \left(0,\frac{1}{2}\right)\\
+		\left| \Delta_y^{(x,m)} \right| &\le C_K \log^5 n &&\text{when }p = \frac{1}{2}
 		.\end{align*}
 	As a corollary, these bounds also apply to $\left| \Delta_y^{(x,m)} - \rho_y^{(x,m)} \right| $, up to a fixed multiplicative constant.
 \end{lemma}
@@ -877,7 +880,9 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 		\intertext{
 			In view of \eqref{eq:good-event-3} and \eqref{eq:good-event-4},
 		}
-		&\le C_w \left(4 \log^4 n + \sum_{i = 4 \log^4 n}^{K \sqrt{n} } \log^2 n \cdot \sup_{|j - i| \le 2 \sqrt{i}  \log^2 n} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|\right)\\
+		&\le C_{w,p} \left(\log^4 n +\sum_{i = 4 \log^4 n}^{K \sqrt{n} } \log^2 n \cdot \sup_{
+			|j - i| \le 2 \sqrt{i}  \log^2 n
+		} \left|  \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|\right)\\
 		&\le C_{w, p} \log^2 n \cdot \left( \log^2 n + \sum_{i = 4 \log^4 n}^{K \sqrt{n} } \left( 
 		\frac{4 \sqrt{ i } \log^2 n }{\left(2 i - 2 \sqrt{ i } \log^2 n\right)^{p + 1}} 
 		%			+ \frac{1}{\left(2 i\right)^{p + 1}} 
@@ -991,7 +996,7 @@ On one hand, $S_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on
 		\sum_{j=0}^{ \mu(m)-1 } \frac{1}{r(j)} - \sum_{i=0}^{m-1} \frac{1}{r(i)} =& \sum_{j=m}^{\mu(m)-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \cdot\mathbb{1}_{\left\{\mu(m)\geq m\right\}} 
 		\label{eq: 1st term}
 		\\	
-		& - \sum_{j=\mu(m)}^{m-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \mathbb{1}_{\left\{\mu(m)< m\right\}} 
+		& - \sum_{j=\mu(m)}^{m-1} \left(\frac{1}{r(j)} -\frac{1}{r(m)} \right) \cdot \mathbb{1}_{\left\{\mu(m)< m\right\}} 
 		\label{eq: 2nd term}
 		\\
 		& + \frac{\mu(m)-m}{ r(m) }. \label{eq: major term}
@@ -1000,9 +1005,9 @@ On one hand, $S_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on
 	
 	Indeed, let $A> \frac{2}{c} \vee 1$, where $c$ is from Lemma \ref{lm: concentration inequality}. \eqref{eq: 1st term} is bounded by
 	\begin{align*}
-		& \sum_{j=m}^{\infty} \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)\\
-		& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)
-		+  \sum_{j-m > A\sqrt{m}\log m } \left(\abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\right)
+		& \sum_{j=m}^{\infty} \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}\\
+		& \leq  \sum_{0\leq j-m \leq A \sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}
+		+  \sum_{j-m > A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} } \cdot \mathbb{1}_{\left\{\mu(m)\geq j \right\}}
 		\notag
 		\\
 		&\leq  \sum_{0\leq j-m \leq A\sqrt{m}\log m } \abs{\frac{1}{r(j)} -\frac{1}{r(m)} }
@@ -1049,7 +1054,7 @@ For the generalized P\'{o}lya urn process associated to a site $y<0$, we can use
 \begin{equation}\label{eq: general expected drift}
 	\lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_{m,-1}} \right] = \lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{R}}_{m,1}} \right] = -\gamma.
 \end{equation}
-Similarly, for $y=0$, the associated generalized P\'{o}lya urn process has 
+Similarly, for $y=0$, the associated urn process has 
 $\lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_m} \right] = 0.$
 
 %		 \textcolor{red}{We will need to define $\rho$ for downcrossings.} 
@@ -1276,40 +1281,40 @@ In view of Lemma~\ref{lm:good-event}, the last line vanishes as we first take $n
 \begin{thebibliography}{10}
 
 \bibitem{B99}
-Patrick Billingsley, \emph{Convergence of probability measures}, second ed., Wiley Series in Probability and Statistics: Probability and Statistics, John Wiley \& Sons, Inc., New York, 1999, A Wiley-Interscience Publication. \MR{1700749}
+Billingsley,~P.: \emph{Convergence of probability measures}, second ed., Wiley Series in Probability and Statistics: Probability and Statistics, John Wiley \& Sons, Inc., New York, 1999, A Wiley-Interscience Publication. \MR{1700749}
 
 \bibitem{CD99}
-L.~Chaumont and R.~A. Doney, \emph{Pathwise uniqueness for perturbed versions of {B}rownian motion and reflected {B}rownian motion}, Probab. Theory Related Fields \textbf{113} (1999), no.~4, 519--534. \MR{1717529}
+Chaumont,~L., Doney,~R.~A.: Pathwise uniqueness for perturbed versions of {B}rownian motion and reflected {B}rownian motion, \emph{Probab. Theory Related Fields} \textbf{113} (1999), no.~4, 519--534. \MR{1717529}
 
 \bibitem{Dav96}
-Burgess Davis, \emph{Weak limits of perturbed random walks and the equation {$Y_t=B_t+\alpha\sup\{Y_s\colon\ s\leq t\}+\beta\inf\{Y_s\colon\ s\leq t\}$}}, Ann. Probab. \textbf{24} (1996), no.~4, 2007--2023. \MR{1415238}
+Davis,~B.: Weak limits of perturbed random walks and the equation {$Y_t=B_t+\alpha\sup\{Y_s\colon\ s\leq t\}+\beta\inf\{Y_s\colon\ s\leq t\}$}, \emph{Ann. Probab.} \textbf{24} (1996), no.~4, 2007--2023. \MR{1415238}
 
 \bibitem{Dav99}
-\bysame, \emph{Brownian motion and random walk perturbed at extrema}, Probab. Theory Related Fields \textbf{113} (1999), no.~4, 501--518. \MR{1717528}
+\bysame, Brownian motion and random walk perturbed at extrema, \emph{Probab. Theory Related Fields} \textbf{113} (1999), no.~4, 501--518. \MR{1717528}
 
 \bibitem{DK12}
-Dmitry Dolgopyat and Elena Kosygina, \emph{Scaling limits of recurrent excited random walks on integers}, Electron. Commun. Probab. \textbf{17} (2012), no. 35, 14. \MR{2965748}
+Dolgopyat,~D., Kosygina, E.: Scaling limits of recurrent excited random walks on integers, \emph{Electron. Commun. Probab.} \textbf{17} (2012), no. 35, 14. \MR{2965748}
 
 \bibitem{HLSH18}
-Wilfried Huss, Lionel Levine, and Ecaterina Sava-Huss, \emph{Interpolating between random walk and rotor walk}, Random Structures Algorithms \textbf{52} (2018), no.~2, 263--282. \MR{3758959}
+Huss,~W., Levine,~L., Sava-Huss,~E.: Interpolating between random walk and rotor walk, \emph{Random Structures Algorithms} \textbf{52} (2018), no.~2, 263--282. \MR{3758959}
 
 \bibitem{KMP22}
-Elena Kosygina, Thomas Mountford, and Jonathon Peterson, \emph{Convergence of random walks with {M}arkovian cookie stacks to {B}rownian motion perturbed at extrema}, Probab. Theory Related Fields \textbf{182} (2022), no.~1-2, 189--275. \MR{4367948}
+Kosygina,~E., Mountford,~T., Peterson,~J.: Convergence of random walks with {M}arkovian cookie stacks to {B}rownian motion perturbed at extrema, \emph{Probab. Theory Related Fields} \textbf{182} (2022), no.~1-2, 189--275. \MR{4367948}
 
 \bibitem{KMP23}
-\bysame, \emph{Convergence and nonconvergence of scaled self-interacting random walks to {B}rownian motion perturbed at extrema}, Ann. Probab. \textbf{51} (2023), no.~5, 1684--1728. \MR{4642221}
+\bysame, Convergence and nonconvergence of scaled self-interacting random walks to {B}rownian motion perturbed at extrema, \emph{Ann. Probab.} \textbf{51} (2023), no.~5, 1684--1728. \MR{4642221}
 
 \bibitem{KP16}
-Elena Kosygina and Jonathon Peterson, \emph{Functional limit laws for recurrent excited random walks with periodic cookie stacks}, Electron. J. Probab. \textbf{21} (2016), Paper No. 70, 24. \MR{3580036}
+Kosygina,~E., Peterson,~J.: Functional limit laws for recurrent excited random walks with periodic cookie stacks, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No. 70, 24. \MR{3580036}
 
 \bibitem{KZ13}
-Elena Kosygina and Martin P.~W. Zerner, \emph{Excited random walks: results, methods, open problems}, Bull. Inst. Math. Acad. Sin. (N.S.) \textbf{8} (2013), no.~1, 105--157. \MR{3097419}
+Kosygina,~E., Zerner,~M.: Excited random walks: results, methods, open problems, \emph{Bull. Inst. Math. Acad. Sin. (N.S.)} \textbf{8} (2013), no.~1, 105--157. \MR{3097419}
 
 \bibitem{PW97}
-Mihael Perman and Wendelin Werner, \emph{Perturbed {B}rownian motions}, Probab. Theory Related Fields \textbf{108} (1997), no.~3, 357--383. \MR{1465164}
+Perman,~M., Werner,~W.: Perturbed {B}rownian motions, \emph{Probab. Theory Related Fields} \textbf{108} (1997), no.~3, 357--383. \MR{1465164}
 
 \bibitem{T96}
-B\'{a}lint T\'{o}th, \emph{Generalized {R}ay-{K}night theory and limit theorems for self-interacting random walks on {${\bf Z}^1$}}, Ann. Probab. \textbf{24} (1996), no.~3, 1324--1367. \MR{1411497}
+T\'{o}th,~B.: Generalized {R}ay-{K}night theory and limit theorems for self-interacting random walks on {${\bf Z}^1$}, \emph{Ann. Probab.} \textbf{24} (1996), no.~3, 1324--1367. \MR{1411497}
 
 \end{thebibliography}
 
@@ -1321,7 +1326,7 @@ B\'{a}lint T\'{o}th, \emph{Generalized {R}ay-{K}night theory and limit theorems 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TBD
 \begin{acks}
-	Xiaoyu Liu gratefully acknowledges the support from the Purdue Mathematics Department through the Joel Spira Research Fellowship (2023). Zhe Wang gratefully acknowledges the support from the Swiss National Science Foundation, grant 200021L -- 169691. Both authors thank Prof. Jonathon Peterson and Prof. Thomas Mountford for their suggestion of the problem and for enriching discussions.
+The second author gratefully acknowledges the support by the SNF grant 200021L -- 169691. Both authors thank Jonathon Peterson and Thomas Mountford for many helpful discussions.
 \end{acks}
 
 
