@@ -1,14 +1,15 @@
 \documentclass[11pt]{amsart}
 
-\usepackage{mathrsfs}
-\usepackage[bb=boondox]{mathalfa}
-\usepackage[margin=1.0 in]{geometry}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[bb=boondox]{mathalfa}
 \usepackage{hyperref}
-\usepackage[inline]{enumitem}
-
+\usepackage{enumerate}
 
 
 \newtheorem{theorem}{Theorem}[section]
@@ -23,23 +24,26 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
-\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
 
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 
 
-\title[Scaling Limit of AF-SIRW to BMPE]{Scaling Limit of Asymptotically-free Self-interacting Random Walks to Brownian Motion Perturbed at Extrema}
+\title[Self-Interacting Random Walks]{Scaling Limit of Asymptotically-free Self-interacting Random Walks to Brownian Motion Perturbed at Extrema}
 
 \author{Xiaoyu Liu}
-\address{Purdue University, United States of America.}
+\address{Xiaoyu Liu, Purdue University, United States of America.}
 \email{liu2999@purdue.edu}
 
 \author{Zhe Wang}
-\address{\'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne, Switzerland.}
+\address{Zhe Wang, \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne, Switzerland.}
 \email{zhe.wang@epfl.ch}
 %\urladdr{}
 %\thanks{The second author gratefully acknowledges the support by the SNF grant 200021L -- 169691. Both authors thank Jonathon Peterson and Thomas Mountford for many helpful discussions.}
 
+\thanks{Xiaoyu Liu gratefully acknowledges the support from the Purdue Mathematics Department through the Joel Spira Research Fellowship (2023).}
+\thanks{Zhe Wang gratefully acknowledges the support from the Swiss National Science Foundation, grant 200021L--169691.}
+\thanks{Both authors thank Prof. Jonathon Peterson and Prof. Thomas Mountford for their suggestion of the problem and for enriching discussions.}
 \subjclass[2010]{Primary 60K35; Secondary 60F17, 60J15}
 % 60K35 - Interacting random processes; statistical mechanics type models; percolation theory
 % 60F05 - Central limit and other weak theorems 
@@ -49,7 +53,7 @@
 % 60J15 - Random walks
 % 60K37 - Processes in random environments 
 
-\keywords{Self-interacting random walk; Brownian motion perturbed at extrema ; Branching-like processes; Functional limit theorem} % Separate items with ;
+\keywords{Self-interacting random walk, Brownian motion perturbed at extrema, Branching-like processes, Functional limit theorem}
 
 
 \begin{document}
@@ -62,7 +66,7 @@
 \maketitle
 
 
-\section{Introduction}
+\section{Introduction and main result}
 
 We consider a discrete time nearest neighbor self-interacting random walk (SIRW) $(X_k)_{k\geq 0}$ on $\mathbb{Z}$ as in \cite{T96,KMP23}. The walk $(X_k)_{k\geq 0}$ starts from $X_0 = 0$ and is non-Markov:
 \begin{align}
@@ -100,7 +104,7 @@ The general question of whether there exists universal conditions that allows on
 Based on these result, in \cite{KMP23}, Kosygina, Mountford and Peterson showed the process-level convergence of rescaled asymptotically free SIRW to BMPE under the assumption that $p > \frac{1}{2}$. Interestingly, they also constructed a counterexample to the functional convergence of rescaled SIRW in the polynomially self-repelling case, proving that there is no general thereom to pass directly from scaling limit of local time processes to functional convergence of the walk. 
 The current work focuses on the asymptotically free case, and serves as a completion of the functional convergence result in \cite{KMP23} by removing the assumption that $p > \frac{1}{2}$.
 
-\subsection{Main Result}
+\subsection{Main result}
 
 We recall a definition for a Brownian motion perturbed at extrema, which is the scaling limit of $(X_k)_{k\geq 0}$.
 \begin{definition}
@@ -175,7 +179,8 @@ It turns out that we can estimate accumulated drift without using absolute summa
 Then our approach works on one-dimensional ERWs, such as \cite{DK12} and \cite{KP16}.
 
 
-\subsection{Organization of Paper}
+\subsection{Organization of the paper}
+
 In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{th: main} and reduce the proof into several technical lemmas. The proof of these lemmas are postponed to section \ref{sec: approximations} because they involve analysis of auxiliary processes. In section \ref{sec: generalized Polya Urn, BLP}, we describe the generalized P\'{o}lya urn processes and branching-like processes, discuss their connections to the SIRW $(X_k)_{k\geq 0}$, and recall some technical lemmas from previous works which will be used in the proof of Theorem~\ref{th: main}. In section \ref{sec: approximations}, we prove the technical lemmas stated in section \ref{sec: proof of main} and thus finish the proof of Theorem~\ref{th: main}. 
 
 \subsection{Notation}
@@ -185,7 +190,7 @@ We denote by $\mathbb{P}$ the probability measure on $D([0,\infty))$ induced by 
 %	For a precise definition of the probability measures and related $\sigma$-algebras, see \cite{KMP23}.
 
 Now we introduce notations for some random variables related to the SIRW $(X_k)_{k\geq0}$ that are important in our analysis.
-\begin{enumerate}
+\begin{enumerate}[i.]
 	\item Running maximum and minimum: For the sequence $(X_i)_{i \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $n$ is given by $I_k = \inf \left\{X_i: i \le k\right\}$.
 	\item
 	Local time at a site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is denoted as $L(x,j)$ and is calculated by $L(x,n):= \sum_{i=0}^n \mathbb{1}_{\{X_i=x\}}$. 
@@ -199,7 +204,7 @@ Now we introduce notations for some random variables related to the SIRW $(X_k)_
 	\item
 	Stopping times: For any stochastic process $(Y_k)_{k \in \mathbb{N}_0}$ we write $\tau^Y_{i} = \inf \{k \in  \mathbb{N}_0: Y_k \ge  i\}$.
 \end{enumerate}
-\section{Functional Limit Theorem for AF-SIRW: Proof of Theorem \ref{th: main}}
+\section{Functional limit theorem for AF-SIRW: proof of Theorem \ref{th: main}}
 \label{sec: proof of main}
 
 The proof of Theorem \ref{th: main} follows a classical strategy in obtaining functional limit theorems. 
@@ -315,13 +320,14 @@ Now we are ready to show
 \textbf{Step 4: Convergence to BMPE.} 
 From Proposition~\ref{prop: tightness} and Lemmas \ref{lm: control of martingale} and \ref{lm: control of acc drift} we can conclude that the process triple $\frac{1}{\sqrt{n}}\left(X_{\lfloor n t\rfloor}, M_{\lfloor n t\rfloor}, \Gamma_{\lfloor n t\rfloor}\right)_{t \geq 0}$ is tight in the space $D([0, \infty))^3$ and that any subsequential limit $\left(Y_1(t), Y_2(t), Y_3(t)\right)_{t \geq 0}$ is a continuous process such that $Y_2$ is a standard Brownian motion, $Y_3(t)=$ $\gamma\left(\sup _{s \leq t} Y_1(s)+\inf _{s \leq t} Y_1(s)\right)$ for all $t \geq 0, P$-a.s., and $Y_1(t)=Y_2(t)+Y_3(t)$. By uniqueness of functional solution for BMPE, $\frac{1}{\sqrt{n} } X_{\left\lfloor nt  \right\rfloor}$ converges to a $(\gamma, \gamma)$-BMPE.
 
-\section{Generalized P\'{o}lya Urn, Branching-Like Processes}\label{sec: generalized Polya Urn, BLP}
+\section{Generalized P\'{o}lya urn, branching-like processes}\label{sec: generalized Polya Urn, BLP}
 
 In this section, we describe two auxiliary processes, generalized P\'{o}lya urn processes and branching-like processes. As explained earlier in section \ref{sec: proof of main}, these two auxiliary processes are essential in studying approximations of $\Gamma_k^+= \sum_{y\geq X_k} \Delta_{y}^{(x,m)}$ on the event that $\lambda_{x,m} = k$. We will show in subsection \ref{subsec: measurability} that each $\Delta^{(x,m)}_{y}$ is almost a function of the BLPs to be introduced modulo extra information, and its conditional expectation $\rho^{(x,m)}_{y}$ only involves the generalized P\'{o}lya urn processes associated to site $y$. Therefore, to approximate $\Gamma_k$ and $\Delta_{y}^{(x,m)}$ we only need to study the BLP with additional information, which turns out to be a Markov process with some convenient properties. In the last subsection, we recall some properties of these auxiliary processes needed in the proofs of Lemma \ref{lm: control of martingale}, \ref{lm: approximation of means of local drift}, and \ref{lm: approx local drift by conditional means}. Most of the these properties are well-known in works such as \cite{KP16} and \cite{KMP23}. 
 
 Both processes can be obtained from the SIRW $(X_k)_{k\geq 0}$ at stopping times. We start with the generalized P\'{o}lya urn processes. 
 
-\subsection{Generalized P\'{o}lya Urn}
+\subsection{Generalized P\'{o}lya urn}
+
 Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 
 \[
@@ -387,7 +393,8 @@ We may drop the $y$ when there is no ambiguity.
 	Since the weight function $w(.)$ is bounded and positive, the probability that the next ball drawn is blue is bounded below by some constant $q > 0$ and above by some constant $q' < 1$. Therefore, at each site $y$ and for all $i \ge 0$, the quantity $\tau_{i+1}^{\mathscr{B}} - \tau_{i}^{\mathscr{B}}$ is stochastically bounded by independent geometric random variables of parameters $q$ and $q'$. 
 \end{remark}
 
-\subsection{Branching-Like Processes}
+\subsection{Branching-like processes}
+
 Having understood the behavior of the walk at a fixed site in terms of the urn processes, now we characterize how urn processes at different sites are related. Unlike the generalized P\'{o}lya urn process $(\mathscr{B}_k,\mathscr{R}_k )_k$ which is a Markov process in time, the branching-like processes is a Markov process in space, and it describes the local times of directed edges of $(X_k)_{k\geq 0}$ at a fixed stopping time.
 More precisely, for any integers $x,m$ with $m\geq 0$, the local times at the stopping time $\lambda_{x,m}$, 
 \[
@@ -446,7 +453,7 @@ For $\zeta= \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}$, we get similar
 where the urn processes $\mathscr{B}, \mathscr{R}$ are located at $y = 1, y=0$ and $y = -1$ respectively. We note that both transition probabilities \eqref{eq: transition prob on positive} and \eqref{eq: transition prob on negative} agree for $k \ge x$.
 
 
-\subsection{Filtrations of BLPs, and Approximation of Accumulated Drifts}\label{subsec: measurability}
+\subsection{Filtrations of BLPs, and approximation of accumulated drifts}\label{subsec: measurability}
 
 As we want to study $\Delta^{(x,m)}_{y}$ and $\rho^{(x,m)}_{y}$ in terms of the BLPs $\tilde{\zeta}$ and $\zeta$, it's convenient to consider two types of filtrations for both $\tilde{\zeta}$ and $\zeta$. The natural filtrations of $\tilde{\zeta}$ and $\zeta$ are of the first type. They are defined via 
 $$\mathcal{G}_{y, +}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, +}: x \le z \le y\right) $$ for $y \ge x$ and $$\mathcal{G}_{y, -}^{(x,m)}:=\sigma\left(\mathcal{E}^{(x,m)}_{z, -}: y \le z \le x\right) $$ for $y \le x$.
@@ -502,7 +509,8 @@ The following lemma says that $\Delta^{(x,m)}_{y}$ is $\mathcal{H}_{y, +}^{(x,m)
 
 The construction of branching-like processes enables us to study the local times profiles at a generic local time $\lambda_{x,m}$ from the Markov processes $\zeta$ and $\bar{\zeta}$. An advantage is that a typical event ({see equations \eqref{eq:good-event-1} -- \eqref{eq:good-event-4} to be defined in section \ref{sec: approximations}}) on a collection of spatial points is also a typical event on a `typical' single site. Then expressions like \eqref{eq: conditional mean in GPU represenetation} reduces the problem to a problem involving generalized P\'{o}lya urn process associated to a single site. The difficulty is then transferred to constructing typical events that can be estimated. For example, Lemma \ref{lm: number of rarely visit sites} below describes a typical event, and it reduces the proof of proposition \ref{lm: approximation of means of local drift} to \eqref{eq: convergence of conditional expectation} below. In the following subsection, we recall some properties of generalized P\'{o}lya urn processes and branching-like processes.
 
-\subsection{Preliminary Results}
+\subsection{Preliminary results}
+
 To facilitate our arguments in section \ref{sec: approximations}, we list some results from \cite{KMP23,T96}, 
 
 The first result is a concentration inequality for $\mathscr{D}_i$ in a generalized P\'{o}lya urn process. This lemma is a major tool in estimating the probabilities of good events.
@@ -603,14 +611,14 @@ The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\r
 
 
 
-\section{Approximations of Accumulated Drift}\label{sec: approximations}
+\section{Approximations of accumulated drift}\label{sec: approximations}
 
 In this section, we will prove the technical propositions in the proof of Theorem \ref{th: main}, namely Lemma~\ref{lm: control of martingale}, \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}. 
 The proof of Lemma~\ref{lm: approximation of means of local drift} uses typical events that provide control the process extrema (Proposition~\ref{prop: tightness}), regularity of urn process (Lemma~\ref{lm: concentration inequality}), and control of rarely visited sites (Lemma~\ref{lm: number of rarely visit sites}). 
 However, Lemma~\ref{lm: approx local drift by conditional means} requires uniform control of local time process (Lemma~\ref{lm: uniform control of local time}), and the proof requires the diffusion approximation of branching-like process (Lemma~\ref{lm: diffusion approximation of blp}).
 To simplify our argument, we first define typical events $G_{n, K, t}$ in the next subsection, and apply the typicality of $G_{n, K, t}$ in subsequent proofs.
 
-\subsection{Typical Events}
+\subsection{Typical events}
 
 For integers $K>0$, $n > 0$, $t>0$, define the event
 \begin{align}
@@ -718,7 +726,8 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 \end{proof}
 
 
-\subsection{Control of Martingale Terms } 
+\subsection{Control of martingale terms} 
+
 \begin{proof}[Proof of Lemma~\ref{lm: control of martingale}]
 	As remarked earlier that we only need to show
 	
@@ -773,8 +782,9 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 
 
 
-\subsection{Convergence of Conditional Expectation}
+\subsection{Convergence of conditional expectation}
 \label{sec:RhoGamma}
+
 In view of the generalized P\'{o}lya urn process (associated to a site $y> x$), 
 on the event that $l = \mathcal{E}^{(x,m)}_{y-1,+} +\mathbb{1}_{\left\{1\leq y\leq x\right\}}$, we have \eqref{eq: conditional mean in GPU represenetation} 
 $$\rho^{(x,m)}_y = \mathbb{E}\left[\mathscr{D}_{\tau_l^{\mathscr{B}}}^{(y)}\right].$$ 
@@ -923,8 +933,9 @@ and a slightly stronger result.
 	In view of Lemma \ref{lm: number of rarely visit sites} and the explanation after it, the second term $$\limsup_{n\to \infty}  \mathbb{P}(B_{n,M})=0.$$  The first term $\limsup_{n\to \infty}  \mathbb{P}(A_{n,K}) $ vanishes as $K$ goes to infinity, which is a consequence of Lemma 2.1 \cite{KMP23}, or Corollary 1A \cite{T96}.
 \end{proof}
 
-\subsection{Approximation of Local Drifts by Conditional Means}
+\subsection{Approximation of local drifts by conditional means}
 \label{sec:DeltaRho}
+
 In this subsection, we prove Lemma~\ref{lm: approx local drift by conditional means} and thus complete the proof of Theorem~\ref{th: main}. This proof is similar to, and slightly more technical than the proof of {Lemma~4.2} in \cite{KP16}. 
 
 In \eqref{eq: control of martingale difference for local drift}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$, where
@@ -1024,7 +1035,10 @@ In view of Lemma~\ref{lm:good-event}, the last line vanishes as we first take $n
 \end{proof}
 
 
-\bibliographystyle{amsplain}
+\bibliographystyle{amsalpha}
+% \bibliography{ams.bib}
+
+% CONTENT OF BBL FILE
 
 \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
 \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
@@ -1033,64 +1047,47 @@ In view of Lemma~\ref{lm:good-event}, the last line vanishes as we first take $n
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{10}
+\begin{thebibliography}{HLSH18}
 
-\bibitem{B99}
-Billingsley,~P.: \emph{Convergence of probability measures}, second ed., Wiley Series in Probability and Statistics: Probability and Statistics, John Wiley \& Sons, Inc., New York, 1999, A Wiley-Interscience Publication. \MR{1700749}
+\bibitem[Bil99]{B99}
+Patrick Billingsley, \emph{Convergence of probability measures}, second ed., Wiley Series in Probability and Statistics: Probability and Statistics, John Wiley \& Sons, Inc., New York, 1999, A Wiley-Interscience Publication. \MR{1700749}
 
-\bibitem{CD99}
-Chaumont,~L., Doney,~R.~A.: Pathwise uniqueness for perturbed versions of {B}rownian motion and reflected {B}rownian motion, \emph{Probab. Theory Related Fields} \textbf{113} (1999), no.~4, 519--534. \MR{1717529}
+\bibitem[CD99]{CD99}
+L.~Chaumont and R.~A. Doney, \emph{Pathwise uniqueness for perturbed versions of {B}rownian motion and reflected {B}rownian motion}, Probab. Theory Related Fields \textbf{113} (1999), no.~4, 519--534. \MR{1717529}
 
-\bibitem{Dav96}
-Davis,~B.: Weak limits of perturbed random walks and the equation {$Y_t=B_t+\alpha\sup\{Y_s\colon\ s\leq t\}+\beta\inf\{Y_s\colon\ s\leq t\}$}, \emph{Ann. Probab.} \textbf{24} (1996), no.~4, 2007--2023. \MR{1415238}
+\bibitem[Dav96]{Dav96}
+Burgess Davis, \emph{Weak limits of perturbed random walks and the equation {$Y_t=B_t+\alpha\sup\{Y_s\colon\ s\leq t\}+\beta\inf\{Y_s\colon\ s\leq t\}$}}, Ann. Probab. \textbf{24} (1996), no.~4, 2007--2023. \MR{1415238}
 
-\bibitem{Dav99}
-\bysame, Brownian motion and random walk perturbed at extrema, \emph{Probab. Theory Related Fields} \textbf{113} (1999), no.~4, 501--518. \MR{1717528}
+\bibitem[Dav99]{Dav99}
+\bysame, \emph{Brownian motion and random walk perturbed at extrema}, Probab. Theory Related Fields \textbf{113} (1999), no.~4, 501--518. \MR{1717528}
 
-\bibitem{DK12}
-Dolgopyat,~D., Kosygina, E.: Scaling limits of recurrent excited random walks on integers, \emph{Electron. Commun. Probab.} \textbf{17} (2012), no. 35, 14. \MR{2965748}
+\bibitem[DK12]{DK12}
+Dmitry Dolgopyat and Elena Kosygina, \emph{Scaling limits of recurrent excited random walks on integers}, Electron. Commun. Probab. \textbf{17} (2012), no. 35, 14. \MR{2965748}
 
-\bibitem{HLSH18}
-Huss,~W., Levine,~L., Sava-Huss,~E.: Interpolating between random walk and rotor walk, \emph{Random Structures Algorithms} \textbf{52} (2018), no.~2, 263--282. \MR{3758959}
+\bibitem[HLSH18]{HLSH18}
+Wilfried Huss, Lionel Levine, and Ecaterina Sava-Huss, \emph{Interpolating between random walk and rotor walk}, Random Structures Algorithms \textbf{52} (2018), no.~2, 263--282. \MR{3758959}
 
-\bibitem{KMP22}
-Kosygina,~E., Mountford,~T., Peterson,~J.: Convergence of random walks with {M}arkovian cookie stacks to {B}rownian motion perturbed at extrema, \emph{Probab. Theory Related Fields} \textbf{182} (2022), no.~1-2, 189--275. \MR{4367948}
+\bibitem[KMP22]{KMP22}
+Elena Kosygina, Thomas Mountford, and Jonathon Peterson, \emph{Convergence of random walks with {M}arkovian cookie stacks to {B}rownian motion perturbed at extrema}, Probab. Theory Related Fields \textbf{182} (2022), no.~1-2, 189--275. \MR{4367948}
 
-\bibitem{KMP23}
-\bysame, Convergence and nonconvergence of scaled self-interacting random walks to {B}rownian motion perturbed at extrema, \emph{Ann. Probab.} \textbf{51} (2023), no.~5, 1684--1728. \MR{4642221}
+\bibitem[KMP23]{KMP23}
+\bysame, \emph{Convergence and nonconvergence of scaled self-interacting random walks to {B}rownian motion perturbed at extrema}, Ann. Probab. \textbf{51} (2023), no.~5, 1684--1728. \MR{4642221}
 
-\bibitem{KP16}
-Kosygina,~E., Peterson,~J.: Functional limit laws for recurrent excited random walks with periodic cookie stacks, \emph{Electron. J. Probab.} \textbf{21} (2016), Paper No. 70, 24. \MR{3580036}
+\bibitem[KP16]{KP16}
+Elena Kosygina and Jonathon Peterson, \emph{Functional limit laws for recurrent excited random walks with periodic cookie stacks}, Electron. J. Probab. \textbf{21} (2016), Paper No. 70, 24. \MR{3580036}
 
-\bibitem{KZ13}
-Kosygina,~E., Zerner,~M.: Excited random walks: results, methods, open problems, \emph{Bull. Inst. Math. Acad. Sin. (N.S.)} \textbf{8} (2013), no.~1, 105--157. \MR{3097419}
+\bibitem[KZ13]{KZ13}
+Elena Kosygina and Martin P.~W. Zerner, \emph{Excited random walks: results, methods, open problems}, Bull. Inst. Math. Acad. Sin. (N.S.) \textbf{8} (2013), no.~1, 105--157. \MR{3097419}
 
-\bibitem{PW97}
-Perman,~M., Werner,~W.: Perturbed {B}rownian motions, \emph{Probab. Theory Related Fields} \textbf{108} (1997), no.~3, 357--383. \MR{1465164}
+\bibitem[PW97]{PW97}
+Mihael Perman and Wendelin Werner, \emph{Perturbed {B}rownian motions}, Probab. Theory Related Fields \textbf{108} (1997), no.~3, 357--383. \MR{1465164}
 
-\bibitem{T96}
-T\'{o}th,~B.: Generalized {R}ay-{K}night theory and limit theorems for self-interacting random walks on {${\bf Z}^1$}, \emph{Ann. Probab.} \textbf{24} (1996), no.~3, 1324--1367. \MR{1411497}
+\bibitem[T\'96]{T96}
+B\'{a}lint T\'{o}th, \emph{Generalized {R}ay-{K}night theory and limit theorems for self-interacting random walks on {${\bf Z}^1$}}, Ann. Probab. \textbf{24} (1996), no.~3, 1324--1367. \MR{1411497}
 
 \end{thebibliography}
 
+% END OF BBL FILE
 
-\begin{acks}
-Xiaoyu Liu gratefully acknowledges the support from the Purdue Mathematics Department through the Joel Spira Research Fellowship (2023). Zhe Wang gratefully acknowledges the support from the Swiss National Science Foundation, grant 200021L -- 169691. Both authors thank Prof. Jonathon Peterson and Prof. Thomas Mountford for their suggestion of the problem and for enriching discussions.
-\end{acks}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                               %%
-%% You have reached the end of your document.                    %%
-%%                                                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                               %%
-%% You may put below funny messages to the Managing Editor:      %%
-%%                                                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% EOF
