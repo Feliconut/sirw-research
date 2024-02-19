@@ -486,8 +486,7 @@ In this section, we describe two auxiliary processes, generalized P\'{o}lya urn 
 Both processes can be obtained from the SIRW $(X_k)_{k\geq 0}$ at stopping times. We start with the generalized P\'{o}lya urn processes. 
 
 \subsection{Generalized P\'{o}lya Urn}
-Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,k})_{k\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
-
+Given a (recurrent) SIRW $(X_k)_{k\geq 0}$, and a fixed site $y\in \mathbb{Z}$, we can obtain a Markov process by considering only the up-crossings and down-crossings of $X_k$ from site $y$. More precisely, we first let $(\lambda_{y,i})_{i\geq 0}$ be the stopping times when $X_k$ visit site $y$ for the $\left( i+1 \right) $-th time:
 \[
 \lambda_{y,0} :=\inf\left\{ t\geq 0: X_t = y \right\} , \quad \lambda_{y,i+1} := \inf\left\{ t> \lambda_{y, i}: X_t = y \right\}.
 \] 
@@ -1055,7 +1054,7 @@ For the generalized P\'{o}lya urn process associated to a site $y<0$, we can use
 \begin{equation}\label{eq: general expected drift}
 	\lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_{m,-1}} \right] = \lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{R}}_{m,1}} \right] = -\gamma.
 \end{equation}
-Similarly, for $y=0$, the associated generalized P\'{o}lya urn process has 
+Similarly, for $y=0$, the associated urn process has 
 $\lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_m} \right] = 0.$
 
 %		 \textcolor{red}{We will need to define $\rho$ for downcrossings.} 
