@@ -48,8 +48,8 @@
 %\usepackage{tikz}
 %\usepackage[inline]{enumitem}
 \usepackage{mathrsfs}
-
-\usepackage[inline, left]{showlabels} %Note: add "final" option to turn off labels.
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\usepackage[inline, left, final]{showlabels} %Note: add "final" option to turn off labels.
 % \renewcommand{\showlabelfont}{\small\color{lightgray}}
 % \newcommand{\comment}[1]{\textcolor{blue}{(Comment: #1)}}
 
@@ -213,9 +213,10 @@ where $
 w: \mathbb{N} \to  (0, \infty )
 $ 
 is a weight function.
-In this model, we require $w(.)$ to be monotone and converging to $1$, with polynomial asymptotic behavior,
+We note that the walk defined as such is not Markov.
+In this model, we require $w(.)$ to be monotone and converging to one, with polynomial asymptotic behavior:
 \begin{equation}\label{eq: asymptotics of w}
-	\frac{1}{w(n)} = 1 + \frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right) \quad \mbox{as $n\to \infty$}, 	
+	\frac{1}{w(n)} = 1 + \frac{2^p B}{n^p} + O\left(\frac{1}{n^{1+\mathcal{\kappa}}}\right) \quad \mbox{as $n\to \infty$} 	
 \end{equation} 
 for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$. Under the monotonicity assumption of $w(.)$, $X_k$ is self-attracting if $w(.)$ is increasing and self-repelling if $w(. )$ is decreasing.
 
@@ -225,7 +226,7 @@ for some $p \in (0,1]$, $\kappa>0$ and $B\in \mathbb{R}$. Under the monotonicity
 %\comment{Some transition from \cite{T96} to \cite{KMP23} on the asymptotically free cases is needed}
 %while the SIRW with weight functions $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, corresponds to ``polynomially self-repelling'' case. 
 
-This type of model for SIRW was first introduced in \cite{T96}, with slightly different conditions on $w(n)$ and different classes of asymptotic behaviors. ``Asymptotically free'' SIRWs, in B. T\'oth's original terminology, refers to those walks with weight functions $\frac{1}{w(n)} = 1 + B n^{-1} + O(n^{-2})$. 
+This type of model for SIRW was first introduced in \cite{T96}, with slightly different conditions on $w(n)$ and different classes of asymptotic behaviors. ``Asymptotically free'' SIRWs, in B. T\'oth's original terminology, refers to those walks with weight functions of the type $\frac{1}{w(n)} = 1 + B n^{-1} + O(n^{-2})$. 
 The current assumption \eqref{eq: asymptotics of w} on $w(n)$ is introduced in \cite{KMP23}, where the new parameter $p$ allows more general $w(.)$ and their results rely on the range of $p$. The interesting range of $p$ is $p \in (0,1]$, and $p > 1$ is absorbed into the error term in \eqref{eq: asymptotics of w}.
 In \cite{T96}, T\'oth also studied another type of SIRW with weight functions of the type $w(n)\sim n^{-\alpha}$, for some $\alpha >0$, called the ``polynomially self-repelling'' case. 
 
@@ -383,10 +384,12 @@ Then we divide the proof into four main steps.
 \vspace{1em}
 
 \textbf{Step 1: Control of martingale term.}
-By the martingale central limit theorem (Theorem~18.2, \cite{B99}), the rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ is tight in $D\left( [0,\infty ) \right) $ and converges to the standard Brownian motion, if
+The rescaled process $\left( \frac{M_{\left\lfloor n t \right\rfloor}}{\sqrt{n}} \right) _{t \ge 0}$ can be shown to be tight in $D\left( [0,\infty ) \right) $ and to converge to the standard Brownian motion, if we have the following control in quadratic variation:
 \begin{equation}\label{eq: QV term}
 	\lim_{n\to \infty}\frac{1}{n} \sum_{k=0}^{n-1}\mathbb{E}\left[ (M_{k+1}- M_{k})^2 |\mathcal{F}_k^X \right] =1 \qquad  \mbox{ in probability}.
 \end{equation}
+For reference, see for example Theorem~18.2 in \cite{B99}.
+
 Since $\abs{X_{k+1}-X_k}=1$, \eqref{eq: QV term} is implied by the following estimate to be proved in section \ref{sec: approximations}. 
 \begin{lemma} \label{lm: control of martingale} 
 	Let $p\in (0,\frac{1}{2}]$. Then, for any $\varepsilon >0$
@@ -467,7 +470,7 @@ then \eqref{eq: control of acc drift + } follows from the following two bounds.
 
 %We will prove Lemma~\ref{lm: approximation of means of local drift} in section~\ref{sec:RhoGamma} and Lemma~\ref{lm: approx local drift by conditional means} in section~\ref{sec:DeltaRho}. The proofs use two auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. 
 
-To prove both Lemmas \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and branching-like processes. Both process are constructed from path of $X_k$ up to certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events defined in section 4.1.
+To prove both Lemmas \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means}, we will introduce auxiliary processes associated to the SIRW $(X_k)_{k\geq 0}$: the generalized P\'{o}lya Urn process, and the branching-like processes. Both processes are constructed from path of $X_k$ up to certain stopping times, and they aid our approximations of $\Delta_{y}^{(x,m)}$ on certain good events defined in section 4.1.
 It is natural to view these two processes and conditional expectations with respect to them as ``mesoscopic quantities'', in between $\Delta_y$ and $\gamma\cdot sgn(y)$.
 The good events in the proof of Lemma \ref{lm: approximation of means of local drift} are more straightforward because events like those in Lemma \ref{lm: number of rarely visit sites} below suffice, and estimates of their probabilities are essentially known from \cite{KMP23}. However, the good events for Lemma \ref{lm: approx local drift by conditional means} require a new construction, and estimating the error requires a new proof, which is the major novelty of this article. We will postpone the proofs of Lemmas \ref{lm: approximation of means of local drift} and \ref{lm: approx local drift by conditional means} together with the constructions of good events to section \ref{sec: approximations} after we introduce the generalized P\'{o}lya Urn process, and branching-like processes in section \ref{sec: generalized Polya Urn, BLP}.
 
@@ -511,9 +514,9 @@ $\left(\mathscr{B}_{i}^{(y)},\mathscr{R}_{i}^{(y)} \right)$ is the state of a (g
 
 
 
-Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\left\{y,y-1\right\}$ and $\left\{y,y+1\right\}$ at time $\lambda_{y,0}$ are
+Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\left\{y,y-1\right\}$ and $\left\{y,y+1\right\}$ at time $\lambda_{y,0}$ are (recall definition from beginning of Section 1)
 \begin{equation}\label{eq: initial condition}
-	\left(l_y^{\lambda_{y,0}}(\omega),  r_y^{\lambda_{y,0}}(\omega)\right) =  \begin{cases}	
+	\left(l_y^{\lambda_{y,0}},  r_y^{\lambda_{y,0}}\right) =  \begin{cases}	
 		(1, 0) &,  \text{ if }  y>0 \\
 		(0, 1) &,  \text{ if }  y<0 \\  
 		(0, 0) &,  \text{ if }  y=0 \\
@@ -559,8 +562,9 @@ We may drop the $y$ when there is no ambiguity.
 \end{remark}
 \begin{remark}
 	\label{rk:UrnGeo}
-	The recurrence of $X_k$ guarantees that each color is drawn from the urn inifinitely often, almost surely.
-	Since the weight function $w(.)$ is bounded and positive, the probability that the next ball drawn is blue is bounded below by a geometric random variable with parameter $q > 0$ and above by a geometric random variable with parameter $q' < 1$. Therefore, at each site $y$ and for all $i \ge 0$, the difference $\tau_{i+1}^{\mathscr{B}} - \tau_{i}^{\mathscr{B}}$ is stochastically bounded above by independent geometric random variables of parameters $q$ and $q'$. In particular, each color is drawn from the urn infinitely often, which is also a consequence of recurrence of $X_k$.
+	% The recurrence of $X_k$ guarantees that each color is drawn from the urn inifinitely often, almost surely.
+	Since the weight function $w(.)$ is bounded and positive, the probability that the next ball drawn is blue is bounded below by a geometric random variable with parameter $q > 0$ and above by a geometric random variable with parameter $q' < 1$. Therefore, at each site $y$ and for all $i \ge 0$, the difference $\tau_{i+1}^{\mathscr{B}} - \tau_{i}^{\mathscr{B}}$ is stochastically bounded above by independent geometric random variables of parameters $q$ and $q'$.
+	In particular, each color is drawn from the urn infinitely often, which is also a consequence of recurrence of $X_k$.
 \end{remark}
 
 \subsection{Branching-Like Processes}
@@ -639,9 +643,13 @@ The following lemma exhibits two identities involving $\Delta^{(x,m)}_{y}$ and $
 \begin{lemma}\label{lm: identities for Del, rho} 
 	For any integers $m,y\geq x$ with $m\geq 0$, the conditional expectation $\Delta^{(x,m)}_{y}$ depends only on $ \mathcal{E}_{y-1,+}^{(x,m)} = \mathcal{E}_{y,-}^{(x,m)} + \mathbb{1}_{ \left\{ 1\leq y \leq x \right\} }$ and $ \tau^{\mathscr{B}}_{l,y}$ for $l\leq \mathcal{E}^{(x,m)}_{y,-} $,
 	\begin{equation} \label{eq: cummulated drift at a site}
-		\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y,-} -1  } D\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l \right),
+		\Delta_{y}^{(x,m)} = \sum_{l=0 }^{ \mathcal{E}^{(x,m)}_{y,-} -1  } g\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l,y \right),
 	\end{equation}	
-	where $D(A,B,l)$ depends only on $A,B,l$ and the sign of $y$.
+	where $g(A,B,l,y)$ depends only on $A,B,l$ and the sign of $y$:
+	\begin{equation}
+		g\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l,y\right)
+		= \sum_{j=\tau^{\mathscr{B}}_{l,y}}^{\tau^{\mathscr{B}}_{l+1,y}-1} \frac{ r( j-l) - b(l)  }{ r( j-l) + b(l)  }.
+	\end{equation}
 	Moreover, on the event that $\mathcal{E}^{(x,m)}_{y-1,+}  = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}}$,
 	\begin{equation} \label{eq: conditional mean in GPU represenetation}
 		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \Delta_{y}^{(x,m)}\vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	  
@@ -656,15 +664,15 @@ The following lemma exhibits two identities involving $\Delta^{(x,m)}_{y}$ and $
 	\[
 	\Delta_{y}^{(x,m)} =\sum_{j=0}^{ L(y,\lambda_{x,m})-1} \mathbb{E}\left[ \mathscr{D}_{j+1} -\mathscr{D}_{j}  \vert \mathcal{F}^{\mathscr{B},\mathscr{R}}_{j} \right] = \sum_{j=0}^{\tau^\mathscr{B}_{k,y}-1} \mathbb{E}\left[ \mathscr{D}_{j+1} -\mathscr{D}_{j}  \vert \mathcal{F}^{\mathscr{B},\mathscr{R}}_{j} \right].  
 	\] 
-	Summing over terms between consecutive stopping times $\tau^{{\mathscr{B}}}_{l,y} $ and $\tau^{\mathscr{B}}_{l+1,y} $,  we get a sum depending only on $\tau^{\mathscr{B}}_{l,y} $, $\tau^{\mathscr{B}}_{l+1,y} $ and $l$, 
+	Summing over terms between consecutive stopping times $\tau^{{\mathscr{B}}}_{l,y} $ and $\tau^{\mathscr{B}}_{l+1,y} $,  we get a sum depending only on $\tau^{\mathscr{B}}_{l,y} $, $\tau^{\mathscr{B}}_{l+1,y} $, $l$ and $y$:
 	\begin{align} \label{eq: conditional increment}
 		\sum_{j=\tau^{\mathscr{B}}_{l,y}}^{\tau^{\mathscr{B}}_{l+1,y}-1} \mathbb{E}\left[ \mathscr{D}_{j+1} - \mathscr{D}_{j}  \vert \mathcal{F}^{\mathscr{B},\mathscr{R}}_{j} \right] =&
 		\sum_{j=\tau^{\mathscr{B}}_{l,y}}^{\tau^{\mathscr{B}}_{l+1,y}-1} \frac{ r( j-l) - b(l)  }{ r( j-l) + b(l)  } 
-		=:  D\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l\right),
+		=  g\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l,y\right),
 	\end{align}   
 	where $(b_y(i),r_y(i))_{i\geq 0}$ is from \eqref{eq: generalized weights} and only depends on $sgn(y)$. Therefore, \eqref{eq: cummulated drift at a site} follows.
 	
-	To get \eqref{eq: conditional mean in GPU represenetation}, we note that from \eqref{eq: conditional increment} and Remark \ref{rk:UrnGeo}, $\abs{  D\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l\right)} \leq  \tau^{\mathscr{B}}_{l+1,y}-\tau^{\mathscr{B}}_{l,y}$ is stochastically dominated by a geometric random variable with a mean independent of $l, y$. In view of \eqref{eq: markov 1} and \eqref{eq: source of inhomogeneity}, $\left(\tau^{\mathscr{B}}_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+}$, and we get that 
+	To get \eqref{eq: conditional mean in GPU represenetation}, we note that from \eqref{eq: conditional increment} and Remark \ref{rk:UrnGeo}, $\abs{  g\left(\tau^{\mathscr{B}}_{l,y},\tau^{\mathscr{B}}_{l+1,y},l,y\right)} \leq  \tau^{\mathscr{B}}_{l+1,y}-\tau^{\mathscr{B}}_{l,y}$ is stochastically dominated by a geometric random variable with a mean independent of $l, y$. In view of \eqref{eq: markov 1} and \eqref{eq: source of inhomogeneity}, $\left(\tau^{\mathscr{B}}_{l,y}\right)_{l \geq 0} $ is independent of $ \mathcal{E}^{(x,m)}_{y-1,+}$, and we get that 
 	\begin{align*} 
 		\rho_{y}^{(x,m)} 
 		=& \mathbb{E}\left[ \sum_{l=0 }^{ k -1  }  D\left(\tau^{\mathscr{B}}_{l,y}\,\,,\,\tau^{\mathscr{B}}_{l+1,y} , l \right) \middle| \mathcal{E}^{(x,m)}_{y-1,+} = k + \mathbb{1}_{\left\{1\leq y\leq x\right\}} \right]	
@@ -852,13 +860,13 @@ We first verify that the event $G_{n, K, t}$ is indeed typical.
 		\left( \exp\left( - c \sqrt{i}  \log^2 n \right)  +
 		\exp\left( - c \log^4 n \right) \right),
 	\end{align*}
-	which goes to $0$ as $n$ goes to infinity, for any $K>0$. 
+	which goes to zero as $n$ goes to infinity, for any $K>0$. 
 	For event \eqref{eq:good-event-4}, Remark~\ref{rk:UrnGeo} allows us to bound
 	\[
 	\mathbb{P}\left(\bigcup_{y = -K \sqrt{n}}^{K \sqrt{n} }\bigcup_{i = 1}^{K \sqrt{n}}\left\{\left| \tau_{i+1,y}^{\mathscr{B}} - \tau_{i,y}^{\mathscr{B}} \right| \ge  \log^2 n \right\}\right) 
 	\le C K^2 n \exp\left( - c \log^2 n \right) 
 	,\] 
-	which also goes to $0$ as $n$ goes to infinity, for any fixed $K$. We thus conclude that the probability of $G^c_{n, K, t}$ goes to $0$ as we first take $n$ to infinity and then take $K$ to infinity.
+	which also goes to zero as $n$ goes to infinity, for any fixed $K$. We thus conclude that the probability of $G^c_{n, K, t}$ goes to zero as we first take $n$ to infinity and then take $K$ to infinity.
 \end{proof}
 
 On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to apply martingale concentration inequalities to estimate accumulated drift.
@@ -873,7 +881,7 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 \begin{proof}%[Proof of Lemma~\ref{lm:lipchitz-bound-on-good-event}]
 	% We present the proof of this lemma for the case $y \ge  x > 0$. The cases $x = 0$ and $x<0$ bring slight differences in calculation but identical bound. 
 	Calculations in the cases $x = 0$ and $x < 0$ are slightly different but yield the same bound.
-	For simplicity of notation, we drop $y$ from the P\'{o}lya's urn processes. We first use \eqref{eq: cummulated drift at a site} and \eqref{eq: conditional increment} to write 
+	For simplicity of notation, we drop $y$ from the P\'{o}lya's urn processes. We first use Lemma~\ref{lm: identities for Del, rho} to write 
 	%\edt{comment about $y$}.
 	\begin{align*}
 		\left| \Delta_y^{(x,m)} \right| 
@@ -933,14 +941,14 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 		&= \sum_{x \in \left[ I_N, S_N \right]} \sum_{i = 0}^{L(x, N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2  
 		\notag
 		\\
-		&\le  \sum_{x \in \left[ I_N, S_N \right]} \sum_{i = M}^{L(x,N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2  + 
-		\sum_{k = 0}^{N - 1} \mathbb{1}\left( L(X_k, k) <  M \right) 
+		&\le  \sum_{x \in \left[ I_N, S_N \right]} \sum_{i =\tau_M^{\mathscr{B}}}^{L(x,N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2  + 
+		\color{red}\sum_{k = 0}^{N - 1} \mathbb{1}\left( L(X_k, k) < \tau_M^{\mathscr{B}} \right) 
 		\label{eq:lem-martingale-1}
 		.\end{align}
 	On the good event $G_{n, K, t}$ defined by \eqref{eq:good-event-1}-\eqref{eq:good-event-4},
 	the inner sum in the first term is further bounded by
 	\begin{align*}
-		&\sum_{i =M}^{ L(x, N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2\\
+		&\sum_{i =\tau_M^{\mathscr{B}}}^{ L(x, N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2\\
 		&\stackrel{(x > 0)}{\le} C_w \sum_{i = M}^{\mathscr{B}_N} \sum_{l = \tau_i^{\mathscr{B}}}^{\tau_{i+1}^{\mathscr{B}}-1} 
 		\left| \frac{1}{w(2 \mathscr{R}_l)} - \frac{1}{w\left( 2 \mathscr{B}_l + 1 \right) } \right|^2 \\
 		&\le C_{w, p} \sum_{i = M}^{\mathscr{B}_N} i^{- 2 p - 1} \log^8 n  \\
@@ -954,7 +962,7 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 	Since $\sum_{k = 0}^{N-1} \mathbb{1}\left( L(X_k, k) \le M \right) \mathbb{1}(X_k = x) \le  M$ for all $x \in \mathbb{Z}$, we can bound \eqref{eq:lem-martingale-1} by
 	\begin{equation*}
 		\sum_{x \in \left[ I_N, S_N \right]} \sum_{i = 0}^{L(x,N) - 1} \mathbb{E}\left[ \mathscr{D}_{i+1}^{(x)} - \mathscr{D}_i^{(x)} | \mathcal{F}_{i}^{\mathscr{B}, \mathscr{R}} \right]^2 
-		< \sum_{x \in \left[ I_N, S_N \right]} (C_{w, p, M} \log^9 N +M )
+		< \sum_{x \in \left[ I_N, S_N \right]} (C_{w, p, M} \log^9 N + {\text{something}_\text{mysterious}} )
 	\end{equation*}
 	
 	%Using process-level tightness, the summation only adds a term of order $\sqrt{N}$, on a good event. Since we have a factor of $\frac{1}{N}$, and $M$ independent of $N$, the right hand side converges $\to 0$ as $N$ goes to infinity. More precisely, take $G = G_{N, K, t}$ and
@@ -1057,7 +1065,7 @@ On one hand, $S_{nt} \leq K\sqrt{n} $ for some $K>0$ with a high probability; on
 	$$ \abs{ V_1(m)- U_1(m) -\frac{1}{r(m)}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_m} \right] }
 	\leq 2C' A^2 m^{-p} \log m + 2C''  \left( m ^{-cA^2} +  m^{-cA} \right), 
 	$$ 
-	which converges to $0$ as $m$ goes to infinity. We conclude that 
+	which converges to zero as $m$ goes to infinity. We conclude that 
 	\[
 	\lim_{m\to\infty}\mathbb{E}\left[ \mathscr{D}_{\tau^{\mathscr{B}}_m} \right] = \gamma, 
 	\] 
@@ -1200,13 +1208,14 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	\le  \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) 
 	\left|  \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \right| 
 	.\] 
-	By monotonicity of BLP with respect to its initial conditions, we have the bound
+	Now we apply Cauchy-Schwartz inequality to the expectation on the right hand side. The indicator of the event $G_{n, K}^{(x,m)}(y-1)$ tells us in particular that $\mathcal{E}_{y-1,+}^{(x,m)} \leq K \sqrt{n}$.
+	By monotonicity of BLP with respect to its initial conditions, an upper bound is attained considering the case $\mathcal{E}_{y-1,+}^{(x,m)} = \lceil K \sqrt{n} \rceil$:
 	\begin{multline*}
 		\mathbb{1}(G_{n, K, t})
 		\left| \sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)} \right| \le \\
 		K \sqrt{n} 
-		\sqrt{ \mathbb{P}\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right) }
-		\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]}
+		\sqrt{ \mathbb{P}\left( \left( G^{(x,m)}_{n, K^2}(x+1) \right) ^{c} \middle| \mathcal{E}_{x,+}^{(x,m)} = \lceil K \sqrt{n} \rceil \right) }
+		\sqrt{ \mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = \lceil K \sqrt{n} \rceil  \right]}
 		.\end{multline*}
 	To control the first probability, we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathscr{B}}_{k+1,y} -\tau^{\mathscr{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniformly in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is bounded by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. 
 	Thus, provided that $q> \frac{1}{K}$, the first probability is bounded by
@@ -1216,17 +1225,17 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	%		.\] 
 	%		
 	\begin{align*}
-		\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = K \sqrt{n}\right)
+		\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = \lceil K \sqrt{n} \rceil\right)
 		%&\le \mathbb{P}\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
 		%\intertext{By Hoeffding bound,}
 		&\le \exp\left( - 2 K^2 \sqrt{n}(q - \frac{1}{K})  \right) 
 		,
 	\end{align*}
-	which converges to $0$ exponentially fast in $K \sqrt{n}$. Similarly, because $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  
+	which converges to zero exponentially fast in $K \sqrt{n}$. Similarly, because $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  
 	%  is bounded by a sum of $ (\mathcal{E}_{x,+}^{(x,m)}+1)^2$ pairwise products, so
 	a sum of $\mathcal{E}_{x,+}^{(x,m)}$ i.i.d random variables, we know that $ \left(\Delta_{x+1}^{(x,m)} \right)^2$ is stochastically dominated by a sum of $(\mathcal{E}_{x,+}^{(x,m)})^2$ products:
 	\begin{align*}
-		\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = K \sqrt{n}  \right]  \leq C_q K^2 n
+		\mathbb{E}\left[ \left(\Delta_{x+1}^{(x,m)}\right)^2 \middle| \mathcal{E}_{x,+}^{(x,m)} = \lceil K \sqrt{n} \rceil  \right]  \leq C_q K^2 n
 	\end{align*}
 	for some $C_q$ depending only on $q$.
 	Therefore, on $G_{n,K,t} \cap \left\{ \lambda_{x,m} \leq\lfloor nt \rfloor \right\}$,
