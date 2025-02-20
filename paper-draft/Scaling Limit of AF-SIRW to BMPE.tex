@@ -49,7 +49,7 @@
 %\usepackage[inline]{enumitem}
 \usepackage{mathrsfs}
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\usepackage[inline, left, ]{showlabels} %Note: add "final" option to turn off labels.
+\usepackage[inline, left, final]{showlabels} %Note: add "final" option to turn off labels.
 % \renewcommand{\showlabelfont}{\small\color{lightgray}}
 % \newcommand{\comment}[1]{\textcolor{blue}{(Comment: #1)}}
 
@@ -148,7 +148,7 @@ asymptotically-free self-interacting random walks to Brownian motion perturbed a
 \ABSTRACT{
 	% We show convergence of a family of one-dimensional self-interacting random walks to Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in \cite{KMP23} for the asymptotically free case. We deal with the case $0<p \leq \frac{1}{2}$, where $p$ is a parameter governing the asymptotic behavior of single-site transitions.
 	We consider a family of one-dimensional self interacting walks whose dynamics characterized by a monotone weight function $w$ on $\mathbb{N}\cup \{0\}$. The weight function takes the form $w(n) = (1 + 2^p Bn^{-p} + O(n^{-1-\kappa}))^{-1}$, for some $B \in \mathbb{R} $, $\kappa>0$ and $p\in (0,1]$.
-	Our main model parameter is $p$, and for $p\in (0,1/2]$ we show the convergence of the SIRW to Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in [8] for the asymptotically free case and extends th result to the full parameter range $(0,1]$.
+	Our main model parameter is $p$, and for $p\in (0,1/2]$ we show the convergence of the SIRW to Brownian motion perturbed at extrema under the diffusive scaling. This completes the functional limit theorem in [8] for the asymptotically free case and extends the result to the full parameter range $(0,1]$.
 	Our method depends on the generalized Ray-Knight theorems (\cite{T96}, \cite{KMP23}) for the rescaled local times of this walk.
 	The directed edge local times, described by the branching-like processes, are used to analyze the total drift experienced by the walker. 
 	% The analysis depends on the diffusion approximation of the branching-like processes obtained in the Ray-Knight type framework.
@@ -597,7 +597,7 @@ Due to Remark~\ref{rm:symmetry}, its natural to assume that $x\ge 0$ and $m \ge 
 \tilde{\zeta} := \left(\mathcal{E}^{(x,m)}_{x+k,+} \right)_{k\geq 0}, \quad
 \zeta := \left(\mathcal{E}^{(x,m)}_{x-k,-} \right)_{k\geq 0}
 .\]
-In particular, $\tilde{\zeta}$ is a homogeneous Markov chain, while $\zeta$ is inhomogeneous. We have the followings for 	$\tilde{\zeta}$:
+In particular, $\tilde{\zeta}$ is a homogeneous Markov chain, while $\zeta$ is inhomogeneous. We have the following for $\tilde{\zeta}$:
 \begin{enumerate}
 	\item The sequences $(\tau^{\mathscr{B}}_{k,y})_{k\geq 0} $ are independent in $y \geq x$, and each sequence $\left(\tau^{\mathscr{B}}_{k,y}\right)_{k\geq 0} $ is Markov in $k$. Then, the collection of stopping times
 	\begin{equation}\label{eq: markov 1} 
@@ -785,7 +785,7 @@ The proof of this lemma mainly uses the diffusion approximation of BLP, Lemma~\r
 %\comment{Consider mentioning here that the diffusion approximation involves $\sigma_0^{\tilde \zeta}$ instead of $\sigma_{\varepsilon n}^{\tilde \zeta}$ as in \cite{KP16}, greatly simplifying the proof of equivalent of (Lemma~3.5, \cite{KP16}. }
 
 \begin{proof}
-	Consider the event that $L(y, n) > K \sqrt{n} $ for some $y \in \mathbb{Z}, n, K > 0$. Define $m_{n, K } = \tau^{\mathscr{R}}_{\sqrt{K n},0 }$. Then exactly one of the followings occurs:
+	Consider the event that $L(y, n) > K \sqrt{n} $ for some $y \in \mathbb{Z}, n, K > 0$. Define $m_{n, K } = \tau^{\mathscr{R}}_{\sqrt{K n},0 }$. Then exactly one of the following occurs:
 	\begin{itemize}
 		\item $L(y, \lambda_{0, m_{n, K}}) \le L(y, n)$, in which case $\lambda_{0, m_{n, K}} \le  n$;
 		\item $L(y, \lambda_{0, m_{n, K}}) >  L(y, n)  > K \sqrt{n} $.
@@ -959,8 +959,7 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 	In the calculation below we let $C_{\alpha_1, \alpha_2, \dots}$ denote a constant depending on  $\alpha_1, \alpha_2, \dots$ but not $n$, and $C_{\alpha_1, \alpha_2, \dots}$ may change from line to line.
 	The inner sum in \eqref{eq:lem-martingale-1} is bounded by
 	\begin{align*}
-		&\sum_{j =0}^{ L(x, N) - 1} \mathbb{E}\left[ \mathscr{D}_{j+1}^{(x)} - \mathscr{D}_j^{(x)} | \mathcal{F}_{j}^{\mathscr{B}, \mathscr{R}} \right]^2\\
-		&\stackrel{(x > 0)}{\le} C_w \sum_{i = 0}^{\mathscr{B}_N} \sum_{l = \tau_i^{\mathscr{B}}}^{\tau_{i+1}^{\mathscr{B}}-1} 
+		\sum_{j =0}^{ L(x, N) - 1} \mathbb{E}\left[ \mathscr{D}_{j+1}^{(x)} - \mathscr{D}_j^{(x)} | \mathcal{F}_{j}^{\mathscr{B}, \mathscr{R}} \right]^2 \stackrel{(x > 0)}{\le} C_w \sum_{i = 0}^{\mathscr{B}_N} \sum_{l = \tau_i^{\mathscr{B}}}^{\tau_{i+1}^{\mathscr{B}}-1} 
 		\left| \frac{1}{w(2 \mathscr{R}_l)} - \frac{1}{w\left( 2 \mathscr{B}_l + 1 \right) } \right|^2 
 		% &\le C_{w, p} \sum_{i = M}^{\mathscr{B}_N} i^{- 2 p - 1} \log^8 n  \\
 		% &\le C_{w, p} \left(\left[ M^{- 2 p} -\left(  \mathscr{B}_N \right) ^{- 2 p} \right] \log^8 N + \log^9 N\right)  \\
