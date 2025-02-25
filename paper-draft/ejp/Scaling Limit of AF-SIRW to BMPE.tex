@@ -60,7 +60,7 @@
 %%                                                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\SHORTTITLE{Scaling Limit of AF-SIRW to BMPE}
+\SHORTTITLE{Convergence of AF-SIRW to BMPE}
 
 \TITLE{Convergence of scaled
 asymptotically-free self-interacting random walks to Brownian motion perturbed at extrema}
@@ -296,7 +296,9 @@ and set
 	.\end{equation}
 Motivation for these definitions will become apparent in the proof of Lemma~\ref{lm: convergence of mean of discrepancies}.
 It is known that for monotone $w(.)$, $\gamma$
-is well-defined and ${\gamma<1}$, see \cite{KMP23}, p4 and \cite{T96}, p1340. %, eqn. (5.2.5) and (5.2.6). 
+is well-defined and ${\gamma<1}$; in particular, $\gamma<1$ implies that the model is recurrent (\cite{KMP23}, p4 and \cite{T96}, p1340). 
+ 
+%, eqn. (5.2.5) and (5.2.6). 
 % The process $W_t^{\gamma, \gamma}$ is then the limiting process of $X_k$ under diffusive scaling. 
 %\comment{part of this statement will be our main result. We can state previous result, and list our current one directly.}
 
@@ -364,9 +366,9 @@ In section \ref{sec: proof of main}, we outline the proof of Theorem \ref{th: ma
 %	For a precise definition of the probability measures and related $\sigma$-algebras, see \cite{KMP23}.
 
 % Now we introduce notations for some random variables related to the SIRW $(X_k)_{k\geq0}$ that are important in our analysis.
+	Here we collect some notation related to the SIRW $(X_k)_{k \ge 0}$.
+	We denote by $\mathbb{P}$ the probability measure on $D([0,\infty))$ induced by $(X_k)_{k\geq 0}$, and by $\mathbb{E}$ the expectation with respect to the probability measure $\mathbb{P}$.
 \begin{enumerate}
-	\item Probability measure and expectation:
-	We denote by $\mathbb{P}$ the probability measure on $D([0,\infty))$ induced by $(X_k)_{k\geq 0}$, and by $\mathbb{E}$ the expectation with respect to $\mathbb{P}$.
 	\item Running maximum and minimum: For the sequence $(X_k)_{k \ge 0}$, the running maximum at time $k$ is defined as $S_k = \sup\{X_i : i \le k\}$. Similarly, the running minimum at time $k$ is given by $I_k = \inf \left\{X_i: i \le k\right\}$.
 	\item
 	Local time at a site: For any site $x \in \mathbb{Z}$ and time $j \in \mathbb{N}_0$, the local time is defined as $L(x,n):= \sum_{i=0}^n \mathbb{1}_{\{X_i=x\}}$. 
@@ -539,7 +541,7 @@ $\left(\mathscr{B}_{i}^{(y)},\mathscr{R}_{i}^{(y)} \right)$ is the state of a (g
 
 
 
-Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\left\{y,y-1\right\}$ and $\left\{y,y+1\right\}$ at time $\lambda_{y,0}$ are (recall definition from beginning of Section 1)
+Due to the initial value of the underlying random walk $X_0=0$, the local times of undirected edges $\left\{y,y-1\right\}$ and $\left\{y,y+1\right\}$ at time $\lambda_{y,0}$ are (recall definition from beginning of section~1):
 \begin{equation}\label{eq: initial condition}
 	\left(l_y^{\lambda_{y,0}},  r_y^{\lambda_{y,0}}\right) =  \begin{cases}	
 		(1, 0) &,  \text{ if }  y>0 \\
@@ -588,8 +590,8 @@ We may drop the $y$ when there is no ambiguity.
 \begin{remark}
 	\label{rk:UrnGeo}
 	% The recurrence of $X_k$ guarantees that each color is drawn from the urn inifinitely often, almost surely.
-	Since the weight function $w(.)$ is bounded and positive, the probability that the next ball drawn is blue is bounded below by a constant $q > 0$ and above by a constant $q' < 1$. Therefore, at each site $y$ and for all $i \ge 0$, the difference $\tau_{i+1}^{\mathscr{B}} - \tau_{i}^{\mathscr{B}}$ is stochastically bounded above by a geometric random variable with parameter $q$ and below by a geometric random variable with parameter $q'$.
-	In particular, each color is drawn from the urn infinitely often, which is also a consequence of recurrence of $X_k$.
+	Since the weight function $w(.)$ is positive and bounded away from infinity, the probability that the next ball drawn is blue is bounded below by a constant $q > 0$ and above by a constant $q' < 1$. Therefore, at each site $y$ and for all $i \ge 0$, the difference $\tau_{i+1}^{\mathscr{B}} - \tau_{i}^{\mathscr{B}}$ is stochastically bounded above by a geometric random variable with parameter $q$ and below by a geometric random variable with parameter $q'$.
+	In particular, each color is drawn from the urn infinitely often almost surely, which is also a consequence of recurrence of $X_k$.
 \end{remark}
 
 \subsection{Branching-Like Processes}
@@ -680,8 +682,8 @@ The following lemma exhibits two identities involving $\Delta^{(x,m)}_{y}$ and $
 	\begin{equation} \label{eq: conditional mean in GPU represenetation}
 		\rho_{y}^{(x,m)} = \mathbb{E}\left[ \Delta_{y}^{(x,m)}\vert \mathcal{E}^{(x,m)}_{y-1,+} \right]	  
 		= \mathbb{E}\left[  \mathscr{D}_{\tau^{\mathscr{B}}_{k,y}} \right].
-	\end{equation} 
-	
+	\end{equation}
+	Recall \eqref{eq:signed difference} for the definition of $\mathscr{D}^{(y)}_k$.	
 \end{lemma}
 \begin{proof} 
 	The first identity is similar to \eqref{eq: recursive formula for upcrossings}.
@@ -926,14 +928,14 @@ On $G_{n, K, t}$, we obtain a priori bounds of local drifts, which allows us to 
 		&= C_w \sum_{i = 0}^{K \sqrt{n} }
 		\sum_{j = \tau_i^{\mathscr{B}} - i}^{\tau_{i+1}^{\mathscr{B}} - i - 1} \left|  2^p B\left( \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} \right)  + O\left( \frac{1}{i^{\kappa + 1}} \right) + O\left( \frac{1}{j^{\kappa + 1}} \right)\right|  .\\
 		\intertext{
-			In view of \eqref{eq:good-event-6} and \eqref{eq:good-event-7}, we bound $\tau_{i}^{\mathscr{B}}-i$ below by $i - \sqrt{i} \log^2 n$ and bound $\tau_{i+1}^{\mathscr{B}} - i - 1$ above by $(i + 1) + \sqrt{i + 1} \log^2 n - i - 1$. For $i \geq 16 \log^4 n$ we have 
+			In view of \eqref{eq:good-event-6} and \eqref{eq:good-event-7}, we bound $\tau_{i}^{\mathscr{B}}-i$ below by $i - \sqrt{i} \log^2 n$ and bound $\tau_{i+1}^{\mathscr{B}} - i - 1$ above by $(i + 1) + \sqrt{i + 1} \log^2 n$. For $i \geq 16 \log^4 n$ we have 
 			$[i - \sqrt{i} \log^2 n, i + 1 + \sqrt{i + 1} \log^2 n] \subset [i - 2 \sqrt{i} \log^2 n, i + 2 \sqrt{i} \log^2 n]$. Therefore,
 		}
 		&\le C_{w,p} \left(\log^4 n +\sum_{i = 16 \log^4 n}^{K \sqrt{n} } \log^2 n \cdot \sup_{
 			|j - i| \le 2 \sqrt{i}  \log^2 n
 		} \left|  \frac{1}{(2j)^p} - \frac{1}{(2i + 1)^p} + O\left( \frac{1}{i^{\kappa + 1}} \right) \right|\right)\\
 		&\le C_{w, p} \log^2 n \cdot \left( \log^2 n + \sum_{i = 16 \log^4 n}^{K \sqrt{n} } \left( 
-		\frac{4 \sqrt{ i } \log^2 n }{\left(2 i - 2 \sqrt{ i } \log^2 n\right)^{p + 1}} 
+		\frac{4 \sqrt{ i } \log^2 n }{\left(2 i - 4 \sqrt{ i } \log^2 n\right)^{p + 1}} 
 		%			+ \frac{1}{\left(2 i\right)^{p + 1}} 
 		+ O\left( \frac{1}{i^{\kappa + 1}} \right)
 		\right) \right)  \\
@@ -1192,7 +1194,7 @@ In this subsection, we prove Lemma~\ref{lm: approx local drift by conditional me
 In Lemma~\ref{lm: approx local drift by conditional means}, for any fixed $(x,m)$ with $\abs{x},m < K\sqrt{n}$, the sum $\sum_{z=x+1}^{y}  \Delta_z^{(x,m)} - \rho_z^{(x,m)}  $ is a martingale (indexed by $y$). To control the sum, we compare the martingale $\sum_{z=x+1}^{y} \Delta_z^{(x,m)} - \rho_z^{(x,m)}$ to a tempered version $\sum_{z= x+1}^y \tilde \Delta_{z}^{(x,m)} - \tilde\rho_z^{(x,m)}$ that has bounded increments on the good event $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$, where
 \[
 \tilde \Delta_y^{(x,m)} := \Delta_y ^{(x,m)} \mathbb{1}\left( G_{n, K^2}^{(x,m)} (y)\right) \qquad
-\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)} \right]  
+\tilde \rho_y^{(x,m)} := \mathbb{E}\left[ \tilde\Delta_y^{(x,m)} \middle| \mathcal{H}_{y-1, +}^{(x,m)} \right]  
 .\] 
 
 At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional means} can be decomposed as follows:
@@ -1236,8 +1238,8 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	It remains to control  \eqref{eq:tempered-difference-3} on $G_{n, K, t} \cap \left\{\lambda_{x,m} \leq\lfloor nt \rfloor \right\}$:
 	\begin{align*}
 		\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
-		&= \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]  \\
-		&= \sum_{y = x + 1}^{K \sqrt{n} } -\mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right]
+		&= \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( G_{n, K^2}^{(x,m)}(y) \right) - \Delta_{y}^{(x,m)} \middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right]  \\
+		&= \sum_{y = x + 1}^{K \sqrt{n} } -\mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right]
 	.\end{align*}
 	Hence,
 	\begin{align*}
@@ -1245,17 +1247,17 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
 	\right|
 	\le \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) 
-	\left|  \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \right| \\
+	\left|  \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right] \right| \\
 	& \le \sum_{y = x + 1}^{K \sqrt{n} } 
 	\sqrt{
 	\mathbb{E}\left( \mathbb{1}\left(\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right)
 	\mathbb{1}\left( G_{n, K}^{(x,m)}(y-1) \right) 
-	\middle| \mathcal{H}_{y-1}^{(x,m)} \right)
-	}
-	\sqrt{
+	\middle| \mathcal{H}_{y-1, +}^{(x,m)} \right)
+	}\\
+	&\hspace{18em} \times \sqrt{
 	\mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2
 	\mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) 
-	\middle| \mathcal{H}_{y-1}^{(x,m)}  \right]}
+	\middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right]}
 	.
 	\end{align*}
 	Thus, the first expectation is bounded by
@@ -1263,14 +1265,15 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	% Now we apply Cauchy-Schwartz inequality to the expectation on the right hand side. The indicator of the event $G_{n, K}^{(x,m)}(y-1)$ tells us in particular that $\mathcal{E}_{y-1,+}^{(x,m)} \leq K \sqrt{n}$.
 	% By monotonicity of BLP with respect to its initial conditions, an upper bound is attained considering the case $\mathcal{E}_{y-1,+}^{(x,m)} = \lceil K \sqrt{n} \rceil$:
 	\begin{align*}
-		&\mathbb{E}\left[ \mathbb{1}\left(\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \mathbb{1}\left( G_{n, K}^{(x,m)}(y-1) \right) \middle| \mathcal{H}_{y-1}^{(x,m)} \right] \\
-		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \mathbb{1}\left(\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \mathbb{1}\left( \mathcal{E}_{y-1}^{(x,m)} = a \right) \middle| \mathcal{H}_{y-1}^{(x,m)} \right] \\
-		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{P}\left(  G_{n, K}^{(x,m)}(y-1)\cap\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \middle| \mathcal{E}_{y-1}^{(x,m)} = a \right) \mathbb{1}\left( \mathcal{E}_{y-1}^{(x,m)} = a \right) \\
-		&\le \exp\left( - 2 K^2 \sqrt{n} (q - \frac{1}{K}) \right)
+		&\mathbb{E}\left[ \mathbb{1}\left(\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \mathbb{1}\left( G_{n, K}^{(x,m)}(y-1) \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)} \right] \\
+		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \mathbb{1}\left(\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \mathbb{1}\left( \mathcal{E}_{y-1, +}^{(x,m)} = a \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)} \right] \\
+		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{P}\left(  G_{n, K}^{(x,m)}(y-1)\cap\left( G_{n, K^2}^{(x,m)}(y) \right) ^c \middle| \mathcal{E}_{y-1, +}^{(x,m)} = a \right) \mathbb{1}\left( \mathcal{E}_{y-1, +}^{(x,m)} = a \right) \\
+		&\le C K^2 n \exp\left( - 2 c K^2 \sqrt{n} (q - \frac{1}{K}) \right)
 		.
 	\end{align*}
 	To justify the last inequality,
-	we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathscr{B}}_{k+1,y} -\tau^{\mathscr{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniformly in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is bounded by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. Then for all sufficiently large $K$, and all $a\leq K\sqrt{N}$, we have the following upper bounds for $\mathbb{P}\left( G_{n, K}^{(x,m)}(y-1)\cap\left(G_{n, K^2}^{(x,m)}(y)\right)^c \middle| \mathcal{E}_y^{(x,m)}=a \right)$:
+	we use the proof of Lemma~\ref{lm:good-event} for the complements of \eqref{eq:good-event-6} and \eqref{eq:good-event-7}. For \eqref{eq:good-event-5},
+	we use Remark \ref{rk:UrnGeo} and recursive formulas \eqref{eq: recursive formula for upcrossings}, \eqref{eq: source of inhomogeneity}. As increments $\tau^{\mathscr{B}}_{k+1,y} -\tau^{\mathscr{B}}_{k,y}$ are stochastically dominated by independent geometric random variables with parameter $q$ uniformly in $ k \geq 0$ and $y \in \mathbb{Z}$, $\mathcal{E}_{x+1,+}^{(x,m)}$ is stochastically dominated by the sum of $ (\mathcal{E}_{x,+}^{(x,m)} +1) $ i.i.d. geometric random variables with parameter $q$. Then for all sufficiently large $K$, and all $a\leq K\sqrt{N}$, we have the following upper bounds for $\mathbb{P}\left( G_{n, K}^{(x,m)}(y-1)\cap \left\{L(y, \lambda_{x, m}) \ge K \sqrt{n}\right\} \middle| \mathcal{E}_{y, +}^{(x,m)}=a \right)$:
 	\begin{align*}
 		\mathbb{P}\left(\mathcal{E}_{x+1,+}^{(x,m)} > \frac{K^2}{2} \sqrt{n} | \mathcal{E}_{x,+}^{(x, m)} = \lceil K \sqrt{n} \rceil\right)
 		%&\le \mathbb{P}\left( \text{Binom}(K^2 \sqrt{n}, q ) < K \sqrt{n}  \right)  \\
@@ -1280,11 +1283,11 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	\end{align*}
 	which converges to zero exponentially fast in $K \sqrt{n}$. 
 	
-	Next, to control the second expectation, we observe from \eqref{eq: cummulated drift at a site} and \eqref{eq: recursive formula for upcrossings} that $\Delta_y^{(x,m)} \in \sigma \left(\mathcal{E}_y^{(x,m)}, (\tau_{y,i}^{\mathscr{B}})_{i \ge 0}\right)$, and furthermore, $\mathcal{E}_y^{(x,m)} \in \sigma \left(\mathcal{E}_{y-1}^{(x,m)}, (\tau_{y,i}^{\mathscr{B}})_{i \ge 0}\right)$. Hence $\mathbb{E}\left[|\Delta_y^{(x,m)}|^2 \middle| \mathcal{H}_{y-1}^{(x,m)}\right] = \mathbb{E}\left[|\Delta_y^{(x,m)}|^2 \middle| \mathcal{E}_{y-1}^{(x,m)}\right]$. Thus,
+	Next, to control the second expectation, we observe from \eqref{eq: cummulated drift at a site} and \eqref{eq: recursive formula for upcrossings} that $\Delta_y^{(x,m)} \in \sigma \left(\mathcal{E}_{y, +}^{(x,m)}, (\tau_{y,i}^{\mathscr{B}})_{i \ge 0}\right)$, and furthermore, $\mathcal{E}_{y, +}^{(x,m)} \in \sigma \left(\mathcal{E}_{y-1, +}^{(x,m)}, (\tau_{y,i}^{\mathscr{B}})_{i \ge 0}\right)$. Hence $\mathbb{E}\left[|\Delta_y^{(x,m)}|^2 \middle| \mathcal{H}_{y-1, +}^{(x,m)}\right] = \mathbb{E}\left[|\Delta_y^{(x,m)}|^2 \middle| \mathcal{E}_{y-1, +}^{(x,m)}\right]$. Thus,
 	\begin{align*}
-		& \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) \middle| \mathcal{H}_{y-1}^{(x,m)}  \right] \\
-		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \mathbb{1}\left( \mathcal{E}_{y-1}^{(x,m)} = a \right) \middle| \mathcal{H}_{y-1}^{(x,m)} \right] \\
-		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \middle| \mathcal{E}_{y-1}^{(x,m)} = a \right] \mathbb{1}\left( \mathcal{E}_{y-1}^{(x,m)} = a \right) \\
+		& \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) \middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right] \\
+		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \mathbb{1}\left( \mathcal{E}_{y-1, +}^{(x,m)} = a \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)} \right] \\
+		&\le \sum_{a = 0}^{K \sqrt{n}} \mathbb{E}\left[ \left(\Delta_y^{(x,m)}\right)^2 \middle| \mathcal{E}_{y-1, +}^{(x,m)} = a \right] \mathbb{1}\left( \mathcal{E}_{y-1, +}^{(x,m)} = a \right) \\
 		&\le C_q K^2 n
 	\end{align*}
 	Indeed, because $\abs{\Delta_{x+1}^{(x,m)}} \leq  \mathcal{E}_{x,+}^{(x,m)}+1 + \mathcal{E}_{x+1,+}^{(x,m)}$,  
