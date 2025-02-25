@@ -64,7 +64,7 @@
 	self-interacting random walks to Brownian motion
 	perturbed at extrema", we make a number of changes to solve issues that are kindly pointed out by referees.
 	The most significant changes are made in the abstract, introduction, and proofs of Lemmas 2.1 and 2.4. On one hand, the roles of the main model parameter $p$ are not fully addressed in the earlier version, so we have reworked both abstract and discussion before section 1.1
-	to explain what $p$ is, how it helps characterizing self-interacting random walks (SIRWs) is, and in particular, why the phase transition between functional convergence and non convergence occurs exactly at $p=0$ and $\alpha =0$. We hope the current version offers more motivations to the study of asymptotically free SIRWs with $p\in (0,\frac{1}{2}]$. On the other hand, the proofs of Lemmas 2.1 and 2.4 deserve more careful treatments. In the earlier proof of Lemma 2.1, there is an issue from the first $M$ visits to a single site. We find this issue manageable with applications of good events. In the current manuscript, we use an argument similar to the earlier version and replace $M$ with $16\log^4 n$. This results an improved upper bound, $O(\log^6 n)$. In the original proof of Lemma 2.4, it is not clear how monotonicity of BLP with respect to its initial value can lead to an upper bound for (4.22). This is mainly because the random variables $\Delta_{y}^{(x,m)}$ and $\mathbb{1}\left(G^{(x,m)}_{n,K^2}(y) \right)$ are not monotone transformations of (the random variable) $\mathcal{E}^{(x,m)}_{x,+}$. In the current proof, we explain in detail why the conditional second moments of $\Delta_{y}^{(x,m)}$ and $\mathbb{1}\left(G^{(x,m)}_{n,K^2}(y) \right)$ can be bounded by monotone functions of $\mathcal{E}^{(x,m)}_{x,+}$ and how it implies that (4.22) is vanishing as $n$ goes to infinity.  We believe the revision of these two proofs illustrates the roles of good events in the proofs of Lemmas 2.1, 2.2 and the main Theorem 1.3.   
+	to explain what $p$ is, how it helps characterizing self-interacting random walks (SIRWs) is, and in particular, why the phase transition between functional convergence and non convergence occurs exactly at $p=0$ and $\alpha =0$. We hope the current version offers more motivations to the study of asymptotically free SIRWs with $p\in (0,\frac{1}{2}]$. On the other hand, the proofs of Lemmas 2.1 and 2.4 deserve more careful treatments. We have edited both proofs, with details given below. We believe the revision of these two proofs illustrates the roles of good events in the proofs of Lemmas 2.1, 2.2 and the main Theorem 1.3.   
 	We also include other major changes across different sections in the list below. We hope the changes will enhance the readability of the paper, support our mathematical derivations, and provide more details of our current work.
 	
 	\begin{enumerate}
@@ -72,14 +72,14 @@
 		self-interacting random walks to Brownian motion
 		perturbed at extrema" and reworked the abstract. The abstract is revised to strengthen its connection to Ray-Knight type framework and be more self-contained.
 		
-		\item Introduction: The major change is the discussion before section 1.1. We add comparisons between the asymptotically free case and the polynomially self-repelling case to provide motivations of current work on the potential phase transition between $p\geq \frac{1}{2}$ case and the polynomially self-repelling case.
+		\item Introduction: The major change is the discussion before section 1.1. We add comparisons between the asymptotically free case and the polynomially self-repelling case to provide motivations of current work on determining the location of phase transition between $p\geq \frac{1}{2}$ asymptotically free case and the polynomially self-repelling case: exactly at $p = 0$ and $\alpha = 0$.
 		
 		\item Section 3:  Statements of Remark 3.2, Lemma 3.3 and the discussion before section 3.4 have been revised. \TBF{We revised Remark 3.2 to give more precise statement for stochastic bounds of $\tau_{i+1}^{\mathcal{B}}-\tau_{i}^{\mathcal{B}}$. The statement of Lemma 3.3 is revised to provide better references in analysis to be done in section 4.}
 		In the new discussion, we explain that "good events" are intersections of "typical events" on local sites, and obtaining estimates involving "good events" comes down to getting finer estimates for local problems.
 		
 		
 		
-		\item Sections 4: Proofs of Lemmas 2.1 and 2.4 have been reworked. \TBF{add more contents?}
+		\item Sections 4: Proofs of Lemmas 2.1 and 2.4 have been reworked. In the earlier proof of Lemma 2.1, there is an issue from the first $M$ visits to a single site. We find this issue manageable with applications of good events. In the current manuscript, we use an argument similar to the earlier version and replace $M$ with $16\log^4 n$. This results an improved upper bound, $O(\log^6 n)$. In the original proof of Lemma 2.4, it is not clear how monotonicity of BLP with respect to its initial value can lead to an upper bound for (4.22). This is mainly because the random variables $\Delta_{y}^{(x,m)}$ and $\mathbb{1}\left(G^{(x,m)}_{n,K^2}(y) \right)$ are not monotone transformations of (the random variable) $\mathcal{E}^{(x,m)}_{x,+}$, yet the control of both terms rely on the Markovian structure of branching-like processes. In the current proof, we explain in detail why the conditional second moments of $\Delta_{y}^{(x,m)}$ and $\mathbb{1}\left(G^{(x,m)}_{n,K^2}(y) \right)$ can be bounded by monotone functions of $\mathcal{E}^{(x,m)}_{x,+}$ and how it implies that (4.22) is vanishing as $n$ goes to infinity.  
 		
 		\item Other changes: We have improved discussions across sections, for example, the discussion after Lemma 2.4 in section 2. We have updated several references over places that are suggested. Changes ar made with notations to keep consistency, as well as to provide details explaining the model. Grammatical mistakes have also been checked with great care.  
 		
@@ -114,7 +114,7 @@
 		
 		\item 
 		$2,10$: "allows for more general $w(\cdot)$." The results of [8] depend on the assumption that $p > 1/2.$" Next sentence should refer to [12], not [8], so you can't say "in the same paper".
-		\subitem \textbf{Response}: Thank you for the suggestion. We've reworked this paragraph and the next to provide transition and comparisons between the "asymptotically free" case and "polynomially self-avoiding" case. As explained in the current version, the parameter $p$ allows us to get SIRWs that are between asymptotically free ones with $p>\frac{1}{2}$, and "polynomially self-avoiding" ones. In view of the current work, the phase transition between functional convergence and non convergence occurs exactly at $p=0$ and $\alpha =0$. We hope these changes provide more motivations to why we study the asymptotically free case with $p\in(0,\frac{1}{2}]$.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've reworked this paragraph and the next to provide transition and comparisons between the "asymptotically free" case and "polynomially self-avoiding" case. As explained in the current version, the parameter $p$ allows us to study SIRWs that are between asymptotically free SIRWs with $p>\frac{1}{2}$, and polynomially self-avoiding SIRWs, see (page 2, line 30). In view of the current work, the phase transition between functional convergence and non convergence occurs exactly at $p=0$ and $\alpha =0$. We hope these changes provide more motivations to why we study the asymptotically free case with $p\in(0,\frac{1}{2}]$.
 		
 		
 		\item
@@ -123,7 +123,7 @@
 		
 		\item
 		$2,-13$: "removing the assumption that $p > \frac{1}{2}$ and considering the full range $p\in (0,1]$". What about $p > 1$? Make a remark how (1.2) includes $p > 1$.
-		\subitem \textbf{Response}: Thank you for the suggestion. We've added a remark to the current paper. Moreover, we find that the difference between the "asymptotically free" case and "polynomially self-repelling" case deserves more discussion. Since our model parameter range is $(0,\frac{1}{2}]$, we can view it closer to the "polynomially self-repelling" than to the weakly reinforced case, by varying parameter $p$. The non-convergence result in the "polynomially self-repelling" case might imply phase transition in the parameter range that we are working on, adding more motivation to the current work.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've added a remark to the current paper at \TBF{(page 2, line 14)}. Moreover, we find that the difference between the "asymptotically free" case and "polynomially self-repelling" case deserves more discussion. Since our model parameter range is $(0,\frac{1}{2}]$, we can view it closer to the "polynomially self-repelling" than to the weakly reinforced case, by varying parameter $p$. The non-convergence result in the "polynomially self-repelling" case might imply phase transition in the parameter range that we are working on, adding more motivation to the current work.
 		
 		
 		\item
@@ -177,7 +177,7 @@
 		\item 
 		$6,-14$: I do not understand the expression "projections of $(X_k)_{k\geq 0}$ on certain stopping times". Maybe "at certain stopping times"? Please give this expression a more precise meaning. Also "events\dots suffice", "events\dots require". Maybe "after we introduce the generalized\dots?
 		\subitem \textbf{Response}:
-		Thank you for pointing these issues out. \TBF{This paragraph is reworked. We have changed the description to "Both processes are constructed from path of $X_k$ up to certain stopping times" \TBF{at}. We've also added transition to introduce "good events". Technically speaking, on "good events", fluctuations around conditional expectation are more regular, and we can use classical analytical tools to estimate the fluctuations corresponding to different cases. Since the particular definitions of good events and their applications will be given in section 4, we only give a brief discussion at this point.}
+		Thank you for pointing these issues out. \TBF{This paragraph is reworked. We have changed the description to "Both processes are constructed from path of $X_k$ up to certain stopping times" \TBF{at}. We've also added transition to introduce "good events". Roughly speaking, on "good events", fluctuations around conditional expectation are more regular, and we can use classical analytical tools to estimate the fluctuations corresponding to different cases. Since the particular definitions of good events and their applications will be given in section 4, we only give a brief discussion at this point.}
 		
 		\item 
 		$7,19$: "well-known from [9] and [8]". How about including [12]?
@@ -327,7 +327,7 @@
 		
 		
 		\item[5] (p6, just before step 3). You could more precisely reference the "good event" you are	speaking of by providing the specific location where it is defined.
-		\subitem \textbf{Response}: Thank you for the suggestion. \TBF{Please note that we've revised this paragraph to add transition to "good events". (Maybe) We've referenced $A_{n,K}^c \cap B_{n,M}^c$ in (4.8) for the good events used in th proof of Lemma 2.3, and $G_{n,K,t}$ for the good events used in the proof of Lemma 2.4.}
+		\subitem \textbf{Response}: Thank you for the suggestion. \TBF{Please note that we've revised this paragraph to add transition to "good events". We've referenced $A_{n,K}^c \cap B_{n,M}^c$ in (4.8) for the good events used in th proof of Lemma 2.3, and $G_{n,K,t}$ for the good events used in the proof of Lemma 2.4.}
 		
 		\item[6](p7, line -5). "Also, we note that \textbf{the law of $\left(\mathcal{B}_i^{(y)}
 			,\mathcal{R}_i^{(y)} \right)$} defined in (3.1) \dots ".
@@ -345,7 +345,8 @@
 		\subitem \textbf{Response}:  Thank you for pointing this out.  We've updated the statement. Please note that we only assume $x\geq 0$ in this subsection and in the proofs of Lemmas 4.2 and 2.1 (in subsections 4.1 and 4.2). This assumption is made to simplify our arguments and to emphasize the symmetry of the model, which is mentioned in Remark 3.1.
 		
 		\item [9] (p10, last sentence before Lemma 3.3). "The identity (3.10) below is not used directly\dots but we use its more explicit formula \dots ". I believe you are referring to (3.12) here, so it would be helpful to say so. Additionally, you might consider including the full formula directly in the statement of the Lemma.
-		\subitem \textbf{Response}: Thank you for the suggestions. \TBF{We've reworked the statement of Lemma 3.3 to incorporate the suggested changes. Also, references to (3.10) or Lemma 3.3 are made are made throughout section 4 whenever necessary.}
+		\subitem \textbf{Response}: Thank you for the suggestions. We've reworked the statement of Lemma 3.3 to incorporate the suggested changes.
+		\TBF{We've edited the statement of Lemma 3.3 to include (3.12) in the statement of the Lemma. Previous references to (3.10) and (3.12) are edited to Lemma 3.3 for clarity.}
 		
 		\item [10] (p9, Lemma 3.3, eq (3.11)). Please recall that $\mathcal{D}$ is defined in (3.4). I believe this is its first appearance, and it may be helpful to reintroduce the notation for clarity.
 		\subitem \textbf{Response}:  Thank you for the suggestion. We've recalled the $\mathcal{D}$ at the end of Lemma 3.3, which is firstly defined in (3.4).
