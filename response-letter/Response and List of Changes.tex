@@ -1,0 +1,383 @@
+%%%%%%%%%%%%%
+% % Lines starting with % are comments, which are ignored.
+% % This is a handy way of indicating the date and version of
+% % your document, to wit:
+% %
+% % first draft, 2025_02_17
+% % Modified  2025_02_18
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Title and author(s)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Response and List of Changes}
+%\author{Zhe Wang\thanks{Courant Institute} }
+
+\documentclass[11pt,a4paper]{article}
+% This is a cover letter style.
+
+%\documentclass[letterpaper]{article}
+\usepackage[english]{babel}
+\usepackage[margin=1 in]{geometry}
+\usepackage[latin1]{inputenc}
+
+\usepackage{setspace}
+%\doublespacing
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fourier}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[inline]{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}
+\newtheorem{scolium}{Scolium} [section]  
+\newtheorem{definition}{Definition}[section]
+\numberwithin{equation}{section}
+
+\newenvironment{proof}{{\sc Proof}}{~\hfill $\square$}
+\newenvironment{AMS}{}{}
+\newenvironment{keywords}{}{}
+\def\mathbi#1{\textbf{\em #1}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+
+\newcommand{\corr}[2]{We've changed {\textcolor{red}{#1}} to {\textcolor{blue}{#2}}.}
+\newcommand{\edt}[1]{\textcolor{purple}{#1}} % to be decided
+\def\TBF#1{\textcolor{red}{#1}} %to be filled
+
+
+\begin{document}
+	\noindent Dear Cristina Toninelli and Referees,
+	
+	Thank you for your time and for the referees' comments concerning our paper "Scaling Limit of Asymptotically-free Self-interacting
+	Random Walks to Brownian Motion Perturbed at
+	Extrema". We are grateful for the insightful comments on and valuable improvements to our paper. We have studied them carefully and have incorporated most of the suggestions made by the reviewers. Please see the attachments for our revised paper, as well as a copy of the original paper with revised potions highlighted in \edt{color}.
+	We summarize major changes according to sections and also address the point-by-point responses to the Referees' comments after the list.
+	
+	\section*{List of Changes}
+	In the current paper, "Convergence of scaled asymptotically-free
+	self-interacting random walks to Brownian motion
+	perturbed at extrema", we make a number of changes to solve issues that are kindly pointed out by referees.
+	The most significant changes are made in the abstract, introduction, and proofs of Lemmas 2.1 and 2.4. On one hand, the roles of the main model parameter $p$ are not fully addressed in the earlier version, so we have reworked both abstract and discussion before section 1.1
+	to explain what $p$ is, how it helps characterizing self-interacting random walks (SIRWs) is, and in particular, why the convergence to BMPE may fail when $p\in (0,\frac{1}{2}]$. We hope the current version offers more motivations to the study of asymptotically free SIRWs with $p\in (0,\frac{1}{2}]$. On the other hand, we find proofs of Lemmas 2.1 and 2.4 deserving more careful treatments. In the original proof of Lemma 2.1, there is an issue from the first $M$ visits to a single site. We find this issue manageable with applications of good events; in addition, we get an improved upper bound, $O(\log^6 n)$, from an  argument similar to the earlier version by replacing $M$ with $16\log^4 n$. In the proof of Lemma 2.4, we discuss in detail how monotonicity of BLP implies an upper bound for (4.22). In particular, random variables $\Delta_{y}^{(x,m)}$ and $\mathbb{1}\left(G^{(x,m)}_{n,K^2}(y) \right)$ are not monotone transformations of (random variable) $\mathcal{E}^{(x,m)}_{x,+}$, but upper bounds involving them are.  We believe the current changes to these two proofs facilitate to explain the roles of good events in the proofs of Lemmas 2.1, 2.2 and the main Theorem 1.3.   
+	We also include other major changes across different sections in the list below. We hope the changes will enhance the readability of the paper, support mathematical derivations, and address \TBF{details} of our current work.
+	
+	\begin{enumerate}
+		\item Title and Abstract: We've changed the title to "Convergence of scaled asymptotically-free
+		self-interacting random walks to Brownian motion
+		perturbed at extrema" and reworked the abstract. Abstract is revised to strength connection to Ray-Knight type framework and be more self-contained.
+		
+		\item Introduction: The major change is the discussion before section 1.1. \TBF{We add comparisons between the asymptotically free case and the polynomially self-repelling case in the hope to add motivations of current work on the potential phase transition between $p\geq \frac{1}{2}$ case and the polynomially self-repelling case.} 
+		
+		\item Section 2: Major changes are in the discussion after Lemma 2.4. \TBF{We may discuss more here.}
+		
+		
+		\item Section 3:  Statements of Remark 3.2 and Lemma 3.3 have been reworked. We aim to provide precise statements which supports computation in section 4.
+		Also, the discussion before section 3.4 is revised. \TBF{In the new discussion, we explain that "good events" are intersections of "typical events" on local sites, and obtaining estimates involving "good events" comes down to solving local problems and getting finer estimates.} 
+		
+		
+		
+		\item Sections 4: Proofs of Lemmas 2.1 and 2.4 have been reworked. 
+		
+		\item Other changes: We have updated several references over places that are suggested. Changes ar made with notations to keep consistency, as well as to provide details explaining the model. Grammatical mistakes have also been checked with great care.  
+		
+	\end{enumerate}
+	
+	%	On next pages, we will explain changes in response to the comments from referees' reports.
+	\newpage
+	\subsection*{Response to Report EJP2407-019R1R1}
+	\TBF{(We can probably delete this.) We want to thank the referee for the careful reading and the time on creating a detailed report. We are grateful to the details provided in the report and we hope the relevant revisions.   }
+	\begin{itemize}
+		\item The paper needs a thorough revision due to a large number of very minor issues.
+		Comments and suggestions: May I suggest an adjustment to the title? "Convergence of scaled
+		asymptotically-free self-interacting random walks to Brownian motion perturbed at extrema" or "The scaling limit of asymptotically-free self-interacting random walks is a Brownian motion perturbed at
+		extrema".
+		
+		\subitem \textbf{Response}:  Thank you for the suggestion. The title is changed to "Convergence of scaled asymptotically-free
+		self-interacting random walks to Brownian motion
+		perturbed at extrema". Also, the short-title is changed to "Convergence of AF-SIRW to BMPE". 
+		
+		\item 
+		$1,1$: the abstract should be readable on its own. It is not clear what $p$ is. Expand the abstract by stating the transitions in words (see, for example, paragraph in the detailed description).
+		\subitem \textbf{Response}: Thank you for the suggestion and showing us an example. We agree that $p$ should be introduced at the beginning. The abstract is reworked with an improvement on this aspect, and the second half of the abstract, "Our method depends on \dots experienced by the walker ", is also revised to improve the connection with Ray-Knight frame work. 
+		
+		\item 
+		$1,(1.1)$ and the definition of $l_x^k$, $r_x^k$: these are random variables which depend on the path by time $k$. You can drop the dependence on the path from the notation later but it is not all right as written:	if you only have $k$ and $x$, then you can't compute these quantities. Overall, the model should be defined properly: start with some probability space, and so on.
+		\subitem \textbf{Response}: Thank you for the suggestion. We find the detailed model description missing. In the current version, we define the model at the beginning. In accordance with this change, we've also updated notations in section 1.3.
+		
+		\item 
+		$2,4$: "Under the monotonicity assumption on $w(\cdot)$"\dots
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the sentence \TBF{at}. 
+		
+		\item 
+		$2,10$: "allows for more general $w(\cdot)$." The results of [8] depend on the assumption that $p > 1/2.$" Next sentence should refer to [12], not [8], so you can't say "in the same paper".
+		\subitem \textbf{Response}: Thank you for the suggestion. We've also reworked this paragraph, to provide transition and comparisons between the "asymptotically free" case and "polynomially self-avoiding" case. \TBF{As explained in the current version, the parameter $p$ allows us to get SIRWs that are "interpolations" between asymptotically free ones with $p>\frac{1}{2}$, and "polynomially self-avoiding" ones. In view of the current work, the phase transition between convergence and non convergence occurs exactly at $p=0$ and $\alpha =0$. We hope these changes provide more motivations to why we study the asymptotically free case with $p\in(0,\frac{1}{2}]$. }
+		
+		
+		\item
+		$2,23$: "there exist universal conditions that allow one to pass \dots to a functional"\dots
+		\subitem \textbf{Response}: Thank you for pointing this out. We've corrected the sentence \TBF{at}. 
+		
+		\item
+		$2,-13$: "removing the assumption that $p > \frac{1}{2}$ and considering the full range $p\in (0,1]$". What about $p > 1$? Make a remark how (1.2) includes $p > 1$.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've added a remark to the current paper. Moreover, we find that the difference between the "asymptotically free" case and "polynomially self-repelling" case deserves more discussion. Since our model parameter range is $(0,\frac{1}{2}]$, we can view it closer to the "polynomially self-repelling" than to the weakly reinforced case, by varying parameter $p$. The non-convergence result in the "polynomially self-repelling" case might imply phase transition in the parameter range that we are working on, adding more motivation to the current work.
+		
+		
+		\item
+		$3,5$: give a page in reference [12].
+		\subitem \textbf{Response}: Thank you for the suggestion. \corr{the reference }{[8], p4 and [12],
+			p1340}
+		
+		
+		\item 
+		$3,11$: "standard Skorohod topology on $D([0,\infty))$". The preposition is needed, since $D([0,\infty))$ is not a topology. The same change is needed in the next theorem.
+		\subitem \textbf{Response}: Thank you for pointing the issue out. We've corrected both places.
+		
+		\item 
+		$3,-19$: "when the drift is experienced only at the extrema"\dots Also "the average \dots converges to \dots"
+		\subitem \textbf{Response}: Thank you for pointing them out. We've corrected the  corresponding places \TBF{at}.
+		
+		\item 
+		$4,6$: "Analysis of these two auxiliary processes is central\dots". Also "Lemmas 2.3--2.4" and "the accumulated drift". The last sentence of Section 1.2 is hard to digest, since [5] and [9] were written before your paper. Could it be that you are using their ideas rather than your approach works for the models in those papers?
+		\subitem \textbf{Response}: Thank you for pointing these issues out. We've updated related issues \TBF{at}, and removed the last sentence to avoid confusion.
+		
+		
+		\item 
+		$4,-7$: you explained that [12] deals with the case $p = 1$ only. Where in [12] can we find a statement	that the walk in your model is recurrent (also in which sense, as it is not a Markov process)? Explain recurrence of your walk carefully somewhere in the paper. You use this fact throughout the paper.
+		\subitem \textbf{Response}:
+		Thank you for your suggestion on explaining recurrence. We've added a reference page number "p1325" in [12] and some explanation after the reference page. \TBF{We also explain its connection with $\gamma<1$ right after (1.3)}. For $p=1$ the recurrence is a result due to Davis, and it is pointed out on page 2 of [8] that "\dots the original paper [12] considered only the case $p=\kappa= 1$ relevant results of that work can be exptended to $p\in (0,1]$ and $\kappa>0$". \TBF{We view recurrence as a property that is stable under variation of parameter $p$ in the range we are interested, and recurrence holds for a more general class.}
+		
+		Also, we define the model at the beginning of section 1, and remark that the model is non-Markov after the introduction of the transition probability (1.1). 
+		
+		
+		\item 
+		$5,10$: "Control of the martingale term." If one checks the reference, Theorem 18.2 in [1], one does not find the martingale CLT. Check your reference.
+		\subitem \textbf{Response}:
+		Thank you for pointing these issue. We've changed "the martingale CLT" to "the martingale functional limit theorem".
+		
+		
+		\item 
+		$5,-13$: "approximate the accumulated drift by a linear combination of its running maximum\dots". You do not mean the running maximum or minimum of the drift but those of the walk. Please correct the sentence.
+		\subitem \textbf{Response}:
+		Thank you for pointing out the ambiguity and your suggestion. We've corrected the sentence \TBF{at}.
+		
+		
+		\item 
+		$5,-4$: $\lambda_{x,m}$ is a random variable, so the event is naturally written as $\lambda_{x,m} = k$.
+		\subitem \textbf{Response}:
+		Thank you for pointing out the problem. We've corrected this issue \TBF{at}, and made similar changes throughout the paper.
+		
+		\item 
+		$6,9$: "To show (2.8)", not (2.7).
+		\subitem \textbf{Response}:
+		Thank you for pointing out the problem. We've made a more precise reference.
+		
+		\item 
+		$6,-14$: I do not understand the expression "projections of $(X_k)_{k\geq 0}$ on certain stopping times". Maybe "at certain stopping times"? Please give this expression a more precise meaning. Also "events\dots suffice", "events\dots require". Maybe "after we introduce the generalized\dots?
+		\subitem \textbf{Response}:
+		Thank you for pointing these issues out. \edt{This part deserves a careful reply.}
+		
+		\item 
+		$7,19$: "well-known from [9] and [8]". How about including [12]?
+		\subitem \textbf{Response}: Thank you for the suggestion. We've included [12] now because the preliminary results in section 3.4 are mostly from [8] and [12].
+		\TBF{Please also note that the appearance of Lemma 3.7 in its current form is from an analogous statement in [9], Corollary 3.9, and on page 38 of [8] the authors have mentioned that "the proof of Lemma 2.2 follows a strategy similar to the proofs of analogous statements" in [8,9] and Kosygina, Mountford (2011). }
+		
+		\item 
+		$7,-8$: define the red and the blue somewhere here, since you refer to these colors later.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've included a description right after (3.1).
+		
+		\item 
+		$7,-5$: "Also, we note that the law of \dots defined in (3.1) depends \dots
+		\subitem \textbf{Response}: Thank you for the suggestion. We've corrected the statement \TBF{at}.
+		
+		\item 
+		$7,-3$: "Since $X_0 = 0$, the local times $l(y, \lambda_y,0)$ and $r(y, \lambda_y,0)$ of undirected edges $\{y, y-1\}$ and $\{y, y+1 \}$ respectively at time $\lambda_{y,0}$ are". This is the first time you use this notation, so give a clear
+		definition.
+		\subitem \textbf{Response}: Thank you for the suggestion. In the current version, we use notations $l_{y}^{\lambda_{y,0}}$ and $r_{y}^{\lambda_{y,0}}$ that are defined at the beginning of section 1. 
+		
+		
+		\item 
+		$8,5$: "depend on $w(\cdot)$ and y as follows:"
+		Remark 3.2: "$w(\cdot)$ is positive and bounded away from $0$ and $\infty$." Say "stochastically bounded above by\dots and below by \dots " to make a precise statement. You will use this remark later.
+		\subitem \textbf{Response}: Thank you for the suggestion. The statement of Remark 3.2 is reworked. In addition to the suggested changes, we remark that each color is drawn from the urn infinitely often as a consequence of the recurrence of the walk.
+		
+		
+		\item 
+		$9,3$: "known from several"; "which are also used".
+		\subitem \textbf{Response}:  Thank you for pointing these out. We've corrected both places \TBF{at}. 
+		
+		\item 
+		$9,-11$: "local times at two consecutive sites satisfy"\dots
+		\subitem \textbf{Response}: Thank you for pointing this out. We've corrected the statement, and also added "for all $y\in \mathbb{Z}$" to distinguish (3.7) from (3.5) and (3.6) where we assume $y\geq x$.
+		
+		\item 
+		$10,15$: the meaning of "they" in "they follow" is not clear.
+		The last paragraph of Section 3.3: how (4.1)-(4.4) can be considered as an event on a single site?
+		Please re-phrase to clarify what you mean.
+		\subitem \textbf{Response}: Thank you for the suggestions. We've revised this paragraph. \edt{Add more description.}
+		
+		
+		\item 
+		$11,-12$: "the sequences of weights $(r(i), b(i))$, $i \geq 0$, are"\dots
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \TBF{at}. 
+		
+		\item 
+		Lemma 3.6: [8] refers to [12] for this lemma, so you should add a reference to [12] as well. Also "is a squared Bessel process of dimension\dots " (twice)
+		\subitem \textbf{Response}: Thank you for the suggestion. Theorem 1A [12] is added to the reference. And the mentioned statements related to the squared Bessel processes are revised in Lemma 3.6. 
+		
+		
+		\item 
+		$12,-2$: $\tau^{\mathcal{B},0}_{\sqrt{Kn}}$ should be (see your own notation right under (3.3)) $\tau^{\mathcal{B}}_{\sqrt{Kn},0}$. The same correction is
+		needed throughout the next few pages. Also "exactly one of the following occurs:"
+		\subitem \textbf{Response}:  Thank you for suggesting these improvements. We've corrected related notations to keep them consistent throughout section 4. This statement and the second inequality $L(y, \lambda_{0,m_{n,K}} )>L(y,n)$ below it are corrected.
+		
+		\item 
+		$13,1$: the first inequality is strict, $> L(y, n)$.
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \TBF{at}.
+		
+		\item 
+		$13,6$: do you also need a subscript + for the edge local times?
+		\subitem \textbf{Response}: Thank you for pointing the inconsistency among notations. We've replaced notations in this equation with $\mathcal{E}_{y,+}^{(0,m_{n,K})}  $.
+		
+		\item 
+		$13,-12$: "provide control on the process extrema". Also "local time processes", "branching-like processes".
+		\subitem \textbf{Response}: Thank you for pointing them out.  We've corrected the statements \TBF{at}. 
+		
+		\item 
+		$14,5$: the notation $\tau^{\mathcal{B}}_{i,y}$ has been already introduced (right after (3.3)). Continue to use it and correct all occurrences above and below.
+		\subitem \textbf{Response}: Thank you for pointing the inconsistency in notations. We've correct all relevant places, especially those in section 4. 
+		
+		\item 
+		$14,-15$: the range of $y$ in the first sum of the second term is incorrect. Compare with the range of $y$ in the first term.
+		\subitem \textbf{Response}: Thank you for pointing this out. We've corrected the ranges for $y$ in this computation.
+		
+		\item
+		$15,2$: "Calculations in the cases $x = 0$ and $x < 0$ are slightly different but yield the same bound". Correct the accent in P\"{o}lya.
+		\subitem \textbf{Response}:
+		Thank you for the suggestions. We've made relevant changes \TBF{at}.
+		
+		\item 
+		$16,11$: Big O depends on $j$ as well.
+		\subitem \textbf{Response}: Thank you for pointing this out. We've made relevant changes and add explanations together with those for the next point.
+		
+		\item 
+		$16,13$: from 13 to 14 you seem to use the inequality $(x, x_0, p > 0)$
+		$$
+		\abs{\frac{1}{x^p} - \frac{1}{x_0^p}} \leq \frac{p}{\left(x\wedge x_0 \right)^{p+1}} \abs{x-x_0},
+		$$
+		where $x = 2j$ and $x_0 = 2i + 1$. Taking maximum over $j$ such that $\abs{j-i}\leq  2\sqrt{i} \log^2 n$
+		we see that the maximum is attained at $j = i- 2\sqrt{i} \log^2 n$ so that $x\wedge x_0 = 2\left( i- 2\sqrt{i} \log^2 n
+		\right) = 2i - 4 \sqrt{i} \log^2 n$
+		and the denominator is $(2i - 4\sqrt{i} \log^2 n)^{p+1}$ rather than $(2i-2\sqrt{i} \log^2 n)^{p+1}$. But for $i = 4 \log^4 n$ the corrected
+		value of the denominator is $0$, which ruins the bound. I suggest to replace $4 \log^4 n$ with $16 \log^4 n$ in the lower limit of the sum. Moreover, say somewhere that $C_{w,p}$ might change from line to line.
+		\subitem \textbf{Response}: Thank you for suggesting a new lower limit $16 \log^4 n $. We agree that $16 \log^4 n$ provides a denominator of size $O\left(i^{(p+1)}\right)$. We've corrected the lower limit to $16\log^4 n$ and add relevant explanations between lines of inequalities.  \TBF{Maybe the referee also suggests us to explain more details (similar to those before "I suggest to replace").}
+		
+		
+		\item
+		$17,7$: Index $i$ seem to count the local time at x and changes from M (see the last sum in (4.9)) to the local time at $x$ by time $N$. In line 8 you start counting from the time $\tau_M^{\mathcal{B}}$ when the $M$-th blue ball is drawn. 
+		This is typically larger than the time of the $M$-th visit to $x$. Some adjustments in these lines or (4.9) are needed.
+		\subitem \textbf{Response}: Thank you for pointing out that $\tau_M^{\mathcal{B}} > M $ in general. \TBF{We find this manageable with the good event. Due to the difference between $M$ and $\tau^{\mathcal{B}}_M$, we need to estimate a 
+			term (for each $x$) that is a sum of $\tau^{\mathcal{B}}_M -M$ squares, 
+			$$
+			\sum_{i = M }^{\tau_M^\mathcal{B}} \mathbb{E}\left[\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i} \vert \mathcal{F}_i^{\mathcal{B},\mathcal{R}} \right]^2 \leq \tau_M^\mathcal{B}- M,
+			$$
+			where we use the fact that $\abs{\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i}} \leq 1$. On the good event $G_{n,K,t}$, $\tau_M^\mathcal{B}- M$ is further bounded by $M+\sqrt{M}\log^2 n$. Together with the upper bound $M+C_{w,p,M} \log^9 N$ for the other terms, we get an upper bound of size $O(\log^9 N)$. In the current version, this upper bound is improved to $O(\log^6 N)$ when we replace $M$ by $16\log^2 N$ and apply a similar argument, please see the detailed argument. We believe one can get a sharper bound of size $O(\log^4 N)$ but the current estimate $O(\log^6 N)$ is sufficient for our purpose.
+		}	
+		
+		\item 
+		$18,-4$: "bounded" should be replaced by "finite", since you are not claiming that the expression is bounded in $m$.
+		\subitem \textbf{Response}:  Thank you for pointing out this on page $17$. We agree that "finite" is more precise.  We've corrected the statement \TBF{at}. 
+		
+		\item 
+		$19,-9$: "depending on whether $\mathcal{E}^{k-1}_{y-1,+} \leq M$ or not,\dots are bounded by $C(M)$ or $C(0)$".
+		\subitem \textbf{Response}: Thank you for the suggestion on this statement. We've corrected the first half. For the second half of the statement, "$C(0)$ or $C(M)$" seems to be the right one \TBF{because we bound the first $M+1$ values with a larger number $C(0)$, and bound terms in the tail with $C(M)$.  }
+		
+		\item 
+		$20,-6$: In (4.23) I am getting $\log^{-8} n$ in the first line and $\log^{-10} n$ in the second due to squaring in Azuma's inequality and Lemma 4.2. The same change is needed in the last formula of the paper on p. 21.
+		\subitem \textbf{Response}:  Thank you for pointing these out. We agree that these two bounds should $\log^{-8} n $ and $\log^{-10} n$. We've made corresponding changes in (4.23) and the last inequality in this proof.
+		
+		\item 
+		$21,6$: "uniformly in $k\geq 0$".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}. 
+		
+		\item 
+		$21,11$: It is not clear what is meant by "a sum of $\left(\mathcal{E}^{(x,m)}_{x,+} +1 \right)^2$ pairwise products". Please re-phrase or explain.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've made relevant changes in the proof of Lemma 2.4. \TBF{Since $\abs{\Delta_{x+1}^{(x,m)}}$ is stochastically dominated by a sum of $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)$ i.i.d random variables, we get an upper bound for $\abs{\Delta_{x+1}^{(x,m)}}^2$ that can be written as a sum of  $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)^2$ products. } 
+	\end{itemize}
+	
+	\newpage
+	\subsection*{Response to Report EJP2407-019R1R2}
+	\begin{itemize}
+		\item[1] (p3, 3 lines after Theorem 1.3). "\dots this is to approximate \textbf{the} drift\dots".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		
+		
+		\item[2] You may want to mention that your proof of Theorem 1.3 can also recover the case $p > \frac{1}{2}$.
+		\subitem \textbf{Response}:  Thank you for the suggestion. We've made a remark "our proof of Theorem 1.3 can also recover the case when $p \in \left(\frac{1}{2}, 1\right] $" at the end of the first paragraph below Theorem 1.3.
+		
+		
+		\item[3] (p4, last sentence before subsection 1.2). What do you mean by "Then our approach works on one-dimensional ERW, such [5], [9]". Please elaborate a bit more or consider removing the sentence.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've removed this sentence to avoid confusion. 
+		
+		
+		\item[4] (p6, line 4) "\dots , we see that Lemma 2.2 \textbf{will} follow if we can prove \dots".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		
+		
+		\item[5] (p6, just before step 3). You could more precisely reference the "good event" you are	speaking of by providing the specific location where it is defined.
+		\subitem \textbf{Response}: Thank you for the suggestion. \edt{We've reworked the description over this paragraph. We can give a description.}
+		
+		\item[6](p7, line -5). "Also, we note that \textbf{the law of $\left(\mathcal{B}_i^{(y)}
+			,\mathcal{R}_i^{(y)} \right)$} defined in (3.1) \dots ".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement.
+		
+		
+		\item[7] (p8, Remark 3.2). You might also mention that, in particular, each color is drawn from the
+		urn infinitely often, almost surely (which is also seen as a consequence of the recurrence of
+		the process).
+		\subitem \textbf{Response}:  Thank you for the suggestion. We've added the suggested remark to the end of Remark 3.2.
+		
+		
+		
+		\item[8] (p9, line 5). ".\dots it is natural to assume that $x \geq 0$ and $m \geq 0$ \dots".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've updated the statement. \TBF{Please note that we only assume $x\geq 0$ in this subsection and in the proofs of Lemmas 4.2 and 2.1 (in subsections 4.1 and 4.2). This assumption is made to simplify our arguments and to emphasize the symmetry of the model, which is mentioned in Remark 3.1.}
+		
+		\item [9] (p10, last sentence before Lemma 3.3). "The identity (3.10) below is not used directly\dots but we use its more explicit formula \dots ". I believe you are referring to (3.12) here, so it would be helpful to say so. Additionally, you might consider including the full formula directly in the statement of the Lemma.
+		\subitem \textbf{Response}: Thank you for the suggestions. We agree that \TBF{we've reworked Lemma 3.3.}\edt{We should probably describe in words what we have in the reworked Lemma 3.3.}
+		
+		\item [10] (p9, Lemma 3.3, eq (3.11)). Please recall that $\mathcal{D}$ is defined in (3.4). I believe this is its first appearance, and it may be helpful to reintroduce the notation for clarity.
+		\subitem \textbf{Response}:  Thank you for the suggestion. \TBF{ We've reworked the statement of Lemma 3.3. }
+		
+		
+		
+		\item [11] (p11, line 1) "where $(r_y(i),b_y(i))_{i\geq 0}"$ \dots (missing subscript $y$).
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		
+		
+		\item[12] (p12, line 3). The notation $S_k(\lambda)$ is confusing, as it has already been used for the running supremum of the walk. Please consider using a different letter (since it is only used once).
+		\subitem \textbf{Response}:  Thank you for the suggestion.  We've changed the notation to \TBF{${W}_k(\lambda) $} .
+		
+		
+		\item[13] (p12, Lemma 3.7). In the centered formula, remove the $X$ in $I^X_{n-1}$
+		and $S^X_{n-1}$ under the summation sign to maintain consistency with the notation from subsection 1.3 (1). This same inconsistency between $I^X_n /I_n$ and $S^X_n/S_n$ also appears later on: p16 (lines 2 and 3), p17 (line 7), and p19 (lines 3 and 5).
+		\subitem \textbf{Response}:  Thank you for pointing out the inconsistency with notations.  We've changed the notations to $I_n$ and $S_n$ and made relevant changes throughout the paper.
+		
+		
+		\item [14] (p18, line 8) "\dots for any $m > 100$ \dots ". Maybe simply say, "for $m$ sufficiently large".
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		
+		
+		
+		\item [15] (p18, middle of the page). The formula after "\dots On the other hand, Lemma 3.4 implies that" appears to be missing an expectation on the left-hand side of the inequality.
+		\subitem \textbf{Response}:  Thank you for pointing this out. We've corrected the term \TBF{at}.
+		
+		\item [16] (p21). Could you provide slightly more detail about how the inequality at the top of the page is obtained?
+		\subitem \textbf{Response}: Thank you for the suggestion. \edt{This part might deserve a little more description other than those parts mentioned in the "List of Change" and the last response to Reviewer 1.}
+		
+		
+	\end{itemize}
+\end{document}
