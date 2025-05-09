@@ -49,11 +49,11 @@
 %\usepackage[inline]{enumitem}
 \usepackage{mathrsfs}
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\usepackage[inline, left, ]{showlabels} %Note: add "final" option to turn off labels.
+% \usepackage[inline, left, ]{showlabels} %Note: add "final" option to turn off labels.
 % \renewcommand{\showlabelfont}{\small\color{lightgray}}
 % \newcommand{\comment}[1]{\textcolor{blue}{(Comment: #1)}}
-\usepackage[pagewise]{lineno}
-\linenumbers
+% \usepackage[pagewise]{lineno}
+% \linenumbers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                               %%
 %% Shorttitle (please edit and customize for running heading):   %%
@@ -1250,8 +1250,8 @@ At $\lambda_{x, m}$, the sum in Lemma~\ref{lm: approx local drift by conditional
 	\begin{align*}
 	&\mathbb{1}(G_{n, K, t}) \left| 
 	\sum_{y > x} \tilde\rho_y^{(x,m)} - \rho_y^{(x,m)}
-	\right|
-	\le \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) 
+	\right|\\
+	&\le \sum_{y = x + 1}^{K \sqrt{n} } \mathbb{1}\left(G_{n, K}^{(x,m)}(y-1)\right) 
 	\left|  \mathbb{E}\left[ \Delta_y^{(x,m)}\mathbb{1}\left( \left( G_{n, K^2}^{(x,m)}(y) \right) ^c \right) \middle| \mathcal{H}_{y-1, +}^{(x,m)}  \right] \right| \\
 	& \le \sum_{y = x + 1}^{K \sqrt{n} } 
 	\sqrt{
