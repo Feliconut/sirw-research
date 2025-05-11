@@ -45,10 +45,12 @@
 \def\mathbi#1{\textbf{\em #1}}
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 
-\newcommand{\corr}[2]{We've changed {\textcolor{red}{#1}} to {\textcolor{blue}{#2}}.}
+\newcommand{\corr}[2]{We've changed {\textcolor{black}{#1}} to {\textcolor{black}{#2}}.}
 \newcommand{\edt}[1]{\textcolor{purple}{#1}} % to be decided
-\def\TBF#1{\textcolor{red}{#1}} %to be filled
+\newcommand{\PL}[2]{\textcolor{black}{on page {#1}, line {#2}}}
+\def\TBF#1{\textcolor{black}{#1}} %to be filled
 \def\TBC#1{\textcolor{red}{#1}} %to be checked in the final one
+
 
 
 \begin{document}
@@ -56,7 +58,8 @@
 	
 	Thank you for your time and for the referees' comments concerning our paper "Scaling Limit of Asymptotically-free Self-interacting
 	Random Walks to Brownian Motion Perturbed at
-	Extrema". We are grateful for the insightful comments on and valuable improvements to our paper. We have studied them carefully and have incorporated most of the suggestions made by the reviewers. Please see the attachments for our revised paper, as well as a copy of the original paper with revised potions highlighted in \edt{color}.
+	Extrema". We are grateful for the insightful comments on and valuable improvements to our paper. We have studied them carefully and have incorporated most of the suggestions made by the reviewers. Please see the attachments for our revised paper. 
+%	as well as a copy of the original paper with revised potions highlighted in \edt{color}.
 	We summarize major changes according to sections and also address the point-by-point responses to the Referees' comments after the list.
 	
 	\section*{List of Changes}
@@ -74,7 +77,7 @@
 		
 		\item Introduction: The major change is the discussion before section 1.1. We add comparisons between the asymptotically free case and the polynomially self-repelling case to provide motivations of current work on determining the location of phase transition between $p\geq \frac{1}{2}$ asymptotically free case and the polynomially self-repelling case: exactly at $p = 0$ and $\alpha = 0$.
 		
-		\item Section 3:  Statements of Remark 3.2, Lemma 3.3 and the discussion before section 3.4 have been revised. \TBF{We revised Remark 3.2 to give more precise statement for stochastic bounds of $\tau_{i+1}^{\mathcal{B}}-\tau_{i}^{\mathcal{B}}$. The statement of Lemma 3.3 is revised to provide better references in analysis to be done in section 4.}
+		\item Section 3:  Statements of Remark 3.2, Lemma 3.3 and the discussion before section 3.4 have been revised. We revised Remark 3.2 to give more precise statement for stochastic bounds of $\tau_{i+1}^{\mathcal{B}}-\tau_{i}^{\mathcal{B}}$. The statement of Lemma 3.3 is revised to provide better references in analysis to be done in section 4.
 		In the new discussion, we explain that "good events" are intersections of "typical events" on local sites, and obtaining estimates involving "good events" comes down to getting finer estimates for local problems.
 		
 		
@@ -98,7 +101,7 @@
 		
 		\subitem \textbf{Response}:  Thank you for your suggestions. The title is changed to "Convergence of scaled asymptotically-free
 		self-interacting random walks to Brownian motion
-		perturbed at extrema". Also, the short-title is changed to "Convergence of AF-SIRW to BMPE". 
+		perturbed at extrema". Also, the running head is changed to "Convergence of AF-SIRW to BMPE". 
 		
 		\item 
 		$1,1$: the abstract should be readable on its own. It is not clear what $p$ is. Expand the abstract by stating the transitions in words (see, for example, paragraph in the detailed description).
@@ -106,11 +109,11 @@
 		
 		\item 
 		$1,(1.1)$ and the definition of $l_x^k$, $r_x^k$: these are random variables which depend on the path by time $k$. You can drop the dependence on the path from the notation later but it is not all right as written:	if you only have $k$ and $x$, then you can't compute these quantities. Overall, the model should be defined properly: start with some probability space, and so on.
-		\subitem \textbf{Response}: Thank you for the suggestion. We find the detailed model description missing. In the current version, we define the model at the beginning. In accordance with this change, we've updated notations in section 1.3.
+		\subitem \textbf{Response}: Thank you for the suggestions. We find the detailed model description missing. In the current version, we define the model at the beginning. The local times $l_x^k$ and $r_x^k$ are also introduced with more care.  In accordance with these changes, we've updated notations in section 1.3.
 		
 		\item 
 		$2,4$: "Under the monotonicity assumption on $w(\cdot)$"\dots
-		\subitem \textbf{Response}: Thank you for pointing this out.  We've corrected the sentence \TBF{at}. 
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've corrected the sentence \PL{2}{10}. 
 		
 		\item 
 		$2,10$: "allows for more general $w(\cdot)$." The results of [8] depend on the assumption that $p > 1/2.$" Next sentence should refer to [12], not [8], so you can't say "in the same paper".
@@ -119,11 +122,11 @@
 		
 		\item
 		$2,23$: "there exist universal conditions that allow one to pass \dots to a functional"\dots
-		\subitem \textbf{Response}: Thank you for pointing this out. We've corrected the sentence \TBF{at}. 
+		\subitem \textbf{Response}: Thank you for pointing this out. We've corrected the sentence \PL{2}{-14}. 
 		
 		\item
 		$2,-13$: "removing the assumption that $p > \frac{1}{2}$ and considering the full range $p\in (0,1]$". What about $p > 1$? Make a remark how (1.2) includes $p > 1$.
-		\subitem \textbf{Response}: Thank you for the suggestion. We've added a remark to the current paper at \TBF{(page 2, line 14)}. Moreover, we find that the difference between the "asymptotically free" case and "polynomially self-repelling" case deserves more discussion. Since our model parameter range is $(0,\frac{1}{2}]$, we can view it closer to the "polynomially self-repelling" than to the weakly reinforced case, by varying parameter $p$. The non-convergence result in the "polynomially self-repelling" case might imply phase transition in the parameter range that we are working on, adding more motivation to the current work.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've added a remark to the current paper \PL{2}{17}, and revised the discussion before section 1.1. We find that the difference between the "asymptotically free" case and "polynomially self-repelling" case deserves more discussion. Since our model parameter range is $(0,\frac{1}{2}]$, we can view it closer to the "polynomially self-repelling" than to the weakly reinforced case, by varying the parameter $p$. The non-convergence result in the "polynomially self-repelling" case implies that there exists one phase transition in the parameter range that we are working on, and our work confirms that there is exactly one at the boundary when $p=0$. 
 		
 		
 		\item
@@ -138,36 +141,36 @@
 		
 		\item 
 		$3,-19$: "when the drift is experienced only at the extrema"\dots Also "the average \dots converges to \dots"
-		\subitem \textbf{Response}: Thank you for pointing them out. We've corrected the  corresponding places \TBF{at}.
+		\subitem \textbf{Response}: Thank you for pointing them out. We've corrected the  corresponding places \PL{4}{1} and \PL{4}{4}.
 		
 		\item 
 		$4,6$: "Analysis of these two auxiliary processes is central\dots". Also "Lemmas 2.3--2.4" and "the accumulated drift". The last sentence of Section 1.2 is hard to digest, since [5] and [9] were written before your paper. Could it be that you are using their ideas rather than your approach works for the models in those papers?
-		\subitem \textbf{Response}: Thank you for pointing these issues out. We've updated related issues \TBF{at}, and removed the last sentence to avoid confusion.
+		\subitem \textbf{Response}: Thank you for pointing these issues out. We've updated related issues \PL{4}{27, 30, and 32}, and removed the last sentence to avoid confusion.
 		
 		
 		\item 
 		$4,-7$: you explained that [12] deals with the case $p = 1$ only. Where in [12] can we find a statement	that the walk in your model is recurrent (also in which sense, as it is not a Markov process)? Explain recurrence of your walk carefully somewhere in the paper. You use this fact throughout the paper.
 		\subitem \textbf{Response}:
-		Thank you for your suggestion on explaining recurrence. We've added a reference page number "p1325" in [12] and some explanation after the reference page. \TBC{We also explain its connection with $\gamma<1$ right after (1.3)}. According to [12], the recurrence for the case $p=1$ follows from a result due to Davis, and it is pointed out on page 2 of [8] that "\dots the original paper [12] considered only the case $p=\kappa= 1$ relevant results of that work can be exptended to $p\in (0,1]$ and $\kappa>0$". Therefore, we view recurrence as a property that is stable under the variation of parameter $p$ in the range we are interested, and recurrence holds for a more general class of models, as pointed out in [12], p1325.
+		Thank you for your suggestion on explaining recurrence. We've added a reference page number "p1325" in [12] \PL{5}{13}. We also explain its connection with $\gamma<1$ right after (1.3). According to [12], the recurrence for the case $p=1$ follows from a result due to Davis, and it is pointed out on page 2 of [8] that "\dots the original paper [12] considered only the case $p=\kappa= 1$ relevant results of that work can be exptended to $p\in (0,1]$ and $\kappa>0$". Therefore, we view recurrence as a property that is stable under the variation of parameter $p$ in the range we are interested, and recurrence holds for a more general class of models, as pointed out in [12], p1325.
 		Lastly, we define the model at the beginning of section 1, and remark that the model is non-Markov after the introduction of the transition probability (1.1). 
 		
 		
 		\item 
 		$5,10$: "Control of the martingale term." If one checks the reference, Theorem 18.2 in [1], one does not find the martingale CLT. Check your reference.
 		\subitem \textbf{Response}:
-		Thank you for pointing out these issue. We've changed "the martingale CLT" to "the martingale functional limit theorem".
+		Thank you for pointing out these issue. We've changed "the martingale CLT" to "the martingale functional limit theorem" \PL{5}{-8}.
 		
 		
 		\item 
 		$5,-13$: "approximate the accumulated drift by a linear combination of its running maximum\dots". You do not mean the running maximum or minimum of the drift but those of the walk. Please correct the sentence.
 		\subitem \textbf{Response}:
-		Thank you for pointing out the ambiguity and your suggestion. We've corrected the sentence \TBF{at}.
+		Thank you for pointing out the ambiguity and your suggestion. We've corrected the sentence \PL{6}{3}.
 		
 		
 		\item 
 		$5,-4$: $\lambda_{x,m}$ is a random variable, so the event is naturally written as $\lambda_{x,m} = k$.
 		\subitem \textbf{Response}:
-		Thank you for pointing out the problem. We've corrected this issue \TBF{at}, and made similar changes throughout the paper.
+		Thank you for pointing out the problem. We've corrected this issue \PL{6}{13}, and made similar changes throughout the paper.
 		
 		\item 
 		$6,9$: "To show (2.8)", not (2.7).
@@ -177,7 +180,7 @@
 		\item 
 		$6,-14$: I do not understand the expression "projections of $(X_k)_{k\geq 0}$ on certain stopping times". Maybe "at certain stopping times"? Please give this expression a more precise meaning. Also "events\dots suffice", "events\dots require". Maybe "after we introduce the generalized\dots?
 		\subitem \textbf{Response}:
-		Thank you for pointing these issues out. \TBF{This paragraph is reworked. We have changed the description to "Both processes are constructed from path of $X_k$ up to certain stopping times" \TBF{at}. We've also added transition to introduce "good events". Roughly speaking, on "good events", fluctuations around conditional expectation are more regular, and we can use classical analytical tools to estimate the fluctuations corresponding to different cases. Since the particular definitions of good events and their applications will be given in section 4, we only give a brief discussion at this point.}
+		Thank you for pointing these issues out. This paragraph is reworked. We have changed the description to "Both processes are constructed from path of $X_k$ up to certain stopping times" \PL{7}{7}. We've also added transition to introduce "good events". Roughly speaking, on "good events", fluctuations around conditional expectation are more regular, and we can use classical analytical tools to estimate the fluctuations corresponding to different cases. Since the particular definitions of good events and their applications will be given in section 4, we only give a brief discussion at this point.
 		
 		\item 
 		$7,19$: "well-known from [9] and [8]". How about including [12]?
@@ -190,12 +193,12 @@
 		
 		\item 
 		$7,-5$: "Also, we note that the law of \dots defined in (3.1) depends \dots
-		\subitem \textbf{Response}: Thank you for the suggestion. We've corrected the statement \TBF{at}.
+		\subitem \textbf{Response}: Thank you for the suggestion. We've corrected the statement \PL{8}{16}.
 		
 		\item 
 		$7,-3$: "Since $X_0 = 0$, the local times $l(y, \lambda_y,0)$ and $r(y, \lambda_y,0)$ of undirected edges $\{y, y-1\}$ and $\{y, y+1 \}$ respectively at time $\lambda_{y,0}$ are". This is the first time you use this notation, so give a clear
 		definition.
-		\subitem \textbf{Response}: Thank you for the suggestion. In the current version, we use notations $l_{y}^{\lambda_{y,0}}$ and $r_{y}^{\lambda_{y,0}}$ that are defined at the beginning of section 1. 
+		\subitem \textbf{Response}: Thank you for the suggestion. In the current version of (3.2), we use notations $l_{y}^{\lambda_{y,0}}$ and $r_{y}^{\lambda_{y,0}}$ that are defined at the beginning of section 1. 
 		
 		
 		\item 
@@ -206,7 +209,7 @@
 		
 		\item 
 		$9,3$: "known from several"; "which are also used".
-		\subitem \textbf{Response}:  Thank you for pointing these out. We've corrected both places \TBF{at}. 
+		\subitem \textbf{Response}:  Thank you for pointing these out. We've corrected both places \PL{9}{-13 and line -11}. 
 		
 		\item 
 		$9,-11$: "local times at two consecutive sites satisfy"\dots
@@ -216,12 +219,12 @@
 		$10,15$: the meaning of "they" in "they follow" is not clear.
 		The last paragraph of Section 3.3: how (4.1)-(4.4) can be considered as an event on a single site?
 		Please re-phrase to clarify what you mean.
-		\subitem \textbf{Response}: Thank you for the suggestions. \TBF{Please note that both paragraphs and the statement of Lemma 3.3 are revised. In the paragraph before Lemma 3.3, we changed the sentence to "These two identities imply \dots but not $\mathcal{G}_{y,+}^{(x,m)}$- measurable."} \TBF{In the last paragraph of section 3.3, we explain that the good event $G_{n,K,t}$ is built from taking intersections of typical events associated to single sits, (Maybe) which is also illustrated via (4.8). }
+		\subitem \textbf{Response}: Thank you for the suggestions. Please note that both paragraphs and the statement of Lemma 3.3 are revised. In the paragraph before Lemma 3.3, we changed the sentence to "These two identities imply \dots but not $\mathcal{G}_{y,+}^{(x,m)}$- measurable." In the last paragraph of section 3.3, we explain that the good event $G_{n,K,t}$ is built from taking intersections of typical events associated to single sites, which is also illustrated via (4.8). 
 		
 		
 		\item 
 		$11,-12$: "the sequences of weights $(r(i), b(i))$, $i \geq 0$, are"\dots
-		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \TBF{at}. 
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \PL{12}{10}. 
 		
 		\item 
 		Lemma 3.6: [8] refers to [12] for this lemma, so you should add a reference to [12] as well. Also "is a squared Bessel process of dimension\dots " (twice)
@@ -231,11 +234,11 @@
 		\item 
 		$12,-2$: $\tau^{\mathcal{B},0}_{\sqrt{Kn}}$ should be (see your own notation right under (3.3)) $\tau^{\mathcal{B}}_{\sqrt{Kn},0}$. The same correction is
 		needed throughout the next few pages. Also "exactly one of the following occurs:"
-		\subitem \textbf{Response}:  Thank you for suggesting these improvements. We've corrected related notations to keep them consistent throughout section 4. This statement and the second inequality $L(y, \lambda_{0,m_{n,K}} )>L(y,n)$ below it are corrected.
+		\subitem \textbf{Response}:  Thank you for suggesting these improvements. We've corrected related notations to keep them consistent throughout section 4. This statement \PL{13}{18} and the second inequality $L(y, \lambda_{0,m_{n,K}} )>L(y,n)$ below it are corrected.
 		
 		\item 
 		$13,1$: the first inequality is strict, $> L(y, n)$.
-		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \TBF{at}.
+		\subitem \textbf{Response}: Thank you for pointing this out.  We've updated the statement \PL{13}{20}.
 		
 		\item 
 		$13,6$: do you also need a subscript + for the edge local times?
@@ -243,7 +246,7 @@
 		
 		\item 
 		$13,-12$: "provide control on the process extrema". Also "local time processes", "branching-like processes".
-		\subitem \textbf{Response}: Thank you for pointing them out.  We've corrected the statements \TBF{at}. 
+		\subitem \textbf{Response}: Thank you for pointing them out.  We've corrected the statements \PL{14}{3, 6, and 7}. 
 		
 		\item 
 		$14,5$: the notation $\tau^{\mathcal{B}}_{i,y}$ has been already introduced (right after (3.3)). Continue to use it and correct all occurrences above and below.
@@ -256,7 +259,7 @@
 		\item
 		$15,2$: "Calculations in the cases $x = 0$ and $x < 0$ are slightly different but yield the same bound". Correct the accent in P\"{o}lya.
 		\subitem \textbf{Response}:
-		Thank you for the suggestions. We've made relevant changes \TBF{at}.
+		Thank you for the suggestions. We've made relevant changes \PL{15}{-5}.
 		
 		\item 
 		$16,11$: Big O depends on $j$ as well.
@@ -272,23 +275,24 @@
 		\right) = 2i - 4 \sqrt{i} \log^2 n$
 		and the denominator is $(2i - 4\sqrt{i} \log^2 n)^{p+1}$ rather than $(2i-2\sqrt{i} \log^2 n)^{p+1}$. But for $i = 4 \log^4 n$ the corrected
 		value of the denominator is $0$, which ruins the bound. I suggest to replace $4 \log^4 n$ with $16 \log^4 n$ in the lower limit of the sum. Moreover, say somewhere that $C_{w,p}$ might change from line to line.
-		\subitem \textbf{Response}: Thank you for suggesting a new lower limit $16 \log^4 n $. We agree that $16 \log^4 n$ provides a denominator of size $O\left(i^{(p+1)}\right)$. We've corrected the lower limit to $16\log^4 n$ and add relevant explanations between lines of inequalities. 
+		\subitem \textbf{Response}: Thank you for suggesting a new lower limit $16 \log^4 n $. We agree that $16 \log^4 n$ provides a denominator of size $O\left(i^{(p+1)}\right)$. We've corrected the lower limit to $16\log^4 n$ and add relevant explanations between lines of inequalities \PL{16}{6-11}. 
 		
 		
 		\item
 		$17,7$: Index $i$ seem to count the local time at x and changes from M (see the last sum in (4.9)) to the local time at $x$ by time $N$. In line 8 you start counting from the time $\tau_M^{\mathcal{B}}$ when the $M$-th blue ball is drawn. 
 		This is typically larger than the time of the $M$-th visit to $x$. Some adjustments in these lines or (4.9) are needed.
 		\subitem \textbf{Response}: Thank you for pointing out that $\tau_M^{\mathcal{B}} > M $ in general. We find this manageable with the good event $G_{n,K,t}$. Due to the difference between $M$ and $\tau^{\mathcal{B}}_M$, we need to estimate a 
-			term (for each $x$) that is a sum of $\tau^{\mathcal{B}}_M -M$ squares, 
-			$$
-			\sum_{i = M }^{\tau_M^\mathcal{B}} \mathbb{E}\left[\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i} \vert \mathcal{F}_i^{\mathcal{B},\mathcal{R}} \right]^2 \leq \tau_M^\mathcal{B}- M,
-			$$
-			where we use the fact that $\abs{\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i}} \leq 1$. On the good event $G_{n,K,t}$, $\tau_M^\mathcal{B}- M$ is further bounded by $M+\sqrt{M}\log^2 n$. Together with the upper bound $M+C_{w,p,M} \log^9 N$ for the other terms, we get an upper bound of size $O(\log^9 N)$. In the current version, this upper bound is improved to $O(\log^6 N)$ when we replace $M$ by $16\log^2 N$ and apply a similar argument, see argument \TBF{at} for details. We believe one can get a sharper bound of size $O(\log^4 N)$ but the current estimate $O(\log^6 N)$ is sufficient for our purpose.
-			
+		term (for each $x$) that is a sum of $\tau^{\mathcal{B}}_M -M$ squares, 
+		$$
+		\sum_{i = M }^{\tau_M^\mathcal{B}} \mathbb{E}\left[\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i} \vert \mathcal{F}_i^{\mathcal{B},\mathcal{R}} \right]^2 \leq \tau_M^\mathcal{B}- M,
+		$$
+		where we use the fact that $\abs{\mathcal{D}^{(x)}_{i+1}-\mathcal{D}^{(x)}_{i}} \leq 1$. On the good event $G_{n,K,t}$, $\tau_M^\mathcal{B}- M$ is further bounded by $M+\sqrt{M}\log^2 n$. Together with the upper bound $M+C_{w,p,M} \log^9 N$ for the other terms, we get an upper bound of size $O(\log^9 N)$. In the current version, this upper bound is improved to $O(\log^6 N)$ when we replace $M$ by $16\log^2 N$ and apply a similar argument, see argument \TBF{on page 17} for details.
+		We believe one can get a sharper bound of size $O(\log^4 N)$ but the current estimate $O(\log^6 N)$ is sufficient for our purpose.
+		
 		
 		\item 
 		$18,-4$: "bounded" should be replaced by "finite", since you are not claiming that the expression is bounded in $m$.
-		\subitem \textbf{Response}:  Thank you for pointing out this on page $17$. We agree that word "finite" is more precise.  We've corrected the statement \TBF{at}. 
+		\subitem \textbf{Response}:  Thank you for pointing out this on page $17$ in the earlier version. We agree that word "finite" is more precise.  We've corrected the statement \PL{18}{-4}. 
 		
 		\item 
 		$19,-9$: "depending on whether $\mathcal{E}^{k-1}_{y-1,+} \leq M$ or not,\dots are bounded by $C(M)$ or $C(0)$".
@@ -300,18 +304,18 @@
 		
 		\item 
 		$21,6$: "uniformly in $k\geq 0$".
-		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}. 
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \PL{22}{13}. 
 		
 		\item 
 		$21,11$: It is not clear what is meant by "a sum of $\left(\mathcal{E}^{(x,m)}_{x,+} +1 \right)^2$ pairwise products". Please re-phrase or explain.
-		\subitem \textbf{Response}: Thank you for the suggestion. We've made relevant changes in the proof of Lemma 2.4. Since $\abs{\Delta_{x+1}^{(x,m)}}$ is stochastically dominated by a sum of $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)$ i.i.d random variables, we get an upper bound for $\abs{\Delta_{x+1}^{(x,m)}}^2$ that can be written as a sum of  $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)^2$ products. 
+		\subitem \textbf{Response}: Thank you for the suggestion. We've made relevant changes in the proof of Lemma 2.4 \PL{22}{-3}. Since $\abs{\Delta_{x+1}^{(x,m)}}$ is stochastically dominated by a sum of $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)$ i.i.d random variables, we get an upper bound for $\abs{\Delta_{x+1}^{(x,m)}}^2$ that can be written as a sum of  $\left(\mathcal{E}^{(x,m)}_{x,+} +1\right)^2$ products. 
 	\end{itemize}
 	
 	\newpage
 	\subsection*{Response to Report EJP2407-019R1R2}
 	\begin{itemize}
 		\item[1] (p3, 3 lines after Theorem 1.3). "\dots this is to approximate \textbf{the} drift\dots".
-		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \PL{3}{29}.
 		
 		
 		\item[2] You may want to mention that your proof of Theorem 1.3 can also recover the case $p > \frac{1}{2}$.
@@ -323,11 +327,11 @@
 		
 		
 		\item[4] (p6, line 4) "\dots , we see that Lemma 2.2 \textbf{will} follow if we can prove \dots".
-		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \PL{6}{12}.
 		
 		
 		\item[5] (p6, just before step 3). You could more precisely reference the "good event" you are	speaking of by providing the specific location where it is defined.
-		\subitem \textbf{Response}: Thank you for the suggestion. \TBF{Please note that we've revised this paragraph to add transition to "good events". We've referenced $A_{n,K}^c \cap B_{n,M}^c$ in (4.8) for the good events used in th proof of Lemma 2.3, and $G_{n,K,t}$ for the good events used in the proof of Lemma 2.4.}
+		\subitem \textbf{Response}: Thank you for the suggestion. \TBF{Please note that we've revised this paragraph to add transition to "good events". We've referenced $A_{n,K}^c \cap B_{n,M}^c$ in (4.18) for the good events used in the proof of Lemma 2.3, and $G_{n,K,t}$ for the good events used in the proof of Lemma 2.4.}
 		
 		\item[6](p7, line -5). "Also, we note that \textbf{the law of $\left(\mathcal{B}_i^{(y)}
 			,\mathcal{R}_i^{(y)} \right)$} defined in (3.1) \dots ".
@@ -346,7 +350,7 @@
 		
 		\item [9] (p10, last sentence before Lemma 3.3). "The identity (3.10) below is not used directly\dots but we use its more explicit formula \dots ". I believe you are referring to (3.12) here, so it would be helpful to say so. Additionally, you might consider including the full formula directly in the statement of the Lemma.
 		\subitem \textbf{Response}: Thank you for the suggestions. We've reworked the statement of Lemma 3.3 to incorporate the suggested changes.
-		\TBF{We've edited the statement of Lemma 3.3 to include (3.12) in the statement of the Lemma. Previous references to (3.10) and (3.12) are edited to Lemma 3.3 for clarity.}
+		We've edited the statement of Lemma 3.3 to include (3.12) in the statement of the Lemma. Previous references to (3.10) and (3.12) are edited to Lemma 3.3 for clarity.
 		
 		\item [10] (p9, Lemma 3.3, eq (3.11)). Please recall that $\mathcal{D}$ is defined in (3.4). I believe this is its first appearance, and it may be helpful to reintroduce the notation for clarity.
 		\subitem \textbf{Response}:  Thank you for the suggestion. We've recalled the $\mathcal{D}$ at the end of Lemma 3.3, which is firstly defined in (3.4).
@@ -354,11 +358,11 @@
 		
 		
 		\item [11] (p11, line 1) "where $(r_y(i),b_y(i))_{i\geq 0}"$ \dots (missing subscript $y$).
-		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \PL{11}{9}.
 		
 		
 		\item[12] (p12, line 3). The notation $S_k(\lambda)$ is confusing, as it has already been used for the running supremum of the walk. Please consider using a different letter (since it is only used once).
-		\subitem \textbf{Response}:  Thank you for the suggestion.  We've changed the notation to \TBC{${\phi}_k(\lambda) $} .
+		\subitem \textbf{Response}:  Thank you for the suggestion.  We've changed the notation to ${\phi}_k(\lambda) $ \PL{12}{17}.
 		
 		
 		\item[13] (p12, Lemma 3.7). In the centered formula, remove the $X$ in $I^X_{n-1}$
@@ -367,15 +371,15 @@
 		
 		
 		\item [14] (p18, line 8) "\dots for any $m > 100$ \dots ". Maybe simply say, "for $m$ sufficiently large".
-		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \TBF{at}.
+		\subitem \textbf{Response}:  Thank you for pointing this out.  We've corrected the statement \PL{19}{4}.
 		
 		
 		
 		\item [15] (p18, middle of the page). The formula after "\dots On the other hand, Lemma 3.4 implies that" appears to be missing an expectation on the left-hand side of the inequality.
-		\subitem \textbf{Response}:  Thank you for pointing this out. We've corrected the term \TBF{at}.
+		\subitem \textbf{Response}:  Thank you for pointing this out. We've corrected the term \PL{19}{7}.
 		
 		\item [16] (p21). Could you provide slightly more detail about how the inequality at the top of the page is obtained?
-		\subitem \textbf{Response}: Thank you for the suggestion. \TBF{We've revised this part for more details. Please note that the upper bound for the first expectation is the same as the earlier version "modulo" a probability comparable to $\mathbb{P}(G^c_{n,K,t}) $, which is already estimated in the proof of Lemma 4.1. This term is due to (4.6) and (4.7), which describe the regularities of random variables $\tau^{\mathcal{B}}_{i,y}-2i $ and $\tau^{\mathcal{B}}_{i+1,y}- \tau^{\mathcal{B}}_{i,y}$. This modification is mild because it is of size $\exp(- c \log^2 n) $ for some $c>0$, and therefore, (4.22) converges to $0$ in probability as $n$ goes to infinity, see (4.24).}
+		\subitem \textbf{Response}: Thank you for the suggestion. We've revised this part for more details. Please note that the upper bound for the first expectation is the same as the earlier version "modulo" a probability comparable to $\mathbb{P}(G^c_{n,K,t}) $, which is already estimated in the proof of Lemma 4.1. This term is due to (4.6) and (4.7), which describe the regularities of random variables $\tau^{\mathcal{B}}_{i,y}-2i $ and $\tau^{\mathcal{B}}_{i+1,y}- \tau^{\mathcal{B}}_{i,y}$. This modification is mild because it is of size $\exp(- c \log^2 n) $ for some $c>0$, and therefore, (4.22) converges to $0$ in probability as $n$ goes to infinity, see (4.24).
 		
 		
 	\end{itemize}
